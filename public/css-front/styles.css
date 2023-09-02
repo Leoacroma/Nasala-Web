@@ -1,0 +1,292 @@
+body {
+    overflow-x: hidden;
+}
+
+.logo-left-box {
+    background-color: white;
+    text-align: center;
+}
+
+.bg-color-rgb-201-199-199 {
+    background-color: rgb(231, 231, 231);
+}
+
+.bg-color-355fb6 {
+    background-color: #355fb6;
+}
+
+.bg-colo-white {
+    background-color: white;
+}
+
+
+/*navigator*/
+
+.navbar-nav .nav-link {
+    margin: auto 20px;
+    color: #fff;
+}
+
+.nav-item {
+    padding: 5px;
+}
+
+.nav-font {
+    font-family: 'Dangrek';
+    font-size: 28px;
+}
+
+.dropend .dropdown-toggle {
+    color: black;
+}
+
+.dropdown-item {
+    font-size: 20px;
+    padding: 15px;
+    font-family: 'Battambang', cursive;
+}
+
+.dropdown-item:hover {
+    background-color: #355fb6;
+    color: #fff;
+}
+
+.drop-actived {
+    background-color: #355fb6;
+    color: #fff;
+}
+
+.dropdown .dropdown-menu {
+    display: none;
+}
+
+.dropdown:hover>.dropdown-menu,
+.dropend:hover>.dropdown-menu {
+    display: block;
+    margin-top: 0.125em;
+    margin-left: 0.125em;
+}
+
+.nav-item:hover {
+    background-color: #14274c;
+}
+
+.actived {
+    background-color: #14274c;
+}
+
+@media screen and (min-width: 769px) {
+    .dropend:hover>.dropdown-menu {
+        position: absolute;
+        top: 0;
+        left: 100%;
+    }
+    .dropend .dropdown-toggle {
+        margin-left: 0.5em;
+    }
+}
+
+
+/*content*/
+
+.btn-show-all {
+    position: absolute;
+    right: 10px;
+    margin-top: -40px;
+    background-color: #355fb6;
+    font-size: 20px;
+}
+
+.btn-show-all-2 {
+    background-color: #355fb6;
+}
+
+#dp-sm-lg {
+    background-color: rgb(201, 199, 199);
+    position: absolute;
+    list-style: none;
+    padding: 10px;
+    width: 100%;
+    display: none;
+}
+
+#dp-sm-lg a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Hanuman';
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#list-items li a {
+    text-decoration: none;
+    color: black;
+}
+
+.new-card {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-main {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+}
+
+.items-LG {
+    text-decoration: none;
+    font-family: 'Battambang', cursive;
+    font-size: 20px;
+    color: black;
+}
+
+
+/* hover */
+
+#list-items li a:hover {
+    color: #355fb6;
+}
+
+.hover-text:hover {
+    color: black;
+}
+
+.new-card .col-lay-3 a {
+    transition: 0.6s;
+}
+
+.new-card {
+    display: flex;
+    margin-left: -50px;
+    justify-content: space-evenly;
+}
+
+.new-card .col-lay-3 a:hover p {
+    transform: scaleY(100px);
+    text-decoration: underline;
+}
+
+.card-hover {
+    text-decoration: none;
+    color: black;
+}
+
+.card-hover:hover {
+    transform: scaleY(100px);
+    text-decoration: underline;
+}
+
+p.indent {
+    text-indent: 30px;
+}
+
+.news-details {
+    width: 100%;
+    overflow: hidden;
+}
+
+.more-news-box {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: white;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+/* text-field */
+
+.text-field {
+    width: 200px;
+    height: 50px;
+    margin-right: 180px;
+}
+
+
+/*image*/
+
+.image-front-TT {
+    margin: 10px;
+    border-radius: 255px;
+    width: 200px;
+    height: 200px;
+}
+
+
+/* icon */
+
+.search {
+    font-family: 'Battambang', cursive;
+    font-size: 17px;
+    border-color: #355fb6;
+    height: 40px;
+}
+
+.search-icon {
+    background-color: #355fb6;
+}
+
+.divider-line {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-top: 2px solid #355fb6;
+}
+
+.divider-line-small {
+    width: 20%;
+    border-top: 5px solid #355fb6;
+    border-radius: 10px;
+}
+
+.img-class {
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+/* Hover-Animation */
+
+.hover-underline-animation {
+    transition: 0.6s ease-in-out;
+}
+
+.hover-underline-animation:hover .hover-title-animate {
+    text-decoration: underline;
+    color: #14274c;
+}
