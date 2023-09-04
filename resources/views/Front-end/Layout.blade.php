@@ -85,18 +85,21 @@
                     <li class="nav-item dropdown {{ Route::currentRouteNamed('front.work.dp1' , 'front.work.dp2Content' , 'front.work.dp3')  ? 'actived' : '' }}">
                         <a class="nav-link dropdown-toggle nav-font " href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">ការងារបណ្តុះបណ្តាល</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item {{ Route::currentRouteNamed('front.work.dp1') ? 'drop-actived' : '  ' }}" href="{{ route('front.work.dp1') }}">ផែនការបណ្តុះបណ្តាល</a></li>
+                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item Siemreap ml-2 {{  Route::currentRouteNamed('front.work.dp1') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}">ផែនការបណ្តុះបណ្តាលប្រចាំឆ្នាំ</a></li>
                             <li class="dropend mg-l-m10 pd-r-8">
-                                <a class="dropdown-item dropdown-toggle Siemreap " href="#">ឯកសារបណ្តុះបណ្តាល</a>
+                                <a class="dropdown-item ml-2 Siemreap" href="">ឯកសារបណ្តុះបណ្តាល</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item {{ Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }} " href="{{ route('front.work.dp2Content') }}">វគ្គគ្រប់គ្រងជាន់ខ្ពស់</a></li>
-                                    <li><a class="dropdown-item" href="">វគ្គគ្រប់គ្រងកម្រិត២</a></li>
-                                    <li><a class="dropdown-item" href="">វគ្គគ្រប់គ្រងកម្រិត១</a></li>
-                                    <li><a class="dropdown-item" href="/template/ការងារបណ្តុះបណ្តាល/dp2.html">វគ្គវិក្រឹត្យការមូលដ្ឋាន</a></li>
-                                    <li><a class="dropdown-item" href="">វគ្គវិក្រឹត្យការជំនាញ</a></li>
-                                </ul>
+                                    @foreach ($cateSub['data'] as $dd)
+                                    <li>
+                                        <a class="dropdown-item {{ Route::currentRouteNamed('front.work.dp2Content', $dd['id']) ? 'drop-actived' : '' }}"
+                                            href="{{ route('front.work.dp2Content', $dd['id']) }}">
+                                            {{ $dd['nameKh'] }}
+                                        </a>
+                                    </li>
+                                     @endforeach
+                                </ul> 
                             </li>
-                            <li><a class="dropdown-item {{ Route::currentRouteNamed('front.work.dp3') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp3') }}">ចុះឈ្មោះចូលរៀន</a></li>
+                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item Siemreap ml-2 {{ Route::currentRouteNamed('front.enrollMent') ? 'drop-actived' : '' }}" href="{{ route('front.enrollMent') }}">ចុះឈ្មោះចូលរៀន</a></li>
                         </ul>
                     </li>
                     <li class="nav-item {{ Route::currentRouteNamed('front.liby') ? 'actived' : '' }}"><a class="nav-link nav-font" aria-current="page" href="{{ route('front.liby') }}">បណ្ណាល័យ</a></li>

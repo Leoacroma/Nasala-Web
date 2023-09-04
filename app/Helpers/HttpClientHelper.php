@@ -3,14 +3,35 @@
 namespace App\Helpers;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Cookie;
 
 class HttpClientHelper
 {
     private $apiBaseUrl = 'http://188.166.211.230:9091/v1/api';
-    private $accessToken = '';
-    function __construct() {
-        $this->accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTM3MDc3NzksInVzZXJfbmFtZSI6InNvdW1wYW5oYW91ZG9tQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkZVTExfUEVSTUlTU0lPTiIsIlNZU1RFTV9BRE1JTiJdLCJqdGkiOiJhY2I4OTk0Ni1kMjAzLTQzOGUtYmE2OC0zYWYxMzNmOTA0NDUiLCJjbGllbnRfaWQiOiJhelV0Ym1GemJHRXRZMnhwWlc1MFNXUT0iLCJzY29wZSI6WyJyZWFkIiwiY3JlYXRlIiwidXBkYXRlIiwiZGVsZXRlIl19.pVUHhTsmiRGRj9g1VkhQbGY3GWcE2HPlx-RQ8bU0jKw';
+    private $apiOuthUrl = 'http://188.166.211.230:9091/oauth/';
 
+
+    private $accessToken = '';
+    private $clientId = '';
+    private $clientSecret = '';
+  
+    function __construct() {
+        $this->accessToken = Cookie::get('token');
+        $this->clientId = 'azUtbmFzbGEtY2xpZW50SWQ=';
+        $this->clientSecret = 'YXpVdGJtRnpiR0V0WTJ4cFpXNTBVMlZqY21WMA==';
+    }
+
+    public function postloginRequest($url, $parems){
+        $client = new Client();
+        $grand_type = '?grant_type=password';
+        $response = $client->post($this->apiOuthUrl . $url .$grand_type, [
+            'headers' => [
+                'Authorization' => 'Basic '. base64_encode($this->clientId . ':' . $this->clientSecret),
+            ],
+            'form_params' => $parems,
+            ]);
+        $data = json_decode($response->getBody(), true);
+        return $data;
     }
 
     public function getRequest($url, $params = null){

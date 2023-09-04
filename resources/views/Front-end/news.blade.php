@@ -24,7 +24,7 @@
             @foreach ($result as $item)
             <div class="col-lay-3 mt-3">
                 <a  href="{{ route('front.subnews', $item['id']) }}" class=" text-decoration-none color-black Siemreap  font-size-20">
-                    <img class="mb-3" src="{{ asset('images/front/police-test1.jpg') }}" alt="" width="400px" height="300px">
+                    <img class="mb-3" src="http://188.166.211.230:9091/v1/api/files/{{$item['thumbnailImageId'] }}" alt="" width="400px" height="300px">
                     <p>{{ $item['titleKh'] }}</p>
                     <small class="font-size-15">{{ $item['createdAt'] }}</small> |
                     <span class="badge bg-warning text-dark Siemreap font-size-12">{{ $item['categoryId'] }}</span>

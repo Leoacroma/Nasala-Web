@@ -11,6 +11,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TrainCateController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\TrainingFileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,10 +30,14 @@ Route::get('/news', [Controller::class, 'news'])->name('front.news');
 Route::get('/news/subnews/{id}',[Controller::class, 'subenews'])->name('front.subnews');
 
 Route::get('/work/dp1', [Controller::class, 'dp1'])->name('front.work.dp1');
-Route::get('/work/dp2', [Controller::class, 'dp2Content'])->name('front.work.dp2Content');
+Route::get('/work/dp2/{id}', [Controller::class, 'dp2Content'])->name('front.work.dp2Content');
+
 Route::get('/work/dp3', [Controller::class, 'dp3'])->name('front.work.dp3');
 Route::get('/lib', [Controller::class, 'liby'])->name('front.liby');
 Route::get('/scholar',[Controller::class, 'scholar'])->name('front.scholar');
+Route::get('/scholar/sub/{id}', [Controller::class, 'subScholar'])->name('front.subScholar');
+Route::get('/enroll/all', [Controller::class, 'enrollMent'])->name('front.enrollMent');
+
 Route::get('/aboutschool/dp1', [Controller::class, 'aboutSchooldp1'])->name('front.aboutschool.dp1');
 Route::get('/aboutschool/dp2', [Controller::class, 'aboutSchooldp2'])->name('front.aboutschool.dp2');
 Route::get('/aboutschool/dp3', [Controller::class, 'aboutSchooldp3'])->name('front.aboutschool.dp3');
@@ -44,9 +49,12 @@ Route::get('/aboutschool/dp8', [Controller::class, 'aboutSchooldp8'])->name('fro
 
 
 
+Route::get('admin/login', [OuthController::class, 'loginForm'])->name('admin.login');
+Route::post('admin/login/store', [OuthController::class, 'login'])->name('admin.login.post');
+Route::get('admin/logout', [OuthController::class, 'logout'])->name('admin.logout');
 
 //Back-end
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('admin')->group(function(){
     Route::get('/', [Controller::class, 'dash'])->name('admin.dash');
     Route::get('/makeMenu', [Controller::class, 'pagemake'])->name('admin.pagemake');
     // Route::get('/post', [Controller::class, 'post'])->name('admin.post');
@@ -56,8 +64,9 @@ Route::prefix('admin')->group(function(){
     
     Route::prefix('api')->group(function(){
         Route::get('refresh_token', [OuthController::class, 'oauth']);
-
-
+        //User
+        Route::get('user/all', [UserController::class, 'index'])->name('admin.user');
+        Route::post('user/store', [UserController::class, 'store'])->name('admin.user.store');
 
         //Cate
         Route::get('post/cate', [CategoriesController::class, 'index'])->name('admin.postcate');

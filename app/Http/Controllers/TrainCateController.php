@@ -42,16 +42,16 @@ class TrainCateController extends Controller
         $validate = request()->validate([
             'name' => 'required|Max:255',
             'nameKh' => 'required|Max:255',
-            'subMenu' => 'required'
+            'subMenuId' => 'required'
         ]);
         $body = [
             'name' => request('name'),
             'nameKh' => request('nameKh'),
-            'subMenu' => request('subMenu'),
+            'subMenuId' => request('subMenuId'),
         ];
+        // dd($body);
         $httpClient = new HttpClientHelper();
         $resultt = $httpClient->postRequest('/training/categories', $body);
-
 
         Alert::success('Add Successfully', 'Success Message');
         return redirect()->route('admin.train.cate');

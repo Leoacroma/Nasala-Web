@@ -16,61 +16,38 @@
     <div class="container position-relative">
         <div class="row bg-color-rgb-201-199-199 p-0">
             <div class="col-lay-5 mb-2">
+                @foreach ($result as $item)
                 <a class="text-decoration-none color-black Siemreap hover-text hover-underline-animation" href="./sub-news/subnews.html">
-                    <img src="{{ asset('/images/front/police-test2.jpg') }}" alt="" width="100%" class=" img-class">
+                    <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="100%" class=" img-class">
                     <span class="font-size-25  hover-title-animate">
-                        កិច្ចសម្ភាសន៏ដើម្បីប្រមូលព័ត៌មាន​ និង​ទិន្នន័យ សម្រាប់រៀបចំសម្រាប់រៀប់ចំ......
+                       {{$item['titleKh']}}
                     </span>
                     <br/>
-                    <small>02/12/2021, 9:21 AM</small>| <span class="badge bg-warning text-dark Siemreap font-size-12">កម្សាន្ត</span>
-                    <span class="badge bg-success Siemreap font-size-12">សង្គម</span>
-                    <span class="badge bg-danger Siemreap font-size-12">កីឡា</span>
+                    <small>{{ $item['createdAt'] }}</small>| <span class="badge bg-warning text-dark Siemreap font-size-12">កម្សាន្ត</span>
+                    <span class="badge bg-success Siemreap font-size-12">{{ $item['categoryId'] }}</span>
                 </a>
+                @endforeach
+                
             </div>
             <div class="col-lay-5 ">
+                @foreach ($result1 as $item)
                 <a class="text-decoration-none color-black Siemreap  hover-underline-animation " href="./sub-news/subnews.html">
                     <div class="row pt-2">
                         <div class="col-lay-4 p-0">
-                            <img src="{{ asset('/images/front/police-test2.jpg') }}" alt="" width="250">
+                            <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="250">
                         </div>
                         <div class="col-lay-6 p-0">
                             <span class="font-size-23 hover-title-animate">
-                                កិច្ចសម្ភាសន៏ដើម្បីប្រមូលព័ត៌មាន​ និង​ទិន្នន័យ សម្រាប់រៀបចំសម្រាប់រៀប់ចំ......
+                                {{$item['titleKh']}}
                             </span><br/>
-                            <small>02/12/2021, 9:21 AM</small> | <span class="badge bg-warning text-dark Siemreap font-size-12">កម្សាន្ត</span>
-                            <span class="badge bg-success Siemreap font-size-12">សង្គម</span>
+                            <small>{{ $item['createdAt'] }}</small> | <span class="badge bg-warning text-dark Siemreap font-size-12">កម្សាន្ត</span>
+                            <span class="badge bg-success Siemreap font-size-12">{{ $item['categoryId'] }}</span>
                         </div>
                     </div>
                 </a>
-                <a class="text-decoration-none color-black Siemreap  hover-underline-animation " href="./sub-news/subnews.html">
-                    <div class="row pt-2">
-                        <div class="col-lay-4 p-0">
-                            <img src="{{ asset('/images/front/police-test2.jpg') }}" alt="" width="250">
-                        </div>
-                        <div class="col-lay-6 p-0">
-                            <span class="font-size-23 hover-title-animate">
-                                កិច្ចសម្ភាសន៏ដើម្បីប្រមូលព័ត៌មាន​ និង​ទិន្នន័យ សម្រាប់រៀបចំសម្រាប់រៀប់ចំ......
-                            </span><br/>
-                            <small>02/12/2021, 9:21 AM</small> | <span class="badge bg-warning text-dark Siemreap font-size-12">កម្សាន្ត</span>
-                            <span class="badge bg-success Siemreap font-size-12">សង្គម</span>
-                        </div>
-                    </div>
-                </a>
-                <a class="text-decoration-none color-black Siemreap  hover-underline-animation " href="./sub-news/subnews.html">
-                    <div class="row pt-2">
-                        <div class="col-lay-4 p-0">
-                            <img src="{{ asset('/images/front/police-test2.jpg') }}" alt="" width="250">
-                        </div>
-                        <div class="col-lay-6 p-0">
-                            <span class="font-size-23 hover-title-animate">
-                                កិច្ចសម្ភាសន៏ដើម្បីប្រមូលព័ត៌មាន​ និង​ទិន្នន័យ សម្រាប់រៀបចំសម្រាប់រៀប់ចំ......
-                            </span><br/>
-                            <small>02/12/2021, 9:21 AM</small> | <span class="badge bg-warning text-dark Siemreap font-size-12">កម្សាន្ត</span>
-                            <span class="badge bg-success Siemreap font-size-12">សង្គម</span>
-                        </div>
-                    </div>
-                </a>
-                <a class="btn btn-primary btn-show-all Siemreap" href="./news.html">បង្ហាញព័ត៌មានទាំងអស់</a>
+                @endforeach
+                
+                <a class="btn btn-primary btn-show-all Siemreap" href="{{ route('front.news') }}">បង្ហាញព័ត៌មានទាំងអស់</a>
             </div>
 
         </div>

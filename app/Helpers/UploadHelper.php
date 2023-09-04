@@ -11,7 +11,7 @@ class UploadHelper
     private $apiBaseUrl = 'http://188.166.211.230:9091/v1/api';
     private $accessToken = '';
     function __construct() {
-        $this->accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTM3MDc3NzksInVzZXJfbmFtZSI6InNvdW1wYW5oYW91ZG9tQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkZVTExfUEVSTUlTU0lPTiIsIlNZU1RFTV9BRE1JTiJdLCJqdGkiOiJhY2I4OTk0Ni1kMjAzLTQzOGUtYmE2OC0zYWYxMzNmOTA0NDUiLCJjbGllbnRfaWQiOiJhelV0Ym1GemJHRXRZMnhwWlc1MFNXUT0iLCJzY29wZSI6WyJyZWFkIiwiY3JlYXRlIiwidXBkYXRlIiwiZGVsZXRlIl19.pVUHhTsmiRGRj9g1VkhQbGY3GWcE2HPlx-RQ8bU0jKw';
+        $this->accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTM4ODEwMjUsInVzZXJfbmFtZSI6InNvdW1wYW5oYW91ZG9tQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkZVTExfUEVSTUlTU0lPTiIsIlNZU1RFTV9BRE1JTiJdLCJqdGkiOiIxZmEzMzAyZi04MzBjLTQ2YjItYmZkZC04NWExODcxOTkxYzYiLCJjbGllbnRfaWQiOiJhelV0Ym1GemJHRXRZMnhwWlc1MFNXUT0iLCJzY29wZSI6WyJyZWFkIiwiY3JlYXRlIiwidXBkYXRlIiwiZGVsZXRlIl19.QQ1ahy8N4p_JeuewzJR-j2KP9c-1Wa8XKYO5nca7j5Q';
 
     }
 

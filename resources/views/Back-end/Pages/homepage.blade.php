@@ -9,131 +9,29 @@
                         <h3 class="text-dark font-weight-bold mb-2">Hi, welcome back!</h3>
                         <h6 class="font-weight-normal mb-2">Last login was 23 hours ago. View details</h6>
                     </div>
-                    <div class="ms-lg-5 d-lg-flex d-none">
-                            <button type="button" class="btn bg-white btn-icon">
-                                <i class="mdi mdi-view-grid text-success"></i>
-                        </button>
-                            <button type="button" class="btn bg-white btn-icon ms-2">
-                                <i class="mdi mdi-format-list-bulleted font-weight-bold text-primary"></i>
-                            </button>
-                    </div>
+
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="d-flex align-items-center justify-content-md-end">
-                    <div class="pe-1 mb-3 mb-xl-0">
-                            <button type="button" class="btn btn-outline-inverse-info btn-icon-text">
-                                Feedback
-                                <i class="mdi mdi-message-outline btn-icon-append"></i>                          
-                            </button>
-                    </div>
-                    <div class="pe-1 mb-3 mb-xl-0">
-                            <button type="button" class="btn btn-outline-inverse-info btn-icon-text">
-                                Help
-                                <i class="mdi mdi-help-circle-outline btn-icon-append"></i>                          
-                        </button>
-                    </div>
-                    <div class="pe-1 mb-3 mb-xl-0">
-                            <button type="button" class="btn btn-outline-inverse-info btn-icon-text">
-                                Print
-                                <i class="mdi mdi-printer btn-icon-append"></i>                          
-                            </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-lg-8 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <h4 class="card-title">Sales Difference</h4>
-                                <canvas id="salesDifference"></canvas>
-                                <p class="mt-3 mb-4 mb-lg-0">Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit.
-                                </p>
-                            </div>
-                            <div class="col-lg-5">
-                                <h4 class="card-title">Best Sellers</h4>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <ul class="graphl-legend-rectangle">
-                                            <li><span class="bg-danger"></span>Automotive</li>
-                                            <li><span class="bg-warning"></span>Books</li>
-                                            <li><span class="bg-info"></span>Software</li>
-                                            <li><span class="bg-success"></span>Video games</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-8 grid-margin">
-                                        <canvas id="bestSellers"></canvas>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-4 mb-lg-0">Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit.
-                                </p>
-                            </div>
-                            <div class="col-lg-3">
-                                <h4 class="card-title">Social Media Statistics</h4>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="progress progress-lg grouped mb-2">
-                                            <div class="progress-bar  bg-danger" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <ul class="graphl-legend-rectangle">
-                                            <li><span class="bg-danger"></span>Instagram (15%)</li>
-                                            <li><span class="bg-warning"></span>Facebook (20%)</li>
-                                            <li><span class="bg-info"></span>Website (25%)</li>
-                                            <li><span class="bg-success"></span>Youtube (40%)</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <p class="mb-0 mt-2">Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-3 mb-lg-0">
-                <div class="card congratulation-bg text-center">
-                    <div class="card-body pb-0">
-                        <img src="{{ asset('images/dashboard/face29.png') }}" alt="">  
-                        <h2 class="mt-3 text-white mb-3 font-weight-bold">Congratulations
-                            Johnson
-                        </h2>
-                        <p>You have done 57.6% more sales today. 
-                            Check your new badge in your profile.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>  
         <div class="row">
             <div class="col-sm-8 flex-column d-flex stretch-card">
                 <div class="row">
                     <div class="col-lg-4 d-flex grid-margin stretch-card">
                         <div class="card bg-primary">
                             <div class="card-body text-white">
-                                <h3 class="font-weight-bold mb-3">18,39 (75GB)</h3>
+                                <h3 class="font-weight-bold mb-3">Total : {{ $count }} </h3>
                                 <div class="progress mb-3">
                                     <div class="progress-bar  bg-warning" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="pb-0 mb-0">Bandwidth usage</p>
+                                <p class="pb-0 mb-0">News Managment</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 d-flex grid-margin stretch-card">
                         <div class="card sale-diffrence-border">
                             <div class="card-body">
-                                <h2 class="text-dark mb-2 font-weight-bold">$6475</h2>
-                                <h4 class="card-title mb-2">Sales Difference</h4>
+                                <h2 class="text-dark mb-2 font-weight-bold">Total : {{ $countFilePub }}</h2>
+                                <h4 class="card-title mb-2">Publication Management</h4>
                                 <small class="text-muted">APRIL 2019</small>
                             </div>
                         </div>
@@ -141,8 +39,8 @@
                     <div class="col-lg-4 d-flex grid-margin stretch-card">
                         <div class="card sale-visit-statistics-border">
                             <div class="card-body">
-                                <h2 class="text-dark mb-2 font-weight-bold">$3479</h2>
-                                <h4 class="card-title mb-2">Visit Statistics</h4>
+                                <h2 class="text-dark mb-2 font-weight-bold">Total : {{ $countLib }}</h2>
+                                <h4 class="card-title mb-2">Library Management</h4>
                                 <small class="text-muted">APRIL 2019</small>
                             </div>
                         </div>
@@ -153,53 +51,25 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <h4 class="card-title mb-2">Sales Difference</h4>
-                                    <div class="dropdown">
-                                        <a href="#" class="text-success btn btn-link  px-1"><i class="mdi mdi-refresh"></i></a>
-                                        <a href="#" class="text-success btn btn-link px-1 dropdown-toggle dropdown-arrow-none" data-bs-toggle="dropdown" id="settingsDropdownsales">
-                                            <i class="mdi mdi-dots-horizontal"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="settingsDropdownsales">
-                                                <a class="dropdown-item">
-                                                    <i class="mdi mdi-grease-pencil text-primary"></i>
-                                                    Edit
-                                                </a>
-                                                <a class="dropdown-item">
-                                                    <i class="mdi mdi-delete text-primary"></i>
-                                                    Delete
-                                                </a>
-                                            </div>
-                                    </div>
+                                    <h4 class="card-title mb-2">Lastest News</h4>
                                 </div>
-                                <div>
+                                <div class="mt-3">
                                     <ul class="nav nav-tabs tab-no-active-fill" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active ps-2 pe-2" id="revenue-for-last-month-tab" data-bs-toggle="tab" href="#revenue-for-last-month" role="tab" aria-controls="revenue-for-last-month" aria-selected="true">Revenue for last month</a>
+                                            <a class="nav-link active ps-2 pe-2 " id="revenue-for-last-month-tab" data-bs-toggle="tab" href="#revenue-for-last-month" role="tab" aria-controls="revenue-for-last-month" aria-selected="true">
+                                              All
+                                            </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link ps-2 pe-2" id="server-loading-tab" data-bs-toggle="tab" href="#server-loading" role="tab" aria-controls="server-loading" aria-selected="false">Server loading</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link ps-2 pe-2" id="data-managed-tab" data-bs-toggle="tab" href="#data-managed" role="tab" aria-controls="data-managed" aria-selected="false">Data managed</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link ps-2 pe-2" id="sales-by-traffic-tab" data-bs-toggle="tab" href="#sales-by-traffic" role="tab" aria-controls="sales-by-traffic" aria-selected="false">Sales by traffic</a>
-                                        </li>
+                                        @foreach ($cate['data'] as $item)
+                                            <li class="nav-item">
+                                                <a class="nav-link ps-2 pe-2 " id="revenue-for-last-month-tab" data-bs-toggle="tab" href="#revenue-for-last-month" role="tab" aria-controls="revenue-for-last-month" aria-selected="true">
+                                                    {{ $item['name'] }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+
                                     </ul>
                                     <div class="tab-content tab-no-active-fill-tab-content">
-                                        <div class="tab-pane fade show active" id="revenue-for-last-month" role="tabpanel" aria-labelledby="revenue-for-last-month-tab">
-                                            <div class="d-lg-flex justify-content-between">
-                                                <p class="mb-4">+5.2% vs last 7 days</p>
-                                                <div id="revenuechart-legend" class="revenuechart-legend">f</div>
-                                            </div>
-                                            <canvas id="revenue-for-last-month-chart"></canvas>
-                                        </div>
-                                        <div class="tab-pane fade" id="server-loading" role="tabpanel" aria-labelledby="server-loading-tab">
-                                            <div class="d-flex justify-content-between">
-                                                <p class="mb-4">+5.2% vs last 7 days</p>
-                                                <div id="serveLoading-legend" class="revenuechart-legend">f</div>
-                                            </div>
-                                            <canvas id="serveLoading"></canvas>
-                                        </div>
                                         <div class="tab-pane fade" id="data-managed" role="tabpanel" aria-labelledby="data-managed-tab">
                                             <div class="d-flex justify-content-between">
                                                 <p class="mb-4">+5.2% vs last 7 days</p>

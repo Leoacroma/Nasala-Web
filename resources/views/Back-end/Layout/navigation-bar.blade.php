@@ -3,7 +3,7 @@
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-around">
             <ul class="navbar-nav navbar-nav-left">
             <li class="nav-item ms-0 me-5 d-lg-flex d-none">
-                <a href="#" class="nav-link horizontal-nav-left-menu " style="color: rgb(248, 78, 78)">
+                <a href="{{ route('admin.logout') }}" class="nav-link horizontal-nav-left-menu " style="color: rgb(248, 78, 78)">
                     <i class="fa-solid fa-right-from-bracket"></i></a>
             </li>
             <li class="nav-item nav-search">
@@ -98,26 +98,19 @@
                     <i class="menu-arrow"></i>
                 </a>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item {{ Route::currentRouteNamed('admin.user') ? 'active' : '' }}">
                 <a href="#" class="nav-link">
-                    <i class="fa-solid fa-users-gear mb-3 font-size-20"></i>
+                    <i class="fa-solid fa-cloud mb-3 font-size-20"></i>
                     <span class="menu-title " >User Management</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                     <ul>
-                        <li class="nav-item"><a class="nav-link " href="pages/ui-features/buttons.html">Role</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Create user</a></li>
+                        <li class="nav-item"><a class="nav-link " href="{{ route('admin.postcate') }}">Roles</a></li>
+                        <li class="nav-item"><a class="nav-link " href="{{  route('admin.user')}}">Users</a></li>
                     </ul>
                 </div>
-            </li> --}}
-            {{-- <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-user mb-3 font-size-20"></i>
-                    <span class="menu-title " >Profile</span>
-                    <i class="menu-arrow"></i>
-                </a>
-            </li> --}}
+            </li>
             </ul>
         </div>
     </nav>

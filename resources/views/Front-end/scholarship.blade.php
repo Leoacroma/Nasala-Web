@@ -26,10 +26,10 @@
             <div class="col-lay-5">
                 <div class="row">
                     <div class="col-lay-4">
-                        <img src="{{ asset('images/front/police-test1.jpg') }}" alt="" width="320px" height="200px" style="margin-bottom: 10px;">
+                        <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="320px" height="200px" style="margin-bottom: 10px;">
                     </div>
                     <div class="col-lay-4">
-                        <a href="" class="text-decoration-none color-black font-size-22 Siemreap">{{ $item['title'] }}</a>
+                        <a href="{{ route('front.subScholar', $item['id']) }}" class="text-decoration-none color-black font-size-22 Siemreap">{{ $item['title'] }}</a>
                         <br>
                         <small class="Siemreap">{{ $item['createdAt'] }}</small>
                     </div>
@@ -40,7 +40,7 @@
             
         </div>
      </div>
-     <div class="container">
+     {{-- <div class="container">
         <div class="row page-main">
             <div class="col-lay-4 pagination">
                 <button class="btn btn-outline-primary mg-r-20px font-size-20 Siemreap  ">ថយក្រោយ</button>
@@ -51,7 +51,7 @@
                 <button class="btn btn-outline-primary font-size-20 Siemreap ">5</button>
                 <button class="btn btn-outline-primary mg-l-20 font-size-20 Siemreap ">ទៅមុខ</button>
             </div>
-        </div>
+        </div> --}}
     </div>
     <!-- -------------------------- -->
     <!-- -------------------------------------------- -->

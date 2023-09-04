@@ -2,34 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\HttpClientHelper;
 use GuzzleHttp\Client;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OuthController extends Controller
 {
     //
-    public function oauth(Request $request){
-        // Initialize a Guzzle client
-        $client = new Client();
+    public function loginForm(Request $request){
+       return view('Back-end.log.loginForm');
+    }
+    public function login(Request $request){
+        try {
+            $httpClient = new HttpClientHelper();
+            $params = [
+                'username' => request('username'),
+                'password' => request('password'),
+            ];
+            $result = $httpClient->postloginRequest('token', $params);
+            $token_value = $result['access_token'];
 
-        // Set the request parameters
-        $url = 'http://188.166.211.230:9091/oauth/token';
-        $params = [
-            'form_params' => [
-                'grant_type' => 'password',
-                'username' => 'soumpanhaoudom@gmail.com',
-                'password' => 'password',
-            ],
-            'headers' => [
-                'Authorization' => 'Basic ' . base64_encode('azUtbmFzbGEtY2xpZW50SWQ=:YXpVdGJtRnpiR0V0WTJ4cFpXNTBVMlZqY21WMA=='),
-            ],
-        ];
+            if (isset($result['error']) && $result['error'] === 'unauthorized') {
+                Alert::error(' Please try again.', 'Username or password is incorrect.');
+            } else {
+                Cookie::queue('token', $token_value);
+                return redirect()->route('admin.dash');
+            }
+        } catch (\Exception $e) {
+            Alert::error(' Please try again.', 'Username or password is incorrect.');
+        }
+        return redirect()->back();
 
-        // Send the request
-        $response = $client->post($url, $params);
+    }
 
-        // Get the access token from the response
-        $access_token = json_decode($response->getBody())->access_token;
+    public function logout(Request $request){            
 
+        Cookie::forget('token');
+        return redirect()->route('admin.login');
     }
 }
