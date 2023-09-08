@@ -89,9 +89,7 @@ class PostController extends Controller
         $request_Id = $id;
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/news/'.$request_Id);
-        $categoriesId = $data['data']['categoryId'];
         $image_Id = $data['data']['thumbnailImageId'];
-        $cate = $httpClient->getRequest('/categories/'.$categoriesId);
         $image_Id = $data['data']['thumbnailImageId'];
         $image = 'http://188.166.211.230:9091/v1/api/files/'. $image_Id;
       
@@ -101,7 +99,6 @@ class PostController extends Controller
 
         return view('Back-end.Pages.Post.news.post.preivews',[
             'data' => $data, 
-            'cate' => $cate, 
             'formattedCreatedAt' => $formattedCreatedAt,
             'image' => $image
             ]
@@ -118,16 +115,12 @@ class PostController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/news/'.$request_ID);
         $All_cate = $httpClient->getRequest('/categories');
-        $categoriesId = $data['data']['categoryId'];
-        $cate = $httpClient->getRequest('/categories/'.$categoriesId);
 
         $image_Id = $data['data']['thumbnailImageId'];
         $image = 'http://188.166.211.230:9091/v1/api/files/'. $image_Id;
 
         return view('Back-end.Pages.Post.news.post.editPost',[
             'data' => $data,
-            'cate'=> $cate,
-            'categoriesId' => $categoriesId,
             'All_cate' => $All_cate,
             'image' => $image
         ]);

@@ -17,7 +17,7 @@
                                 <small class="Siemreap mg-r-10px font-size-17">{{$formattedCreatedAt }}</small>
                                 <i class="fa-solid fa-eye"></i>
                                 <small class="Siemreap font-size-17">10k</small> |
-                                <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $cate['data']['nameKh']  }}</span>
+                                <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $data['data']['category']['nameKh'] }}</span>
                                 <div class="col-lay-1 d-flex justify-content-between font-size-22 mt-2 ">
                                     <a class="color-black" href=""><i class="fa-brands fa-facebook"></i></a>
                                     <a class="color-black" href=""><i class="fa-brands fa-telegram"></i></i></a>
@@ -66,60 +66,21 @@
                         <div class="divider-line-small"></div>
                     </div>
                 </div>
-                <a class="text-decoration-none color-black hover-underline-animation " href="">
-                    <div class="row mt-2">
-                        <div class="col-lay-5">
-                            <img src="{{ asset('images/front/police-test1.jpg') }}" alt="" width="100%">
+                @foreach ($sortLastedAtNews['data'] as $item)
+                    <a class="text-decoration-none color-black hover-underline-animation " href="{{ route('front.subnews', $item['id']) }}">
+                        <div class="row mt-2">
+                            <div class="col-lay-5">
+                                <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="100%">
+                            </div>
+                            <div class="col-lay-5 mg-l-m10 hover-title-animate">
+                                <p class="Siemreap font-size-17">{{ $item['titleKh'] }}</p>
+                            </div>
                         </div>
-                        <div class="col-lay-5 mg-l-m10 hover-title-animate">
-                            <p class="Siemreap font-size-17">កិច្ចសន្ទនាអាស៊ានជាសាកល នឹងមានការយាង និងអញ្ជើញចូលរួមដោយមេដឹកនាំ</p>
-                        </div>
-                    </div>
-                </a>
-                <a class="text-decoration-none color-black  hover-underline-animation " href="">
-                    <div class="row mt-2">
-
-                        <div class="col-lay-5">
-                            <img src="{{ asset('images/front/police-test1.jpg') }}" alt="" width="100%">
-                        </div>
-                        <div class="col-lay-5 mg-l-m10 hover-title-animate">
-                            <p class="Siemreap font-size-17">កិច្ចសន្ទនាអាស៊ានជាសាកល នឹងមានការយាង និងអញ្ជើញចូលរួមដោយមេដឹកនាំ</p>
-                        </div>
-                    </div>
-                </a>
-                <a class="text-decoration-none color-black  hover-underline-animation " href="">
-                    <div class="row mt-2">
-
-                        <div class="col-lay-5">
-                            <img src="{{ asset('images/front/police-test1.jpg') }}" alt="" width="100%">
-                        </div>
-                        <div class="col-lay-5 mg-l-m10 hover-title-animate">
-                            <p class="Siemreap font-size-17">កិច្ចសន្ទនាអាស៊ានជាសាកល នឹងមានការយាង និងអញ្ជើញចូលរួមដោយមេដឹកនាំ</p>
-                        </div>
-                    </div>
-                </a>
-                <a class="text-decoration-none color-black  hover-underline-animation " href="">
-                    <div class="row mt-2">
-
-                        <div class="col-lay-5">
-                            <img src="{{ asset('images/front/police-test1.jpg') }}" alt="" width="100%">
-                        </div>
-                        <div class="col-lay-5 mg-l-m10 hover-title-animate">
-                            <p class="Siemreap font-size-17">កិច្ចសន្ទនាអាស៊ានជាសាកល នឹងមានការយាង និងអញ្ជើញចូលរួមដោយមេដឹកនាំ</p>
-                        </div>
-                    </div>
-                </a>
-                <a class="text-decoration-none color-black  hover-underline-animation " href="">
-                    <div class="row mt-2">
-
-                        <div class="col-lay-5">
-                            <img src="{{ asset('images/front/police-test1.jpg') }}" alt="" width="100%">
-                        </div>
-                        <div class="col-lay-5 mg-l-m10 hover-title-animate">
-                            <p class="Siemreap font-size-17">កិច្ចសន្ទនាអាស៊ានជាសាកល នឹងមានការយាង និងអញ្ជើញចូលរួមដោយមេដឹកនាំ</p>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+               
+                @endforeach
+               
+                
             </div>
         </div>
     </div>

@@ -105,9 +105,9 @@
                                 <ul class="dropdown-menu">
                                     @foreach ($cateSub['data'] as $dd)
                                     <li>
-                                        <a class="dropdown-item {{ Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }}"
+                                        <a class="dropdown-item"
                                             href="{{ route('front.work.dp2Content', $dd['id']) }}">
-                                            {{ $dd['nameKh'] }}
+                                            {{ $dd['titleKh'] }}
                                         </a>
                                     </li>
                                      @endforeach

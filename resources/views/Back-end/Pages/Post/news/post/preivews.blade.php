@@ -24,7 +24,7 @@
                                 <small class="Siemreap mg-r-10px font-size-17">{{ $formattedCreatedAt }}</small>
                                 <i class="fa-solid fa-eye"></i>
                                 <small class="Siemreap font-size-17">10k</small> |
-                                    <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $cate['data']['nameKh'] }}</span>
+                                    <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $data['data']['category']['nameKh'] }}</span>
                                 <div class="col-lay-1 "></div>
                             </div>
                         </div>

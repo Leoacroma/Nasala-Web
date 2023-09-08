@@ -27,7 +27,7 @@
                     <img class="mb-3" src="http://188.166.211.230:9091/v1/api/files/{{$item['thumbnailImageId'] }}" alt="" width="400px" height="300px">
                     <p>{{ $item['titleKh'] }}</p>
                     <small class="font-size-15">{{ $item['createdAt'] }}</small> |
-                    <span class="badge bg-warning text-dark Siemreap font-size-12">{{ $item['categoryId'] }}</span>
+                    <span class="badge bg-warning text-dark Siemreap font-size-12">{{ $item['category']['nameKh'] }}</span>
                 </a>
             </div>
             @endforeach

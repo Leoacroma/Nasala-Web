@@ -67,7 +67,8 @@ Route::prefix('admin')->middleware('admin')->group(function(){
         //User
         Route::get('user/all', [UserController::class, 'index'])->name('admin.user');
         Route::post('user/store', [UserController::class, 'store'])->name('admin.user.store');
-
+        Route::patch('user/update/{id}', [UserController::class, 'update'])->name('admin.user.update');
+        Route::delete('user/delete/{id}', [UserController::class, 'destroy'])->name('admin.user.destroy');
         //Cate
         Route::get('post/cate', [CategoriesController::class, 'index'])->name('admin.postcate');
         Route::post('post/cate/store', [CategoriesController::class, 'store'])->name('admin.storecate');

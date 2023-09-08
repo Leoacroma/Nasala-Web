@@ -34,7 +34,7 @@
                     <select class="form-select Siemreap " id="exampleSelectGender" name="categoryId" required>
                       <option value="" selected>-- សូមជ្រើសរើស --</option>
                         @foreach ($cate['data'] as $item)
-                          <option  value="{{ $item['id'] }}" {{ $item['id'] == $data['data']['categoryId'] ? 'selected' : '' }}>{{ $item['nameKh'] }}</option>
+                          <option  value="{{ $item['id'] }}" {{ $item['id'] == $data['data']['category']['id'] ? 'selected' : '' }}>{{ $item['nameKh'] }}</option>
                         @endforeach
                       </select>
                     </div>

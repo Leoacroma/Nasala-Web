@@ -31,7 +31,7 @@ class TrainingController extends Controller
                 'id' => $dd['id'],
                 'title' => $dd['title'],
                 'fileSize' => $dd['fileSize'],
-                'subMenuId'=> $dd['subMenuId'],
+                'subMenu'=> $dd['subMenu'],
                 'name' => $dd['name'],
                 'url' => $dd['url'],
                 'createdAt' => $formattedCreatedAt,
@@ -88,10 +88,10 @@ class TrainingController extends Controller
             'content' => request('content'),
             'contentKh' => request('contentKh'),
         ];
-
+        dd($body);
         $httpClient = new HttpClientHelper();
         $result = $httpClient->postRequest('/training/posts', $body);
-
+      
         if($result){
             Alert::success('Add Successfully', 'Success Message');
         }

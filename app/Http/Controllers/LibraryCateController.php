@@ -28,7 +28,7 @@ class LibraryCateController extends Controller
                 'id' => $lib['id'],
                 'title' => $lib['title'],
                 'fileSize' => $lib['fileSize'],
-                'categoryId' => $lib['categoryId'],
+                'category' => $lib['category'],
                 'url' => $lib['url'],
                 'name' => $lib['name'],
                 'createdAt' => $formattedCreatedAt,
@@ -98,7 +98,8 @@ class LibraryCateController extends Controller
                 'id' => $item['id'],
                 'title' => $item['title'],
                 'fileSize' => $item['fileSize'],
-                'categoryId' => $item['categoryId'],
+                'category' => $item['category'],
+                'url' => $item['url'],
                 'name' => $item['name'],
                 'createdAt' => $formattedCreatedAt,
             ];

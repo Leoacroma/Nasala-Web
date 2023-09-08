@@ -20,7 +20,7 @@
                   <select class="form-select Siemreap" name="categoryId" id="" required>
                     <option value="" selected>-- សូមជ្រើសរើស --</option>
                     @foreach ($data['data'] as $dd)
-                        <option value="{{ $dd['id'] }}"  {{ $dd['id'] == $item['categoryId'] ? 'selected' : '' }}>{{ $dd['nameKh']}}</option>
+                        <option value="{{ $dd['id'] }}"  {{ $dd['id'] == $item['category']['id'] ? 'selected' : '' }}>{{ $dd['nameKh']}}</option>
                     @endforeach
                   </select>
                 </div>

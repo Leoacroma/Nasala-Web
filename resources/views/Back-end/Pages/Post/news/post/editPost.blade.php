@@ -21,29 +21,30 @@
                   @csrf
                   @method('PATCH')
                   <div class="form-group">
-                    <label for="exampleInputName1">Title English</label>
-                    <input type="text" class="form-control" name="title" value="{{ $data['data']['title'] }}" placeholder="Title English" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail3">Title Khmer</label>
+                    <label for="exampleInputEmail3">Title<span class="required"></span></label>
                     <input type="text" class="form-control" name="titleKh" value="{{ $data['data']['titleKh'] }}" placeholder="Title Khmer" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleSelectGender">Caetgories</label>
-                      <select class="form-control" id="exampleSelectGender" name="categoryId" required>
+                    <label for="exampleInputName1">Title English</label>
+                    <input type="text" class="form-control" name="title" value="{{ $data['data']['title'] }}" placeholder="Title English">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleSelectGender">Caetgories<span class="required"></span></label>
+                      <select class="form-select Siemreap" id="exampleSelectGender" name="categoryId" required>
                         @foreach ($All_cate['data'] as $item)
-                          <option value="{{ $item['id'] }}" @if($item['id'] == $categoriesId) selected @endif >{{ $item['nameKh'] }}</option>
+                          <option value="{{ $item['id'] }}" {{ $item['id'] == $data['data']['category']['id'] ? 'selected' : '' }}>{{ $item['nameKh'] }}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword4">Thumbnail <span class="required"></span></label>
+                      <label for="exampleInputPassword4">Thumbnail<span class="required"></span> <span class="required"></span></label>
                       <input type="file" name="thumbnailImageId" class="form-control file-upload-info" id="image-upload-input2" accept="image/*">
                       <div  id="uploaded-image-container2" class="m-3"></div>
                       <img id="previous-img" src="{{ $image }}" alt="" width="250px" height="200px">
                     </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Content Khmer</label>
+                    <label for="exampleInputPassword4">Content <span class="required"></span></label>
                     <textarea class="form-control" name="contentKh" id="summernoteKh" required> {!! $data['data']['contentKh'] !!}</textarea>
                   </div>
                   <div class="form-group">

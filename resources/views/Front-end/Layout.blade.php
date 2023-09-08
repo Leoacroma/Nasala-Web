@@ -87,13 +87,13 @@
                         <ul class="dropdown-menu">
                             <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item Siemreap ml-2 {{  Route::currentRouteNamed('front.work.dp1') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}">ផែនការបណ្តុះបណ្តាលប្រចាំឆ្នាំ</a></li>
                             <li class="dropend mg-l-m10 pd-r-8">
-                                <a class="dropdown-item ml-2 Siemreap" href="">ឯកសារបណ្តុះបណ្តាល</a>
+                                <a class="dropdown-item ml-2 Siemreap {{  Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}" href="">ឯកសារបណ្តុះបណ្តាល</a>
                                 <ul class="dropdown-menu">
                                     @foreach ($cateSub['data'] as $dd)
                                     <li>
-                                        <a class="dropdown-item {{ Route::currentRouteNamed('front.work.dp2Content', $dd['id']) ? 'drop-actived' : '' }}"
+                                        <a class="dropdown-item"
                                             href="{{ route('front.work.dp2Content', $dd['id']) }}">
-                                            {{ $dd['nameKh'] }}
+                                            {{ $dd['titleKh'] }}
                                         </a>
                                     </li>
                                      @endforeach

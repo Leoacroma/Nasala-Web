@@ -17,6 +17,7 @@ class UserController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/users');
         $role = $httpClient->getRequest('/roles');
+     
         $result = [];
         foreach ($data['data'] as $item) {
             $dateTime = KhmerDateTime::parse($item['createdAt']);
@@ -25,10 +26,18 @@ class UserController extends Controller
                 'id' => $item['id'],
                 'firstNameKh' => $item['firstNameKh'],
                 'lastNameKh' => $item['lastNameKh'],
+                'firstName' => $item['firstName'],
+                'lastName' => $item['lastName'],
+                'userName' => $item['userName'],
+
                 'createdAt' => $formattedCreatedAt,
             ];
         }
-        return view('Back-end.user-managment.userManagment', ['result' => $result, 'role' => $role]);
+        return view('Back-end.user-managment.userManagment', [
+            'result' => $result,
+            'role' => $role,
+
+        ]);
     }
 
     /**
@@ -50,7 +59,6 @@ class UserController extends Controller
             'firstNameKh' => 'required|max:255',
             'lastName' => 'required|max:255',
             'lastNameKh' => 'required|max:255',
-            'role' => 'required',
             'userName' => 'required',
             'password' => 'required',
 
@@ -60,13 +68,11 @@ class UserController extends Controller
             'firstNameKh' => request('firstNameKh'),
             'lastName' => request('lastName'),
             'lastNameKh' => request('lastNameKh'),
-            'userName' => request('userName'),
-            'role' => request('role'),
+            'username' => request('userName'),
             'password' => request('password'),
         ];
         $httpClient = new HttpClientHelper();
         $data = $httpClient->postRequest('/users', $body);
-
         Alert::success('Add Successfully', 'Success Message');
         return redirect()->route('admin.user');
     }
@@ -85,6 +91,7 @@ class UserController extends Controller
     public function edit(string $id)
     {
         //
+     
     }
 
     /**
@@ -93,6 +100,29 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $requestId = $id;
+        $validation = $request->validate([
+            'firstName' => 'required|max:255',
+            'firstNameKh' => 'required|max:255',
+            'lastName' => 'required|max:255',
+            'lastNameKh' => 'required|max:255',
+            'userName' => 'required',
+            'password' => 'required',
+
+        ]);
+        $body = [
+            'firstName' => request('firstName'),
+            'firstNameKh' => request('firstNameKh'),
+            'lastName' => request('lastName'),
+            'lastNameKh' => request('lastNameKh'),
+            'username' => request('userName'),
+            'password' => request('password'),
+        ];
+        $httpClient = new HttpClientHelper();
+        $data = $httpClient->putRequest('/users/'.$requestId, $body);
+        
+        Alert::success('Update Successfully', 'Success Message');
+        return redirect()->route('admin.user');
     }
 
     /**
@@ -101,5 +131,11 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+        $requestId = $id;
+        $httpClient = new HttpClientHelper();
+        $result = $httpClient->deleteRequest('/users/'.$requestId);
+    
+        Alert::success('Add Successfully', 'Success Message');
+        return redirect()->route('admin.user');
     }
 }

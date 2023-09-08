@@ -38,9 +38,10 @@
                         <td class="Siemreap">{{ $item['firstNameKh'] }}</td>
                         <td class="Siemreap">{{ $item['lastNameKh'] }}</td>
                         <td class="Siemreap">{{ $item['createdAt'] }}</td>
-                        <td class="d-flex">
-                          <a class="btn btn-warning text-white mr-2" type="button" href="{{ route('admin.train.edit', $item['id']) }}" >Edit</a>
-                          <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.train.delete', $item['id']) }}">
+                        <td class="d-flex">                    
+                          <a  data-toggle="modal"  data-target="#editmethod{{ $item['id'] }}" class="btn btn-warning text-white mr-2">Edit</a>
+                          @include('Back-end.user-managment.Crud.edituser')
+                          <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.user.destroy', $item['id']) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger text-white mr-2" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))">Delete</button>

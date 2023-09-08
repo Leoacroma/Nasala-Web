@@ -17,10 +17,10 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Genre <span class="required"></span></label>
-                  <select class="form-select Siemreap" name="subMenuId" id="" required>
+                  <select class="form-select Siemreap" name="subMenu" id="" required>
                     <option value="" selected>-- សូមជ្រើសរើស --</option>
                     @foreach ($sub['data'] as $dd)
-                      	<option value="{{ $dd['id'] }}" {{ $dd['id'] == $item['subMenuId'] ? 'selected' : '' }}>{{ $dd['nameKh']}}</option>
+                      	<option value="{{ $dd['id'] }}" {{ $dd['id'] == $item['subMenu'] ? 'selected' : '' }}>{{ $dd['nameKh']}}</option>
                     @endforeach
                   </select>
                 </div>

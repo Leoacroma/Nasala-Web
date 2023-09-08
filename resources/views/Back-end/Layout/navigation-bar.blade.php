@@ -7,12 +7,12 @@
                     <i class="fa-solid fa-right-from-bracket"></i></a>
             </li>
             <li class="nav-item nav-search">
-                <div class="input-group">
+                {{-- <div class="input-group">
                     <input type="text" class="form-control " placeholder="search" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <button class="btn btn-outline-primary" style="height: 35px" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
-                  </div>
+                  </div> --}}
             </li>	
             </ul>
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -99,18 +99,13 @@
                 </a>
             </li>
             <li class="nav-item {{ Route::currentRouteNamed('admin.user') ? 'active' : '' }}">
-                <a href="#" class="nav-link">
+                <a href="{{  route('admin.user')}}" class="nav-link">
                     <i class="fa-solid fa-cloud mb-3 font-size-20"></i>
-                    <span class="menu-title " >User Management</span>
+                    <span class="menu-title" >User Management</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="submenu">
-                    <ul>
-                        <li class="nav-item"><a class="nav-link " href="{{ route('admin.postcate') }}">Roles</a></li>
-                        <li class="nav-item"><a class="nav-link " href="{{  route('admin.user')}}">Users</a></li>
-                    </ul>
-                </div>
             </li>
+            
             </ul>
         </div>
     </nav>

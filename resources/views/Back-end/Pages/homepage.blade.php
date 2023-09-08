@@ -54,37 +54,97 @@
                                     <h4 class="card-title mb-2">Lastest News</h4>
                                 </div>
                                 <div class="mt-3">
-                                    <ul class="nav nav-tabs tab-no-active-fill" role="tablist">
+                                    {{-- <ul class="nav nav-tabs tab-no-active-fill" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active ps-2 pe-2 " id="revenue-for-last-month-tab" data-bs-toggle="tab" href="#revenue-for-last-month" role="tab" aria-controls="revenue-for-last-month" aria-selected="true">
+                                            <a class="nav-link active ps-2 pe-2 " id="All-tab" data-bs-toggle="tab" href="#All-tab" role="tab" aria-controls="All-tab" aria-selected="true">
                                               All
                                             </a>
                                         </li>
+                                       
                                         @foreach ($cate['data'] as $item)
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2 " id="revenue-for-last-month-tab" data-bs-toggle="tab" href="#revenue-for-last-month" role="tab" aria-controls="revenue-for-last-month" aria-selected="true">
+                                                <a class="nav-link ps-2 pe-2 " id="Cate-tab-{{ $item['id'] }}" data-bs-toggle="tab" href="#Cate-tab-{{ $item['id'] }}" role="tab" aria-controls="revenue-for-last-month" aria-selected="true">
                                                     {{ $item['name'] }}
                                                 </a>
                                             </li>
                                         @endforeach
-
-                                    </ul>
-                                    <div class="tab-content tab-no-active-fill-tab-content">
-                                        <div class="tab-pane fade" id="data-managed" role="tabpanel" aria-labelledby="data-managed-tab">
-                                            <div class="d-flex justify-content-between">
-                                                <p class="mb-4">+5.2% vs last 7 days</p>
-                                                <div id="dataManaged-legend" class="revenuechart-legend">f</div>
-                                            </div>
-                                            <canvas id="dataManaged"></canvas>
+                                    </ul> --}}
+                                    {{-- tab-content --}}
+                                    {{-- <div class="tab-content" id="All-tab">
+                                        <div class="tab-pane fade show active"  id="All-tab" role="tabpanel" aria-labelledby="All-tab">
+                                            Tab 1 content
                                         </div>
-                                        <div class="tab-pane fade" id="sales-by-traffic" role="tabpanel" aria-labelledby="sales-by-traffic-tab">
-                                            <div class="d-flex justify-content-between">
-                                                <p class="mb-4">+5.2% vs last 7 days</p>
-                                                <div id="salesTrafic-legend" class="revenuechart-legend">f</div>
-                                            </div>
-                                            <canvas id="salesTrafic"></canvas>
+                                       
+                                    </div>
+                                    <div class="tab-content" id="Cate-tab-{{ $item['id'] }}">
+    
+                                        <div class="tab-pane fade show active"  id="Cate-tab-{{ $item['id'] }}" role="tabpanel" aria-labelledby="Cate-tab-{{ $item['id'] }}">
+                                            Tab 2 content
                                         </div>
                                     </div>
+                                     --}}
+                                     <!-- Tabs navs -->
+                                <!-- Tabs navs -->
+                                    <ul class="nav nav-tabs tab-no-active-fill" id="ex-with-icons" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" id="ex-with-icons-tab-1" data-mdb-toggle="tab" href="#All-tab" role="tab"
+                                            aria-controls="ex-with-icons-tabs-1" aria-selected="true">All</a>
+                                        </li>
+                                        @foreach ($cate['data'] as $item)
+                                            
+                                  
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="ex-with-icons-tab-2" data-mdb-toggle="tab" href="#cate-tab-{{ $item['id'] }}" role="tab"
+                                                aria-controls="ex-with-icons-tabs-2" aria-selected="false">{{ $item['name'] }}</a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                    <!-- Tabs navs -->
+                                    
+                                    <!-- Tabs content -->
+                                    <div class="tab-content" id="ex-with-icons-content">
+                                        <div class="tab-pane fade show active" id="All-tab" role="tabpanel" aria-labelledby="All-tab">
+                                           <div class="row">
+                                            <div class="card-group">
+                                                @foreach ($result as $item)
+                                                <div class="card">
+                                                <a href="{{ route('admin.show', $item['id']) }}">
+                                                  <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                  <div class="card-body">
+                                                    <a style="font-size: 20px; color: black; text-decoration: none" class="card-title Siemreap">{{ $item['titleKh'] }}</a>
+                                                    |<span class="badge badge-primary Siemreap">{{ $item['category']['nameKh'] }}</span>
+                                                    <p class="card-text">
+                                                      <small class="text-muted Siemreap">{{ $item['createdAt'] }}</small>
+                                                    </p>
+                                                  </div>
+                                                </a>
+                                                </div>
+                                                @endforeach
+                                              </div>
+                                           </div>
+                                        </div>
+                                        @foreach ($cate['data'] as $item)
+                                            <div class="tab-pane fade" id="cate-tab-{{ $item['id'] }}" role="tabpanel" aria-labelledby="cate-tab-{{ $item['id'] }}">
+                                                <div class="row row-cols-1 row-cols-md-3 g-4">
+                                                    @foreach ($result1 as $dd) 
+                                                    <div class="col">
+                                                      <div class="card">
+                                                        <img src="http://188.166.211.230:9091/v1/api/files/{{ $dd['thumbnailImageId'] }}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                        <div class="card-body">
+                                                            <a style="font-size: 20px; color: black; text-decoration: none" class="card-title Siemreap">{{ $dd['titleKh'] }}</a>
+                                                            |<span class="badge badge-primary Siemreap">{{ $dd['category']['nameKh'] }}</span>
+                                                            <p class="card-text">
+                                                              <small class="text-muted Siemreap">{{ $dd['createdAt'] }}</small>
+                                                            </p>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <!-- Tabs content -->
                                 </div>
                             </div>
                         </div>
@@ -97,170 +157,39 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-8">
-                                        <h3 class="font-weight-bold text-dark">Canada,Ontario</h3>
-                                        <p class="text-dark">Monday 3.00 PM</p>
-                                        <div class="d-lg-flex align-items-baseline mb-3">
-                                            <h1 class="text-dark font-weight-bold">23<sup class="font-weight-light"><small>o</small><small class="font-weight-medium">c</small></sup></h1>
-                                            <p class="text-muted ms-3">Partly cloudy</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="position-relative">
-                                            <img src="{{ asset('images/dashboard/live.png') }}" class="w-100" alt="">
-                                            <div class="live-info badge badge-success">Live</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 mt-4 mt-lg-0">
-                                        <div class="bg-primary text-white px-4 py-4 card">
-                                            <div class="row">
-                                                <div class="col-sm-6 pl-lg-5">
-                                                    <h2>$1635</h2>
-                                                    <p class="mb-0">Your Iincome</p>
-                                                </div>
-                                                <div class="col-sm-6 climate-info-border mt-lg-0 mt-2">
-                                                    <h2>$2650</h2>
-                                                    <p class="mb-0">Your Spending</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row pt-3 mt-md-1">
-                                    <div class="col">
-                                        <div class="d-flex purchase-detail-legend align-items-center">
-                                            <div id="circleProgress1" class="p-2"></div>
-                                            <div>
-                                                <p class="font-weight-medium text-dark text-small">Sessions</p>
-                                                <h3 class="font-weight-bold text-dark  mb-0">26.80%</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="d-flex purchase-detail-legend align-items-center">
-                                            <div id="circleProgress2" class="p-2"></div>
-                                            <div>
-                                                <p class="font-weight-medium text-dark text-small">Users</p>
-                                                <h3 class="font-weight-bold text-dark  mb-0">56.80%</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
                                     <div class="col-sm-12">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <h4 class="card-title mb-0">Visits Today</h4>
-                                            <div class="dropdown">
-                                                <a href="#" class="text-success btn btn-link  px-1"><i class="mdi mdi-refresh"></i></a>
-                                                <a href="#" class="text-success btn btn-link px-1 dropdown-toggle dropdown-arrow-none" data-bs-toggle="dropdown" id="profileDropdownvisittoday"><i class="mdi mdi-dots-horizontal"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdownvisittoday">
-                                                    <a class="dropdown-item">
-                                                        <i class="mdi mdi-grease-pencil text-primary"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a class="dropdown-item">
-                                                        <i class="mdi mdi-delete text-primary"></i>
-                                                        Delete
-                                                    </a>
+                                            <h4 class="card-title mb-0">Publication</h4>
+                                            <a href="{{ route('admin.pub.index') }}" class="btn btn-outline-primary">View Table</a>
+                                        </div>
+                                        <p class="mt-1">Lastest Publication news</p>
+                                        @foreach ($result2 as $tt)
+                                            
+                                        <div class="card-group">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                  <img
+                                                    src="http://188.166.211.230:9091/v1/api/files/{{ $tt['thumbnailImageId'] }}"
+                                                    alt="Trendy Pants and Shoes"
+                                                    class="img-fluid rounded-start"
+                                                  />
+                                                </div>
+                                                <div class="col-md-8">
+                                                  <div class="card-body">
+                                                    <a style="font-size: 20px; color: black; text-decoration: none" class="card-title Siemreap">{{ $tt['title'] }}</a>
+                                                    <p class="card-text">
+                                                      <small class="text-muted Siemreap">{{ $tt['createdAt'] }}</small>
+                                                    </p>
+                                                  </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <p class="mt-1">Calculated in last 30 days</p>
-                                        <div class="d-lg-flex align-items-center justify-content-between">
-                                            <h1 class="font-weight-bold text-dark">4332</h1>
-                                            <div class="mb-3">
-                                                <button type="button" class="btn btn-outline-light text-dark font-weight-normal">Day</button>
-                                                <button type="button" class="btn btn-outline-light text-dark font-weight-normal">Month</button>
-                                            </div>
-                                        </div>
-                                        <canvas id="visitorsToday"></canvas>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-2 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body pb-0">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h2 class="text-success font-weight-bold">18390</h2>
-                            <i class="mdi mdi-account-outline mdi-18px text-dark"></i>
-                        </div>
-                    </div>
-                    <canvas id="newClient"></canvas>
-                    <div class="line-chart-row-title">MY NEW CLIENTS</div>
-                </div>
-            </div>
-            <div class="col-lg-2 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body pb-0">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h2 class="text-danger font-weight-bold">839</h2>
-                            <i class="mdi mdi-refresh mdi-18px text-dark"></i>
-                        </div>
-                    </div>
-                    <canvas id="allProducts"></canvas>
-                    <div class="line-chart-row-title">All Products</div>
-                </div>
-            </div>
-            <div class="col-lg-2 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body pb-0">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h2 class="text-info font-weight-bold">244</h2>
-                            <i class="mdi mdi-file-document-outline mdi-18px text-dark"></i>
-                        </div>
-                    </div>
-                    <canvas id="invoices"></canvas>
-                    <div class="line-chart-row-title">NEW INVOICES</div>
-                </div>
-            </div>
-            <div class="col-lg-2 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body pb-0">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h2 class="text-warning font-weight-bold">3259</h2>
-                            <i class="mdi mdi-folder-outline mdi-18px text-dark"></i>
-                        </div>
-                    </div>
-                    <canvas id="projects"></canvas>
-                    <div class="line-chart-row-title">All PROJECTS</div>
-                </div>
-            </div>
-            <div class="col-lg-2 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body pb-0">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h2 class="text-secondary font-weight-bold">586</h2>
-                            <i class="mdi mdi-cart-outline mdi-18px text-dark"></i>
-                        </div>
-                    </div>
-                    <canvas id="orderRecieved"></canvas>
-                    <div class="line-chart-row-title">Orders Received</div>
-                </div>
-            </div>
-            <div class="col-lg-2 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body pb-0">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h2 class="text-dark font-weight-bold">7826</h2>
-                            <i class="mdi mdi-cash text-dark mdi-18px"></i>
-                        </div>
-                    </div>
-                    <canvas id="transactions"></canvas>
-                    <div class="line-chart-row-title">TRANSACTIONS</div>
                 </div>
             </div>
         </div>
@@ -269,8 +198,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h4 class="card-title">Support Tracker</h4>
-                            <h4 class="text-success font-weight-bold">Tickets<span class="text-dark ms-3">163</span></h4>
+                            <h4 class="card-title">Trianing</h4>
+                            <h4 class="text-success font-weight-bold">Total<span class="text-dark ms-3">163</span></h4>
                         </div>
                         <div id="support-tracker-legend" class="support-tracker-legend"></div>
                         <canvas id="supportTracker"></canvas>
@@ -281,7 +210,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-lg-flex align-items-center justify-content-between mb-4">
-                            <h4 class="card-title">Product Orders</h4>
+                            <h4 class="card-title">Register</h4>
                             <p class="text-dark">+5.2% vs last 7 days</p>
                         </div>
                         <div class="product-order-wrap padding-reduced">

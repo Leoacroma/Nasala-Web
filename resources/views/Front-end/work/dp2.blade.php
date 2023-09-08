@@ -5,7 +5,7 @@
         <div class="row">
             <div class="row">
                 <div class="col-lay-5 d-flex mg-l-m10">
-                    <h2 class="dangrek color-blue-355fb6">វគ្គរិក្រឹត្យការមូលដ្ឋាន</h2>
+                    <h2 class="dangrek color-blue-355fb6">{{ $trian['data']['titleKh'] }}</h2>
                 </div>
                 <div class="col-lay-5 ">
                     <form class="float-end " action="">
@@ -16,6 +16,9 @@
                     </form>
                 </div>
                 <div class="col-lay-10 divider-line"></div>
+            </div>
+            <div class="row Siemreap">
+                {!! $trian['data']['content'] !!}
             </div>
         </div>
     </div>

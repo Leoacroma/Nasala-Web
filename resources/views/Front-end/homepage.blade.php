@@ -17,31 +17,31 @@
         <div class="row bg-color-rgb-201-199-199 p-0">
             <div class="col-lay-5 mb-2">
                 @foreach ($result as $item)
-                <a class="text-decoration-none color-black Siemreap hover-text hover-underline-animation" href="./sub-news/subnews.html">
+                <a class="text-decoration-none color-black Siemreap hover-text hover-underline-animation" href="{{ route('front.subnews', $item['id']) }}">
                     <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="100%" class=" img-class">
                     <span class="font-size-25  hover-title-animate">
                        {{$item['titleKh']}}
                     </span>
                     <br/>
-                    <small>{{ $item['createdAt'] }}</small>| <span class="badge bg-warning text-dark Siemreap font-size-12">កម្សាន្ត</span>
-                    <span class="badge bg-success Siemreap font-size-12">{{ $item['categoryId'] }}</span>
+                    <small>{{ $item['createdAt'] }}</small>| 
+                    <span class="badge bg-success Siemreap font-size-12">{{ $item['category']['nameKh'] }}</span>
                 </a>
                 @endforeach
                 
             </div>
             <div class="col-lay-5 ">
                 @foreach ($result1 as $item)
-                <a class="text-decoration-none color-black Siemreap  hover-underline-animation " href="./sub-news/subnews.html">
+                <a class="text-decoration-none color-black Siemreap  hover-underline-animation " href="{{ route('front.subnews', $item['id']) }}">
                     <div class="row pt-2">
                         <div class="col-lay-4 p-0">
                             <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="250">
                         </div>
                         <div class="col-lay-6 p-0">
-                            <span class="font-size-23 hover-title-animate">
+                            <span class="font-size-20 hover-title-animate">
                                 {{$item['titleKh']}}
                             </span><br/>
-                            <small>{{ $item['createdAt'] }}</small> | <span class="badge bg-warning text-dark Siemreap font-size-12">កម្សាន្ត</span>
-                            <span class="badge bg-success Siemreap font-size-12">{{ $item['categoryId'] }}</span>
+                            <small>{{ $item['createdAt'] }}</small> | 
+                            <span class="badge bg-success Siemreap font-size-12">{{$item['category']['nameKh'] }}</span>
                         </div>
                     </div>
                 </a>
@@ -64,69 +64,27 @@
                 <!-- content​អាហារូបករណ៏ -->
                 <div class="row ">
                     <div class="col-lay-10">
-                        <a class="text-decoration-none Siemreap color-black mt-3  hover-underline-animation" href="">
+                        @foreach ($result2 as $item)
+                        <a class="text-decoration-none Siemreap color-black mt-3  hover-underline-animation" href="{{ route('front.subScholar', $item['id']) }}">
                             <div class="row mt-2">
                                 <div class="col-lay-3 bg-color-rgb-201-199-199 text-algin-center p-2">
-                                    <img src="{{ asset('/images/front/photo_2022-10-19_09-17-50.jpg') }}" alt="" width="150px" height="200px">
+                                    <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="150px" height="200px">
                                 </div>
                                 <div class="col-lay-6 ">
                                     <span class="font-size-20 hover-title-animate">
-                                        អាហារូបករណ៍ថ្នាក់បរិញ្ញាបត្រ​ និងថ្នាក់
-                                        បណ្ឌិតក្រោមគម្រោងអាហារូបករណ៍របស់
-                                        ប្រទេសជប៉ុនសម្រាប់ការអភិវឌ្ឍធនធាន
-                                        មនុស្សនៅប្រទេសកម្ពុជាឆ្នាំ២០២២។សូមអរ
-                                        គុណ ដោយសេចក្តីគោរព!
+                                       {{ $item['title'] }}
                                     </span>
                                     <br/>
                                     <br/>
-                                    <small>02/12/2021, 9:21 AM</small>
+                                    <small>{{ $item['createdAt'] }}</small>
                                 </div>
 
                             </div>
                         </a>
-                        <a class="text-decoration-none Siemreap color-black mt-3  hover-underline-animation" href="">
-                            <div class="row mt-2">
-                                <div class="col-lay-3 bg-color-rgb-201-199-199 text-algin-center p-2">
-                                    <img src="{{ asset('/images/front/photo_2022-10-19_09-17-50.jpg') }}" alt="" width="150px" height="200px">
-                                </div>
-                                <div class="col-lay-6 ">
-                                    <span class="font-size-20 hover-title-animate">
-                                        អាហារូបករណ៍ថ្នាក់បរិញ្ញាបត្រ​ និងថ្នាក់
-                                        បណ្ឌិតក្រោមគម្រោងអាហារូបករណ៍របស់
-                                        ប្រទេសជប៉ុនសម្រាប់ការអភិវឌ្ឍធនធាន
-                                        មនុស្សនៅប្រទេសកម្ពុជាឆ្នាំ២០២២។សូមអរ
-                                        គុណ ដោយសេចក្តីគោរព!
-                                    </span>
-                                    <br/>
-                                    <br/>
-                                    <small>02/12/2021, 9:21 AM</small>
-                                </div>
-
-                            </div>
-                        </a>
-                        <a class="text-decoration-none Siemreap color-black mt-3  hover-underline-animation" href="">
-                            <div class="row mt-2">
-                                <div class="col-lay-3 bg-color-rgb-201-199-199 text-algin-center p-2">
-                                    <img src="{{ asset('/images/front/photo_2022-10-19_09-17-50.jpg') }}" alt="" width="150px" height="200px">
-                                </div>
-                                <div class="col-lay-6 ">
-                                    <span class="font-size-20 hover-title-animate">
-                                        អាហារូបករណ៍ថ្នាក់បរិញ្ញាបត្រ​ និងថ្នាក់
-                                        បណ្ឌិតក្រោមគម្រោងអាហារូបករណ៍របស់
-                                        ប្រទេសជប៉ុនសម្រាប់ការអភិវឌ្ឍធនធាន
-                                        មនុស្សនៅប្រទេសកម្ពុជាឆ្នាំ២០២២។សូមអរ
-                                        គុណ ដោយសេចក្តីគោរព!
-                                    </span>
-                                    <br/>
-                                    <br/>
-                                    <small>02/12/2021, 9:21 AM</small>
-                                </div>
-
-                            </div>
-                        </a>
+                        @endforeach 
                         <div class="row float-end">
                             <div class="col-12">
-                                <button class="btn btn-primary btn-show-all-2 Siemreap font-size-20">បង្ហាញទាំងអស់</button>
+                                <a href="{{ route('front.scholar') }}"><button class="btn btn-primary btn-show-all-2 Siemreap font-size-20">បង្ហាញទាំងអស់</button></a>
                             </div>
                         </div>
                     </div>
