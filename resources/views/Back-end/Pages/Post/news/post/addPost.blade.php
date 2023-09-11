@@ -43,13 +43,14 @@
                     <div  id="uploaded-image-container" class="m-3"></div>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Content <span class="required"></span></label>
-                    <textarea class="form-control" name="content" id="summernoteEng" required></textarea>
-                  </div>    
-                  <div class="form-group">
-                    <label for="exampleInputPassword4">Content Khmer </label>
-                    <textarea class="form-control" name="contentKh" id="summernoteKh" ></textarea>
+                    <label for="exampleInputPassword4">Content <span class="required"></span> </label>
+                    <textarea class="form-control Siemreap" name="contentKh" id="summernoteKh" ></textarea>
                   </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword4">Content English <span class="required"></span></label>
+                    <textarea class="form-control Siemreap" name="content" id="summernoteEng" required></textarea>
+                  </div>    
+                 
                   <button type="submit" class="btn btn-primary text-white me-2">Save</button>
                   <a type="submit" class="btn btn-secondary" href="{{ route('admin.post') }}">Cancel</a>
                 </form>

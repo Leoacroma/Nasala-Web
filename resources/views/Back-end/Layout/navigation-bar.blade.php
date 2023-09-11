@@ -22,12 +22,10 @@
                 <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown" href="#" data-bs-toggle="dropdown" id="profileDropdown">
                     <div class="row">
-                        <div class="col-6">
-                            <span class="nav-profile-name">Johnson</span>
-                          </div>
-                          <div class="col-6">
-                            <img src="{{ asset('images/faces/face28.png') }}" alt="profile"/>
-                          </div>
+                        <div class="col-12">
+                            <span class="nav-profile-name Siemreap">@ {{ $firstName }} {{ $lastName }}</span>
+                        </div>
+                         
                     </div>
                 </a>
                 </li>

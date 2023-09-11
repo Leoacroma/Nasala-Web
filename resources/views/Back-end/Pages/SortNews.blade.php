@@ -6,7 +6,7 @@
             <div class="col-sm-6 mb-4 mb-xl-0">
                 <div class="d-lg-flex align-items-center">
                     <div>
-                        <h3 class="text-dark font-weight-bold mb-2">Hi, welcome back! <span class="badge rounded-pill badge-primary Siemreap">{{ $lastName }}</span></h3>
+                        <h3 class="text-dark font-weight-bold mb-2">Hi, welcome back! <span class="badge rounded-pill badge-primary Siemreap">@{{ $lastName }} </span></h3>
                         <h6 class="font-weight-normal mb-2">Last login was 23 hours ago. View details</h6>
                     </div>
 
@@ -24,7 +24,7 @@
                                     <div class="progress-bar  bg-warning" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <p class="pb-0 mb-0">News Managment</p>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -61,14 +61,18 @@
                                 <!-- Tabs navs -->
                                     <ul class="nav nav-tabs tab-no-active-fill" id="ex-with-icons" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="ex-with-icons-tab-1" data-mdb-toggle="tab" href="#All-tab" role="tab"
+                                        <a class="nav-link " id="ex-with-icons-tab-1" href="{{ route('admin.dash') }}" role="tab"
                                             aria-controls="ex-with-icons-tabs-1" aria-selected="true">All</a>
                                         </li>
+                                        {{-- <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="ex-with-icons-tab-1"  href="#All-tab" role="tab"
+                                                aria-controls="ex-with-icons-tabs-1" aria-selected="true">Test</a>
+                                            </li> --}}
                                         @foreach ($cate['data'] as $item)
-                                            <li class="nav-item" role="presentation">
-                                                <a class="nav-link {{ request()->is('admin/sort/'. $item['id']) ? 'active' : '' }}" id="ex-with-icons-tab-2" href="{{ route('admin.newsSortCate', $item['id']) }}" role="tab"
-                                                    aria-controls="ex-with-icons-tabs-2" aria-selected="false">{{ $item['name'] }}</a>
-                                            </li>
+                                        <li class="nav-item" role="presentation">
+                                        <a class="nav-link {{ request()->is('admin/sort/'. $item['id']) ? 'active' : '' }}" href="{{ route('admin.newsSortCate', $item['id']) }}" role="tab"
+                                            aria-controls="ex-with-icons-tabs-2" aria-selected="true">{{ $item['name'] }}</a>
+                                    </li>
                                         @endforeach
                                     </ul>
                                     <!-- Tabs navs -->

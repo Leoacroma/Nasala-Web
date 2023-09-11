@@ -12,7 +12,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         try {
-            $Endpoint = 'http://188.166.211.230:9091/v1/api/users';
+            $Endpoint = 'http://188.166.211.230:8080/v1/api/users';
             $client = Http::withHeaders([
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
@@ -26,6 +26,9 @@ class AdminMiddleware
                 //do some stuff with response here, like setting the global logged in user
                 return $next($request);
                 // return redirect()->route('admin.dash');
+            }
+            else{
+                return redirect()->route('admin.login');
             }
         }
         catch (RequestException $exception) {

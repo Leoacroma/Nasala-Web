@@ -33,7 +33,7 @@
                     @foreach ($result as $item)
                     <tr>
                         <th scope="row">{{ $item['id'] }}</th>
-                        <td class="Siemreap">{{ $item['titleKh'] }}</td>
+                        <td class="Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 100, $end = '...') }}</td>
                         <td class="Siemreap">{{ $item['createdAt'] }}</td>
                         <td class="d-flex">
                           <a class="btn btn-warning text-white mr-2" type="button" href="{{ route('admin.edit', $item['id']) }}" >Edit</a> 

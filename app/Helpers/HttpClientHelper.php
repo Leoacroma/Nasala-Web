@@ -3,12 +3,15 @@
 namespace App\Helpers;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Cookie;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class HttpClientHelper
 {
-    private $apiBaseUrl = 'http://188.166.211.230:9091/v1/api';
-    private $apiOuthUrl = 'http://188.166.211.230:9091/oauth/';
+    private $apiBaseUrl = 'http://188.166.211.230:8080/v1/api';
+    private $apiOuthUrl = 'http://188.166.211.230:8080/oauth/';
 
 
     private $accessToken = '';
@@ -22,20 +25,29 @@ class HttpClientHelper
     }
 
     public function postloginRequest($url, $parems){
-        $client = new Client();
-        $grand_type = '?grant_type=password';
-        $response = $client->post($this->apiOuthUrl . $url .$grand_type, [
-            'headers' => [
-                'Authorization' => 'Basic '. base64_encode($this->clientId . ':' . $this->clientSecret),
-            ],
-            'form_params' => $parems,
-            ]);
-        $data = json_decode($response->getBody(), true);
-        return $data;
+        try {
+            //code...
+            $client = new Client();
+            $grand_type = '?grant_type=password';
+            $response = $client->post($this->apiOuthUrl . $url .$grand_type, [
+                'headers' => [
+                    'Authorization' => 'Basic '. base64_encode($this->clientId . ':' . $this->clientSecret),
+                ],
+                'form_params' => $parems,
+                ]);
+            $data = json_decode($response->getBody(), true);
+            return $data;
+        } catch (RequestException $e) {
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
+        }
+        
     }
 
     public function getRequest($url, $params = null){
-        $client = new Client();
+        try {
+            //code...
+            $client = new Client();
         $response = $client->get($this->apiBaseUrl . $url, [
             'headers' => [
                 'Authorization' => 'Bearer' . $this->accessToken,
@@ -43,9 +55,16 @@ class HttpClientHelper
         ]);
         $data = json_decode($response->getBody(), true);
         return $data;
+        } catch (RequestException $e) {
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
+        }
+        
     }
     public function postRequest($url, $body = null){
-        $client = new Client();
+        try {
+            //code...
+            $client = new Client();
         $response = $client->post($this->apiBaseUrl . $url, [
             'headers' => [
                 'Authorization' => 'Bearer'. $this->accessToken,
@@ -56,23 +75,37 @@ class HttpClientHelper
         // Process and display the response
         $result = json_decode($response->getBody(), true);
         return $result;
+    } catch (RequestException $e) {
+        Alert::error('Error : '. $e->getMessage());
+        return redirect()->back();
+    }
+        
     }
 
     public function putRequest($url, $body = null){
-        $client = new Client();
-        $response = $client->patch($this->apiBaseUrl . $url, [
-            'headers' => [
-                'Authorization' => 'Bearer'. $this->accessToken,
-            ],
-            'json' => $body,
-        ]);
-        // Process and display the response
-        $result = json_decode($response->getBody(), true);
-        return $result;
+        try {
+            //code...
+            $client = new Client();
+            $response = $client->patch($this->apiBaseUrl . $url, [
+                'headers' => [
+                    'Authorization' => 'Bearer'. $this->accessToken,
+                ],
+                'json' => $body,
+            ]);
+            // Process and display the response
+            $result = json_decode($response->getBody(), true);
+            return $result;
+        } catch (RequestException $e) {
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
+        }
+       
     }
 
     public function deleteRequest($url){
-        $client = new Client();
+        try {
+            //code...
+            $client = new Client();
         $response = $client->delete($this->apiBaseUrl . $url, [
             'headers' => [
                 'Authorization' => 'Bearer'. $this->accessToken,
@@ -81,6 +114,11 @@ class HttpClientHelper
         // Process and display the response
         $result = json_decode($response->getBody(), true);
         return $result;
+    } catch (RequestException $e) {
+        Alert::error('Error : '. $e->getMessage());
+        return redirect()->back();
+    }
+        
     }
 
 }

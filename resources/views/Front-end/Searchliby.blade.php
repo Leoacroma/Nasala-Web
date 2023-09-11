@@ -8,11 +8,11 @@
                     <h2 class="dangrek color-blue-355fb6">បណ្ណាល័យ</h2>
                 </div>
                 <div class="col-lay-5 ">
-                    <form class="float-end " action="{{ route('searchLib.lib') }}" method="GET">
+                    <form class="float-end" action="{{ route('searchLib.lib') }}" method="GET">
                         @csrf
                         <div class="input-group">
                             <div class="form-outline">
-                              <input type="search" name="searchLibs" id="searchInput" class="form-control" />
+                              <input type="search" name="searchLibs" value="{{ $request_Keyword }}" id="searchInput" class="form-control" />
                               <label class="form-label" for="form1">Search</label>
                             </div>
                             <button type="submit" class="btn btn-primary">
@@ -56,7 +56,7 @@
                 </div>
             @endforeach
             
-            <div class="container ">
+            {{-- <div class="container ">
                 <div class="row ">
                     <nav class="mt-5" aria-label="...">
                         @php
@@ -66,22 +66,22 @@
                     <ul class="pagination font-size-25 ">
                     @if ($currentPage > 1)
                       <li class="page-item">
-                        <a class="page-link" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}">Previous</a>
+                        <a class="page-link" href="{{ route('page.news', ['page' => $currentPage - 1]) }}">Previous</a>
                       </li>
                     @endif
-                      <li class="page-item active"><a class="page-link" href="{{ route('front.liby') }}">1</a></li>
+                      <li class="page-item active"><a class="page-link" href="{{ route('front.news') }}">1</a></li>
                       @for ($i = 1; $i <= $totalpage-1; $i++)
-                        <li class="page-item {{  request()->is('lib/page/' . $i) ? ' active' : ''  }}"><a class="page-link" href="{{ route('page.lib', ['page' => $i]) }}">{{ $i +1 }}</a></li>
+                        <li class="page-item {{  request()->is('news/page/' . $i) ? ' active' : ''  }}"><a class="page-link" href="{{ route('page.news', ['page' => $i]) }}">{{ $i +1 }}</a></li>
                       @endfor
-                    @if ($currentPage < $totalpage )
+                    @if ($currentPage < $totalpage)
                       <li class="page-item">
-                        <a class="page-link" href="{{ route('page.lib', ['page' => $currentPage + 1]) }}">Next</a>
+                        <a class="page-link" href="{{ route('page.news', ['page' => $currentPage + 1]) }}">Next</a>
                       </li>
                     @endif
                         </ul>
                       </nav>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

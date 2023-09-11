@@ -64,16 +64,16 @@
                         $currentPage = $pagination['page'] // Replace with the actual total number of pages
                     @endphp
                     <ul class="pagination font-size-25 ">
-                    @if ($currentPage > 1)
+                    @if ($currentPage > 0)
                       <li class="page-item">
                         <a class="page-link" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}">Previous</a>
                       </li>
                     @endif
-                      <li class="page-item active"><a class="page-link" href="{{ route('front.liby') }}">1</a></li>
+                      <li class="page-item "><a class="page-link" href="{{ route('front.liby') }}">1</a></li>
                       @for ($i = 1; $i <= $totalpage-1; $i++)
                         <li class="page-item {{  request()->is('lib/page/' . $i) ? ' active' : ''  }}"><a class="page-link" href="{{ route('page.lib', ['page' => $i]) }}">{{ $i +1 }}</a></li>
                       @endfor
-                    @if ($currentPage < $totalpage )
+                    @if ($currentPage < $totalpage && $currentPage > $totalpage)
                       <li class="page-item">
                         <a class="page-link" href="{{ route('page.lib', ['page' => $currentPage + 1]) }}">Next</a>
                       </li>

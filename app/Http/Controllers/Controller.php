@@ -12,7 +12,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use KhmerDateTime\KhmerDateTime;
 
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
+use PhpParser\Node\Expr\Cast\String_;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Controller extends BaseController
 {
@@ -78,9 +82,11 @@ class Controller extends BaseController
         $data = $httpClient->getRequest('/news');
         $subMenu = $httpClient->getRequest('/sub-menus');
         $cateSub = $httpClient->getRequest('/training/posts');
+        $pagination = $httpClient->getRequest('/news?page=0&size=9&sortOrder=desc&sortBy=createdAt');
+        // dd($pagination);
 
         $result = [];
-        foreach ($data['data'] as $item) {
+        foreach ($pagination['data'] as $item) {
             $dateTime = KhmerDateTime::parse($item['createdAt']);
             $formattedCreatedAt = $dateTime->format("LLLLT");
             $result[] = [
@@ -91,12 +97,69 @@ class Controller extends BaseController
                 'createdAt' => $formattedCreatedAt,
             ];
         }
-        return view('front-end.news', [
+
+        return view('Front-end.news', [
             'result' => $result,
+            'subMenu' => $subMenu,
+            'cateSub' => $cateSub,
+            'pagination'=>$pagination
+        ]);
+    }
+    
+    public function searchNews(){
+        $requeste_Keyword = request()->input('searchNews');
+        $httpUser = new HttpUserHelper();
+        $subMenu = $httpUser->getRequest('/sub-menus');
+        $cateSub = $httpUser->getRequest('/training/posts');
+        $searchNews = $httpUser->getRequest('/news?page=0&size=20&sortOrder=desc&keyword='.$requeste_Keyword);
+        if(empty($requeste_Keyword)){
+            return redirect()->route('front.news');
+        }
+        $result = [];
+        foreach ($searchNews['data'] as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result[] = [
+                'id' => $item['id'],
+                'titleKh' => $item['titleKh'],
+                'category' => $item['category'],
+                'thumbnailImageId' => $item['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+            ];
+        }
+        return view('Front-end.newsSearch', [
+            'result' => $result,
+            'requeste_Keyword' => $requeste_Keyword,
             'subMenu' => $subMenu,
             'cateSub' => $cateSub,
         ]);
     }
+
+    public function pageNews(String $page){
+        $request_Page = $page;
+        $httpUser = new HttpUserHelper();
+        $subMenu = $httpUser->getRequest('/sub-menus');
+        $cateSub = $httpUser->getRequest('/training/posts');
+        $pagination = $httpUser->getRequest('/news?page='.$request_Page.'&size=9&sortOrder=desc&sortBy=createdAt');
+        $result = [];
+        foreach ($pagination    ['data'] as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result[] = [
+                'id' => $item['id'],
+                'titleKh' => $item['titleKh'],
+                'category' => $item['category'],
+                'thumbnailImageId' => $item['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+            ];
+        }
+        return view('Front-end.newsPage', [
+            'result' => $result,  
+            'cateSub' => $cateSub,
+            'pagination'=>$pagination
+        ]);
+    }
+
     public function subenews(string $id){
 
         $request_Id = $id;
@@ -124,7 +187,7 @@ class Controller extends BaseController
         );
     }
     public function dp1(){
-        $httpClient = new HttpClientHelper();
+        $httpClient = new HttpUserHelper();
         $cateSub = $httpClient->getRequest('/training/posts');
         $subMenu = $httpClient->getRequest('/sub-menus');
         $data = $httpClient->getRequest('/training');
@@ -156,9 +219,11 @@ class Controller extends BaseController
         $subMenu = $httpClient->getRequest('/sub-menus');
         $cate = $httpClient->getRequest('/library/categories');
         $cateSub = $httpClient->getRequest('/training/posts');
+        $pagination = $httpClient->getRequest('/library?page=0&size=5&sortOrder=desc&sortBy=createdAt');
+        
 
         $result = [];
-        foreach ($lib['data'] as $lib) {
+        foreach ($pagination['data'] as $lib) {
             $dateTime = KhmerDateTime::parse($lib['createdAt']);
             $formattedCreatedAt = $dateTime->format("LLL");
             $result[] = [
@@ -169,16 +234,113 @@ class Controller extends BaseController
                 'createdAt' => $formattedCreatedAt,
             ];
         }
-        return view('Front-end.liby', ['result' => $result, 'cate' => $cate, 'subMenu' => $subMenu, 'cateSub'=>$cateSub]);
+        return view('Front-end.liby', [
+            'result' => $result, 
+            'cate' => $cate, 
+            'subMenu' => $subMenu, 
+            'cateSub'=>$cateSub,
+            'pagination'=>$pagination
+        ]);
     }
+    public function pageLib(String $page){
+        $request_Page = $page;
+        $httpClient = new HttpUserHelper();
+        $lib = $httpClient->getRequest('/library');
+        $httpClient = new HttpUserHelper();
+        $subMenu = $httpClient->getRequest('/sub-menus');
+        $cate = $httpClient->getRequest('/library/categories');
+        $cateSub = $httpClient->getRequest('/training/posts');
+        $pagination = $httpClient->getRequest('/library?page='.$request_Page.'&size=5&sortOrder=desc&sortBy=createdAt');
+
+        $result = [];
+        foreach ($pagination['data'] as $lib) {
+            $dateTime = KhmerDateTime::parse($lib['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLL");
+            $result[] = [
+                'id' => $lib['id'],
+                'title' => $lib['title'],
+                'fileSize' => $lib['fileSize'],
+                'url' => $lib['url'],
+                'createdAt' => $formattedCreatedAt,
+            ];
+        }
+        return view('Front-end.pageLiby', [
+            'result' => $result, 
+            'cate' => $cate, 
+            'subMenu' => $subMenu, 
+            'cateSub'=>$cateSub,
+            'pagination'=>$pagination
+        ]);
+    }
+
+    public function searchLib(){
+        $request_Keyword = request()->input('searchLibs');
+        $httpUser = new HttpUserHelper;
+        $subMenu = $httpUser->getRequest('/sub-menus');
+        $cate = $httpUser->getRequest('/library/categories');
+        $cateSub = $httpUser->getRequest('/training/posts');
+        $search = $httpUser->getRequest('/library?page=0&size=20&sortOrder=desc&keyword='.$request_Keyword);
+
+        if($request_Keyword == null){
+            return redirect()->route('front.liby');
+        }
+
+        $result = [];
+        foreach ($search['data'] as $lib) {
+            $dateTime = KhmerDateTime::parse($lib['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLL");
+            $result[] = [
+                'id' => $lib['id'],
+                'title' => $lib['title'],
+                'fileSize' => $lib['fileSize'],
+                'url' => $lib['url'],
+                'createdAt' => $formattedCreatedAt,
+            ];
+        }
+        return view('Front-end.Searchliby',[
+            'result' => $result, 
+            'subMenu' => $subMenu, 
+            'cate' => $cate,
+            'cateSub' => $cateSub,
+            'request_Keyword' => $request_Keyword
+         ]);
+    }
+
+    public function cateLib(String $id){
+        $request_Id = $id;
+        $httpUser = new HttpUserHelper();
+        $Catelib = $httpUser->getRequest('/library?page=0&size=10&sortBy=createdAt&sortOrder=desc&categoryId='.$request_Id);
+        $cate = $httpUser->getRequest('/library/categories');
+        $cateSub = $httpUser->getRequest('/training/posts');
+
+        if($Catelib['data'] != []){
+            $result = [];
+            foreach ($Catelib['data'] as $lib) {
+                $dateTime = KhmerDateTime::parse($lib['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLL");
+                $result[] = [
+                    'id' => $lib['id'],
+                    'title' => $lib['title'],
+                    'fileSize' => $lib['fileSize'],
+                    'url' => $lib['url'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+        }else{
+            Alert::error('Error', '404 No data');
+            return redirect()->back();
+        }
+        return view('Front-end.Cateliby',['result' => $result, 'cate' => $cate,  'cateSub'=>$cateSub]);
+    }
+
     public function scholar(){
         $httpClient = new HttpUserHelper();
-        $data = $httpClient->getRequest('/publicize');
+        $pagination = $httpClient->getRequest('/publicize?page=0&size=6&sortOrder=desc');
         $httpClient = new HttpUserHelper();
         $subMenu = $httpClient->getRequest('/sub-menus');
         $cateSub = $httpClient->getRequest('/training/posts');
         $result = [];
-        foreach ($data['data'] as $lib) {
+        foreach ($pagination['data'] as $lib) {
             $dateTime = KhmerDateTime::parse($lib['createdAt']);
             $formattedCreatedAt = $dateTime->format("LLL");
             $result[] = [
@@ -189,8 +351,66 @@ class Controller extends BaseController
                 'createdAt' => $formattedCreatedAt,
             ];
         }
-        return view('Front-end.scholarship', ['result' => $result, 'subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        return view('Front-end.scholarship', [
+            'result' => $result,
+             'subMenu' => $subMenu, 
+             'cateSub' => $cateSub,
+             'pagination' => $pagination
+            ]);
     }
+    public function pageScholar(String $page){
+        $request_Page = $page;
+        $httpClient = new HttpUserHelper();
+        $pagination = $httpClient->getRequest('/publicize?page='.$request_Page.'&size=6&sortOrder=desc');
+        $httpClient = new HttpUserHelper();
+        $subMenu = $httpClient->getRequest('/sub-menus');
+        $cateSub = $httpClient->getRequest('/training/posts');
+        $result = [];
+        foreach ($pagination['data'] as $lib) {
+            $dateTime = KhmerDateTime::parse($lib['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLL");
+            $result[] = [
+                'id' => $lib['id'],
+                'title' => $lib['title'],
+                'name' => $lib['name'],
+                'thumbnailImageId' => $lib['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+            ];
+        }
+        return view('Front-end.pageScholarship', [
+            'result' => $result,
+             'subMenu' => $subMenu, 
+             'cateSub' => $cateSub,
+             'pagination' => $pagination
+            ]);
+    }
+    public function searchScholar(){
+        $request_Keyword = request()->input('searchSch');
+        $httpClient = new HttpUserHelper();
+        $search = $httpClient->getRequest('/publicize?page=0&size=6&sortOrder=desc&keyword='.$request_Keyword);
+        $httpClient = new HttpUserHelper();
+        $subMenu = $httpClient->getRequest('/sub-menus');
+        $cateSub = $httpClient->getRequest('/training/posts');
+        $result = [];
+        foreach ($search['data'] as $lib) {
+            $dateTime = KhmerDateTime::parse($lib['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLL");
+            $result[] = [
+                'id' => $lib['id'],
+                'title' => $lib['title'],
+                'name' => $lib['name'],
+                'thumbnailImageId' => $lib['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+            ];
+        }
+        return view('Front-end.searchScholarship', [
+            'result' => $result,
+             'subMenu' => $subMenu, 
+             'cateSub' => $cateSub,
+            'request_Keyword' => $request_Keyword
+        ]);
+    }
+
     public function subScholar(string $id){
         $httpClient = new HttpUserHelper();
         $cateSub = $httpClient->getRequest('/training/posts');
@@ -270,6 +490,13 @@ class Controller extends BaseController
         $pub = $httpClient->getRequest('/publicize');
         $lib = $httpClient->getRequest('/library');
         $cate = $httpClient->getRequest('/categories');
+        $train = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=10&sortBy=createdAt');
+        $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+       
+        
+        $userName = $httpClient->getRequest('/users/');
         $lastAtSortNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
         
         $lastAtSortNewsByCate = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId=35');
@@ -316,10 +543,15 @@ class Controller extends BaseController
                 
             ];
         }
-
-        $count = count($data);
-        $countFilePub = count($pub);
-        $countLib = count($lib);
+        // dd(($data));
+        $count = count($data['data']);
+        $countFilePub = count($pub['data']);
+        $countTrian = count($train['data']);
+        $countLib = count($lib['data']);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
+        // dd($firstName);
+       
         return view('Back-end.Pages.homepage', [
             'count' => $count,
             'countFilePub' => $countFilePub,
@@ -328,9 +560,112 @@ class Controller extends BaseController
             'result' => $result,
             'result1' => $result1,
             'result2' => $result2,
+            'countTrian' => $countTrian,
+            'train' => $train,
+            'register' => $register,
+            'firstName' => $firstName,
+            'lastName' => $lastName
         
     ]);
     }
+    public function newsSortCate(String $id){
+        $request_Id = $id;
+        $httpClient = new HttpClientHelper();
+        $sortCateNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId='.$request_Id);
+        $data = $httpClient->getRequest('/news');
+        $pub = $httpClient->getRequest('/publicize');
+        $lib = $httpClient->getRequest('/library');
+        $cate = $httpClient->getRequest('/categories');
+        $train = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=10&sortBy=createdAt');
+        $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+       
+        
+        $userName = $httpClient->getRequest('/users/');
+        $lastAtSortNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
+        
+        $lastAtSortNewsByCate = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId=35');
+        $lastAtPub = $httpClient->getRequest('/publicize?page=0&size=3&sortBy=createdAt&sortOrder=desc');
+
+       
+
+        $result = [];
+        foreach ($lastAtSortNews['data']   as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result[] = [
+                'id' => $item['id'],
+                'titleKh' => $item['titleKh'],
+                'category' => $item['category'],
+                'thumbnailImageId' => $item['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+                
+            ];
+        }
+        $result1 = [];
+        foreach ($lastAtSortNewsByCate['data']  as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result1[] = [
+                'id' => $item['id'],
+                'titleKh' => $item['titleKh'],
+                'category' => $item['category'],
+                'thumbnailImageId' => $item['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+                
+            ];
+        }
+        $result2 = [];
+        foreach ($lastAtPub['data']   as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result2[] = [
+                'id' => $item['id'],
+                'title' => $item['title'],
+                'fileSize' => $item['fileSize'],
+                'thumbnailImageId' => $item['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+                
+            ];
+        }
+        // dd(($data));
+        $count = count($data['data']);
+        $countFilePub = count($pub['data']);
+        $countTrian = count($train['data']);
+
+        $countLib = count($lib['data']);
+        $result = [];
+        foreach ($sortCateNews['data']   as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result[] = [
+                'id' => $item['id'],
+                'titleKh' => $item['titleKh'],
+                'category' => $item['category'],
+                'thumbnailImageId' => $item['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+                
+            ];
+        }
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
+        return view('Back-end.Pages.SortNews',[
+            'count' => $count,
+            'countFilePub' => $countFilePub,
+            'countLib' => $countLib,
+            'cate' => $cate,
+            'result' => $result,
+            'result1' => $result1,
+            'result2' => $result2,
+            'countTrian' => $countTrian,
+            'train' => $train,
+            'register' => $register,
+            'firstName' => $firstName,
+            'lastName' => $lastName
+        ]);
+    }
+
     public function pagemake(){
         return view('Back-end.Pages.makepage');
     }

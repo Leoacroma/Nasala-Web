@@ -18,9 +18,9 @@
             <div class="col-lay-5 mb-2">
                 @foreach ($result as $item)
                 <a class="text-decoration-none color-black Siemreap hover-text hover-underline-animation" href="{{ route('front.subnews', $item['id']) }}">
-                    <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="100%" class=" img-class">
+                    <img src="http://188.166.211.230:8080/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="100%" class=" img-class">
                     <span class="font-size-25  hover-title-animate">
-                       {{$item['titleKh']}}
+                       {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 100, $end = '...')}}
                     </span>
                     <br/>
                     <small>{{ $item['createdAt'] }}</small>| 
@@ -34,11 +34,11 @@
                 <a class="text-decoration-none color-black Siemreap  hover-underline-animation " href="{{ route('front.subnews', $item['id']) }}">
                     <div class="row pt-2">
                         <div class="col-lay-4 p-0">
-                            <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="250">
+                            <img src="http://188.166.211.230:8080/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="250">
                         </div>
                         <div class="col-lay-6 p-0">
                             <span class="font-size-20 hover-title-animate">
-                                {{$item['titleKh']}}
+                                {{  \Illuminate\Support\Str::limit($item['titleKh'], $limit = 100, $end = '...') }}
                             </span><br/>
                             <small>{{ $item['createdAt'] }}</small> | 
                             <span class="badge bg-success Siemreap font-size-12">{{$item['category']['nameKh'] }}</span>
@@ -68,11 +68,11 @@
                         <a class="text-decoration-none Siemreap color-black mt-3  hover-underline-animation" href="{{ route('front.subScholar', $item['id']) }}">
                             <div class="row mt-2">
                                 <div class="col-lay-3 bg-color-rgb-201-199-199 text-algin-center p-2">
-                                    <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="150px" height="200px">
+                                    <img src="http://188.166.211.230:8080/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="150px" height="200px">
                                 </div>
                                 <div class="col-lay-6 ">
                                     <span class="font-size-20 hover-title-animate">
-                                       {{ $item['title'] }}
+                                       {{ \Illuminate\Support\Str::limit($item['title'], $limit = 100, $end = '...')}}
                                     </span>
                                     <br/>
                                     <br/>
@@ -96,7 +96,7 @@
                     <i class="fa-brands fa-youtube font-size-30 color-red mg-r-10px"></i>
                     <h2 class="dangrek color-red">វីដេអូ</h2>
                 </div>
-                <iframe width="650" height="350" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                <iframe width="650" height="350" src="https://www.youtube.com/embed/GaQAd-0W0Z8?si=fmZrVPXixFH6qVx3"></iframe>
             </div>
         </div>
     </div>

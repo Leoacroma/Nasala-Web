@@ -26,16 +26,28 @@ use Illuminate\Support\Facades\Route;
 */
 //Front-end
 Route::get('/', [Controller::class, 'home'])->name('front.home');
+
 Route::get('/news', [Controller::class, 'news'])->name('front.news');
 Route::get('/news/subnews/{id}',[Controller::class, 'subenews'])->name('front.subnews');
+Route::get('/news/page/{page}', [Controller::class, 'pageNews'])->name('page.news');
+Route::get('/news/searchNews/{keyword?}', [Controller::class, 'searchNews'])->name('searchNews.news');
+
 
 Route::get('/work/dp1', [Controller::class, 'dp1'])->name('front.work.dp1');
 Route::get('/work/dp2/{id}', [Controller::class, 'dp2Content'])->name('front.work.dp2Content');
-
 Route::get('/work/dp3', [Controller::class, 'dp3'])->name('front.work.dp3');
+
 Route::get('/lib', [Controller::class, 'liby'])->name('front.liby');
+Route::get('/lib/sort/cate/{id}', [Controller::class, 'cateLib'])->name('sort.cate.lib');
+Route::get('/lib/page/{page}', [Controller::class, 'pageLib'])->name('page.lib');
+Route::get('/lib/searchLib/{keyword?}', [Controller::class, 'searchLib'])->name('searchLib.lib');
+
 Route::get('/scholar',[Controller::class, 'scholar'])->name('front.scholar');
 Route::get('/scholar/sub/{id}', [Controller::class, 'subScholar'])->name('front.subScholar');
+Route::get('/scholar/page/{page}',[Controller::class, 'pageScholar'])->name('page.scholar');
+Route::get('/scholar/search/{keyword?}', [Controller::class, 'searchScholar'])->name('search.scholar');
+
+
 Route::get('/enroll/all', [Controller::class, 'enrollMent'])->name('front.enrollMent');
 
 Route::get('/aboutschool/dp1', [Controller::class, 'aboutSchooldp1'])->name('front.aboutschool.dp1');
@@ -56,12 +68,12 @@ Route::get('admin/logout', [OuthController::class, 'logout'])->name('admin.logou
 //Back-end
 Route::prefix('admin')->middleware('admin')->group(function(){
     Route::get('/', [Controller::class, 'dash'])->name('admin.dash');
+    Route::get('/sort/{id}', [Controller::class, 'newsSortCate'])->name('admin.newsSortCate');
     Route::get('/makeMenu', [Controller::class, 'pagemake'])->name('admin.pagemake');
     // Route::get('/post', [Controller::class, 'post'])->name('admin.post');
     // Route::get('/post/cates', [Controller::class, 'postcate'])->name('admin.postcate');
 
 
-    
     Route::prefix('api')->group(function(){
         Route::get('refresh_token', [OuthController::class, 'oauth']);
         //User
@@ -125,3 +137,9 @@ Route::prefix('admin')->middleware('admin')->group(function(){
 
 
 
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+});

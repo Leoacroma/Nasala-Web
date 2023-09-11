@@ -8,11 +8,11 @@
                     <h2 class="dangrek color-blue-355fb6">ការផ្សព្វផ្សាយ</h2>
                 </div>
                 <div class="col-lay-5 ">
-                    <form class="float-end " action="{{ route('search.scholar') }}" method="GET">
-                        @csrf
+                  <form class="float-end " method="GET" action="{{ route('search.scholar') }}">
+                    @csrf
                         <div class="input-group">
                             <div class="form-outline">
-                              <input type="search" name="searchSch" id="searchInput" class="form-control" />
+                              <input type="search" name="searchSch" value="{{ $request_Keyword }}" id="searchInput" class="form-control" />
                               <label class="form-label" for="form1">Search</label>
                             </div>
                             <button type="submit" class="btn btn-primary">
@@ -44,32 +44,7 @@
             @endforeach
         </div>
      </div>
-     <div class="container ">
-        <div class="row ">
-            <nav class="mt-5" aria-label="...">
-            @php
-                $totalpage= $pagination['totalPage'];
-                $currentPage = $pagination['page'] // Replace with the actual total number of pages
-            @endphp
-            <ul class="pagination font-size-25 ">
-            @if ($currentPage > 1)
-              <li class="page-item">
-                <a class="page-link" href="{{ route('page.scholar', ['page' => $currentPage - 1]) }}">Previous</a>
-              </li>
-            @endif
-              <li class="page-item active"><a class="page-link" href="{{ route('front.news') }}">1</a></li>
-              @for ($i = 1; $i <= $totalpage-1; $i++)
-                <li class="page-item {{  request()->is('scholar/page/' . $i) ? ' active' : ''  }}"><a class="page-link" href="{{ route('page.scholar', ['page' => $i]) }}">{{ $i +1 }}</a></li>
-              @endfor
-            @if ($currentPage < $totalpage)
-              <li class="page-item">
-                <a class="page-link" href="{{ route('page.scholar', ['page' => $currentPage + 1]) }}">Next</a>
-              </li>
-            @endif
-                </ul>
-              </nav>
-        </div>
-    </div>
+   
     </div>
     <!-- -------------------------- -->
     <!-- -------------------------------------------- -->

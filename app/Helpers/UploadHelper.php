@@ -6,10 +6,11 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Cookie;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UploadHelper
 {
-    private $apiBaseUrl = 'http://188.166.211.230:9091/v1/api';
+    private $apiBaseUrl = 'http://188.166.211.230:8080/v1/api';
     private $accessToken = '';
     
 
@@ -39,7 +40,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -66,7 +68,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -103,7 +106,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -138,7 +142,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -168,7 +173,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -203,7 +209,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -237,7 +244,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -267,7 +275,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -301,7 +310,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -335,7 +345,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }
@@ -364,7 +375,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            echo 'Error : '. $e->getMessage();
+            Alert::error('Error : '. $e->getMessage());
+            return redirect()->back();
         }
        
     }

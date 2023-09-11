@@ -3,14 +3,14 @@
     <!-- content -->
     <div class="container mt-5">
         <div class="row ">
-            <div class="col-lay-6 m-auto p-0">
+            <div class="col-lay-6 p-0">
                 <div class="row">
                     <div class="col-lay-10 p-0 ">
                         <h2 class="Siemreap font-size-40 title">{{ $data['data']['titleKh'] }}</h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lay-10 p-0">
+                    <div class="col-lay-5 p-0">
                         <div class="row">
                             <div class="col-lay-10">
                                 <i class="fa-solid fa-calendar-days font-size-20"></i>
@@ -32,11 +32,11 @@
                 </div>
                 <div class="row">
                     <div class="col-lay-10 p-0 mt-3 text-algin-center">
-                        <img src="{{ $image }}" alt="" width="100%">
+                        <img src="{{ $image }}" alt="" width="800px">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lay-10 mt-3 p-0 Siemreap">
+                    <div class="col-lay-12 text-algin-center mt-3 p-0 Siemreap ">
                         {!! $data['data']['contentKh'] !!}
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                     @include('Front-end.sub-news.card_slider')
                 </div>
             </div>
-            <div class="col-lay-3">
+            <div class="col-lay-3 ml-5">
                 <div class="row">
                     <div class="more-news-box col-lay-10">
                         <h2 class="dangrek color-black font-size-35">ព័ត៌មានថ្មីៗ</h2>
@@ -73,7 +73,7 @@
                                 <img src="http://188.166.211.230:9091/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="100%">
                             </div>
                             <div class="col-lay-5 mg-l-m10 hover-title-animate">
-                                <p class="Siemreap font-size-17">{{ $item['titleKh'] }}</p>
+                                <p class="Siemreap font-size-17">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...') }}</p>
                             </div>
                         </div>
                     </a>
