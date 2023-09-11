@@ -6,6 +6,7 @@ use App\Helpers\HttpClientHelper;
 use App\Helpers\UploadHelper;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 use KhmerDateTime\KhmerDateTime;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -20,6 +21,10 @@ class PostController extends Controller
         //
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/news'); 
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $result = [];
         foreach ($data['data'] as $item) {
             $dateTime = KhmerDateTime::parse($item['createdAt']);
@@ -31,7 +36,11 @@ class PostController extends Controller
                 'createdAt' => $formattedCreatedAt,
             ];
         }
-        return view('Back-end.Pages.Post.news.post',['result' => $result]);
+        return view('Back-end.Pages.Post.news.post',[
+            'result' => $result,
+            'firstName' => $firstName,
+            'lastName' => $lastName
+        ]);
     }
 
     /**
@@ -91,6 +100,10 @@ class PostController extends Controller
         $data = $httpClient->getRequest('/news/'.$request_Id);
         $image_Id = $data['data']['thumbnailImageId'];
         $image_Id = $data['data']['thumbnailImageId'];
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $image = 'http://188.166.211.230:9091/v1/api/files/'. $image_Id;
       
         // dd($image);
@@ -100,7 +113,9 @@ class PostController extends Controller
         return view('Back-end.Pages.Post.news.post.preivews',[
             'data' => $data, 
             'formattedCreatedAt' => $formattedCreatedAt,
-            'image' => $image
+            'image' => $image,
+            'firstName' => $firstName,
+            'lastName' => $lastName
             ]
         );
     }
@@ -115,6 +130,10 @@ class PostController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/news/'.$request_ID);
         $All_cate = $httpClient->getRequest('/categories');
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
 
         $image_Id = $data['data']['thumbnailImageId'];
         $image = 'http://188.166.211.230:9091/v1/api/files/'. $image_Id;
@@ -122,7 +141,9 @@ class PostController extends Controller
         return view('Back-end.Pages.Post.news.post.editPost',[
             'data' => $data,
             'All_cate' => $All_cate,
-            'image' => $image
+            'image' => $image,
+            'firstName' => $firstName,
+            'lastName' => $lastName
         ]);
       
     }

@@ -492,8 +492,7 @@ class Controller extends BaseController
         $cate = $httpClient->getRequest('/categories');
         $train = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=10&sortBy=createdAt');
         $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
-        $_COOKIE = Cookie::get('user_Id');
-        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+       
        
         
         $userName = $httpClient->getRequest('/users/');
@@ -544,12 +543,15 @@ class Controller extends BaseController
             ];
         }
         // dd(($data));
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $count = count($data['data']);
         $countFilePub = count($pub['data']);
         $countTrian = count($train['data']);
         $countLib = count($lib['data']);
-        $firstName = $user['data']['firstNameKh'];
-        $lastName = $user['data']['lastNameKh'];
+      
         // dd($firstName);
        
         return view('Back-end.Pages.homepage', [
@@ -565,7 +567,6 @@ class Controller extends BaseController
             'register' => $register,
             'firstName' => $firstName,
             'lastName' => $lastName
-        
     ]);
     }
     public function newsSortCate(String $id){

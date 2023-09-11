@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\HttpClientHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use KhmerDateTime\KhmerDateTime;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -18,7 +19,10 @@ class RegisterController extends Controller
         //
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/register');
-        
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $result = [];
         foreach($data['data'] as $dd){
             $dateTime = KhmerDateTime::parse($dd['createdAt']);
@@ -31,7 +35,11 @@ class RegisterController extends Controller
                 'createdAt' => $formattedCreatedAt,
             ];
         }
-        return view('Back-end.Pages.Register.register', ['result'=> $result]);
+        return view('Back-end.Pages.Register.register', [
+            'result'=> $result,
+            'firstName' => $firstName,
+            'lastName' => $lastName
+        ]);
     }
 
     /**

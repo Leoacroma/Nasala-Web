@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\HttpClientHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use KhmerDateTime\KhmerDateTime;
 
 use RealRashid\SweetAlert\Facades\Alert;
@@ -20,6 +21,10 @@ class LibraryCateController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/library/categories');
         $lib = $httpClient->getRequest('/library');
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $result = [];
         foreach ($lib['data'] as $lib) {
             $dateTime = KhmerDateTime::parse($lib['createdAt']);
@@ -36,7 +41,9 @@ class LibraryCateController extends Controller
         }
         return view('Back-end.Pages.library.libraryCate',[
             'data' => $data,
-            'result' => $result
+            'result' => $result,
+            'firstName' => $firstName,
+            'lastName' => $lastName
         ]);
     }
 
@@ -90,6 +97,10 @@ class LibraryCateController extends Controller
         $data = $httpClient->getRequest('/library/categories');
         $datae = $httpClient->getRequest('/library/categories/'.$request_Id);
         $lib = $httpClient->getRequest('/library');
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $result = [];
         foreach ($lib['data'] as $item) {
             $dateTime = KhmerDateTime::parse($item['createdAt']);
@@ -108,7 +119,9 @@ class LibraryCateController extends Controller
         return view('Back-end.Pages.library.editlibCate', [
             'result' => $result,
             'data' => $data,
-            'datae' => $datae
+            'datae' => $datae,
+            'firstName' => $firstName,
+            'lastName' => $lastName
         ]);
     }
 

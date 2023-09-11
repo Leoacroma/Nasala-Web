@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\HttpClientHelper;
 use App\Helpers\UploadHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use KhmerDateTime\KhmerDateTime;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -19,6 +20,10 @@ class PublicztionController extends Controller
         //
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/publicize');
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $result = [];
         foreach($data['data'] as $dd){
             $dateTime = KhmerDateTime::parse($dd['createdAt']);
@@ -32,7 +37,11 @@ class PublicztionController extends Controller
             ];
         }
 
-        return view('Back-end.Pages.Public.publicManagment', ['result' => $result]);
+        return view('Back-end.Pages.Public.publicManagment', [
+            'result' => $result,
+            'firstName' => $firstName,
+            'lastName' => $lastName
+    ]);
     }
 
     /**

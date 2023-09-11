@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\HttpClientHelper;
 use App\Helpers\UploadHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use KhmerDateTime\KhmerDateTime;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,7 +22,10 @@ class TrainingController extends Controller
         $data = $httpClient->getRequest('/training/posts');
         $sub = $httpClient->getRequest('/sub-menus');
         $file = $httpClient->getRequest('/training');
-        
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
 
         $fileData = [];
         foreach($file['data'] as $dd){
@@ -52,7 +56,9 @@ class TrainingController extends Controller
         return view('Back-end.Pages.Training.traning',[
             'result' => $result, 
             'fileData' => $fileData,
-            'sub' => $sub
+            'sub' => $sub,
+            'firstName' => $firstName,
+            'lastName' => $lastName
         ]);
     }
 
@@ -116,7 +122,10 @@ class TrainingController extends Controller
         $httpClient = new HttpClientHelper();
         $cate = $httpClient->getRequest('/training/categories');
         $data = $httpClient->getRequest('/training/posts/'.$requestId);
-
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $image_Id = $data['data']['thumbnailImageId'];
         $image = 'http://188.166.211.230:9091/v1/api/files/'. $image_Id;
 
@@ -124,6 +133,8 @@ class TrainingController extends Controller
             'cate' => $cate,
             'data' => $data,
             'image' => $image,
+            'firstName' => $firstName,
+            'lastName' => $lastName
         ]);
     }
 

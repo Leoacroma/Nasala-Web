@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Helpers\HttpClientHelper;
+use Illuminate\Support\Facades\Cookie;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -19,7 +20,15 @@ class CategoriesController extends Controller
     {
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/categories');
-        return view('Back-end.Pages.Post.news.postcate', ['data' => $data]);
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
+        return view('Back-end.Pages.Post.news.postcate', [
+            'data' => $data,
+            'firstName' => $firstName,
+            'lastName' => $lastName
+        ]);
     }
 
     /**
@@ -71,8 +80,17 @@ class CategoriesController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/categories');
         $datae = $httpClient->getRequest('/categories/'.$requestId);
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         // dd($data); 
-        return view('Back-end.Pages.Post.news.categories.editcate', ['data' => $data], ['datae' => $datae]);
+        return view('Back-end.Pages.Post.news.categories.editcate', [
+            'data' => $data,
+            'datae' => $datae,
+            'firstName' => $firstName,
+            'lastName' => $lastName
+        ]);
     }
 
     /**

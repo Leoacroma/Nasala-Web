@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\HttpClientHelper;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Cookie;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class TrainCateController extends Controller
@@ -17,11 +17,16 @@ class TrainCateController extends Controller
         //
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/training/categories');
-        // dd($data);
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $data1 = $httpClient->getRequest('/sub-menus');
         return view('Back-end.Pages.Training.traning-cate', [
             'data' => $data,
             'data1' => $data1,
+            'firstName' => $firstName,
+            'lastName' => $lastName
         ]);
     }
 
@@ -76,6 +81,10 @@ class TrainCateController extends Controller
         $data = $httpClient->getRequest('/training/categories');
         $datae = $httpClient->getRequest('/training/categories/'.$requestId);
         $data1 = $httpClient->getRequest('/sub-menus');
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         foreach ($data['data'] as $sub){
             $getSubMenu = $sub['subMenu']['id'];
         }
@@ -83,7 +92,9 @@ class TrainCateController extends Controller
             'data' => $data,
             'datae' => $datae,
             'data1' => $data1,
-            'getSubMenu' => $getSubMenu
+            'getSubMenu' => $getSubMenu,
+            'firstName' => $firstName,
+            'lastName' => $lastName
         ]);
     }
 

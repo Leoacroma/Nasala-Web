@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\HttpClientHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use KhmerDateTime\KhmerDateTime;
 use RealRashid\SweetAlert\Facades\Alert;
 class UserController extends Controller
@@ -17,7 +18,10 @@ class UserController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/users');
         $role = $httpClient->getRequest('/roles');
-     
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
         $result = [];
         foreach ($data['data'] as $item) {
             $dateTime = KhmerDateTime::parse($item['createdAt']);
@@ -36,7 +40,8 @@ class UserController extends Controller
         return view('Back-end.user-managment.userManagment', [
             'result' => $result,
             'role' => $role,
-
+            'firstName' => $firstName,
+            'lastName' => $lastName
         ]);
     }
 
