@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 use PhpParser\Node\Expr\Cast\String_;
 use RealRashid\SweetAlert\Facades\Alert;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\Storage;
 
 class Controller extends BaseController
 {
@@ -415,7 +417,23 @@ class Controller extends BaseController
         $httpClient = new HttpUserHelper();
         $cateSub = $httpClient->getRequest('/training/posts');
         $requestId = $id;
-        return view('Front-end.subScholar', ['cateSub' => $cateSub, 'requestId' => $requestId]);
+        
+        // $pub = $httpClient->getRequest('/publicize/'.$requestId);
+        $pub = 'http://188.166.211.230:8080/v1/api/publicize/'.$requestId;
+        // Generate a unique filename for the PDF
+        $filename = 'generated_pdf_' . time() . '.pdf';
+
+        // Save the PDF to the public path
+        Storage::put($filename, $pub);
+
+        // Access the URL of the saved PDF
+        $pdfUrl = Storage::url($filename);
+
+        return view('Front-end.subScholar',[], [
+            'cateSub' => $cateSub, 
+            'pdfUrl' => $pdfUrl,
+        
+        ]);
     }
 
     public function enrollMent(){

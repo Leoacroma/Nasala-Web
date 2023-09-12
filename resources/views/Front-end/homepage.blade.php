@@ -34,7 +34,7 @@
                 <a class="text-decoration-none color-black Siemreap  hover-underline-animation " href="{{ route('front.subnews', $item['id']) }}">
                     <div class="row pt-2">
                         <div class="col-lay-4 p-0">
-                            <img src="http://188.166.211.230:8080/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="250">
+                            <img src="http://188.166.211.230:8080/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="250" type="image/jpeg">
                         </div>
                         <div class="col-lay-6 p-0">
                             <span class="font-size-20 hover-title-animate">
@@ -68,7 +68,7 @@
                         <a class="text-decoration-none Siemreap color-black mt-3  hover-underline-animation" href="{{ route('front.subScholar', $item['id']) }}">
                             <div class="row mt-2">
                                 <div class="col-lay-3 bg-color-rgb-201-199-199 text-algin-center p-2">
-                                    <img src="http://188.166.211.230:8080/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="150px" height="200px">
+                                    <img src="http://188.166.211.230:8080/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="150px" height="200px" type="image/jpeg">
                                 </div>
                                 <div class="col-lay-6 ">
                                     <span class="font-size-20 hover-title-animate">

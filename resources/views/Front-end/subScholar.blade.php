@@ -21,8 +21,7 @@
     </div>
      <!-- content -->
         <div class="container p-0">
-            {{-- <iframe src="https://nasla.k5moi.com/v1/api/publicize/{{ $requestId }}" frameborder="0"></iframe> --}}
-            {{-- <img src="http://188.166.211.230:9091/oauth/publicize/{{ $requestId }}" alt=""> --}}
+          <iframe src="{{ $pdfUrl }}" width="100%" height="850px" type="application/pdf"> </iframe>
         </div>
      </div>
     </div>

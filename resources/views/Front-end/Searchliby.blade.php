@@ -42,7 +42,7 @@
             @foreach ($result as $item)
                 <div class="row p-0 mb-3">
                     <div class="col-lay-1">
-                        <img src="{{ asset('images/front/pdf.png') }}" alt="" width="75px">
+                        <img src="{{ asset('images/front/pdf.png') }}" alt="" width="75px" >
                     </div>
                     <div class="col-lay-6">
                         <h1 class="Siemreap font-size-25">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 40, $end = '...') }}</h1>
