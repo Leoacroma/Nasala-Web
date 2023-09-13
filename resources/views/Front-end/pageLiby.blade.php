@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-3"> 
                         <small class="Siemreap" >ទំហំ ៖ {{ number_format($item['fileSize'] / 1024) }} Kbytes</small>
-                        <a  href="{{ $item['url'] }}" class="btn btn-info Siemreap" download><i class="fa-solid fa-download mr-2"></i>ទាញយកឯកសារ</a>
+                        <a  href="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}" class="btn btn-info Siemreap" download><i class="fa-solid fa-download mr-2"></i>ទាញយកឯកសារ</a>
                         
                     </div>
                 </div>

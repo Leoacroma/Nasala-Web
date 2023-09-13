@@ -92,7 +92,7 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger text-white mr-2" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))">Delete</button>
                           </form>      
-                          <a href="{{ $item['url'] }}" class="btn btn-primary" download>Download File</a>                     
+                          <a href="https://nasla.k5moi.com/v1/api/training/{{ $item['id'] }}" class="btn btn-primary" download>Download File</a>                     
                           {{-- <a href="" data-toggle="modal"  data-target="#Viewmethod{{ $item['id'] }}"  class="btn btn-primary" >View PDF</a>     
                           @include('Back-end.Pages.Training.files.viewfile') --}}
                         </td>

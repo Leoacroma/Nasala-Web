@@ -78,21 +78,21 @@
                                     <div class="tab-content" id="ex-with-icons-content">
                                         <div class="tab-pane fade show active" id="All-tab" role="tabpanel" aria-labelledby="All-tab">
                                            <div class="row">
-                                            <div class="card-group">
-                                                @foreach ($result as $item)
-                                                <div class="card">
-                                                <a href="{{ route('admin.show', $item['id']) }}">
-                                                  <img src="http://188.166.211.230:8080/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
-                                                  <div class="card-body">
-                                                    <a style="font-size: 20px; color: black; text-decoration: none" class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 100, $end = '...') }}</a>
-                                                    |<span class="badge badge-primary Siemreap">{{ $item['category']['nameKh'] }}</span>
-                                                    <p class="card-text">
-                                                      <small class="text-muted Siemreap">{{ $item['createdAt'] }}</small>
-                                                    </p>
-                                                  </div>
-                                                </a>
-                                                </div>
+                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                                @foreach ($result1 as $dd)
+                                                    <div class="col">
+                                                        <div class="card" >
+                                                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}" style="height: 200px;" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                        <div class="card-body">
+                                                            <span class="card-title Siemreap" style="font-size: 15px;">{{ \Illuminate\Support\Str::limit($dd['titleKh'], $limit = 90, $end = '...')}}</span>
+                                                            <br/>
+                                                            <small class="text-muted Siemreap">{{ $dd['createdAt'] }}</small>
+
+                                                        </div>
+                                                        </div>
+                                                    </div>
                                                 @endforeach
+
                                               </div>
                                            </div>
                                         </div>
@@ -101,16 +101,15 @@
                                                 <div class="row row-cols-1 row-cols-md-3 g-4">
                                                     @foreach ($result1 as $dd) 
                                                     <div class="col">
-                                                      <div class="card">
-                                                        <img src="http://188.166.211.230:8080/v1/api/files/{{ $dd['thumbnailImageId'] }}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                        <div class="card" >
+                                                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}" style="height: 200px;" class="card-img-top" alt="Hollywood Sign on The Hill"/>
                                                         <div class="card-body">
-                                                            <a style="font-size: 20px; color: black; text-decoration: none" class="card-title Siemreap">{{ $dd['titleKh'] }}</a>
-                                                            |<span class="badge badge-primary Siemreap">{{ $dd['category']['nameKh'] }}</span>
-                                                            <p class="card-text">
-                                                              <small class="text-muted Siemreap">{{ $dd['createdAt'] }}</small>
-                                                            </p>
+                                                            <span class="card-title Siemreap" style="font-size: 15px;">{{ \Illuminate\Support\Str::limit($dd['titleKh'], $limit = 90, $end = '...')}}</span>
+                                                            <br/>
+                                                            <small class="text-muted Siemreap">{{ $dd['createdAt'] }}</small>
+
                                                         </div>
-                                                      </div>
+                                                        </div>
                                                     </div>
                                                     @endforeach
                                                 </div>
@@ -142,7 +141,7 @@
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                   <img
-                                                    src="http://188.166.211.230:8080/v1/api/files/{{ $tt['thumbnailImageId'] }}"
+                                                    src="https://nasla.k5moi.com/v1/api/files/{{ $tt['thumbnailImageId'] }}"
                                                     alt="Trendy Pants and Shoes"
                                                     class="img-fluid rounded-start"
                                                   />
@@ -209,12 +208,12 @@
                             $colors = ['bg-primary', 'bg-success', 'bg-danger', 'bg-warning', 'bg-info'];
                             $randomColors = array_rand($colors, 3);
                         @endphp
-                        @foreach ($register['data'] as $index => $item)
-                            @php
-                                $bgClass = $colors[$randomColors[$index % 3]];
-                            @endphp
                             <div class="row">
-                                <div class="col-6">
+                                @foreach ($register['data'] as $index => $item)
+                                @php
+                                    $bgClass = $colors[$randomColors[$index % 3]];
+                                @endphp
+                                <div class="col-5">
                                     <div class="card  text-white {{ $bgClass }} shadow-0 mb-3">
                                         @php
                                             $hyperlink = $item['hyperlink'];
@@ -237,8 +236,8 @@
                                         </a>
                                     </div>
                                 </div>
+                                @endforeach 
                             </div>
-                        @endforeach 
                         </div>
                     </div>
                 </div>

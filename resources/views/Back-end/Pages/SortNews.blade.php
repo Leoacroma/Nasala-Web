@@ -6,7 +6,7 @@
             <div class="col-sm-6 mb-4 mb-xl-0">
                 <div class="d-lg-flex align-items-center">
                     <div>
-                        <h3 class="text-dark font-weight-bold mb-2">Hi, welcome back! <span class="badge rounded-pill badge-primary Siemreap">@{{ $lastName }} </span></h3>
+                        <h3 class="text-dark font-weight-bold mb-2">Hi, welcome back! <span class="badge rounded-pill badge-primary Siemreap">@ {{ $lastName }} </span></h3>
                         <h6 class="font-weight-normal mb-2">Last login was 23 hours ago. View details</h6>
                     </div>
 
@@ -83,17 +83,16 @@
                                            <div class="row">
                                             <div class="card-group">
                                                 @foreach ($result as $item)
-                                                <div class="card">
-                                                <a href="{{ route('admin.show', $item['id']) }}">
-                                                  <img src="http://188.166.211.230:8080/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
-                                                  <div class="card-body">
-                                                    <a style="font-size: 20px; color: black; text-decoration: none" class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 100, $end = '...') }}</a>
-                                                    |<span class="badge badge-primary Siemreap">{{ $item['category']['nameKh'] }}</span>
-                                                    <p class="card-text">
-                                                      <small class="text-muted Siemreap">{{ $item['createdAt'] }}</small>
-                                                    </p>
-                                                  </div>
-                                                </a>
+                                                <div class="col">
+                                                    <div class="card" >
+                                                        <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" style="height: 200px;" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                    <div class="card-body">
+                                                        <span class="card-title Siemreap" style="font-size: 15px;">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 90, $end = '...')}}</span>
+                                                        <br/>
+                                                        <small class="text-muted Siemreap">{{ $item['createdAt'] }}</small>
+
+                                                    </div>
+                                                    </div>
                                                 </div>
                                                 @endforeach
                                               </div>

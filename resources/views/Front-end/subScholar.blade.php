@@ -21,7 +21,7 @@
     </div>
      <!-- content -->
         <div class="container p-0">
-          <iframe src="{{ $pdfUrl }}" width="100%" height="850px" type="application/pdf"> </iframe>
+          <iframe src="data:application/pdf;base64,{{ base64_encode($pdf) }}" width="100%" height="850px" type="application/pdf"> </iframe>
         </div>
      </div>
     </div>

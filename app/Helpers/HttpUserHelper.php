@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cookie;
 
 class HttpUserHelper
 {
-    private $apiBaseUrl = 'http://188.166.211.230:8080/v1/api';
+    private $apiBaseUrl = 'https://nasla.k5moi.com/v1/api';
 
     private $accessToken = '';
   

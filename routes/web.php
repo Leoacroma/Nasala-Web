@@ -41,6 +41,7 @@ Route::get('/lib', [Controller::class, 'liby'])->name('front.liby');
 Route::get('/lib/sort/cate/{id}', [Controller::class, 'cateLib'])->name('sort.cate.lib');
 Route::get('/lib/page/{page}', [Controller::class, 'pageLib'])->name('page.lib');
 Route::get('/lib/searchLib/{keyword?}', [Controller::class, 'searchLib'])->name('searchLib.lib');
+Route::get('/lib/cate/{id}', [Controller::class, 'Nolib'])->name('front.nolib');
 
 Route::get('/scholar',[Controller::class, 'scholar'])->name('front.scholar');
 Route::get('/scholar/sub/{id}', [Controller::class, 'subScholar'])->name('front.subScholar');

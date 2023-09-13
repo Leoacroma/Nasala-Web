@@ -28,7 +28,81 @@
     <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.min.css">
     <title>NASALA</title>
 </head>
+<style>
+    .col-lay-1 {
+        flex: 0 0 10%;
+        max-width: 10%;
+    }
 
+    .col-lay-1S {
+        flex: 0 0 15%;
+        max-width: 15%;
+    }
+
+    .col-lay-2 {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+
+    .col-lay-2S {
+        flex: 0 0 23%;
+        max-width: 23%;
+    }
+
+    .col-lay-3 {
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+
+    .col-lay-3S {
+        flex: 0 0 31%;
+        max-width: 31%;
+    }
+
+    .col-lay-3M {
+        flex: 0 0 35%;
+        max-width: 35%;
+    }
+
+    .col-lay-4 {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+    .col-lay-5 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .col-lay-6 {
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+
+    .col-lay-7 {
+        flex: 0 0 70%;
+        max-width: 70%;
+    }
+
+    .col-lay-8 {
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+
+    .col-lay-9 {
+        flex: 0 0 90%;
+        max-width: 90%;
+    }
+
+    .col-lay-10 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .pagination {
+    display: flex;
+    justify-content: center;
+}
+</style>
 <body>
     <!-- header -->
     <!-- <include id="header" class="header"></include> -->
@@ -140,7 +214,7 @@
                             <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp5') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp5') }}">រចនាសម្ព័ន្ធសាលាជាតិរដ្ឋាបាលមូលដ្ឋាន</a></li>
                             <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp6') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp6') }}">សមាសភាពថ្នាក់ដឹកនាំ</a></li>
                             <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp7') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp7') }}">កម្មវិធីសិក្សា</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp8') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp8') }}">ទំនាក់ទំនង់</a></li>
+                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp8') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp8') }}">ទំនាក់ទំនង</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -155,7 +229,7 @@
         <div class="container-field bg-color-355fb6">
             <div class="container">
                 <div class="row mt-3 p-2">
-                    <div class="col-lay-2 color-white Siemreap font-size-15">
+                    <div class="col-lay-1S color-white Siemreap font-size-17">
                         <span>អំពីសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                         <span>
                             <ul>
@@ -165,7 +239,7 @@
                             </ul>
                         </span>
                     </div>
-                    <div class="col-lay-3 color-white Siemreap font-size-15">
+                    <div class="col-lay-3S color-white Siemreap font-size-17">
                         <span>ទំនាក់ទំនង</span>
                         <span>
                             <ul class="list-unstyled">
@@ -176,7 +250,7 @@
                             </ul>
                         </span>
                     </div>
-                    <div class="col-lay-2 color-white Siemreap font-size-15">
+                    <div class="col-lay-1S color-white Siemreap font-size-17">
                         <span>ដៃគូរសហការ</span>
                         <span>
                             <ul>
@@ -186,7 +260,8 @@
                         </span>
                     </div>
                     <div class="col-lay-3 ">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.20137809131!2d104.92491967558159!3d11.537407244695485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310950da00231129%3A0x3277d5d862ed2f5d!2sMinistry%20of%20Interior!5e0!3m2!1sen!2skh!4v1689567441364!5m2!1sen!2skh" width="100% " height="150px" style="margin-bottom: 30px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.20137809131!2d104.92491967558159!3d11.537407244695485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310950da00231129%3A0x3277d5d862ed2f5d!2sMinistry%20of%20Interior!5e0!3m2!1sen!2skh!4v1689567441364!5m2!1sen!2skh" width="100% " height="150px" style=" border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@
                                 សារអិឡិចត្រូនិច
                             </div>
                             <div class="col-lay-5">
-                                <span class="color-red text-decoration-underline">nasla@pac.edu.kh</span>
+                                <a class="link text-decoration-underline" href="nasla@pac.edu.kh">nasla@pac.edu.kh</a>
                             </div>
                         </div>
                     </li>

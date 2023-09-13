@@ -10,8 +10,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class HttpClientHelper
 {
-    private $apiBaseUrl = 'http://188.166.211.230:8080/v1/api';
-    private $apiOuthUrl = 'http://188.166.211.230:8080/oauth/';
+    private $apiBaseUrl = 'https://nasla.k5moi.com/v1/api';
+    private $apiOuthUrl = 'https://nasla.k5moi.com/oauth/';
 
 
     private $accessToken = '';

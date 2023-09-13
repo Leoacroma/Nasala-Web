@@ -51,7 +51,12 @@ class PostController extends Controller
         //
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/categories');
-        return view('Back-end.Pages.Post.news.post.addPost',['data'=>$data]);
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
+        return view('Back-end.Pages.Post.news.post.addPost',['data'=>$data, 'firstName' => $firstName,
+        'lastName' => $lastName ]);
     }
 
     /**

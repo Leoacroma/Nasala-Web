@@ -48,7 +48,7 @@
                {{-- View Method --}}
               {{-- <a  class="btn btn-primary text-white" data-toggle="modal"  data-target="#Previewmethod{{ $item['id'] }}">Download</a>                       
               @include('Back-end.Pages.library.fileManagment.preview') --}}
-              <a href="{{ $item['url'] }}" class="btn btn-primary" download>Download file</a>                     
+              <a href="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}" class="btn btn-primary" download>Download file</a>                     
 
             </td>
         </tr>

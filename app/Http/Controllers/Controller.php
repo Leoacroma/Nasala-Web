@@ -171,20 +171,48 @@ class Controller extends BaseController
         $image_Id = $data['data']['thumbnailImageId'];
         $cateSub = $httpClient->getRequest('/training/posts');
         $sortLastedAtNews = $httpClient->getRequest('/news?page=0&sortOrder=desc&size=5&sortBy=createdAt');
-        $image_Id = $data['data']['thumbnailImageId'];
-        $image = 'http://188.166.211.230:9091/v1/api/files/'. $image_Id;
+        $sortLastedAtNewswith6 = $httpClient->getRequest('/news?page=0&sortOrder=desc&size=6&sortBy=createdAt');
+
+        // dd($sortLastedAtNews);
+        // $image_Id = $data['data']['thumbnailImageId'];
+        // $image = 'https://nasla.k5moi.com/v1/api/files/'. $image_Id;
       
         // dd($image);
         $dateTime = KhmerDateTime::parse($data['data']['createdAt']);
         $formattedCreatedAt = $dateTime->format("LLL");
 
+        $result = [];
+        foreach ($sortLastedAtNewswith6['data'] as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result[] = [
+                'id' => $item['id'],
+                'titleKh' => $item['titleKh'],
+                'category' => $item['category'],
+                'thumbnailImageId' => $item['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+            ];
+        }
+        $result2 = [];
+        foreach ($sortLastedAtNews['data'] as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result2[] = [
+                'id' => $item['id'],
+                'titleKh' => $item['titleKh'],
+                'category' => $item['category'],
+                'thumbnailImageId' => $item['thumbnailImageId'],
+                'createdAt' => $formattedCreatedAt,
+            ];
+        }
+      
         return view('Front-end.sub-news.subnews',[
             'data' => $data, 
             'formattedCreatedAt' => $formattedCreatedAt,
-            'image' => $image,
             'subMenu' => $subMenu,
             'cateSub' => $cateSub,
-            'sortLastedAtNews' => $sortLastedAtNews
+            'result2' => $result2,
+             'result' => $result
             ]
         );
     }
@@ -244,6 +272,17 @@ class Controller extends BaseController
             'pagination'=>$pagination
         ]);
     }
+    public function Nolib(String $id){
+        $request_Id = $id;
+        $httpUser = new HttpUserHelper();
+        $Catelib = $httpUser->getRequest('/library?page=0&size=10&sortBy=createdAt&sortOrder=desc&categoryId='.$request_Id);
+        $cate = $httpUser->getRequest('/library/categories');
+        $cateSub = $httpUser->getRequest('/training/posts');
+
+        
+        return view('Front-end.nodaLib',['cate' => $cate, 'cateSub'=>$cateSub]);
+    }
+
     public function pageLib(String $page){
         $request_Page = $page;
         $httpClient = new HttpUserHelper();
@@ -329,8 +368,7 @@ class Controller extends BaseController
                 ];
             }
         }else{
-            Alert::error('Error', '404 No data');
-            return redirect()->back();
+           return redirect()->route('front.nolib', $id);
         }
         return view('Front-end.Cateliby',['result' => $result, 'cate' => $cate,  'cateSub'=>$cateSub]);
     }
@@ -418,21 +456,24 @@ class Controller extends BaseController
         $cateSub = $httpClient->getRequest('/training/posts');
         $requestId = $id;
         
-        // $pub = $httpClient->getRequest('/publicize/'.$requestId);
-        $pub = 'http://188.166.211.230:8080/v1/api/publicize/'.$requestId;
-        // Generate a unique filename for the PDF
-        $filename = 'generated_pdf_' . time() . '.pdf';
+        $response = Http::get('https://nasla.k5moi.com/v1/api/publicize/' . $id);
 
-        // Save the PDF to the public path
-        Storage::put($filename, $pub);
+        if ($response->status() === 200) {
+            $pdfFile = $response->body();
+    
+            // Display the PDF file in the browser
+            $pdf = response($pdfFile, 200, [
+                'Content-Type' => ['application/pdf', 'image/jpeg'],
+                'Content-Disposition' => ['inline; filename="file.pdf"', 'inline; filename="image.jpg"'],
+            ]);
+        } else {
+            abort(404);
+        }
 
-        // Access the URL of the saved PDF
-        $pdfUrl = Storage::url($filename);
-
+       
         return view('Front-end.subScholar',[], [
             'cateSub' => $cateSub, 
-            'pdfUrl' => $pdfUrl,
-        
+            'pdf' => $pdf,
         ]);
     }
 
