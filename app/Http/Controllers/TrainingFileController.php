@@ -6,6 +6,7 @@ use App\Helpers\HttpClientHelper;
 use App\Helpers\UploadHelper;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 
 class TrainingFileController extends Controller
@@ -32,6 +33,15 @@ class TrainingFileController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'file' => 'required|mimes:pdf',
+            'subMenuId' => 'required'
+        ]);
+        if ($validator->fails([])) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
         $file = $request->file('file');
         $title = $request->input('title');
         $cateId = $request->input('subMenuId');
@@ -43,9 +53,11 @@ class TrainingFileController extends Controller
             Alert::error('File Size Exceeded', 'Error Message');
             return redirect()->back();
         }
+            // Show loading element
+    
         $uploadFile = new UploadHelper();
         $upload = $uploadFile->postTfileRequest('/training', $file, $title, $cateId);
-
+        // Hide loading element
         if($upload){
             Alert::success('Add Successfully', 'Success Message');
         }
@@ -75,11 +87,14 @@ class TrainingFileController extends Controller
     {
         //
          //Check Validation
-        $validate = $request->validate([
+        $validator = Validator::make($request->all(),[
             'title' => 'required|max:255',
-            'file' => 'required',
+            'file' => 'required|mimes:pdf',
             'subMenuId' => 'required'
         ]);
+        if ($validator->fails([])) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         $requestId = $id;
         $file = $request->file('file');
         $title = $request->input('title');

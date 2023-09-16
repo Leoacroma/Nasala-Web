@@ -25,22 +25,19 @@ class HttpClientHelper
     }
 
     public function postloginRequest($url, $parems){
-        try {
-            //code...
-            $client = new Client();
-            $grand_type = '?grant_type=password';
-            $response = $client->post($this->apiOuthUrl . $url .$grand_type, [
-                'headers' => [
-                    'Authorization' => 'Basic '. base64_encode($this->clientId . ':' . $this->clientSecret),
-                ],
-                'form_params' => $parems,
-                ]);
-            $data = json_decode($response->getBody(), true);
-            return $data;
-        } catch (RequestException $e) {
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
-        }
+
+        //code...
+        $client = new Client();
+        $grand_type = '?grant_type=password';
+        $response = $client->post($this->apiOuthUrl . $url .$grand_type, [
+            'headers' => [
+                'Authorization' => 'Basic '. base64_encode($this->clientId . ':' . $this->clientSecret),
+            ],
+            'form_params' => $parems,
+            ]);
+        $data = json_decode($response->getBody(), true);
+        return $data;
+
         
     }
 
@@ -56,8 +53,7 @@ class HttpClientHelper
         $data = json_decode($response->getBody(), true);
         return $data;
         } catch (RequestException $e) {
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
         }
         
     }
@@ -76,8 +72,8 @@ class HttpClientHelper
         $result = json_decode($response->getBody(), true);
         return $result;
     } catch (RequestException $e) {
-        Alert::error('Error : '. $e->getMessage());
-        return redirect()->back();
+        return redirect()->route('not-found');
+
     }
         
     }
@@ -96,8 +92,8 @@ class HttpClientHelper
             $result = json_decode($response->getBody(), true);
             return $result;
         } catch (RequestException $e) {
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -115,8 +111,8 @@ class HttpClientHelper
         $result = json_decode($response->getBody(), true);
         return $result;
     } catch (RequestException $e) {
-        Alert::error('Error : '. $e->getMessage());
-        return redirect()->back();
+        return redirect()->route('not-found');
+
     }
         
     }

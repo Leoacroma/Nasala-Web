@@ -24,8 +24,8 @@
                     <input type="text" class="form-control" name="titleKh" placeholder="Title Khmer" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputName1">Title English <span class="required"></span></label>
-                    <input type="text" class="form-control" name="title" placeholder="Title English" required>
+                    <label for="exampleInputName1">Title English </label>
+                    <input type="text" class="form-control" name="title" placeholder="Title English">
                   </div>
                   
                   <div class="form-group">
@@ -39,18 +39,20 @@
                     </div>
                   <div class="form-group">
                     <label for="exampleInputPassword4">Thumbnail <span class="required"></span></label>
-                    <input type="file" name="thumbnailImageId" class="form-control file-upload-info" id="image-upload-input" accept="image/*">
+                    <input type="file" name="thumbnailImageId"  class="form-control file-upload-info" id="image-upload-input" accept="image/*" required>
                     <div  id="uploaded-image-container" class="m-3"></div>
+                  </div>
+                  <div class="alert alert-danger Siemreap" style="display: none;" role="alert">
+                    សូម upload រូបភាព
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword4">Content <span class="required"></span> </label>
-                    <textarea class="form-control Siemreap" name="contentKh" id="summernoteKh" ></textarea>
+                    <textarea class="form-control Siemreap" name="contentKh" id="summernoteKh" required></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Content English <span class="required"></span></label>
-                    <textarea class="form-control Siemreap" name="content" id="summernoteEng" required></textarea>
+                    <label for="exampleInputPassword4">Content English </label>
+                    <textarea class="form-control Siemreap" name="content" id="summernoteEng" ></textarea>
                   </div>    
-                 
                   <button type="submit" class="btn btn-primary text-white me-2">Save</button>
                   <a type="submit" class="btn btn-secondary" href="{{ route('admin.post') }}">Cancel</a>
                 </form>

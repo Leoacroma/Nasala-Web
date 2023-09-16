@@ -27,6 +27,10 @@ use Illuminate\Support\Facades\Route;
 //Front-end
 Route::get('/', [Controller::class, 'home'])->name('front.home');
 
+Route::get('/404', function () {
+    return view('vendor.404');
+})->name('not-found');
+
 Route::get('/news', [Controller::class, 'news'])->name('front.news');
 Route::get('/news/subnews/{id}',[Controller::class, 'subenews'])->name('front.subnews');
 Route::get('/news/page/{page}', [Controller::class, 'pageNews'])->name('page.news');
@@ -49,7 +53,7 @@ Route::get('/scholar/page/{page}',[Controller::class, 'pageScholar'])->name('pag
 Route::get('/scholar/search/{keyword?}', [Controller::class, 'searchScholar'])->name('search.scholar');
 
 
-Route::get('/enroll/all', [Controller::class, 'enrollMent'])->name('front.enrollMent');
+Route::get('/enroll/all', [Controller::class, 'enroll`Ment'])->name('front.enrollMent');
 
 Route::get('/aboutschool/dp1', [Controller::class, 'aboutSchooldp1'])->name('front.aboutschool.dp1');
 Route::get('/aboutschool/dp2', [Controller::class, 'aboutSchooldp2'])->name('front.aboutschool.dp2');

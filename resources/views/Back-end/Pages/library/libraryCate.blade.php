@@ -93,7 +93,86 @@
         }
     });
 }
-</script>
+document.getElementById('checkFile').addEventListener('change', function() {
+  var fileInput = this;
+  var file = fileInput.files[0];
+  var alert = document.querySelector('.alert');
+
+  if (file) {
+    var fileExtension = file.name.split('.').pop().toLowerCase();
+
+    if (fileExtension !== 'pdf') {
+      fileInput.value = ''; // Clear the file input field
+      alert.style.display = 'block';
+      setTimeout(function() {
+        alert.style.display = 'none';
+      }, 2000);
+     
+    }
+  }
+});
+document.getElementById('checkFileEdit').addEventListener('change', function() {
+  var fileInput = this;
+  var file = fileInput.files[0];
+  var alert = document.getElementById('alertEdit');
+
+  if (file) {
+    var fileExtension = file.name.split('.').pop().toLowerCase();
+
+    if (fileExtension !== 'pdf') {
+      fileInput.value = ''; // Clear the file input field
+      alert.style.display = 'block';
+      setTimeout(function() {
+        alert.style.display = 'none';
+      }, 2000);
+     
+    }
+  }
+});
+$('#submitUpload').click(function(event) {
+    event.preventDefault();
+
+    var uploadForm = $('#formUpload');
+    var loading = $('#loading');
+    var progressBar = $('.progress-bar');
+
+
+    loading.show();
+    progressBar.width('0%');
+
+    var progress = 0;
+    var interval = setInterval(function() {
+      progress += 10;
+      progressBar.width(progress + '%');
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        uploadForm.submit();
+      }
+    }, 500);
+  });
+  $('#submitEdit').click(function(event) {
+    event.preventDefault();
+
+    var uploadForm = $('#formEdit');
+    var loading = $('#loadingE');
+    var progressBar = $('.progress-bar');
+
+
+    loading.show();
+    progressBar.width('0%');
+
+    var progress = 0;
+    var interval = setInterval(function() {
+      progress += 10;
+      progressBar.width(progress + '%');
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        uploadForm.submit();
+      }
+    }, 500);
+  });
 {{-- @yield('script-file') --}}
 
 

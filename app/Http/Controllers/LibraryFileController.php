@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\HttpClientHelper;
 use App\Helpers\UploadHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -32,11 +33,14 @@ class LibraryFileController extends Controller
     public function store(Request $request)
     {
         
-        $validate = $request->validate([
+        $validator =  Validator::make($request->all(),[
             'title' => 'required|max:255',
-            'file' => 'required',
+            'file' => 'required|mimes:pdf',
             'categoryId' => 'required'
         ]);
+        if ($validator->fails([])) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         $file = $request->file('file');
         $title = $request->input('title');
         $cateId = $request->input('categoryId');
@@ -78,6 +82,14 @@ class LibraryFileController extends Controller
     public function update(Request $request, string $id)
     {
         //Check Validation
+        $validator =  Validator::make($request->all(),[
+            'title' => 'required|max:255',
+            'file' => 'required|mimes:pdf',
+            'categoryId' => 'required'
+        ]);
+        if ($validator->fails([])) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         $requestId = $id;
         $file = $request->file('file');
         $title = $request->input('title');

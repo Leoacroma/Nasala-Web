@@ -18,17 +18,21 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
-        $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/categories');
-        $_COOKIE = Cookie::get('user_Id');
-        $user = $httpClient->getRequest('/users/'.$_COOKIE);
-        $firstName = $user['data']['firstNameKh'];
-        $lastName = $user['data']['lastNameKh'];
-        return view('Back-end.Pages.Post.news.postcate', [
-            'data' => $data,
-            'firstName' => $firstName,
-            'lastName' => $lastName
-        ]);
+        try {
+            $httpClient = new HttpClientHelper();
+            $data = $httpClient->getRequest('/categories');
+            $_COOKIE = Cookie::get('user_Id');
+            $user = $httpClient->getRequest('/users/'.$_COOKIE);
+            $firstName = $user['data']['firstNameKh'];
+            $lastName = $user['data']['lastNameKh'];
+            return view('Back-end.Pages.Post.news.postcate', [
+                'data' => $data,
+                'firstName' => $firstName,
+                'lastName' => $lastName
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
     }
 
     /**
@@ -45,22 +49,26 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
-        $validate = $request->validate([
-            'name' => 'required|Max:30',
-            'nameKh' => 'required|Max:30',
-        ]);
-        $body = [
-            'name' => request('name'),
-            'nameKh' => request('nameKh'),
-        ];
-        
-        $httpClient = new HttpClientHelper();
-        $result = $httpClient->postRequest('/categories', $body);
-        
-        Alert::success('Add Successfully', 'Success Message');
-        return redirect()->route('admin.postcate');
-       
-        
+        try {
+            $validate = $request->validate([
+                'name' => 'required|Max:30',
+                'nameKh' => 'required|Max:30',
+            ]);
+            $body = [
+                'name' => request('name'),
+                'nameKh' => request('nameKh'),
+            ];
+            
+            $httpClient = new HttpClientHelper();
+            $result = $httpClient->postRequest('/categories', $body);
+            if($result){
+                Alert::success('Add Successfully', 'Success Message');
+                return redirect()->route('admin.postcate');    
+            }
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
     }
 
     /**
@@ -76,21 +84,26 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        $requestId = $id;
-        $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/categories');
-        $datae = $httpClient->getRequest('/categories/'.$requestId);
-        $_COOKIE = Cookie::get('user_Id');
-        $user = $httpClient->getRequest('/users/'.$_COOKIE);
-        $firstName = $user['data']['firstNameKh'];
-        $lastName = $user['data']['lastNameKh'];
-        // dd($data); 
-        return view('Back-end.Pages.Post.news.categories.editcate', [
-            'data' => $data,
-            'datae' => $datae,
-            'firstName' => $firstName,
-            'lastName' => $lastName
-        ]);
+        try {
+            $requestId = $id;
+            $httpClient = new HttpClientHelper();
+            $data = $httpClient->getRequest('/categories');
+            $datae = $httpClient->getRequest('/categories/'.$requestId);
+            $_COOKIE = Cookie::get('user_Id');
+            $user = $httpClient->getRequest('/users/'.$_COOKIE);
+            $firstName = $user['data']['firstNameKh'];
+            $lastName = $user['data']['lastNameKh'];
+            return view('Back-end.Pages.Post.news.categories.editcate', [
+                'data' => $data,
+                'datae' => $datae,
+                'firstName' => $firstName,
+                'lastName' => $lastName
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+
+        }
+       
     }
 
     /**
@@ -99,21 +112,29 @@ class CategoriesController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $requestId = $id;
-        $validation = $request->validate([
-            'name' => 'required|Max:30',
-            'nameKh' => 'required|Max:30',
-        ]);
-        $body = [
-            'name' => request('name'),
-            'nameKh' => request('nameKh'),
-        ];
-        $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/categories');
-        $datae = $httpClient->putRequest('/categories/'.$requestId, $body);
+        try {
+            $requestId = $id;
+            $validation = $request->validate([
+                'name' => 'required|Max:30',
+                'nameKh' => 'required|Max:30',
+            ]);
+            $body = [
+                'name' => request('name'),
+                'nameKh' => request('nameKh'),
+            ];
+            $httpClient = new HttpClientHelper();
+            $data = $httpClient->getRequest('/categories');
+            $datae = $httpClient->putRequest('/categories/'.$requestId, $body);
 
-        Alert::success('Update Successfully', 'Success Message');
-        return view('Back-end.Pages.Post.news.postcate',['data' => $data , 'datae' => $datae]);
+            if($datae){
+                Alert::success('Update Successfully', 'Success Message');
+                return view('Back-end.Pages.Post.news.postcate',['data' => $data , 'datae' => $datae]);
+            }
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
 
     /**
@@ -122,11 +143,19 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
-        $requestId = $id;
-        $httpClient = new HttpClientHelper();
-        $data = $httpClient->deleteRequest('/categories/'.$requestId);
-        Alert::success('Delete Successfully', 'Success Message');
-        return redirect()->route('admin.postcate');
+        try {
+            $requestId = $id;
+            $httpClient = new HttpClientHelper();
+            $data = $httpClient->deleteRequest('/categories/'.$requestId);
+            if($data){
+                Alert::success('Delete Successfully', 'Success Message');
+                return redirect()->route('admin.postcate');
+            }
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+       
         
     }
 }

@@ -18,6 +18,7 @@ class UserController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/users');
         $role = $httpClient->getRequest('/roles');
+
         $_COOKIE = Cookie::get('user_Id');
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
@@ -33,10 +34,11 @@ class UserController extends Controller
                 'firstName' => $item['firstName'],
                 'lastName' => $item['lastName'],
                 'userName' => $item['userName'],
-
+                'roles' => $item['roles'],
                 'createdAt' => $formattedCreatedAt,
             ];
         }
+        // dd($data['data']);
         return view('Back-end.user-managment.userManagment', [
             'result' => $result,
             'role' => $role,
@@ -66,7 +68,7 @@ class UserController extends Controller
             'lastNameKh' => 'required|max:255',
             'userName' => 'required',
             'password' => 'required',
-
+            'role' => 'required',
         ]);
         $body = [
             'firstName' => request('firstName'),
@@ -75,7 +77,9 @@ class UserController extends Controller
             'lastNameKh' => request('lastNameKh'),
             'username' => request('userName'),
             'password' => request('password'),
+            'role' => request(['role'])
         ];
+        // dd($body);
         $httpClient = new HttpClientHelper();
         $data = $httpClient->postRequest('/users', $body);
         Alert::success('Add Successfully', 'Success Message');
@@ -113,7 +117,7 @@ class UserController extends Controller
             'lastNameKh' => 'required|max:255',
             'userName' => 'required',
             'password' => 'required',
-
+            'role' => 'required',
         ]);
         $body = [
             'firstName' => request('firstName'),
@@ -122,6 +126,7 @@ class UserController extends Controller
             'lastNameKh' => request('lastNameKh'),
             'username' => request('userName'),
             'password' => request('password'),
+            'role' => request(['role'])
         ];
         $httpClient = new HttpClientHelper();
         $data = $httpClient->putRequest('/users/'.$requestId, $body);

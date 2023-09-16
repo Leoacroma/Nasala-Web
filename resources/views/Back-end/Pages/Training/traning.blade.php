@@ -1,5 +1,22 @@
 @extends('Back-end.Layout.index')
 @section('template')
+<style>
+
+.progress-bar {
+    width: 0; /* Just for visualization purposes */
+    background-color: rgb(126, 93, 237);
+    animation: increaseWidth 5s forwards;
+}
+
+@keyframes increaseWidth {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+</style>
       <!-- partial -->
   <div class="container-fluid page-body-wrapper">
     <div class="main-panel">
@@ -51,6 +68,7 @@
               </div>
             </div>
           </div>
+         
           <div class="col-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
@@ -90,7 +108,7 @@
                           <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.trian.file.destroy', $item['id']) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger text-white mr-2" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))">Delete</button>
+                            <button type="submit" class="btn btn-danger text-white mr-2" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{  $item['id'] }}')))">Delete</button>
                           </form>      
                           <a href="https://nasla.k5moi.com/v1/api/training/{{ $item['id'] }}" class="btn btn-primary" download>Download File</a>                     
                           {{-- <a href="" data-toggle="modal"  data-target="#Viewmethod{{ $item['id'] }}"  class="btn btn-primary" >View PDF</a>     
@@ -110,9 +128,10 @@
     </div>
     <!-- main-panel ends -->
   <!-- page-body-wrapper ends -->
+  
 </div>
 <script>
-    function confirmDelete(event, form) {
+function confirmDelete(event, form) {
     event.preventDefault();
     Swal.fire({
         title: 'Are you sure?',
@@ -129,5 +148,85 @@
         }
     });
 }
+document.getElementById('checkFile').addEventListener('change', function() {
+  var fileInput = this;
+  var file = fileInput.files[0];
+  var alert = document.querySelector('.alert');
+
+  if (file) {
+    var fileExtension = file.name.split('.').pop().toLowerCase();
+
+    if (fileExtension !== 'pdf') {
+      fileInput.value = ''; // Clear the file input field
+      alert.style.display = 'block';
+      setTimeout(function() {
+        alert.style.display = 'none';
+      }, 2000);
+     
+    }
+  }
+});
+document.getElementById('checkFileEdit').addEventListener('change', function() {
+  var fileInput = this;
+  var file = fileInput.files[0];
+  var alert = document.getElementById('alertEdit');
+
+  if (file) {
+    var fileExtension = file.name.split('.').pop().toLowerCase();
+
+    if (fileExtension !== 'pdf') {
+      fileInput.value = ''; // Clear the file input field
+      alert.style.display = 'block';
+      setTimeout(function() {
+        alert.style.display = 'none';
+      }, 2000);
+     
+    }
+  }
+});
+$('#submitUpload').click(function(event) {
+    event.preventDefault();
+
+    var uploadForm = $('#formUpload');
+    var loading = $('#loading');
+    var progressBar = $('.progress-bar');
+
+
+    loading.show();
+    progressBar.width('0%');
+
+    var progress = 0;
+    var interval = setInterval(function() {
+      progress += 10;
+      progressBar.width(progress + '%');
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        uploadForm.submit();
+      }
+    }, 500);
+  });
+  $('#submitEdit').click(function(event) {
+    event.preventDefault();
+
+    var uploadForm = $('#formEdit');
+    var loading = $('#loadingE');
+    var progressBar = $('.progress-bar');
+
+
+    loading.show();
+    progressBar.width('0%');
+
+    var progress = 0;
+    var interval = setInterval(function() {
+      progress += 10;
+      progressBar.width(progress + '%');
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        uploadForm.submit();
+      }
+    }, 500);
+  });
 </script>
 @endsection

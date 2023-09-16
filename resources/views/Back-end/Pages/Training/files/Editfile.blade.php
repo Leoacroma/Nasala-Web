@@ -7,7 +7,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ route('admin.trian.file.update', $item['id']) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.trian.file.update', $item['id']) }}" id="formEdit" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="modal-body">
@@ -26,15 +26,22 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Choose files to upload <span class="required"></span></label>
-                    <input class="form-control" type="file" name="file"/>
+                    <input class="form-control" id="checkFileEdit" accept=".pdf" type="file" name="file"/>
                     <input class="form-control Siemreap" type="text" value="{{ $item['name'] }}" readonly>
                 </div>
+                <div class="alert alert-danger Siemreap" id="alertEdit" style="display: none" role="alert">
+                  សូម upload PDF file
+              </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" id="submitEdit" class="btn btn-primary">Save</button>
             </div>
         </form>
-        </div>  
+        <div class="progress"  id="loadingE" style="display: none;">
+          <div class="progress-bar"   role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> 
+        </div> 
+         
     </div>
   </div>

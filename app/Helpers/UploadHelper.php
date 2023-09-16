@@ -40,8 +40,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -68,8 +68,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -106,8 +106,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -142,8 +142,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -173,8 +173,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -209,8 +209,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -244,8 +244,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -275,8 +275,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -310,8 +310,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -345,8 +345,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }
@@ -375,8 +375,8 @@ class UploadHelper
             return $upload;
         } catch (RequestException $e) {
             //throw $th;
-            Alert::error('Error : '. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('not-found');
+
         }
        
     }

@@ -29,7 +29,7 @@
                     <input type="text" class="form-control" name="title" placeholder="Title English">
                   </div>
                   <div class="form-group">
-                    <label for="exampleSelectGender">Categories <span class="required"></span></label>
+                    <label for="exampleSelectGender">Categories<span class="required"></span></label>
                       <select class="form-select Siemreap " id="exampleSelectGender" name="categoryId" required>
                         <option value="">-- សូមជ្រើសរើស --</option>
                         @foreach ($cate['data'] as $item)

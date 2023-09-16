@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 use KhmerDateTime\KhmerDateTime;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
+
 
 class PostController extends Controller
 {
@@ -66,7 +68,6 @@ class PostController extends Controller
     {
         //
         $validate = $request->validate([
-            'title' => 'required|max:255',
             'titleKh' => 'required|max:255',
             'categoryId' => 'required',
             'content' => 'required',

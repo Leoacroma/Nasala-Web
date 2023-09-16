@@ -40,7 +40,7 @@ class OuthController extends Controller
             }
         } catch (\Exception $e) {
         //    alert($e->getMessage());
-            Alert::error('Error : '. $e->getMessage());
+            Alert::error('Error : '. 'Invalid User');
         }
         return redirect()->back();
 

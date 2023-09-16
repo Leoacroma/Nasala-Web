@@ -36,7 +36,7 @@
                     <label for="exampleFormControlInput1 ">Email <span class="required"></span></label>
                     <input type="email" name="userName" class="form-control" id="exampleFormControlInput1" placeholder="Email" required>
                 </div>
-                {{-- <div class="form-group">
+                <div class="form-group">
                   <label for="exampleFormControlInput1">Role <span class="required"></span></label>
                   <select class="form-select Siemreap" name="role" id="" required>
                     <option value="" selected>-- សូមជ្រើសរើស --</option>
@@ -44,7 +44,7 @@
                       	<option value="{{ $item['id'] }}">{{ $item['nameKh']}}</option>
                     @endforeach
                   </select>
-                </div> --}}
+                </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1 ">Password <span class="required"></span></label>
                     <input type="password" name="password" class="form-control" id="exampleFormControlInput1" placeholder="Password" required>

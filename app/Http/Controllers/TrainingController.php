@@ -70,7 +70,12 @@ class TrainingController extends Controller
         //
         $httpClient = new HttpClientHelper();
         $cate = $httpClient->getRequest('/training/categories');
-        return view('Back-end.Pages.Training.post.addtrain', ['cate' => $cate]);
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
+        return view('Back-end.Pages.Training.post.addtrain', ['cate' => $cate,  'firstName' => $firstName,
+        'lastName' => $lastName]);
     }
 
     /**

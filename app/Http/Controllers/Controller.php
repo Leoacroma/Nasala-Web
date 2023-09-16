@@ -26,145 +26,167 @@ class Controller extends BaseController
 
     //Front-end
     public function home(){
-        $httpClient = new HttpUserHelper();
-        $dataSort1 = $httpClient->getRequest('/news?page=0&size=1&sortBy=createdAt&sortOrder=desc');
-        $dataSort3 = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
-        $cateSub = $httpClient->getRequest('/training/posts');
-     
-        $SortLastedPub = $httpClient->getRequest('/publicize?page=0&sortOrder=desc&size=3&sortBy=createdAt');
-        $result = [];
-        foreach ($dataSort1['data'] as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-            ];
-        }
-        $result1 = [];
-        foreach ($dataSort3['data'] as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result1[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-            ];
-        }
+        try {
+            $httpClient = new HttpUserHelper();
+            $dataSort1 = $httpClient->getRequest('/news?page=0&size=1&sortBy=createdAt&sortOrder=desc');
+            $dataSort3 = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
+            $cateSub = $httpClient->getRequest('/training/posts');
+         
+            $SortLastedPub = $httpClient->getRequest('/publicize?page=0&sortOrder=desc&size=3&sortBy=createdAt');
+            $result = [];
+            foreach ($dataSort1['data'] as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+            $result1 = [];
+            foreach ($dataSort3['data'] as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result1[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+    
+            $result2 = [];
+            foreach ($SortLastedPub['data'] as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result2[] = [
+                    'id' => $item['id'],
+                    'title' => $item['title'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            // dd($subMenu);
+    
+            return view('Front-end.homepage', [
+                'subMenu' => $subMenu, 
+                'result' => $result,
+                'result1' => $result1,
+                'cateSub' => $cateSub,
+                'result2' => $result2
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
 
-        $result2 = [];
-        foreach ($SortLastedPub['data'] as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result2[] = [
-                'id' => $item['id'],
-                'title' => $item['title'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-            ];
         }
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        // dd($subMenu);
-
-        return view('Front-end.homepage', [
-            'subMenu' => $subMenu, 
-            'result' => $result,
-            'result1' => $result1,
-            'cateSub' => $cateSub,
-            'result2' => $result2
-        ]);
+        
     }
     public function news(){
-        $httpClient = new HttpUserHelper();
-        $data = $httpClient->getRequest('/news');
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cateSub = $httpClient->getRequest('/training/posts');
-        $pagination = $httpClient->getRequest('/news?page=0&size=9&sortOrder=desc&sortBy=createdAt');
-        // dd($pagination);
+        try {
+            $httpClient = new HttpUserHelper();
+            $data = $httpClient->getRequest('/news');
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cateSub = $httpClient->getRequest('/training/posts');
+            $pagination = $httpClient->getRequest('/news?page=0&size=9&sortOrder=desc&sortBy=createdAt');
+            // dd($pagination);
 
-        $result = [];
-        foreach ($pagination['data'] as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-            ];
+            $result = [];
+            foreach ($pagination['data'] as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+
+            return view('Front-end.news', [
+                'result' => $result,
+                'subMenu' => $subMenu,
+                'cateSub' => $cateSub,
+                'pagination'=>$pagination
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
         }
-
-        return view('Front-end.news', [
-            'result' => $result,
-            'subMenu' => $subMenu,
-            'cateSub' => $cateSub,
-            'pagination'=>$pagination
-        ]);
+        
     }
     
     public function searchNews(){
-        $requeste_Keyword = request()->input('searchNews');
-        $httpUser = new HttpUserHelper();
-        $subMenu = $httpUser->getRequest('/sub-menus');
-        $cateSub = $httpUser->getRequest('/training/posts');
-        $searchNews = $httpUser->getRequest('/news?page=0&size=20&sortOrder=desc&keyword='.$requeste_Keyword);
-        if(empty($requeste_Keyword)){
-            return redirect()->route('front.news');
+        try {
+            $requeste_Keyword = request()->input('searchNews');
+            $httpUser = new HttpUserHelper();
+            $subMenu = $httpUser->getRequest('/sub-menus');
+            $cateSub = $httpUser->getRequest('/training/posts');
+            $searchNews = $httpUser->getRequest('/news?page=0&size=20&sortOrder=desc&keyword='.$requeste_Keyword);
+            if(empty($requeste_Keyword)){
+                return redirect()->route('front.news');
+            }
+            $result = [];
+            foreach ($searchNews['data'] as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+            return view('Front-end.newsSearch', [
+                'result' => $result,
+                'requeste_Keyword' => $requeste_Keyword,
+                'subMenu' => $subMenu,
+                'cateSub' => $cateSub,
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
         }
-        $result = [];
-        foreach ($searchNews['data'] as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-            ];
-        }
-        return view('Front-end.newsSearch', [
-            'result' => $result,
-            'requeste_Keyword' => $requeste_Keyword,
-            'subMenu' => $subMenu,
-            'cateSub' => $cateSub,
-        ]);
+        
     }
 
     public function pageNews(String $page){
-        $request_Page = $page;
-        $httpUser = new HttpUserHelper();
-        $subMenu = $httpUser->getRequest('/sub-menus');
-        $cateSub = $httpUser->getRequest('/training/posts');
-        $pagination = $httpUser->getRequest('/news?page='.$request_Page.'&size=9&sortOrder=desc&sortBy=createdAt');
-        $result = [];
-        foreach ($pagination    ['data'] as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-            ];
+        try {
+            $request_Page = $page;
+            $httpUser = new HttpUserHelper();
+            $subMenu = $httpUser->getRequest('/sub-menus');
+            $cateSub = $httpUser->getRequest('/training/posts');
+            $pagination = $httpUser->getRequest('/news?page='.$request_Page.'&size=9&sortOrder=desc&sortBy=createdAt');
+            $result = [];
+            foreach ($pagination    ['data'] as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+            return view('Front-end.newsPage', [
+                'result' => $result,  
+                'cateSub' => $cateSub,
+                'pagination'=>$pagination
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
         }
-        return view('Front-end.newsPage', [
-            'result' => $result,  
-            'cateSub' => $cateSub,
-            'pagination'=>$pagination
-        ]);
+        
     }
 
     public function subenews(string $id){
 
-        $request_Id = $id;
+        try {
+            $request_Id = $id;
         $httpClient = new HttpUserHelper();
         $data = $httpClient->getRequest('/news/'.$request_Id);
         $subMenu = $httpClient->getRequest('/sub-menus');
@@ -215,35 +237,54 @@ class Controller extends BaseController
              'result' => $result
             ]
         );
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
     public function dp1(){
-        $httpClient = new HttpUserHelper();
-        $cateSub = $httpClient->getRequest('/training/posts');
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $data = $httpClient->getRequest('/training');
-
-        return view('Front-end.work.dp1', ['data' => $data, 'subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        try {
+            $httpClient = new HttpUserHelper();
+            $cateSub = $httpClient->getRequest('/training/posts');
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $data = $httpClient->getRequest('/training');
+    
+            return view('Front-end.work.dp1', ['data' => $data, 'subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+       
     }
     public function dp2Content(string $id){
-        $requestId = $id;
-        $httpClient = new HttpUserHelper();
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cateSub = $httpClient->getRequest('/training/posts'); 
-        $Trian = $httpClient->getRequest('/training/posts');
-        $trian = $httpClient->getRequest('/training/posts/'.$requestId);
+        try {
+            $requestId = $id;
+            $httpClient = new HttpUserHelper();
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cateSub = $httpClient->getRequest('/training/posts'); 
+            $Trian = $httpClient->getRequest('/training/posts');
+            $trian = $httpClient->getRequest('/training/posts/'.$requestId);
 
-        return view('Front-end.work.dp2',['subMenu' => $subMenu, 'cateSub'=>$cateSub, 'trian'=> $trian]);
+            return view('Front-end.work.dp2',['subMenu' => $subMenu, 'cateSub'=>$cateSub, 'trian'=> $trian]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
     }
     public function dp3(){
-        $httpClient = new HttpUserHelper();
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cateSub = $httpClient->getRequest('/training/posts');
-
-        return view('Front-end.work.dp3',['subMenu' => $subMenu, 'cateSub'=>$cateSub]);
+        try {
+            $httpClient = new HttpUserHelper();
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cateSub = $httpClient->getRequest('/training/posts');
+    
+            return view('Front-end.work.dp3',['subMenu' => $subMenu, 'cateSub'=>$cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
     public function liby(){
 
-        $httpClient = new HttpUserHelper();
+        try {
+            $httpClient = new HttpUserHelper();
         $lib = $httpClient->getRequest('/library');
         $httpClient = new HttpUserHelper();
         $subMenu = $httpClient->getRequest('/sub-menus');
@@ -271,9 +312,14 @@ class Controller extends BaseController
             'cateSub'=>$cateSub,
             'pagination'=>$pagination
         ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
     public function Nolib(String $id){
-        $request_Id = $id;
+        try {
+            $request_Id = $id;
         $httpUser = new HttpUserHelper();
         $Catelib = $httpUser->getRequest('/library?page=0&size=10&sortBy=createdAt&sortOrder=desc&categoryId='.$request_Id);
         $cate = $httpUser->getRequest('/library/categories');
@@ -281,74 +327,90 @@ class Controller extends BaseController
 
         
         return view('Front-end.nodaLib',['cate' => $cate, 'cateSub'=>$cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
 
     public function pageLib(String $page){
-        $request_Page = $page;
-        $httpClient = new HttpUserHelper();
-        $lib = $httpClient->getRequest('/library');
-        $httpClient = new HttpUserHelper();
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cate = $httpClient->getRequest('/library/categories');
-        $cateSub = $httpClient->getRequest('/training/posts');
-        $pagination = $httpClient->getRequest('/library?page='.$request_Page.'&size=5&sortOrder=desc&sortBy=createdAt');
+        try {
+            $request_Page = $page;
+            $httpClient = new HttpUserHelper();
+            $lib = $httpClient->getRequest('/library');
+            $httpClient = new HttpUserHelper();
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cate = $httpClient->getRequest('/library/categories');
+            $cateSub = $httpClient->getRequest('/training/posts');
+            $pagination = $httpClient->getRequest('/library?page='.$request_Page.'&size=5&sortOrder=desc&sortBy=createdAt');
+    
+            $result = [];
+            foreach ($pagination['data'] as $lib) {
+                $dateTime = KhmerDateTime::parse($lib['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLL");
+                $result[] = [
+                    'id' => $lib['id'],
+                    'title' => $lib['title'],
+                    'fileSize' => $lib['fileSize'],
+                    'url' => $lib['url'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+            return view('Front-end.pageLiby', [
+                'result' => $result, 
+                'cate' => $cate, 
+                'subMenu' => $subMenu, 
+                'cateSub'=>$cateSub,
+                'pagination'=>$pagination
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
 
-        $result = [];
-        foreach ($pagination['data'] as $lib) {
-            $dateTime = KhmerDateTime::parse($lib['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLL");
-            $result[] = [
-                'id' => $lib['id'],
-                'title' => $lib['title'],
-                'fileSize' => $lib['fileSize'],
-                'url' => $lib['url'],
-                'createdAt' => $formattedCreatedAt,
-            ];
         }
-        return view('Front-end.pageLiby', [
-            'result' => $result, 
-            'cate' => $cate, 
-            'subMenu' => $subMenu, 
-            'cateSub'=>$cateSub,
-            'pagination'=>$pagination
-        ]);
+       
     }
 
     public function searchLib(){
-        $request_Keyword = request()->input('searchLibs');
-        $httpUser = new HttpUserHelper;
-        $subMenu = $httpUser->getRequest('/sub-menus');
-        $cate = $httpUser->getRequest('/library/categories');
-        $cateSub = $httpUser->getRequest('/training/posts');
-        $search = $httpUser->getRequest('/library?page=0&size=20&sortOrder=desc&keyword='.$request_Keyword);
-
-        if($request_Keyword == null){
-            return redirect()->route('front.liby');
+        try {
+            $request_Keyword = request()->input('searchLibs');
+            $httpUser = new HttpUserHelper;
+            $subMenu = $httpUser->getRequest('/sub-menus');
+            $cate = $httpUser->getRequest('/library/categories');
+            $cateSub = $httpUser->getRequest('/training/posts');
+            $search = $httpUser->getRequest('/library?page=0&size=20&sortOrder=desc&keyword='.$request_Keyword);
+    
+            if($request_Keyword == null){
+                return redirect()->route('front.liby');
+            }
+    
+            $result = [];
+            foreach ($search['data'] as $lib) {
+                $dateTime = KhmerDateTime::parse($lib['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLL");
+                $result[] = [
+                    'id' => $lib['id'],
+                    'title' => $lib['title'],
+                    'fileSize' => $lib['fileSize'],
+                    'url' => $lib['url'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+            return view('Front-end.Searchliby',[
+                'result' => $result, 
+                'subMenu' => $subMenu, 
+                'cate' => $cate,
+                'cateSub' => $cateSub,
+                'request_Keyword' => $request_Keyword
+             ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
         }
-
-        $result = [];
-        foreach ($search['data'] as $lib) {
-            $dateTime = KhmerDateTime::parse($lib['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLL");
-            $result[] = [
-                'id' => $lib['id'],
-                'title' => $lib['title'],
-                'fileSize' => $lib['fileSize'],
-                'url' => $lib['url'],
-                'createdAt' => $formattedCreatedAt,
-            ];
-        }
-        return view('Front-end.Searchliby',[
-            'result' => $result, 
-            'subMenu' => $subMenu, 
-            'cate' => $cate,
-            'cateSub' => $cateSub,
-            'request_Keyword' => $request_Keyword
-         ]);
+        
     }
 
     public function cateLib(String $id){
-        $request_Id = $id;
+        try {
+            $request_Id = $id;
         $httpUser = new HttpUserHelper();
         $Catelib = $httpUser->getRequest('/library?page=0&size=10&sortBy=createdAt&sortOrder=desc&categoryId='.$request_Id);
         $cate = $httpUser->getRequest('/library/categories');
@@ -371,10 +433,15 @@ class Controller extends BaseController
            return redirect()->route('front.nolib', $id);
         }
         return view('Front-end.Cateliby',['result' => $result, 'cate' => $cate,  'cateSub'=>$cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+       
     }
 
     public function scholar(){
-        $httpClient = new HttpUserHelper();
+        try {
+            $httpClient = new HttpUserHelper();
         $pagination = $httpClient->getRequest('/publicize?page=0&size=6&sortOrder=desc');
         $httpClient = new HttpUserHelper();
         $subMenu = $httpClient->getRequest('/sub-menus');
@@ -397,35 +464,45 @@ class Controller extends BaseController
              'cateSub' => $cateSub,
              'pagination' => $pagination
             ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
     public function pageScholar(String $page){
-        $request_Page = $page;
-        $httpClient = new HttpUserHelper();
-        $pagination = $httpClient->getRequest('/publicize?page='.$request_Page.'&size=6&sortOrder=desc');
-        $httpClient = new HttpUserHelper();
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cateSub = $httpClient->getRequest('/training/posts');
-        $result = [];
-        foreach ($pagination['data'] as $lib) {
-            $dateTime = KhmerDateTime::parse($lib['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLL");
-            $result[] = [
-                'id' => $lib['id'],
-                'title' => $lib['title'],
-                'name' => $lib['name'],
-                'thumbnailImageId' => $lib['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-            ];
+        try {
+            $request_Page = $page;
+            $httpClient = new HttpUserHelper();
+            $pagination = $httpClient->getRequest('/publicize?page='.$request_Page.'&size=6&sortOrder=desc');
+            $httpClient = new HttpUserHelper();
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cateSub = $httpClient->getRequest('/training/posts');
+            $result = [];
+            foreach ($pagination['data'] as $lib) {
+                $dateTime = KhmerDateTime::parse($lib['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLL");
+                $result[] = [
+                    'id' => $lib['id'],
+                    'title' => $lib['title'],
+                    'name' => $lib['name'],
+                    'thumbnailImageId' => $lib['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                ];
+            }
+            return view('Front-end.pageScholarship', [
+                'result' => $result,
+                 'subMenu' => $subMenu, 
+                 'cateSub' => $cateSub,
+                 'pagination' => $pagination
+                ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
         }
-        return view('Front-end.pageScholarship', [
-            'result' => $result,
-             'subMenu' => $subMenu, 
-             'cateSub' => $cateSub,
-             'pagination' => $pagination
-            ]);
+        
     }
     public function searchScholar(){
-        $request_Keyword = request()->input('searchSch');
+        try {
+            $request_Keyword = request()->input('searchSch');
         $httpClient = new HttpUserHelper();
         $search = $httpClient->getRequest('/publicize?page=0&size=6&sortOrder=desc&keyword='.$request_Keyword);
         $httpClient = new HttpUserHelper();
@@ -449,10 +526,15 @@ class Controller extends BaseController
              'cateSub' => $cateSub,
             'request_Keyword' => $request_Keyword
         ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
 
     public function subScholar(string $id){
-        $httpClient = new HttpUserHelper();
+        try {
+            $httpClient = new HttpUserHelper();
         $cateSub = $httpClient->getRequest('/training/posts');
         $requestId = $id;
         
@@ -469,82 +551,130 @@ class Controller extends BaseController
         } else {
             abort(404);
         }
-
-       
         return view('Front-end.subScholar',[], [
             'cateSub' => $cateSub, 
             'pdf' => $pdf,
         ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
 
     public function enrollMent(){
-        $httpClient = new HttpUserHelper();
-        $cateSub = $httpClient->getRequest('/training/posts');
-        $reg = $httpClient->getRequest('/register');
-        return view('Front-end.enrollment', ['reg' => $reg ,'cateSub' => $cateSub,]);
+        try {
+            $httpClient = new HttpUserHelper();
+            $cateSub = $httpClient->getRequest('/training/posts');
+            $reg = $httpClient->getRequest('/register');
+            return view('Front-end.enrollment', ['reg' => $reg ,'cateSub' => $cateSub,]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
     }
 
     public function aboutSchooldp1(){
-        $httpClient = new HttpUserHelper();
+        try {
+            $httpClient = new HttpUserHelper();
         $subMenu = $httpClient->getRequest('/sub-menus');
         $cateSub = $httpClient->getRequest('/training/posts');
 
         return view('Front-end.aboutSchool.dp1', ['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
     public function aboutSchooldp2(){
-        $httpClient = new HttpUserHelper();
+        try {
+            $httpClient = new HttpUserHelper();
         $subMenu = $httpClient->getRequest('/sub-menus');
         $cateSub = $httpClient->getRequest('/training/posts');
 
         return view('Front-end.aboutSchool.dp2',['subMenu' => $subMenu, 'cateSub'=>$cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+       
     }
     public function aboutSchooldp3(){
-        $httpClient = new HttpUserHelper();
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cateSub = $httpClient->getRequest('/training/posts');
-
-        return view('Front-end.aboutSchool.dp3',['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        try {
+            $httpClient = new HttpUserHelper();
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cateSub = $httpClient->getRequest('/training/posts');
+    
+            return view('Front-end.aboutSchool.dp3',['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
     public function aboutSchooldp4(){
-        $httpClient = new HttpUserHelper();
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cateSub = $httpClient->getRequest('/training/posts');
-
-        return view('Front-end.aboutSchool.dp4',['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        try {
+            $httpClient = new HttpUserHelper();
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cateSub = $httpClient->getRequest('/training/posts');
+    
+            return view('Front-end.aboutSchool.dp4',['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
     public function aboutSchooldp5(){
-        $httpClient = new HttpUserHelper();
+        try {
+            $httpClient = new HttpUserHelper();
         $subMenu = $httpClient->getRequest('/sub-menus');
         $cateSub = $httpClient->getRequest('/training/posts');
 
         return view('Front-end.aboutSchool.dp5',['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
     public function aboutSchooldp6(){
-        $httpClient = new HttpUserHelper();
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cateSub = $httpClient->getRequest('/training/posts');
-
-        return view('Front-end.aboutSchool.dp6',['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        try {
+            $httpClient = new HttpUserHelper();
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cateSub = $httpClient->getRequest('/training/posts');
+    
+            return view('Front-end.aboutSchool.dp6',['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+       
     }
     public function aboutSchooldp7(){
-        $httpClient = new HttpUserHelper();
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cateSub = $httpClient->getRequest('/training/posts');
+        try {
+            $httpClient = new HttpUserHelper();
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cateSub = $httpClient->getRequest('/training/posts');
+    
+            return view('Front-end.aboutSchool.dp7', ['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
 
-        return view('Front-end.aboutSchool.dp7', ['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        }
+        
     }
     public function aboutSchooldp8(){
-        $httpClient = new HttpUserHelper();
-        $subMenu = $httpClient->getRequest('/sub-menus');
-        $cateSub = $httpClient->getRequest('/training/posts');
-
-        return view('Front-end.aboutSchool.dp8', ['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        try {
+            $httpClient = new HttpUserHelper();
+            $subMenu = $httpClient->getRequest('/sub-menus');
+            $cateSub = $httpClient->getRequest('/training/posts');
+    
+            return view('Front-end.aboutSchool.dp8', ['subMenu' => $subMenu, 'cateSub' => $cateSub]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
 
 
     //Back-end
     public function dash($id = null){
-        $httpClient = new HttpClientHelper();
+        try {
+            $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/news');
         $pub = $httpClient->getRequest('/publicize');
         $lib = $httpClient->getRequest('/library');
@@ -627,103 +757,112 @@ class Controller extends BaseController
             'firstName' => $firstName,
             'lastName' => $lastName
     ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
+        
     }
     public function newsSortCate(String $id){
-        $request_Id = $id;
-        $httpClient = new HttpClientHelper();
-        $sortCateNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId='.$request_Id);
-        $data = $httpClient->getRequest('/news');
-        $pub = $httpClient->getRequest('/publicize');
-        $lib = $httpClient->getRequest('/library');
-        $cate = $httpClient->getRequest('/categories');
-        $train = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=10&sortBy=createdAt');
-        $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
-        $_COOKIE = Cookie::get('user_Id');
-        $user = $httpClient->getRequest('/users/'.$_COOKIE);
-       
+        try {
+            $request_Id = $id;
+            $httpClient = new HttpClientHelper();
+            $sortCateNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId='.$request_Id);
+            $data = $httpClient->getRequest('/news');
+            $pub = $httpClient->getRequest('/publicize');
+            $lib = $httpClient->getRequest('/library');
+            $cate = $httpClient->getRequest('/categories');
+            $train = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=10&sortBy=createdAt');
+            $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
+            $_COOKIE = Cookie::get('user_Id');
+            $user = $httpClient->getRequest('/users/'.$_COOKIE);
+           
+            
+            $userName = $httpClient->getRequest('/users/');
+            $lastAtSortNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
+            
+            $lastAtSortNewsByCate = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId=35');
+            $lastAtPub = $httpClient->getRequest('/publicize?page=0&size=3&sortBy=createdAt&sortOrder=desc');
+    
+           
+    
+            $result = [];
+            foreach ($lastAtSortNews['data']   as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                    
+                ];
+            }
+            $result1 = [];
+            foreach ($lastAtSortNewsByCate['data']  as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result1[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                    
+                ];
+            }
+            $result2 = [];
+            foreach ($lastAtPub['data']   as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result2[] = [
+                    'id' => $item['id'],
+                    'title' => $item['title'],
+                    'fileSize' => $item['fileSize'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                    
+                ];
+            }
+            // dd(($data));
+            $count = count($data['data']);
+            $countFilePub = count($pub['data']);
+            $countTrian = count($train['data']);
+    
+            $countLib = count($lib['data']);
+            $result = [];
+            foreach ($sortCateNews['data']   as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                    
+                ];
+            }
+            $firstName = $user['data']['firstNameKh'];
+            $lastName = $user['data']['lastNameKh'];
+            return view('Back-end.Pages.SortNews',[
+                'count' => $count,
+                'countFilePub' => $countFilePub,
+                'countLib' => $countLib,
+                'cate' => $cate,
+                'result' => $result,
+                'result1' => $result1,
+                'result2' => $result2,
+                'countTrian' => $countTrian,
+                'train' => $train,
+                'register' => $register,
+                'firstName' => $firstName,
+                'lastName' => $lastName
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
         
-        $userName = $httpClient->getRequest('/users/');
-        $lastAtSortNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
-        
-        $lastAtSortNewsByCate = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId=35');
-        $lastAtPub = $httpClient->getRequest('/publicize?page=0&size=3&sortBy=createdAt&sortOrder=desc');
-
-       
-
-        $result = [];
-        foreach ($lastAtSortNews['data']   as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-                
-            ];
-        }
-        $result1 = [];
-        foreach ($lastAtSortNewsByCate['data']  as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result1[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-                
-            ];
-        }
-        $result2 = [];
-        foreach ($lastAtPub['data']   as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result2[] = [
-                'id' => $item['id'],
-                'title' => $item['title'],
-                'fileSize' => $item['fileSize'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-                
-            ];
-        }
-        // dd(($data));
-        $count = count($data['data']);
-        $countFilePub = count($pub['data']);
-        $countTrian = count($train['data']);
-
-        $countLib = count($lib['data']);
-        $result = [];
-        foreach ($sortCateNews['data']   as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-                
-            ];
-        }
-        $firstName = $user['data']['firstNameKh'];
-        $lastName = $user['data']['lastNameKh'];
-        return view('Back-end.Pages.SortNews',[
-            'count' => $count,
-            'countFilePub' => $countFilePub,
-            'countLib' => $countLib,
-            'cate' => $cate,
-            'result' => $result,
-            'result1' => $result1,
-            'result2' => $result2,
-            'countTrian' => $countTrian,
-            'train' => $train,
-            'register' => $register,
-            'firstName' => $firstName,
-            'lastName' => $lastName
-        ]);
     }
 
     public function pagemake(){
