@@ -1,5 +1,10 @@
 @extends('Front-end.Layout')
 @section('content')
+
+<?php
+        // Retrieve the locale value from the session
+        $locale = session('locale');
+?>
     <!-- content -->
     <div class="container mt-5">
         <div class="row ">
@@ -17,8 +22,15 @@
                                 <small class="Siemreap mg-r-10px font-size-17">{{$formattedCreatedAt }}</small>
                                 <i class="fa-solid fa-eye"></i>
                                 <small class="Siemreap font-size-17">10k</small> |
+                                @php
+                                    $hyperlink = 'www.facebook.com';
+                                    if (!str_starts_with($hyperlink , 'http://') && !str_starts_with($hyperlink , 'https://')) {
+                                        $hyperlink = 'https://' . $hyperlink;
+                                        
+                                    }
+                                @endphp  
                                 {{-- <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $data['data']['category']['nameKh'] }}</span> --}}
-                                <a class="color-black" href="https://www.facebook.com/"><i class="fa-solid fa-share-from-square"></i></a>
+                                <a class="color-black" href="{{ $hyperlink }}"><i class="fa-solid fa-share-from-square"></i></a>
                             </div>
                         </div>
                     </div>
@@ -40,7 +52,7 @@
             <div class="col-lay-3M ml-5" >
                 <div class="row mt-5">
                     <div class="more-news-box col-lay-10">
-                        <h2 class="dangrek color-black font-size-35">ព័ត៌មានទាក់ទង</h2>
+                        <h2 class="nav-font color-black font-size-35" data-locale="{{ $locale }}">{{ __('messages.Related News') }}</h2>
                         <div class="divider-line-small"></div>
                     </div>
                 </div>
@@ -63,7 +75,7 @@
             <div class="col-lay-12 p-0">
                 <div class="row">
                     <div class="more-news-box col-lay-10 p-0">
-                        <h2 class="dangrek color-black font-size-35">ព័ត៌មានថ្មីៗ</h2>
+                        <h2 class="nav-font color-black font-size-35" data-locale="{{ $locale }}">{{ __('messages.Latest News') }}</h2>
                         <div class="col-3 p-0">
                             <div class="divider-line-small"></div>
                         </div>

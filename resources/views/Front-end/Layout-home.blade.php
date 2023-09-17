@@ -103,6 +103,10 @@
     justify-content: center;
 }
 </style>
+<?php
+        // Retrieve the locale value from the session
+        $locale = session('locale');
+?>
 <body>
     <!-- header -->
     <!-- <include id="header" class="header"></include> -->
@@ -138,10 +142,7 @@
                             </div>
                             <div class="col-lay-3">
                                 <!-- language -->
-                                <select class="selectpicker form-select mt-2" data-width="fit">
-                                    <option lang="kh" value='Khmer' ddata-content="<i class='fa fa-address-book-o' aria-hidden='true'></i>Option1"> Khmer</option>
-                                    <option>English</option>
-                                </select>
+                                @include('Front-end.language-selector.language-selector')
                                 <!-- -------------------- -->
                             </div>
                         </div>
@@ -165,62 +166,70 @@
 
         </div>
     </div>
-    <!-- navigation -->
-    <nav class="navbar navbar-expand-lg bg-color-355fb6 p-0">
-        <div class="container ">
-            <div class="collapse navbar-collapse  " id="navbarSupportedContent">
-                <ul class="navbar-nav m-auto ">
-                    <li class="nav-item {{ Route::currentRouteNamed('front.home') ? 'actived' : '' }}"><a class="nav-link nav-font " aria-current="page" href="{{ route('front.home') }}">ទំព័រដើម</a></li>
-                    <li class="nav-item {{ Route::currentRouteNamed('front.news') ? 'actived' : '' }}"><a class="nav-link nav-font" aria-current="page" href="{{ route('front.news') }}">ព័ត៌មាន</a></li>
-                    <li class="nav-item dropdown {{ Route::currentRouteNamed('front.work.dp1') ? 'actived' : '' }}">
-                        <a class="nav-link dropdown-toggle nav-font" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">ការងារបណ្តុះបណ្តាល</a>
-                        <ul class="dropdown-menu">
-                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item Siemreap ml-2 {{ Route::currentRouteNamed('front.work.dp1') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}">ផែនការបណ្តុះបណ្តាលប្រចាំឆ្នាំ</a></li>
-                            <li class="dropend mg-l-m10 pd-r-8">
-                                <a class="dropdown-item ml-2 Siemreap" href="">ឯកសារបណ្តុះបណ្តាល</a>
-                                <ul class="dropdown-menu">
-                                    @foreach ($cateSub['data'] as $dd)
-                                    <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('front.work.dp2Content', $dd['id']) }}">
+   <!-- navigation -->
+   <nav class="navbar navbar-expand-lg bg-color-355fb6 p-0">
+    <div class="container ">
+        <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto ">
+                <li  class="nav-item {{ Route::currentRouteNamed('front.home') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"   href="{{ route('front.home') }}">{{ __('messages.Home') }}</a></li>
+                <li class="nav-item {{ Route::currentRouteNamed('front.news', 'front.subnews') ? 'actived' : '' }}"><a class="nav-link nav-font"   data-locale="{{ $locale }}"  href="{{ route('front.news') }}">{{ __('messages.News') }}</a></li>
+                <li class="nav-item dropdown {{ Route::currentRouteNamed('front.work.dp1' , 'front.work.dp2Content' , 'front.work.dp3')  ? 'actived' : '' }}">
+                    <a class="nav-link dropdown-toggle nav-font "  data-locale="{{ $locale }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.Training') }}</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{  Route::currentRouteNamed('front.work.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.work.dp1') }}">{{ __('messages.Annual training plan') }}</a></li>
+                        <li class="dropend mg-l-m10 pd-r-8">
+                            <a class="dropdown-item ml-2 dp-font {{  Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}" href="">{{ __('messages.Training documents') }}</a>
+                            <ul class="dropdown-menu">
+                                @foreach ($cateSub['data'] as $dd)
+                                <li>
+                                    <a class="dropdown-item dp-font {{ request()->is('work/dp2/'. $dd['id']) ? 'drop-actived' : '' }}"
+                                        href="{{ route('front.work.dp2Content', $dd['id']) }}">
+                                        @if (app()->getLocale() === 'kh')
                                             {{ $dd['titleKh'] }}
-                                        </a>
-                                    </li>
-                                     @endforeach
-                                </ul> 
-                            </li>
-                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item Siemreap ml-2 {{ Route::currentRouteNamed('front.enrollMent') ? 'drop-actived' : '' }}" href="{{ route('front.enrollMent') }}">ចុះឈ្មោះចូលរៀន</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link nav-font" aria-current="page" href="{{ route('front.liby') }}">បណ្ណាល័យ</a></li>
-                    <li class="nav-item"><a class="nav-link nav-font" aria-current="page" href="{{ route('front.scholar') }}">ការផ្សព្វផ្សាយ</a></li>
-                    <li class="nav-item dropdown 
-                    {{ Route::currentRouteNamed([
-                        'front.aboutschool.dp1',
-                        'front.aboutschool.dp2',
-                        'front.aboutschool.dp3',
-                        'front.aboutschool.dp4',
-                        'front.aboutschool.dp5',
-                        'front.aboutschool.dp6',
-                        'front.aboutschool.dp7',
-                        'front.aboutschool.dp8',
-                    ] ) ? 'actived' : '' }}">
-                        <a class="nav-link dropdown-toggle nav-font" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">អំពីសាលា</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp1') }}">សារឯកឧត្តមនាយកសាលា</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp2') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp2') }}">ផែនការ​យុទ្ធសាស្រ្ត​ ស្តីពីការអភិវឌ្ឍសមត្ថភាព</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp3') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp3') }}">ដៃគូសការ</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp4') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp4') }}">នាយកដ្ឋានចំណុះសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp5') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp5') }}">រចនាសម្ព័ន្ធសាលាជាតិរដ្ឋាបាលមូលដ្ឋាន</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp6') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp6') }}">សមាសភាពថ្នាក់ដឹកនាំ</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp7') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp7') }}">កម្មវិធីសិក្សា</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp8') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp8') }}">ទំនាក់ទំនង</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                                        @else
+                                            @if ($dd['title'] !== null)
+                                                {{ $dd['title'] }}
+                                            @else
+                                                {{ $dd['titleKh'] }}
+                                            @endif
+                                        @endif
+                                    </a>
+                                </li>
+                                 @endforeach
+                            </ul> 
+                        </li>
+                        <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{ Route::currentRouteNamed('front.enrollMent') ? 'drop-actived' : '' }}" href="{{ route('front.enrollMent') }}">{{ __('messages.Enroll') }}</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item {{ Route::currentRouteNamed('front.liby') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.liby') }}">{{ __('messages.Library') }}</a></li>
+                <li class="nav-item {{ Route::currentRouteNamed('front.scholar') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.scholar') }}">{{ __('messages.Advertising') }}</a></li>
+                <li class="nav-item dropdown 
+                {{ Route::currentRouteNamed([
+                    'front.aboutschool.dp1',
+                    'front.aboutschool.dp2',
+                    'front.aboutschool.dp3',
+                    'front.aboutschool.dp4',
+                    'front.aboutschool.dp5',
+                    'front.aboutschool.dp6',
+                    'front.aboutschool.dp7',
+                    'front.aboutschool.dp8',
+                ] ) ? 'actived' : '' }}">
+                    <a class="nav-link dropdown-toggle nav-font"  data-locale="{{ $locale }}"  href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.About the school') }}</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp1') }}">{{ __('messages.Message from the Principal') }}</a></li>
+                        <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp2') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp2') }}">{{ __('messages.Strategic Plan on Capacity Development') }}</a></li>
+                        <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp3') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp3') }}">{{ __('messages.Partner') }}</a></li>
+                        <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp4') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp4') }}">{{ __('messages.Department of National School of Local Administration') }}</a></li>
+                        <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp5') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp5') }}">{{ __('messages.Structure of the National School of Local Administration') }}</a></li>
+                        <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp6') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp6') }}">{{ __('messages.Leadership composition') }}</a></li>
+                        <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp7') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp7') }}">{{ __('messages.Curriculum') }}</a></li>
+                        <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp8') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp8') }}">{{ __('messages.Contact') }}</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
     <!-----Content-------->
     @yield('content')
     <!-- -------------------------------------- -->

@@ -1,11 +1,15 @@
 @extends('Front-end.Layout')
 @section('content')
+<?php
+        // Retrieve the locale value from the session
+        $locale = session('locale');
+?>
      <!-- Content title -->
      <div class="container mt-4">
         <div class="row">
             <div class="row">
                 <div class="col-lay-5 d-flex mg-l-m10">
-                    <h2 class="dangrek color-blue-355fb6">ដៃគូរសហការ</h2>
+                    <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Partner') }}</h2>
                 </div>
                 {{-- <div class="col-lay-5 ">
                     <form class="float-end " action="">

@@ -116,7 +116,6 @@ class UserController extends Controller
             'lastName' => 'required|max:255',
             'lastNameKh' => 'required|max:255',
             'userName' => 'required',
-            'password' => 'required',
             'role' => 'required',
         ]);
         $body = [

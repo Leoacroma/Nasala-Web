@@ -23,9 +23,10 @@
     <link rel="stylesheet" href="{{ asset('/css-front/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('/css-front/font.css') }}">
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css') }}" />
-    <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.css">
-    <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.min.css">
+    {{-- <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.css">
+    <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.min.css"> --}}
     <title>NASALA</title>
+    
 </head>
 <style>
     .col-lay-1 {
@@ -102,7 +103,12 @@
     justify-content: center;
 }
 </style>
-<body>
+
+<?php
+        // Retrieve the locale value from the session
+        $locale = session('locale');
+?>
+<body >
     <!-- header -->
     <!-- <include id="header" class="header"></include> -->
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
@@ -135,12 +141,9 @@
                                 <a href=""><i class="fa-brands fa-youtube  font-size-40 color-red"></i></a>
                                 <a href=""><i class="fa-brands fa-square-facebook  font-size-40 color-blue"></i></a>
                             </div>
-                            <div class="col-lay-3">
+                            <div class="col-lay-3 mt-2">
                                 <!-- language -->
-                                <select class="selectpicker form-select mt-2" data-width="fit">
-                                    <option lang="kh" value='Khmer' ddata-content="<i class='fa fa-address-book-o' aria-hidden='true'></i>Option1"> Khmer</option>
-                                    <option>English</option>
-                                </select>
+                                @include('Front-end.language-selector.language-selector')
                                 <!-- -------------------- -->
                             </div>
                         </div>
@@ -155,30 +158,38 @@
         <div class="container ">
             <div class="collapse navbar-collapse  " id="navbarSupportedContent">
                 <ul class="navbar-nav m-auto ">
-                    <li  class="nav-item {{ Route::currentRouteNamed('front.home') ? 'actived' : '' }}"><a class="nav-link nav-font"    href="{{ route('front.home') }}">ទំព័រដើម</a></li>
-                    <li class="nav-item {{ Route::currentRouteNamed('front.news', 'front.subnews') ? 'actived' : '' }}"><a class="nav-link nav-font"  href="{{ route('front.news') }}">ព័ត៌មាន</a></li>
+                    <li  class="nav-item {{ Route::currentRouteNamed('front.home') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"   href="{{ route('front.home') }}">{{ __('messages.Home') }}</a></li>
+                    <li class="nav-item {{ Route::currentRouteNamed('front.news', 'front.subnews') ? 'actived' : '' }}"><a class="nav-link nav-font"   data-locale="{{ $locale }}"  href="{{ route('front.news') }}">{{ __('messages.News') }}</a></li>
                     <li class="nav-item dropdown {{ Route::currentRouteNamed('front.work.dp1' , 'front.work.dp2Content' , 'front.work.dp3')  ? 'actived' : '' }}">
-                        <a class="nav-link dropdown-toggle nav-font " href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">ការងារបណ្តុះបណ្តាល</a>
+                        <a class="nav-link dropdown-toggle nav-font "  data-locale="{{ $locale }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.Training') }}</a>
                         <ul class="dropdown-menu">
-                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item Siemreap ml-2 {{  Route::currentRouteNamed('front.work.dp1') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}">ផែនការបណ្តុះបណ្តាលប្រចាំឆ្នាំ</a></li>
+                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{  Route::currentRouteNamed('front.work.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.work.dp1') }}">{{ __('messages.Annual training plan') }}</a></li>
                             <li class="dropend mg-l-m10 pd-r-8">
-                                <a class="dropdown-item ml-2 Siemreap {{  Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}" href="">ឯកសារបណ្តុះបណ្តាល</a>
+                                <a class="dropdown-item ml-2 dp-font {{  Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}" href="">{{ __('messages.Training documents') }}</a>
                                 <ul class="dropdown-menu">
                                     @foreach ($cateSub['data'] as $dd)
                                     <li>
-                                        <a class="dropdown-item {{ request()->is('work/dp2/'. $dd['id']) ? 'drop-actived' : '' }}"
+                                        <a class="dropdown-item dp-font {{ request()->is('work/dp2/'. $dd['id']) ? 'drop-actived' : '' }}"
                                             href="{{ route('front.work.dp2Content', $dd['id']) }}">
-                                            {{ $dd['titleKh'] }}
+                                            @if (app()->getLocale() === 'kh')
+                                                {{ $dd['titleKh'] }}
+                                            @else
+                                                @if ($dd['title'] !== null)
+                                                    {{ $dd['title'] }}
+                                                @else
+                                                    {{ $dd['titleKh'] }}
+                                                @endif
+                                            @endif
                                         </a>
                                     </li>
                                      @endforeach
                                 </ul> 
                             </li>
-                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item Siemreap ml-2 {{ Route::currentRouteNamed('front.enrollMent') ? 'drop-actived' : '' }}" href="{{ route('front.enrollMent') }}">ចុះឈ្មោះចូលរៀន</a></li>
+                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{ Route::currentRouteNamed('front.enrollMent') ? 'drop-actived' : '' }}" href="{{ route('front.enrollMent') }}">{{ __('messages.Enroll') }}</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item {{ Route::currentRouteNamed('front.liby') ? 'actived' : '' }}"><a class="nav-link nav-font" aria-current="page" href="{{ route('front.liby') }}">បណ្ណាល័យ</a></li>
-                    <li class="nav-item {{ Route::currentRouteNamed('front.scholar') ? 'actived' : '' }}"><a class="nav-link nav-font" aria-current="page" href="{{ route('front.scholar') }}">ការផ្សព្វផ្សាយ</a></li>
+                    <li class="nav-item {{ Route::currentRouteNamed('front.liby') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.liby') }}">{{ __('messages.Library') }}</a></li>
+                    <li class="nav-item {{ Route::currentRouteNamed('front.scholar') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.scholar') }}">{{ __('messages.Advertising') }}</a></li>
                     <li class="nav-item dropdown 
                     {{ Route::currentRouteNamed([
                         'front.aboutschool.dp1',
@@ -190,16 +201,16 @@
                         'front.aboutschool.dp7',
                         'front.aboutschool.dp8',
                     ] ) ? 'actived' : '' }}">
-                        <a class="nav-link dropdown-toggle nav-font" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">អំពីសាលា</a>
+                        <a class="nav-link dropdown-toggle nav-font"  data-locale="{{ $locale }}"  href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.About the school') }}</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp1') }}">សារឯកឧត្តមនាយកសាលា</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp2') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp2') }}">ផែនការ​យុទ្ធសាស្រ្ត​ ស្តីពីការអភិវឌ្ឍសមត្ថភាព</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp3') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp3') }}">ដៃគូសការ</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp4') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp4') }}">នាយកដ្ឋានចំណុះសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp5') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp5') }}">រចនាសម្ព័ន្ធសាលាជាតិរដ្ឋាបាលមូលដ្ឋាន</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp6') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp6') }}">សមាសភាពថ្នាក់ដឹកនាំ</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp7') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp7') }}">កម្មវិធីសិក្សា</a></li>
-                            <li><a class="dropdown-item Siemreap {{ Route::currentRouteNamed('front.aboutschool.dp8') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp8') }}">ទំនាក់ទំនង</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp1') }}">{{ __('messages.Message from the Principal') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp2') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp2') }}">{{ __('messages.Strategic Plan on Capacity Development') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp3') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp3') }}">{{ __('messages.Partner') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp4') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp4') }}">{{ __('messages.Department of National School of Local Administration') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp5') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp5') }}">{{ __('messages.Structure of the National School of Local Administration') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp6') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp6') }}">{{ __('messages.Leadership composition') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp7') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp7') }}">{{ __('messages.Curriculum') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp8') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp8') }}">{{ __('messages.Contact') }}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -214,33 +225,42 @@
         <div class="container-field bg-color-355fb6">
             <div class="container">
                 <div class="row mt-3 p-2">
-                    <div class="col-lay-1S color-white Siemreap font-size-17">
-                        <span>អំពីសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
+                    <div class="col-lay-1S color-white dp-font font-size-17" data-locale="{{ $locale }}">
+                        <span>{{ __('messages.About National School of Local Administration') }}</span>
                         <span>
-                            <ul>
-                                <li>អំពីសាលា</li>
-                                <li>ទំនាក់ទំនង</li>
-                                <li>រចនាសម្ព័ន្ធ</li>
+                            <ul >
+                                <li><a class="color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp3') }}">{{ __('messages.About the school') }}</a></li>
+                                <li><a class="color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp7') }}">{{ __('messages.Contact') }}</a></li>
+                                <li><a class="color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp8') }}">{{ __('messages.Structure') }}</a></li>
                             </ul>
                         </span>
                     </div>
-                    <div class="col-lay-3S color-white Siemreap font-size-17">
-                        <span>ទំនាក់ទំនង</span>
+                    <div class="col-lay-3S color-white dp-font font-size-17" data-locale="{{ $locale }}">
+                        <span>{{ __('messages.Contact') }}</span>
                         <span>
                             <ul class="list-unstyled">
+                                @php
+                                    $hyperlink = 'www.facebook.com';
+                                    $email =  'nasala@gmail.com';
+                                    if (!str_starts_with($hyperlink && $email, 'http://') && !str_starts_with($hyperlink && $email, 'https://')) {
+                                        $hyperlink = 'https://' . $hyperlink;
+                                        $email = 'https://' . $email;
+                                    }
+                                @endphp  
                                 <li><i class="fa-solid fa-square-phone mg-r-10px" ></i>023 456 789</li>
-                                <li><i class="fa-solid fa-square-envelope mg-r-10px" ></i>nasala@gmail.com</li>
-                                <li><i class="fa-brands fa-square-facebook mg-r-10px" ></i>https://www.facebook.com/training.interior</li>
-                                <li><i class="fa-solid fa-location-dot mg-r-10px" ></i>ភូមិត្រពាំងវែង សង្កាត់គោករកា ខណ្ឌព្រែកព្នៅ រាជធានីភ្នំពេញ</li>
+                                <li><i class="fa-solid fa-square-envelope mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $email }}">nasala@gmail.com</a></li>
+                               
+                                <li><i class="fa-brands fa-square-facebook mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $hyperlink }}">facebook.com</a></li>
+                                <li><i class="fa-solid fa-location-dot mg-r-10px" ></i>{{ __('messages.Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.') }}</li>
                             </ul>
                         </span>
                     </div>
-                    <div class="col-lay-1S color-white Siemreap font-size-17">
-                        <span>ដៃគូរសហការ</span>
+                    <div class="col-lay-1S color-white dp-font font-size-17" data-locale="{{ $locale }}">
+                        <span>{{ __('messages.Partner') }}</span>
                         <span>
-                            <ul>
-                                <li>ស្ថាប័នរាជរដ្ឋាភិបាល</li>
-                                <li>ដៃគូរអភិវឌ្ឍន៏នានា</li>
+                            <ul >
+                                <li>{{ __('messages.Government Institutions') }}</li>
+                                <li>{{ __('messages.Development Partners') }}</li>
                             </ul>
                         </span>
                     </div>
@@ -250,8 +270,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lay-10 bg-colo-white text-algin-center Siemreap font-size-20 p-1 color-blue-355fb6">
-                <span>រក្សាសិទ្ធ <i class="fa-regular fa-copyright"></i> ២០២២ សាលារដ្ឋបាលមូលដ្ឋាន ក្រសួងមហាផ្ទៃ</span>
+            <div  class="col-lay-10 bg-colo-white dp-font text-algin-center Siemreap font-size-20 p-1 color-blue-355fb6" data-locale="{{ $locale }}">
+                <span>{{ __('messages.Copyright') }} <i class="fa-regular fa-copyright"></i>{{ __('messages.2022 Local Administration School, Ministry of Interior') }}</span>
             </div>
         </div>
     </footer>

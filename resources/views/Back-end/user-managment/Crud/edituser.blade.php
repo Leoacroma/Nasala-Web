@@ -47,8 +47,8 @@
                   </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1 ">Password <span class="required"></span></label>
-                    <input type="password" name="password" class="form-control" id="exampleFormControlInput1" placeholder="Password" required>
+                    <label for="exampleFormControlInput1 ">Password </label>
+                    <input type="password" name="password" class="form-control" id="exampleFormControlInput1" placeholder="Password" >
                 </div>
             </div>
             <div class="modal-footer">

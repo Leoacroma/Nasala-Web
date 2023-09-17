@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Http;
 use PhpParser\Node\Expr\Cast\String_;
 use RealRashid\SweetAlert\Facades\Alert;
 use Dompdf\Dompdf;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
 class Controller extends BaseController
@@ -31,7 +32,7 @@ class Controller extends BaseController
             $dataSort1 = $httpClient->getRequest('/news?page=0&size=1&sortBy=createdAt&sortOrder=desc');
             $dataSort3 = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
             $cateSub = $httpClient->getRequest('/training/posts');
-         
+            // session()->put('locale', 'kh');
             $SortLastedPub = $httpClient->getRequest('/publicize?page=0&sortOrder=desc&size=3&sortBy=createdAt');
             $result = [];
             foreach ($dataSort1['data'] as $item) {
@@ -40,6 +41,7 @@ class Controller extends BaseController
                 $result[] = [
                     'id' => $item['id'],
                     'titleKh' => $item['titleKh'],
+                    'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
                     'createdAt' => $formattedCreatedAt,
@@ -52,6 +54,7 @@ class Controller extends BaseController
                 $result1[] = [
                     'id' => $item['id'],
                     'titleKh' => $item['titleKh'],
+                    'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
                     'createdAt' => $formattedCreatedAt,
@@ -101,6 +104,7 @@ class Controller extends BaseController
                 $result[] = [
                     'id' => $item['id'],
                     'titleKh' => $item['titleKh'],
+                    'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
                     'createdAt' => $formattedCreatedAt,
@@ -136,6 +140,7 @@ class Controller extends BaseController
                 $result[] = [
                     'id' => $item['id'],
                     'titleKh' => $item['titleKh'],
+                    'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
                     'createdAt' => $formattedCreatedAt,
@@ -167,6 +172,7 @@ class Controller extends BaseController
                 $result[] = [
                     'id' => $item['id'],
                     'titleKh' => $item['titleKh'],
+                    'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
                     'createdAt' => $formattedCreatedAt,
@@ -210,6 +216,7 @@ class Controller extends BaseController
             $result[] = [
                 'id' => $item['id'],
                 'titleKh' => $item['titleKh'],
+                'title' => $item['title'],
                 'category' => $item['category'],
                 'thumbnailImageId' => $item['thumbnailImageId'],
                 'createdAt' => $formattedCreatedAt,
@@ -873,7 +880,4 @@ class Controller extends BaseController
         return view('Back-end.Pages.Post.news.post');
     }
 
-    // public function postcate(){
-    //     return view('Back-end.Pages.Post.news.postcate');
-    // }
 } 

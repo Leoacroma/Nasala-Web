@@ -1,11 +1,16 @@
 @extends('Front-end.Layout')
 @section('content')
+<?php
+        // Retrieve the locale value from the session
+        $locale = session('locale');
+?>
     <!-- Content title -->
     <div class="container mt-4">
         <div class="row">
             <div class="row">
                 <div class="col-lay-5 d-flex mg-l-m10">
-                    <h2 class="dangrek color-blue-355fb6">បណ្ណាល័យ</h2>
+                  <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Library') }}</h2>
+
                 </div>
                 <div class="col-lay-5 ">
                     <form class="float-end " action="{{ route('searchLib.lib') }}" method="GET">
@@ -39,22 +44,22 @@
         </div>
         <div class="col-lay-1"></div>
         <div class="col-lay-6">
-            @foreach ($result as $item)
-                <div class="row p-0 mb-3">
-                    <div class="col-lay-1">
-                        <img src="{{ asset('images/front/pdf.png') }}" alt="" width="75px">
-                    </div>
-                    <div class="col-lay-6">
-                        <h1 class="Siemreap font-size-25">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 40, $end = '...') }}</h1>
-                        <small class="Siemreap">កាលបរិច្ឆេទ ៖ {{ $item['createdAt'] }}</small>
-                    </div>
-                    <div class="col-3"> 
-                        <small class="Siemreap" >ទំហំ ៖ {{ number_format($item['fileSize'] / 1024) }} Kbytes</small>
-                        <a  href="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}" class="btn btn-info Siemreap" download><i class="fa-solid fa-download mr-2"></i>ទាញយកឯកសារ</a>
-                        
-                    </div>
-                </div>
-            @endforeach
+          @foreach ($result as $item)
+          <div class="row p-0 mb-3">
+              <div class="col-lay-1">
+                  <img src="{{ asset('images/front/pdf.png') }}" alt="" width="60px">
+              </div>
+              <div class="col-lay-6">
+                  <h1 class="Siemreap font-size-20">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 50, $end = '...') }}</h1>
+                  <small class="Siemreap">កាលបរិច្ឆេទ ៖ {{ $item['createdAt'] }}</small>
+              </div>
+              <div class="col-3"> 
+                  <small class="dp-font" data-locale="{{ $locale }}" >{{ __('messages.Filesize') }} ៖ {{ number_format($item['fileSize'] / 1024) }} Kbytes</small>
+                  <a  href="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}" class="btn btn-success Siemreap" download><i class="fa-solid fa-download mr-2"></i>{{ __('messages.Download') }}</a>
+                  
+              </div>
+          </div>
+      @endforeach
             
             <div class="container ">
                 <div class="row ">

@@ -32,6 +32,11 @@ body {
 }
 
 .nav-font {
+    font-family: 'Arial', sans-serif;
+    font-size: 25px;
+}
+
+.nav-font[data-locale="kh"] {
     font-family: 'Dangrek';
     font-size: 28px;
 }
@@ -291,6 +296,15 @@ p.indent {
     color: #14274c;
 }
 
+.footer-hover-underline-animation {
+    transition: 0.6s ease-in-out;
+}
+
+.footer-hover-underline-animation:hover {
+    text-decoration: underline;
+    color: white;
+}
+
 
 /* chart */
 
@@ -426,6 +440,3 @@ right connector from last child*/
 
 
 /*Connector styles on hover*/
-
-.tree li a:hover+ul li::after,
-.tree li a:hover+u

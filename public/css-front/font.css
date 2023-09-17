@@ -3,22 +3,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Siemreap&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@100&display=swap');
-@import "/node_modules/flag-icons/css/flag-icons.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Battambang:wght@400;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Battambang:wght@400;900&family=Kantumruy+Pro:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100;300;600&family=PT+Sans&display=swap');
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.cdnfonts.com/css/arial-2');
 
 /* font */
 
-.Siemreap {
-    /* font-family: 'Battambang', cursive; */
+.dp-font {
+    font-family: 'Arial', sans-serif;
+}
+
+.dp-font[data-locale="kh"] {
     font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 600;
+}
+
+.Siemreap {
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 600;
+}
+
+body[data-locale="kh"].dangrek {
+    /* font-family: 'Kantumruy Pro', sans-serif; */
+    font-family: 'Dangrek';
 }
 
 .dangrek {
     /* font-family: 'Kantumruy Pro', sans-serif; */
-    font-family: 'Dangrek';
+    /* font-family: 'Helvetica Neue', sans-serif; */
+    font-family: 'Open Sans', sans-serif;
 }
 
 
