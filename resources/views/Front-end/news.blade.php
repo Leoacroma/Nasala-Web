@@ -2,7 +2,7 @@
 @section('content')
 <?php
         // Retrieve the locale value from the session
-        $locale = session('locale');
+        $locale = app()->getLocale();
 ?>
     <!-- Content title -->
     <div class="container mt-4">
@@ -37,19 +37,20 @@
                         <img class="mb-3" src="https://nasla.k5moi.com/v1/api/files/{{$item['thumbnailImageId'] }}" alt="" width="400px" height="300px">
                       @if (app()->getLocale() === 'kh')
                         <span class="font-size-20  hover-title-animate Siemreap">
-                            {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 85, $end = '...')}}
+                            {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 80, $end = '...')}}
                         </span>
                     @else
                         @if ($item['title'] !== null)
                             <span class="font-size-20  hover-title-animate Siemreap">
-                                {{\Illuminate\Support\Str::limit($item['title'], $limit = 85, $end = '...')}}
+                                {{\Illuminate\Support\Str::limit($item['title'], $limit = 80, $end = '...')}}
                             </span>
                         @else
                             <span class="font-size-20  hover-title-animate Siemreap">
-                                {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 85, $end = '...')}}
+                                {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 80, $end = '...')}}
                             </span>
                         @endif
                     @endif
+                    <br/>
                         <small class="font-size-15">{{ $item['createdAt'] }}</small>
                         {{-- <span class="badge bg-warning text-dark Siemreap font-size-12">{{ $item['category']['nameKh'] }}</span> --}}
                     </a>

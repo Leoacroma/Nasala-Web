@@ -10,7 +10,7 @@
 </style>
 <?php
         // Retrieve the locale value from the session
-        $locale = session('locale');
+        $locale = app()->getLocale();
 ?>
     <!-- Content title -->
     <div class="container mt-4">

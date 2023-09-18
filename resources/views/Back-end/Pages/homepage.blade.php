@@ -1,5 +1,12 @@
 @extends('Back-end.Layout.index')
 @section('template')
+<style>
+    .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+</style>
 
 <div class="main-panel">
     <div class="content-wrapper">
@@ -82,13 +89,13 @@
                                                 @foreach ($result1 as $dd)
                                                     <div class="col">
                                                         <div class="card" >
-                                                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}" style="height: 200px;" class="card-img-top" alt="Hollywood Sign on The Hill"/>
-                                                        <div class="card-body">
-                                                            <span class="card-title Siemreap" style="font-size: 15px;">{{ \Illuminate\Support\Str::limit($dd['titleKh'], $limit = 90, $end = '...')}}</span>
-                                                            <br/>
-                                                            <small class="text-muted Siemreap">{{ $dd['createdAt'] }}</small>
+                                                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}"  class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                            <div class="card-body">
+                                                                <span class="card-title Siemreap" style="font-size: 15px;">{{ \Illuminate\Support\Str::limit($dd['titleKh'], $limit = 90, $end = '...')}}</span>
+                                                                <br/>
+                                                                <small class="text-muted Siemreap">{{ $dd['createdAt'] }}</small>
 
-                                                        </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endforeach

@@ -8,12 +8,16 @@
       color: #355fb6;
   }
 </style>
+<?php
+        // Retrieve the locale value from the session
+        $locale = app()->getLocale();
+?>
     <!-- Content title -->
     <div class="container mt-4">
         <div class="row">
             <div class="row">
                 <div class="col-lay-5 d-flex mg-l-m10">
-                    <h2 class="dangrek color-blue-355fb6">បណ្ណាល័យ</h2>
+                    <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Library') }}</h2>
                 </div>
                 <div class="col-lay-5 ">
                     <form class="float-end " action="{{ route('searchLib.lib') }}" method="GET">
@@ -38,8 +42,8 @@
     <div class="row mt-2 ">
         <div class="col-lay-3">
             <ul class="list-group  ">
-                <li class="list-group-item dangrek bg-color-355fb6 color-white font-size-25">ប្រភេទឯកសារ</li>
-                <li class="list-group-item "><a class="items-LG " href="{{ route('front.liby') }}">បង្ហាញទាំងអស់</a></li>
+                <li class="list-group-item dp-font bg-color-355fb6 color-white font-size-25" data-locale="{{ $locale }}">{{ __('messages.File type') }}</li>
+                <li class="list-group-item activated"><a class="items-LG  dp-font" href="{{ route('front.liby') }}" data-locale="{{ $locale }}">{{ __('messages.Show all') }}</a></li>
                 @foreach ($cate['data'] as $item)                    
                     <li class="list-group-item {{ request()->is('lib/cate/' . $item['id']) ? ' activated' : '' }}"><a class="items-LG " href="{{ route('sort.cate.lib', $item['id']) }}">{{ $item['nameKh'] }}</a></li>
                 @endforeach

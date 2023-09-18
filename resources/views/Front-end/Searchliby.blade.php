@@ -1,9 +1,9 @@
 @extends('Front-end.Layout')
 @section('content')
     <!-- Content title -->
-    <?php
-        // Retrieve the locale value from the session
-        $locale = session('locale');
+<?php
+    // Retrieve the locale value from the session
+    $locale = app()->getLocale();
 ?>
     <div class="container mt-4">
         <div class="row">

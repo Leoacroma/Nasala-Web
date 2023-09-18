@@ -2,7 +2,7 @@
 @section('content')
 <?php
         // Retrieve the locale value from the session
-        $locale = session('locale');
+        $locale = app()->getLocale();
 ?>
      <!-- -------------------------------------------- -->
     <!-- Content title -->
@@ -22,7 +22,7 @@
             <div class="col-lay-5 mb-3">
                 @foreach ($result as $item)
                 <a class="text-decoration-none color-black  hover-text hover-underline-animation" href="{{ route('front.subnews', $item['id']) }}">
-                    <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="100%" class=" img-class">
+                    <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-class img-vh">
                     @if (app()->getLocale() === 'kh')
                         <span class="font-size-25  hover-title-animate Siemreap">
                             {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 100, $end = '...')}}
@@ -52,7 +52,7 @@
                 <a class="text-decoration-none color-black Siemreap  hover-underline-animation " href="{{ route('front.subnews', $item['id']) }}">
                     <div class="row pt-2">
                         <div class="col-lay-4 p-0">
-                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="250" type="image/jpeg">
+                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-wv" type="image/jpeg">
                         </div>
                         <div class="col-lay-6 p-0">
                          @if (app()->getLocale() === 'kh')

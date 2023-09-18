@@ -3,20 +3,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Siemreap&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100;300;600&family=PT+Sans&display=swap');
-@import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.cdnfonts.com/css/arial-2');
+
+/* @import url('https://fonts.cdnfonts.com/css/arial-2'); */
+
 
 /* font */
 
+@font-face {
+    font-family: 'Arial';
+    /* Specify the font family name */
+    src: url('/fonts/ARIAL.TTF') format('TTF');
+    /* Path to the font file */
+}
+
+@font-face {
+    font-family: 'Dangrek';
+    /* Specify the font family name */
+    src: url('/fonts/DANGREK.TTF') format('TTF');
+    /* Path to the font file */
+}
+
+@font-face {
+    font-family: 'Kantumruy Pro';
+    /* Specify the font family name */
+    src: url('/fonts/KANTUMRUY.TTF') format('TTF');
+    /* Path to the font file */
+}
+
 .dp-font {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial';
 }
 
 .dp-font[data-locale="kh"] {
-    font-family: 'Kantumruy Pro', sans-serif;
+    font-family: 'Kantumruy Pro';
     font-weight: 600;
 }
 

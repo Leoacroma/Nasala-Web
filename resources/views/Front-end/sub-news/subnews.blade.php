@@ -3,7 +3,7 @@
 
 <?php
         // Retrieve the locale value from the session
-        $locale = session('locale');
+        $locale = app()->getLocale();
 ?>
     <!-- content -->
     <div class="container mt-5">
@@ -60,7 +60,7 @@
                     <a class="text-decoration-none color-black hover-underline-animation " href="{{ route('front.subnews', $item['id']) }}">
                         <div class="row mt-2">
                             <div class="col-lay-5">
-                                <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="100%">
+                                <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="img-wh" alt="" >
                             </div>
                             <div class="col-lay-5 mg-l-m10 hover-title-animate">
                                 <p class="Siemreap font-size-15">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...') }}</p>
@@ -83,10 +83,10 @@
                 </div>
                 <div class="row row-cols-1 row-cols-md-2 g-4 p-0">
                     @foreach ($result as $item)
-                        <a href="{{ route('front.subnews', $item['id']) }}" class="col" style="width: 400px; color: black">
+                        <a href="{{ route('front.subnews', $item['id']) }}" class="col" style="width: 400px;  color: black">
                             <div class="card">
-                                <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
-                              <div class="card-body">
+                                <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-size" alt="Hollywood Sign on The Hill" /> 
+                                <div class="card-body">
                                 <h5 class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...')}}</h5>
                                 <small class="Siemreap mg-r-10px ">{{ $item['createdAt'] }}</small>
                               </div>

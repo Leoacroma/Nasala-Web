@@ -30,42 +30,43 @@ use Illuminate\Support\Facades\Route;
 */
 //Front-end
     
-Route::post('/language/switch', [LanguageController::class, 'switchLanguage'])->name('language.switch')->middleware(SetLocaleFromSession::class);;
+Route::post('/language/switch', [LanguageController::class, 'switchLanguage'])->name('language.switch')->middleware(SetLocaleFromSession::class);
+
+Route::middleware([SetLocaleFromSession::class])->group(function ()  {
+    Route::prefix('/')->group(function(){
+        Route::get('/', [Controller::class, 'home'])->name('front.home');
+        Route::get('/news', [Controller::class, 'news'])->name('front.news');
+        Route::get('/news/subnews/{id}', [Controller::class, 'subenews'])->name('front.subnews');
+        Route::get('/news/page/{page}', [Controller::class, 'pageNews'])->name('page.news');
+        Route::get('/news/searchNews/{keyword?}', [Controller::class, 'searchNews'])->name('searchNews.news');
+        Route::get('/work/dp1', [Controller::class, 'dp1'])->name('front.work.dp1');
+        Route::get('/work/dp2/{id}', [Controller::class, 'dp2Content'])->name('front.work.dp2Content');
+        Route::get('/work/dp3', [Controller::class, 'dp3'])->name('front.work.dp3');
+
+        Route::get('/lib', [Controller::class, 'liby'])->name('front.liby');
+        Route::get('/lib/sort/cate/{id}', [Controller::class, 'cateLib'])->name('sort.cate.lib');
+        Route::get('/lib/page/{page}', [Controller::class, 'pageLib'])->name('page.lib');
+        Route::get('/lib/searchLib/{keyword?}', [Controller::class, 'searchLib'])->name('searchLib.lib');
+        Route::get('/lib/cate/{id}', [Controller::class, 'Nolib'])->name('front.nolib');
+
+        Route::get('/scholar',[Controller::class, 'scholar'])->name('front.scholar');
+        Route::get('/scholar/sub/{id}', [Controller::class, 'subScholar'])->name('front.subScholar');
+        Route::get('/scholar/page/{page}',[Controller::class, 'pageScholar'])->name('page.scholar');
+        Route::get('/scholar/search/{keyword?}', [Controller::class, 'searchScholar'])->name('search.scholar');
 
 
-Route::middleware([SetLocaleFromSession::class])->group(function () {
+        Route::get('/enroll/all', [Controller::class, 'enrollMent'])->name('front.enrollMent');
 
-    Route::get('/', [Controller::class, 'home'])->name('front.home');
-    Route::get('/news', [Controller::class, 'news'])->name('front.news');
-    Route::get('/news/subnews/{id}', [Controller::class, 'subenews'])->name('front.subnews');
-    Route::get('/news/page/{page}', [Controller::class, 'pageNews'])->name('page.news');
-    Route::get('/news/searchNews/{keyword?}', [Controller::class, 'searchNews'])->name('searchNews.news');
-    Route::get('/work/dp1', [Controller::class, 'dp1'])->name('front.work.dp1');
-    Route::get('/work/dp2/{id}', [Controller::class, 'dp2Content'])->name('front.work.dp2Content');
-    Route::get('/work/dp3', [Controller::class, 'dp3'])->name('front.work.dp3');
-
-    Route::get('/lib', [Controller::class, 'liby'])->name('front.liby');
-    Route::get('/lib/sort/cate/{id}', [Controller::class, 'cateLib'])->name('sort.cate.lib');
-    Route::get('/lib/page/{page}', [Controller::class, 'pageLib'])->name('page.lib');
-    Route::get('/lib/searchLib/{keyword?}', [Controller::class, 'searchLib'])->name('searchLib.lib');
-    Route::get('/lib/cate/{id}', [Controller::class, 'Nolib'])->name('front.nolib');
-
-    Route::get('/scholar',[Controller::class, 'scholar'])->name('front.scholar');
-    Route::get('/scholar/sub/{id}', [Controller::class, 'subScholar'])->name('front.subScholar');
-    Route::get('/scholar/page/{page}',[Controller::class, 'pageScholar'])->name('page.scholar');
-    Route::get('/scholar/search/{keyword?}', [Controller::class, 'searchScholar'])->name('search.scholar');
-
-
-    Route::get('/enroll/all', [Controller::class, 'enrollMent'])->name('front.enrollMent');
-
-    Route::get('/aboutschool/dp1', [Controller::class, 'aboutSchooldp1'])->name('front.aboutschool.dp1');
-    Route::get('/aboutschool/dp2', [Controller::class, 'aboutSchooldp2'])->name('front.aboutschool.dp2');
-    Route::get('/aboutschool/dp3', [Controller::class, 'aboutSchooldp3'])->name('front.aboutschool.dp3');
-    Route::get('/aboutschool/dp4', [Controller::class, 'aboutSchooldp4'])->name('front.aboutschool.dp4');
-    Route::get('/aboutschool/dp5', [Controller::class, 'aboutSchooldp5'])->name('front.aboutschool.dp5');
-    Route::get('/aboutschool/dp6', [Controller::class, 'aboutSchooldp6'])->name('front.aboutschool.dp6');
-    Route::get('/aboutschool/dp7', [Controller::class, 'aboutSchooldp7'])->name('front.aboutschool.dp7');
-    Route::get('/aboutschool/dp8', [Controller::class, 'aboutSchooldp8'])->name('front.aboutschool.dp8');
+        Route::get('/aboutschool/dp1', [Controller::class, 'aboutSchooldp1'])->name('front.aboutschool.dp1');
+        Route::get('/aboutschool/dp2', [Controller::class, 'aboutSchooldp2'])->name('front.aboutschool.dp2');
+        Route::get('/aboutschool/dp3', [Controller::class, 'aboutSchooldp3'])->name('front.aboutschool.dp3');
+        Route::get('/aboutschool/dp4', [Controller::class, 'aboutSchooldp4'])->name('front.aboutschool.dp4');
+        Route::get('/aboutschool/dp5', [Controller::class, 'aboutSchooldp5'])->name('front.aboutschool.dp5');
+        Route::get('/aboutschool/dp6', [Controller::class, 'aboutSchooldp6'])->name('front.aboutschool.dp6');
+        Route::get('/aboutschool/dp7', [Controller::class, 'aboutSchooldp7'])->name('front.aboutschool.dp7');
+        Route::get('/aboutschool/dp8', [Controller::class, 'aboutSchooldp8'])->name('front.aboutschool.dp8');
+    });
+    
 });
 
 

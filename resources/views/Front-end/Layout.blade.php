@@ -29,6 +29,8 @@
     
 </head>
 <style>
+
+    
     .col-lay-1 {
         flex: 0 0 10%;
         max-width: 10%;
@@ -106,8 +108,8 @@
 
 <?php
         // Retrieve the locale value from the session
-        $locale = session('locale');
-?>
+        $locale = app()->getLocale();
+?> 
 <body >
     <!-- header -->
     <!-- <include id="header" class="header"></include> -->
@@ -165,12 +167,12 @@
                         <ul class="dropdown-menu">
                             <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{  Route::currentRouteNamed('front.work.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.work.dp1') }}">{{ __('messages.Annual training plan') }}</a></li>
                             <li class="dropend mg-l-m10 pd-r-8">
-                                <a class="dropdown-item ml-2 dp-font {{  Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}" href="">{{ __('messages.Training documents') }}</a>
+                                <a class="dropdown-item ml-2 dp-font {{  Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}" data-locale="{{ $locale }}">{{ __('messages.Training documents') }}</a>
                                 <ul class="dropdown-menu">
                                     @foreach ($cateSub['data'] as $dd)
                                     <li>
                                         <a class="dropdown-item dp-font {{ request()->is('work/dp2/'. $dd['id']) ? 'drop-actived' : '' }}"
-                                            href="{{ route('front.work.dp2Content', $dd['id']) }}">
+                                            href="{{ route('front.work.dp2Content', $dd['id']) }}"  data-locale="{{ $locale }}">
                                             @if (app()->getLocale() === 'kh')
                                                 {{ $dd['titleKh'] }}
                                             @else
@@ -185,7 +187,7 @@
                                      @endforeach
                                 </ul> 
                             </li>
-                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{ Route::currentRouteNamed('front.enrollMent') ? 'drop-actived' : '' }}" href="{{ route('front.enrollMent') }}">{{ __('messages.Enroll') }}</a></li>
+                            <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{ Route::currentRouteNamed('front.enrollMent') ? 'drop-actived' : '' }}" href="{{ route('front.enrollMent') }}" data-locale="{{ $locale }}">{{ __('messages.Enroll') }}</a></li>
                         </ul>
                     </li>
                     <li class="nav-item {{ Route::currentRouteNamed('front.liby') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.liby') }}">{{ __('messages.Library') }}</a></li>
@@ -202,15 +204,15 @@
                         'front.aboutschool.dp8',
                     ] ) ? 'actived' : '' }}">
                         <a class="nav-link dropdown-toggle nav-font"  data-locale="{{ $locale }}"  href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.About the school') }}</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp1') }}">{{ __('messages.Message from the Principal') }}</a></li>
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp2') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp2') }}">{{ __('messages.Strategic Plan on Capacity Development') }}</a></li>
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp3') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp3') }}">{{ __('messages.Partner') }}</a></li>
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp4') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp4') }}">{{ __('messages.Department of National School of Local Administration') }}</a></li>
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp5') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp5') }}">{{ __('messages.Structure of the National School of Local Administration') }}</a></li>
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp6') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp6') }}">{{ __('messages.Leadership composition') }}</a></li>
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp7') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp7') }}">{{ __('messages.Curriculum') }}</a></li>
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp8') ? 'drop-actived' : '' }}" href="{{ route('front.aboutschool.dp8') }}">{{ __('messages.Contact') }}</a></li>
+                        <ul class="dropdown-menu" >
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp1') }}">{{ __('messages.Message from the Principal') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp2') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp2') }}">{{ __('messages.Strategic Plan on Capacity Development') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp3') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp3') }}">{{ __('messages.Partner') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp4') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp4') }}">{{ __('messages.Department of National School of Local Administration') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp5') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp5') }}">{{ __('messages.Structure of the National School of Local Administration') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp6') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp6') }}">{{ __('messages.Leadership composition') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp7') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp7') }}">{{ __('messages.Curriculum') }}</a></li>
+                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp8') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp8') }}">{{ __('messages.Contact') }}</a></li>
                         </ul>
                     </li>
                 </ul>
