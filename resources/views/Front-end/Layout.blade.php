@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('/css-front/styles.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css-front/frontStyle.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css-front/font.css') }}">
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css') }}" />
     {{-- <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.css">
