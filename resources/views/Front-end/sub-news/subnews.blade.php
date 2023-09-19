@@ -8,7 +8,7 @@
     <!-- content -->
     <div class="container mt-5">
         <div class="row ">
-            <div class="col-lay-6 p-0">
+            <div class="col-lay-6 p-0" style="max-width: 1000px" >
                 <div class="row">
                     <div class="col-lay-10 p-0 ">
                         <h2 class="Siemreap font-size-40 title">{{ $data['data']['titleKh'] }}</h2>
@@ -38,11 +38,6 @@
                 <div class="row">
                     <div class="col-lay-10 divider-line"></div>
                 </div>
-                {{-- <div class="row">
-                    <div class="col-lay-10 p-0 mt-3 text-algin-center">
-                        <img src="{{ $image }}" alt="" width="80%">
-                    </div>
-                </div> --}}
                 <div class="row">
                     <div class="col-lay-12  p-0 Siemreap ">
                         {!! $data['data']['contentKh'] !!}

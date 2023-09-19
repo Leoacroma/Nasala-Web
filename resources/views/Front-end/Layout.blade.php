@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css	">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" integrity="sha512-AZtJoEn5SfSZimv10x5NMO2gaZCdoU8nxtHJK8O4SbKNlQeb1ggkvf0b0QixuuXIjX3Tp5jzBbTWajki81Vl2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
 
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css-front/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('/css-front/font.css') }}">
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css') }}" />
@@ -27,83 +29,43 @@
     <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.min.css"> --}}
     <title>NASALA</title>
     
+    
 </head>
 <style>
 
+@font-face {
+    font-family: 'Arial';
+    /* Specify the font family name */
     
-    .col-lay-1 {
-        flex: 0 0 10%;
-        max-width: 10%;
-    }
+    src: url({{ asset('/fonts/ARIAL.TTF') }}) format('TTF');
+    /* Path to the font file */
+}
 
-    .col-lay-1S {
-        flex: 0 0 15%;
-        max-width: 15%;
-    }
+@font-face {
+    font-family: 'Dangrek', sans-serif;
+    src: url({{ asset('/fonts/DANGREK.TTF') }}) format('TTF');
+}
 
-    .col-lay-2 {
-        flex: 0 0 20%;
-        max-width: 20%;
-    }
-
-    .col-lay-2S {
-        flex: 0 0 23%;
-        max-width: 23%;
-    }
-
-    .col-lay-3 {
-        flex: 0 0 30%;
-        max-width: 30%;
-    }
-
-    .col-lay-3S {
-        flex: 0 0 31%;
-        max-width: 31%;
-    }
-
-    .col-lay-3M {
-        flex: 0 0 35%;
-        max-width: 35%;
-    }
-
-    .col-lay-4 {
-        flex: 0 0 40%;
-        max-width: 40%;
-    }
-
-    .col-lay-5 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-
-    .col-lay-6 {
-        flex: 0 0 60%;
-        max-width: 60%;
-    }
-
-    .col-lay-7 {
-        flex: 0 0 70%;
-        max-width: 70%;
-    }
-
-    .col-lay-8 {
-        flex: 0 0 80%;
-        max-width: 80%;
-    }
-
-    .col-lay-9 {
-        flex: 0 0 90%;
-        max-width: 90%;
-    }
-
-    .col-lay-10 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-    .pagination {
+@font-face {
+    font-family: 'Kantumruy Pro';
+    /* Specify the font family name */
+    src: url({{ asset('/fonts/KANTUMRUY.TTF') }}) format('TTF');
+}
+   
+.pagination {
     display: flex;
     justify-content: center;
 }
+/* .nav-font {
+    font-family: 'Arial';
+    font-size: 25px;
+}
+
+.nav-font[data-locale="kh"] {
+    font-family: 'Dangrek' !important;
+    font-size: 28px;
+} */
+
 </style>
 
 <?php

@@ -38,8 +38,8 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword4">Thumbnail<span class="required"></span> <span class="required"></span></label>
-                      <input type="file" name="thumbnailImageId" class="form-control file-upload-info" id="image-upload-input2" accept="image/*" required>
+                      <label for="exampleInputPassword4">Thumbnail</label>
+                      <input type="file" name="thumbnailImageId" class="form-control file-upload-info" id="image-upload-input2" accept="image/*">
                       <div  id="uploaded-image-container2" class="m-3"></div>
                       <img id="previous-img" src="{{ $image }}" alt="" width="250px" height="200px">
                     </div>

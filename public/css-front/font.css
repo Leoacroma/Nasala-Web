@@ -10,27 +10,6 @@
 
 /* font */
 
-@font-face {
-    font-family: 'Arial';
-    /* Specify the font family name */
-    src: url('/fonts/ARIAL.TTF') format('TTF');
-    /* Path to the font file */
-}
-
-@font-face {
-    font-family: 'Dangrek';
-    /* Specify the font family name */
-    src: url('/fonts/DANGREK.TTF') format('TTF');
-    /* Path to the font file */
-}
-
-@font-face {
-    font-family: 'Kantumruy Pro';
-    /* Specify the font family name */
-    src: url('/fonts/KANTUMRUY.TTF') format('TTF');
-    /* Path to the font file */
-}
-
 .dp-font {
     font-family: 'Arial';
 }
