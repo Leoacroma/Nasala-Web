@@ -142,7 +142,7 @@ class PostController extends Controller
         $lastName = $user['data']['lastNameKh'];
 
         $image_Id = $data['data']['thumbnailImageId'];
-        $image = 'http://188.166.211.230:9091/v1/api/files/'. $image_Id;
+        $image = 'https://nasla.k5moi.com/v1/api/files/'. $image_Id;
 
         return view('Back-end.Pages.Post.news.post.editPost',[
             'data' => $data,
@@ -161,13 +161,13 @@ class PostController extends Controller
     {
         //
         $request_ID = $id;
-        $validate = $request->validate([
-            'title' => 'required|max:255',
-            'titleKh' => 'required|max:255',
-            'categoryId' => 'required',
-            'content' => 'required',
-            'contentKh' => 'required',
-        ]);
+        // $validate = $request->validate([
+        //     'title' => 'required|max:255',
+        //     'titleKh' => 'required|max:255',
+        //     'categoryId' => 'required',
+        //     'content' => 'required',
+        //     'contentKh' => 'required',
+        // ]);
 
         $file = $request->file('thumbnailImageId');
         if($file != null ){
