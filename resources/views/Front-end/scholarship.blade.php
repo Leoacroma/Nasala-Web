@@ -9,7 +9,7 @@
         <div class="row">
             <div class="row">
                 <div class="col-lay-5 d-flex mg-l-m10">
-                  <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Advertising') }}</h2>
+                  <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Scholarship') }}</h2>
                 </div>
                 <div class="col-lay-5 ">
                     <form class="float-end " action="{{ route('search.scholar') }}" method="GET">

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Helpers\HttpClientHelper;
 use Illuminate\Support\Facades\Cookie;
+use Mockery\Expectation;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -18,21 +19,18 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
-        try {
-            $httpClient = new HttpClientHelper();
-            $data = $httpClient->getRequest('/categories');
-            $_COOKIE = Cookie::get('user_Id');
-            $user = $httpClient->getRequest('/users/'.$_COOKIE);
-            $firstName = $user['data']['firstNameKh'];
-            $lastName = $user['data']['lastNameKh'];
-            return view('Back-end.Pages.Post.news.postcate', [
-                'data' => $data,
-                'firstName' => $firstName,
-                'lastName' => $lastName
-            ]);
-        } catch (\Throwable $th) {
-            return redirect()->route('not-found');
-        }
+      
+        $httpClient = new HttpClientHelper();
+        $data = $httpClient->getRequest('/categories');
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
+        return view('Back-end.Pages.Post.news.postcate', [
+            'data' => $data,
+            'firstName' => $firstName,
+            'lastName' => $lastName
+        ]);
     }
 
     /**
@@ -66,7 +64,7 @@ class CategoriesController extends Controller
                 return redirect()->route('admin.postcate');    
             }
             return redirect()->back();
-        } catch (\Throwable $th) {
+        } catch (Expectation $e) {
             return redirect()->route('not-found');
         }
     }
@@ -84,25 +82,22 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        try {
-            $requestId = $id;
-            $httpClient = new HttpClientHelper();
-            $data = $httpClient->getRequest('/categories');
-            $datae = $httpClient->getRequest('/categories/'.$requestId);
-            $_COOKIE = Cookie::get('user_Id');
-            $user = $httpClient->getRequest('/users/'.$_COOKIE);
-            $firstName = $user['data']['firstNameKh'];
-            $lastName = $user['data']['lastNameKh'];
-            return view('Back-end.Pages.Post.news.categories.editcate', [
-                'data' => $data,
-                'datae' => $datae,
-                'firstName' => $firstName,
-                'lastName' => $lastName
-            ]);
-        } catch (\Throwable $th) {
-            return redirect()->route('not-found');
 
-        }
+        $requestId = $id;
+        $httpClient = new HttpClientHelper();
+        $data = $httpClient->getRequest('/categories');
+        $datae = $httpClient->getRequest('/categories/'.$requestId);
+        $_COOKIE = Cookie::get('user_Id');
+        $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        $firstName = $user['data']['firstNameKh'];
+        $lastName = $user['data']['lastNameKh'];
+        return view('Back-end.Pages.Post.news.categories.editcate', [
+            'data' => $data,
+            'datae' => $datae,
+            'firstName' => $firstName,
+            'lastName' => $lastName
+        ]);
+
        
     }
 
@@ -112,28 +107,26 @@ class CategoriesController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        try {
-            $requestId = $id;
-            $validation = $request->validate([
-                'name' => 'required|Max:30',
-                'nameKh' => 'required|Max:30',
-            ]);
-            $body = [
-                'name' => request('name'),
-                'nameKh' => request('nameKh'),
-            ];
-            $httpClient = new HttpClientHelper();
-            $data = $httpClient->getRequest('/categories');
-            $datae = $httpClient->putRequest('/categories/'.$requestId, $body);
+        $requestId = $id;
+        $body = [
+            'name' => request('name'),
+            'nameKh' => request('nameKh'),
+        ];
+        $httpClient = new HttpClientHelper();
+        // $data = $httpClient->getRequest('/categories');
+        $datae = $httpClient->putRequest('/categories/'.$requestId, $body);
+        // $_COOKIE = Cookie::get('user_Id');
+        // $user = $httpClient->getRequest('/users/'.$_COOKIE);
+        // $firstName = $user['data']['firstNameKh'];
+        // $lastName = $user['data']['lastNameKh'];
 
-            if($datae){
-                Alert::success('Update Successfully', 'Success Message');
-                return view('Back-end.Pages.Post.news.postcate',['data' => $data , 'datae' => $datae]);
-            }
-            return redirect()->back();
-        } catch (\Throwable $th) {
-            return redirect()->route('not-found');
+        if($datae){
+            Alert::success('Update Successfully', 'Success Message');
+            return redirect()->route('admin.postcate');    
+            // return view('Back-end.Pages.Post.news.postcate',['data' => $data , 'datae' => $datae,  'firstName' => $firstName,
+            // 'lastName' => $lastName]);
         }
+        return redirect()->back();
         
     }
 
@@ -143,19 +136,14 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
-        try {
-            $requestId = $id;
-            $httpClient = new HttpClientHelper();
-            $data = $httpClient->deleteRequest('/categories/'.$requestId);
-            if($data){
-                Alert::success('Delete Successfully', 'Success Message');
-                return redirect()->route('admin.postcate');
-            }
-            return redirect()->back();
-        } catch (\Throwable $th) {
-            return redirect()->route('not-found');
+        $requestId = $id;
+        $httpClient = new HttpClientHelper();
+        $data = $httpClient->deleteRequest('/categories/'.$requestId);
+        if($data){
+            Alert::success('Delete Successfully', 'Success Message');
+            return redirect()->route('admin.postcate');
         }
-       
+        return redirect()->back();
         
     }
 }

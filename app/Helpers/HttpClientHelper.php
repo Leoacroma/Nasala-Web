@@ -10,9 +10,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class HttpClientHelper
 {
-    private $apiBaseUrl = 'https://nasla.k5moi.com/v1/api';
-    private $apiOuthUrl = 'https://nasla.k5moi.com/oauth/';
+    // private $apiBaseUrl = 'https://nasla.k5moi.com/v1/api';
+    // private $apiOuthUrl = 'https://nasla.k5moi.com/oauth/';
 
+    private $apiBaseUrl = 'http://157.230.250.96:8080/v1/api';
+    private $apiOuthUrl = 'http://157.230.250.96:8080/oauth/';
 
     private $accessToken = '';
     private $clientId = '';
@@ -42,7 +44,6 @@ class HttpClientHelper
     }
 
     public function getRequest($url, $params = null){
-        try {
             //code...
             $client = new Client();
         $response = $client->get($this->apiBaseUrl . $url, [
@@ -52,15 +53,12 @@ class HttpClientHelper
         ]);
         $data = json_decode($response->getBody(), true);
         return $data;
-        } catch (RequestException $e) {
-            return redirect()->route('not-found');
-        }
+       
         
     }
     public function postRequest($url, $body = null){
-        try {
-            //code...
-            $client = new Client();
+
+        $client = new Client();
         $response = $client->post($this->apiBaseUrl . $url, [
             'headers' => [
                 'Authorization' => 'Bearer'. $this->accessToken,
@@ -71,36 +69,27 @@ class HttpClientHelper
         // Process and display the response
         $result = json_decode($response->getBody(), true);
         return $result;
-    } catch (RequestException $e) {
-        return redirect()->route('not-found');
-
-    }
         
     }
 
     public function putRequest($url, $body = null){
-        try {
-            //code...
-            $client = new Client();
-            $response = $client->patch($this->apiBaseUrl . $url, [
-                'headers' => [
-                    'Authorization' => 'Bearer'. $this->accessToken,
-                ],
-                'json' => $body,
-            ]);
-            // Process and display the response
-            $result = json_decode($response->getBody(), true);
-            return $result;
-        } catch (RequestException $e) {
-            return redirect()->route('not-found');
-
-        }
+    
+        $client = new Client();
+        $response = $client->patch($this->apiBaseUrl . $url, [
+            'headers' => [
+                'Authorization' => 'Bearer'. $this->accessToken,
+            ],
+            'json' => $body,
+        ]);
+        // Process and display the response
+        $result = json_decode($response->getBody(), true);
+        return $result;
+        //code...
        
     }
 
     public function deleteRequest($url){
-        try {
-            //code...
+       
             $client = new Client();
         $response = $client->delete($this->apiBaseUrl . $url, [
             'headers' => [
@@ -110,10 +99,7 @@ class HttpClientHelper
         // Process and display the response
         $result = json_decode($response->getBody(), true);
         return $result;
-    } catch (RequestException $e) {
-        return redirect()->route('not-found');
 
-    }
         
     }
 

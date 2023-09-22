@@ -70,7 +70,7 @@ class PostController extends Controller
         $validate = $request->validate([
             'titleKh' => 'required|max:255',
             'categoryId' => 'required',
-            'content' => 'required',
+            'contentKh' => 'required',
         ]);
 
         $file = $request->file('thumbnailImageId');
@@ -86,10 +86,11 @@ class PostController extends Controller
             'content' => request('content'),
             'contentKh' => request('contentKh'),
         ];
+
         $httpClient = new HttpClientHelper();
         $result = $httpClient->postRequest('/news', $body);
         
-        if($result){
+        if($upload){
             Alert::success('Add Successfully', 'Success Message');
         }
         return redirect()->route('admin.post');
@@ -161,14 +162,6 @@ class PostController extends Controller
     {
         //
         $request_ID = $id;
-        // $validate = $request->validate([
-        //     'title' => 'required|max:255',
-        //     'titleKh' => 'required|max:255',
-        //     'categoryId' => 'required',
-        //     'content' => 'required',
-        //     'contentKh' => 'required',
-        // ]);
-
         $file = $request->file('thumbnailImageId');
         if($file != null ){
             $maxFile = 20*1024*1024;
@@ -198,8 +191,10 @@ class PostController extends Controller
             'content' => request('content'),
             'contentKh' => request('contentKh'),
         ];
+        dd($body);
         $httpClient = new HttpClientHelper();
         $result = $httpClient->putRequest('/news/'.$request_ID, $body);
+        dd($result);
 
         Alert::success('Update Successfully', 'Success Message');
         return redirect()->route('admin.post');

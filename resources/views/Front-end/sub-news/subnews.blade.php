@@ -11,7 +11,16 @@
             <div class="col-lay-6 p-0" style="max-width: 1000px" >
                 <div class="row">
                     <div class="col-lay-10 p-0 ">
-                        <h2 class="Siemreap font-size-40 title">{{ $data['data']['titleKh'] }}</h2>
+                        @if (app()->getLocale() === 'kh')
+                            <h2 class="Siemreap font-size-40 title">{{ $data['data']['titleKh'] }}</h2>
+                        @else
+                            @if ($data['data']['title'] !== null)
+                                <h2 class="dp-font font-size-40 title">{{ $data['data']['title'] }}</h2>
+                            @else
+                                <h2 class="Siemreap font-size-40 title">{{ $data['data']['titleKh'] }}</h2>
+                            @endif
+                        @endif
+                        
                     </div>
                 </div>
                 <div class="row">
@@ -26,7 +35,6 @@
                                     $hyperlink = 'www.facebook.com';
                                     if (!str_starts_with($hyperlink , 'http://') && !str_starts_with($hyperlink , 'https://')) {
                                         $hyperlink = 'https://' . $hyperlink;
-                                        
                                     }
                                 @endphp  
                                 {{-- <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $data['data']['category']['nameKh'] }}</span> --}}
@@ -58,6 +66,7 @@
                                 <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="img-wh" alt="" >
                             </div>
                             <div class="col-lay-5 mg-l-m10 hover-title-animate">
+                                
                                 <p class="Siemreap font-size-15">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...') }}</p>
                                 <small class="Siemreap mg-r-10px font-size-13">{{ $formattedCreatedAt }}</small>
                             </div>

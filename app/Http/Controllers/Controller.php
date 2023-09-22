@@ -680,7 +680,6 @@ class Controller extends BaseController
 
     //Back-end
     public function dash($id = null){
-        try {
             $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/news');
         $pub = $httpClient->getRequest('/publicize');
@@ -693,7 +692,6 @@ class Controller extends BaseController
         
         $userName = $httpClient->getRequest('/users/');
         $lastAtSortNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
-        
         $lastAtSortNewsByCate = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId=35');
         $lastAtPub = $httpClient->getRequest('/publicize?page=0&size=3&sortBy=createdAt&sortOrder=desc');
 
@@ -712,6 +710,7 @@ class Controller extends BaseController
                 
             ];
         }
+
         $result1 = [];
         foreach ($lastAtSortNewsByCate['data']  as $item) {
             $dateTime = KhmerDateTime::parse($item['createdAt']);
@@ -764,9 +763,6 @@ class Controller extends BaseController
             'firstName' => $firstName,
             'lastName' => $lastName
     ]);
-        } catch (\Throwable $th) {
-            return redirect()->route('not-found');
-        }
         
     }
     public function newsSortCate(String $id){

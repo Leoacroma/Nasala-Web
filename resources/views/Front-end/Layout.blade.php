@@ -153,7 +153,7 @@
                         </ul>
                     </li>
                     <li class="nav-item {{ Route::currentRouteNamed('front.liby') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.liby') }}">{{ __('messages.Library') }}</a></li>
-                    <li class="nav-item {{ Route::currentRouteNamed('front.scholar') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.scholar') }}">{{ __('messages.Advertising') }}</a></li>
+                    <li class="nav-item {{ Route::currentRouteNamed('front.scholar') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.scholar') }}">{{ __('messages.Scholarship') }}</a></li>
                     <li class="nav-item dropdown 
                     {{ Route::currentRouteNamed([
                         'front.aboutschool.dp1',

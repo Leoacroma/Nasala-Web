@@ -86,7 +86,7 @@
                                         <div class="tab-pane fade show active" id="All-tab" role="tabpanel" aria-labelledby="All-tab">
                                            <div class="row">
                                             <div class="row row-cols-1 row-cols-md-3 g-4">
-                                                @foreach ($result1 as $dd)
+                                                @foreach ($result as $dd)
                                                     <div class="col">
                                                         <div class="card" >
                                                             <img src="https://nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}"  class="card-img-top" alt="Hollywood Sign on The Hill"/>

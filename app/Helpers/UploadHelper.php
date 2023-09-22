@@ -19,7 +19,6 @@ class UploadHelper
         
     }
     public function postRequest($url, $file){
-        try {
             //code...
             $client = new Client();
             $response = $client->post($this->apiBaseUrl . $url, [
@@ -34,16 +33,9 @@ class UploadHelper
                     ]
                 ]
             ]);
-            
             // Process and display the response
             $upload = json_decode($response->getBody(), true);
             return $upload;
-        } catch (RequestException $e) {
-            //throw $th;
-            return redirect()->route('not-found');
-
-        }
-       
     }
     
     public function putRequest($url, $file){

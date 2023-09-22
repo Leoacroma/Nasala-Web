@@ -21,7 +21,7 @@
                   @csrf
                   @method('PATCH')
                   <div class="form-group">
-                    <label for="exampleInputEmail3">Title<span class="required"></span></label>
+                    <label for="exampleInputEmail3">Title</label>
                     <input type="text" class="form-control" name="titleKh" value="{{ $data['data']['titleKh'] }}" placeholder="Title Khmer" required>
                   </div>
                   <div class="form-group">
@@ -30,8 +30,8 @@
                   </div>
                   
                   <div class="form-group">
-                    <label for="exampleSelectGender">Caetgories<span class="required"></span></label>
-                      <select class="form-select Siemreap" id="exampleSelectGender" name="categoryId" required>
+                    <label for="exampleSelectGender">Caetgories</label>
+                      <select class="form-select Siemreap" id="exampleSelectGender" name="categoryId">
                         @foreach ($All_cate['data'] as $item)
                           <option value="{{ $item['id'] }}" {{ $item['id'] == $data['data']['category']['id'] ? 'selected' : '' }}>{{ $item['nameKh'] }}</option>
                         @endforeach
@@ -47,12 +47,12 @@
                       សូម upload រូបភាព
                     </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Content <span class="required"></span></label>
+                    <label for="exampleInputPassword4">Content</label>
                     <textarea class="form-control" name="contentKh" id="summernoteKh" required> {!! $data['data']['contentKh'] !!}</textarea>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword4">Content English</label>
-                    <textarea class="form-control" name="content"  id="summernoteEng" required>{!! $data['data']['content'] !!}</textarea>
+                    <textarea class="form-control" name="content"  id="summernoteEng">{!! $data['data']['content'] !!}</textarea>
                   </div>   
                   <button type="submit" class="btn btn-primary me-2">Save</button>
                   <a type="submit" class="btn btn-secondary" href="{{ route('admin.post') }}">Cancel</a>

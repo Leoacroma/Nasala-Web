@@ -6,16 +6,16 @@ var maxHeight = 250; // Customize the maximum height of the displayed image
 
 input.addEventListener('change', function(e) {
     var file = e.target.files[0];
-    var alert = document.querySelector('.alert');
-    var fileInput = this;
+    // var alert = document.querySelector('.alert');
+    // var fileInput = this;
 
-    if (!file.type.startsWith('image/')) {
-        fileInput.value = ''; // Clear the file input field
-        alert.style.display = 'block';
-        setTimeout(function() {
-            alert.style.display = 'none';
-        }, 2000);
-    }
+    // if (!file.type.startsWith('image/')) {
+    //     fileInput.value = ''; // Clear the file input field
+    //     alert.style.display = 'block';
+    //     setTimeout(function() {
+    //         alert.style.display = 'none';
+    //     }, 2000);
+    // }
     var reader = new FileReader();
     reader.onload = function(event) {
         var imageUrl = event.target.result;

@@ -7,7 +7,7 @@ return [
     'Training documents' => 'Training documents',
     'Enroll' => 'Enroll',
     'Library' => 'Library', 
-    'Advertising' => 'Advertising',
+    'Scholarship' => 'Scholarship',
     'About the school'=> 'About Us',
     'Message from the Principal' => 'Message from the Principal',
     'Strategic Plan on Capacity Development' => 'Strategic Plan on Capacity Development',

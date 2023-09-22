@@ -42,19 +42,13 @@ $(document).ready(function() {
         ],
         addDefaultFonts: false,
         fontSizes: ['8', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '24', '28', '32', '36'],
-        // callbacks: {
-        //     onImageDialog: function(dialog) {
-        //         // Customize the image dialog
-        //         var dialogBody = dialog.find('.note-modal-body');
-
-        //         // Set the desired image width and height
-        //         var imageWidth = 800;
-
-        //         // Set the image size in the dialog
-        //         var imageSizeField = dialogBody.find('.note-image-dialog .note-image-input-size');
-        //         imageSizeField.val(imageWidth);
-        //     }
-        // }
+        callbacks: {
+            onImageUpload: function(files) {
+                for (var i = 0; i < files.length; i++) {
+                    encodeImageFileAsURL(files[i], this);
+                }
+            }
+        }
     });
 });
 $(document).ready(function() {
@@ -102,17 +96,20 @@ $(document).ready(function() {
         addDefaultFonts: false,
         fontSizes: ['8', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '24', '28', '32', '36'],
         // callbacks: {
-        //     onImageDialog: function(dialog) {
-        //         // Customize the image dialog
-        //         var dialogBody = dialog.find('.note-modal-body');
-
-        //         // Set the desired image width and height
-        //         var imageWidth = 800;
-
-        //         // Set the image size in the dialog
-        //         var imageSizeField = dialogBody.find('.note-image-dialog .note-image-input-size');
-        //         imageSizeField.val(imageWidth);
+        //     onImageUpload: function(files) {
+        //         for (var i = 0; i < files.length; i++) {
+        //             encodeImageFileAsURL(files[i], this);
+        //         }
         //     }
         // }
     });
 });
+
+// function encodeImageFileAsURL(file, summernoteInstance) {
+//     var reader = new FileReader();
+//     reader.onloadend = function() {
+//         var base64Data = reader.result;
+//         $(summernoteInstance).summernote('insertImage', base64Data);
+//     };
+//     reader.readAsDataURL(file);
+// }

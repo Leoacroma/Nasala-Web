@@ -7,7 +7,7 @@ return [
     'Training documents' => 'ឯកសារបណ្តុះបណ្តាល',
     'Enroll' => 'ចុះឈ្មោះចូលរៀន',
     'Library' => 'បណ្ណាល័យ', 
-    'Advertising' => 'ការផ្សព្វផ្សាយ',
+    'Scholarship' => 'អាហាររូបករណ៍',
     'About the school'=> 'អំពីសាលា',
     'Message from the Principal' => 'សារឯកឧត្តមនាយកសាលា',
     'Strategic Plan on Capacity Development' => 'ផែនការ​យុទ្ធសាស្រ្ត​ ស្តីពីការអភិវឌ្ឍសមត្ថភាព',
@@ -26,7 +26,7 @@ return [
     'Development Partners' => 'ដៃគូរអភិវឌ្ឍន៏នានា',
     'Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.' => 'ភូមិត្រពាំងវែង សង្កាត់គោករកា ខណ្ឌព្រែកព្នៅ រាជធានីភ្នំពេញ',
     'Copyright' => 'រក្សាសិទ្ធ', 
-    '2022 Local Administration School, Ministry of Interior' => '២០២២ សាលារដ្ឋបាលមូលដ្ឋាន ក្រសួងមហាផ្ទៃ',
+    '2022 Local Administration School, Ministry of Interior' => '២០២២ សាលារដ្ឋបាលជាតិមូលដ្ឋាន ក្រសួងមហាផ្ទៃ',
 
 
     //home 
