@@ -10,11 +10,11 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-12">
-                    <h4 class="card-title">Add Post</h4>
+                    <h4 class="card-title kantumruy">បន្ថែមព័ត៌មាន</h4>
                   </div>
                 </div>
-                <p class="card-description">
-                  Add elements
+                <p class="card-description kantumruy">
+                  បន្ថែមព័ត៌មានចូលតារាង
                 </p>
                 <div class="divider-line"> </div>
                 <form class="forms-sample" method="POST" action="{{ route('admin.store') }}" enctype="multipart/form-data" >

@@ -696,6 +696,7 @@ class Controller extends BaseController
             $user = $httpClient->getRequest('/users/principal?'.$token_value);
             $userID = $user['data']['id'];
             Cookie::queue('user_Id', $userID);
+        
            
             
             $userName = $httpClient->getRequest('/users/');
@@ -748,6 +749,7 @@ class Controller extends BaseController
             // dd(($data));
             $_COOKIE = Cookie::get('user_Id');
             $user = $httpClient->getRequest('/users/'.$_COOKIE);
+            
             $firstName = $user['data']['firstNameKh'];
             $lastName = $user['data']['lastNameKh'];
             $count = count($data['data']);

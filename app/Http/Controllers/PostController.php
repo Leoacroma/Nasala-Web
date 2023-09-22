@@ -36,10 +36,15 @@ class PostController extends Controller
                 'title' => $item['title'],
                 'titleKh' => $item['titleKh'],
                 'createdAt' => $formattedCreatedAt,
+                'editUrl' => route('admin.edit', $item['id']),
+                'deleteUrl' => route('admin.destroy', $item['id']),
+                'viewUrl' => route('admin.show', $item['id']),
             ];
         }
+        $dataJson = json_encode($result);
+
         return view('Back-end.Pages.Post.news.post',[
-            'result' => $result,
+            'dataJson' => $dataJson,
             'firstName' => $firstName,
             'lastName' => $lastName
         ]);

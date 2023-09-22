@@ -21,7 +21,12 @@
     <link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css') }}" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <!-- Buttons CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 
+   
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -99,7 +104,12 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.26/dist/sweetalert2.all.min.js"></script>
     <script src="{{ asset('vendors/typeahead.js/typeahead.bundle.min.js') }}"></script>
     <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
-
+     <!-- DataTables JS -->
+     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+     <!-- Buttons JS -->
+     <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
     <!-- End plugin js for this page -->
     <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('vendors/progressbar.js/progressbar.min.js') }}"></script>

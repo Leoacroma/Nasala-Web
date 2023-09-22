@@ -12,6 +12,7 @@ use Mockery\Expectation;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
+
 class CategoriesController extends Controller
 {
     /**
@@ -26,8 +27,19 @@ class CategoriesController extends Controller
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
         $lastName = $user['data']['lastNameKh'];
+        $result = [];
+        foreach ($data['data'] as $item) {
+            $result[] = [
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'nameKh' => $item['nameKh'],
+                'editUrl' => route('admin.editcate', $item['id']),
+                'deleteUrl' => route('admin.destroycate', $item['id']),
+            ];
+        }
+        $dataJson = json_encode($result);
         return view('Back-end.Pages.Post.news.postcate', [
-            'data' => $data,
+            'dataJson' => $dataJson,
             'firstName' => $firstName,
             'lastName' => $lastName
         ]);
@@ -91,8 +103,20 @@ class CategoriesController extends Controller
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
         $lastName = $user['data']['lastNameKh'];
+        $result = [];
+        foreach ($data['data'] as $item) {
+            $result[] = [
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'nameKh' => $item['nameKh'],
+                'editUrl' => route('admin.editcate', $item['id']),
+                'deleteUrl' => route('admin.destroycate', $item['id']),
+            ];
+        }
+        $dataJson = json_encode($result);
+
         return view('Back-end.Pages.Post.news.categories.editcate', [
-            'data' => $data,
+            'dataJson' => $dataJson,
             'datae' => $datae,
             'firstName' => $firstName,
             'lastName' => $lastName

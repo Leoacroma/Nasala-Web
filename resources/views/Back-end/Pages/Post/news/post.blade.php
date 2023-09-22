@@ -10,42 +10,26 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-11">
-                    <h4 class="card-title">News Management</h4>
+                    <h4 class="card-title kantumruy">តារាងគ្រប់គ្រងព័ត៌មាន</h4>
                   </div>
                   <div class="col-1">
-                    <a href="{{ route('admin.create') }}" class="btn btn-primary">Add Post</a>
+                    <a href="{{ route('admin.create') }}" class="btn btn-primary kantumruy" style="font-weight: 400">បន្ថែមព័ត៌មាន </a>
                   </div>
                 </div>
                 <p class="card-description">
                   All post elements
                 </p>
                 <div class="divider-line"> </div>
-                <table class="table ">
+                <table class="table" id="newsTable">
                   <thead >
-                    <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">Title </th>
-                      <th scope="col">Date </th>
-                      <th scope="col">Action</th>
+                    <tr class="kantumruy">
+                      <th scope="col">ល.រ</th>
+                      <th scope="col">ឈ្មោះ </th>
+                      <th scope="col">ថ្ងៃ </th>
+                      <th scope="col">សកម្មភាព</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    @foreach ($result as $item)
-                    <tr>
-                        <th scope="row">{{ $item['id'] }}</th>
-                        <td class="Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 100, $end = '...') }}</td>
-                        <td class="Siemreap">{{ $item['createdAt'] }}</td>
-                        <td class="d-flex">
-                          <a class="btn btn-warning text-white mr-2" type="button" href="{{ route('admin.edit', $item['id']) }}" >Edit</a> 
-                          <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.destroy', $item['id']) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger text-white mr-2" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))">Delete</button>
-                          </form>
-                          <a href="{{ route('admin.show', $item['id']) }}" class="btn btn-primary">Previews</a>                             
-                        </td>
-                    </tr>
-                @endforeach
+                  <tbody class="kantumruy p-5">
                   </tbody>
                 </table>
               </div>
@@ -58,23 +42,31 @@
     <!-- main-panel ends -->
   <!-- page-body-wrapper ends -->
 </div>
+<script src="{{ asset('js/alert.js') }}"></script>
 <script>
-  function confirmDelete(event, form) {
-     event.preventDefault();
-     Swal.fire({
-         title: 'Are you sure?',
-         text: 'You will not be able to recover this record!',
-         icon: 'warning',
-         showCancelButton: true,
-         confirmButtonColor: '#d33',
-         cancelButtonColor: '#3085d6',
-         confirmButtonText: 'Yes, delete it!',
-         cancelButtonText: 'Cancel'
-     }).then((result) => {
-         if (result.isConfirmed) {
-             form.submit();
-         }
-     });
- }
- </script>
+  $(document).ready(function() {
+      var data = {!! $dataJson !!};      
+      $('#newsTable').DataTable({
+          data: data,
+          columns: [
+              { data: 'id' },
+              { data: 'titleKh' },
+              { data: 'createdAt' },
+              { 
+                data: null,
+                render: function(data, type, row) {
+                    return '<a href="' + data.editUrl + '"><i class="fa-solid fa-pen-to-square"></i></a>' +
+                        '<a href="#" class="ml-2 mr-2" style="color: red;"><i class="fa-solid fa-trash" onclick="confirmDelete(event, document.getElementById(\'delete-form' + data.id + '\'))"></i></a>' +
+                        '<a href="' + data.viewUrl + '"><i class="fa-solid fa-eye"></i></a>' +
+                        '<form method="POST" id="delete-form' + data.id + '" action="' + data.deleteUrl + '">' +
+                        '<input type="hidden" name="_token" value="{{ csrf_token() }}">' +
+                        '<input type="hidden" name="_method" value="DELETE">' +
+                        '</form>';
+              }
+            }
+
+          ]
+      });
+  });
+</script>
 @endsection

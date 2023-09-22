@@ -58,6 +58,18 @@
     }
 
 
+    .swal2-title{
+      font-family: 'Kantumruy Pro', sans-serif;
+     }
+    .swal2-confirm{
+      font-family: 'Kantumruy Pro', sans-serif;
+      font-weight: 400;
+    }
+    .swal2-cancel {
+      font-family: 'Kantumruy Pro', sans-serif;
+      font-weight: 400;
+
+    }
     /* font-size */
 
 .font-size-10 {
