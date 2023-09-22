@@ -66,6 +66,10 @@ body {
     display: none;
 }
 
+.dropdown {
+    transition: 5s ease-in-out;
+}
+
 .dropdown:hover>.dropdown-menu,
 .dropend:hover>.dropdown-menu {
     display: block;
@@ -98,6 +102,12 @@ body {
 .img-size {
     width: 100%;
     height: 15vw;
+    object-fit: contain;
+}
+
+.img-vh {
+    width: 10%;
+    height: 30vw;
     object-fit: contain;
 }
 

@@ -1,4 +1,5 @@
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@500&display=swap');
     .notify-message{
       z-index: 10000000;
     }
@@ -31,6 +32,9 @@
       font-family: 'Kantumruy Pro', sans-serif;
       src: url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100&display=swap');
     }
+    .kantumruy{
+      font-family: 'Kantumruy Pro', sans-serif;
+    }
     /*English-font*/
     @font-face{
        font-family: 'Roboto', sans-serif;
@@ -52,4 +56,101 @@
      font-family: 'PT Sans', sans-serif;
       src: url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
     }
+
+
+    /* font-size */
+
+.font-size-10 {
+    font-size: 10px;
+}
+
+.font-size-11 {
+    font-size: 11px;
+}
+
+.font-size-12 {
+    font-size: 12px;
+}
+
+.font-size-13 {
+    font-size: 13px;
+}
+
+.font-size-14 {
+    font-size: 14px;
+}
+
+.font-size-15 {
+    font-size: 15px;
+}
+
+.font-size-16 {
+    font-size: 16px;
+}
+
+.font-size-17 {
+    font-size: 17px;
+}
+
+.font-size-18 {
+    font-size: 18px;
+}
+
+.font-size-19 {
+    font-size: 19px;
+}
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+.font-size-21 {
+    font-size: 21px;
+}
+
+.font-size-22 {
+    font-size: 22px;
+}
+
+.font-size-23 {
+    font-size: 23px;
+}
+
+.font-size-24 {
+    font-size: 24px;
+}
+
+.font-size-25 {
+    font-size: 25px;
+}
+
+.font-size-28 {
+    font-size: 28px;
+}
+
+.font-size-30 {
+    font-size: 30px;
+}
+
+.font-size-35 {
+    font-size: 35px;
+}
+
+.font-size-40 {
+    font-size: 40px;
+}
+/*hover Animation*/
+.hover-animation{
+  transition: 0.5s ease-out;
+}
+.hover-animation-sub{
+  position: absolute;
+  left: 31px;
+  transition: left 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.hover-animation:hover .hover-animation-sub{
+  text-decoration: underline;
+  left: 40px;
+}
+
   </style>

@@ -89,7 +89,7 @@
             <div class="col-6">
                 <div class="col-12 d-flex">
                     <i class="fa-regular fa-pen-to-square font-size-30 mg-r-10px color-blue-355fb6"></i>
-                    <h2 class="nav-font color-blue-355fb6 font-size-30" data-locale="{{ $locale }}">{{ __('messages.Advertising') }}</h2>
+                    <h2 class="nav-font color-blue-355fb6 font-size-30" data-locale="{{ $locale }}">{{ __('messages.Scholarship') }}</h2>
                 </div>
                 <div class="col-lay-10 divider-line "></div>
                 <!-- content​អាហារូបករណ៏ -->

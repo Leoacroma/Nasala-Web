@@ -10,12 +10,12 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-11">
-                    <h4 class="card-title">Category Management</h4>
+                    <h4 class="card-title kantumruy">ប្រភេទព័ត៌មាន</h4>
                   </div>
                 </div>
                 <div class="row">
-                  <p class="card-description">
-                    All Categories elements
+                  <p class="card-description kantumruy">
+                    តារាងប្រភេទនៃព័ត៌មានទាំងអស់
                   </p>
                   <div class="col-12">
                     <div class="divider-line"> </div>
@@ -25,11 +25,11 @@
                  <div class="col-12">
                   <table class="table">
                     <thead >
-                      <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name English</th>
-                        <th scope="col">Name Khmer</th>
-                        <th scope="col">Action</th>
+                      <tr class="kantumruy">
+                        <th scope="col">ល.រ</th>
+                        <th scope="col">ឈ្មោះជាភាសាអង់គ្លេស</th>
+                        <th scope="col">ឈ្មោះជាភាសាខ្មែរ</th>
+                        <th scope="col">សកម្មភាព</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -37,15 +37,13 @@
                       <tr>
                           <th scope="row">{{ $item['id'] }}</th>
                           <td>{{ $item['name'] }}</td>
-                          <td class="Siemreap">{{ $item['nameKh'] }}</td>
+                          <td class="kantumruy" style="font-weight: 100;">{{ $item['nameKh'] }}</td>
                           <td class="d-flex">
-                            <form action="{{ route('admin.editcate', $item['id']) }}">
-                              <button  type="submit" class="btn btn-warning text-white mr-2" >Edit</button>
-                            </form>
+                            <a href="{{ route('admin.editcate', $item['id']) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                             <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.destroycate', $item['id']) }}">
                               @csrf
                               @method('DELETE')
-                              <button type="submit" class="btn btn-danger text-white" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))">Delete</button>
+                              <a href="" style="color: red"><i class="fa-solid fa-trash" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
                             </form>           
                           </td>
                       </tr>

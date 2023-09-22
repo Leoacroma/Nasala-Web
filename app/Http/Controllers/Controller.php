@@ -20,6 +20,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
+use Mockery\Expectation;
 
 class Controller extends BaseController
 {
@@ -680,89 +681,104 @@ class Controller extends BaseController
 
     //Back-end
     public function dash($id = null){
+        try {
             $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/news');
-        $pub = $httpClient->getRequest('/publicize');
-        $lib = $httpClient->getRequest('/library');
-        $cate = $httpClient->getRequest('/categories');
-        $train = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=10&sortBy=createdAt');
-        $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
-       
-       
-        
-        $userName = $httpClient->getRequest('/users/');
-        $lastAtSortNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
-        $lastAtSortNewsByCate = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId=35');
-        $lastAtPub = $httpClient->getRequest('/publicize?page=0&size=3&sortBy=createdAt&sortOrder=desc');
-
-       
-
-        $result = [];
-        foreach ($lastAtSortNews['data']   as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-                
-            ];
+            $data = $httpClient->getRequest('/news');
+            $pub = $httpClient->getRequest('/publicize');
+            $lib = $httpClient->getRequest('/library');
+            $cate = $httpClient->getRequest('/categories');
+            $trainFileCount = $httpClient->getRequest('/training');
+            $train = $httpClient->getRequest('/training/posts');
+            $trainLasted = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=5&sortBy=createdAt');
+            $trainFile = $httpClient->getRequest('/training?page=0&sortOrder=desc&size=5&sortBy=createdAt');
+            $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
+            $token_value = Cookie::get('token');
+            $user = $httpClient->getRequest('/users/principal?'.$token_value);
+            $userID = $user['data']['id'];
+            Cookie::queue('user_Id', $userID);
+           
+            
+            $userName = $httpClient->getRequest('/users/');
+            $lastAtSortNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
+            $lastAtSortNewsByCate = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId=35');
+            $lastAtPub = $httpClient->getRequest('/publicize?page=0&size=3&sortBy=createdAt&sortOrder=desc');
+    
+           
+    
+            $result = [];
+            foreach ($lastAtSortNews['data']   as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                    
+                ];
+            }
+    
+            $result1 = [];
+            foreach ($lastAtSortNewsByCate['data']  as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result1[] = [
+                    'id' => $item['id'],
+                    'titleKh' => $item['titleKh'],
+                    'category' => $item['category'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                    
+                ];
+            }
+            $result2 = [];
+            foreach ($lastAtPub['data']   as $item) {
+                $dateTime = KhmerDateTime::parse($item['createdAt']);
+                $formattedCreatedAt = $dateTime->format("LLLLT");
+                $result2[] = [
+                    'id' => $item['id'],
+                    'title' => $item['title'],
+                    'fileSize' => $item['fileSize'],
+                    'thumbnailImageId' => $item['thumbnailImageId'],
+                    'createdAt' => $formattedCreatedAt,
+                    
+                ];
+            }
+            // dd(($data));
+            $_COOKIE = Cookie::get('user_Id');
+            $user = $httpClient->getRequest('/users/'.$_COOKIE);
+            $firstName = $user['data']['firstNameKh'];
+            $lastName = $user['data']['lastNameKh'];
+            $count = count($data['data']);
+            $countFilePub = count($pub['data']);
+            $countTrian = count($train['data']);
+            $countLib = count($lib['data']);
+            $countTrianfile = count($trainFileCount['data']);
+          
+            // dd($firstName);
+           
+            return view('Back-end.Pages.homepage', [
+                'count' => $count,
+                'countFilePub' => $countFilePub,
+                'countLib' => $countLib,
+                'cate' => $cate,
+                'result' => $result,
+                'result1' => $result1,
+                'result2' => $result2,
+                'countTrian' => $countTrian,
+                'train' => $train,
+                'register' => $register,
+                'firstName' => $firstName,
+                'lastName' => $lastName,
+                'countTrianfile' => $countTrianfile,
+                'trainLasted' => $trainLasted,
+                'trainFile' => $trainFile
+        ]);
+        } catch (Expectation $th) {
+            return redirect()->route('not-found');
         }
-
-        $result1 = [];
-        foreach ($lastAtSortNewsByCate['data']  as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result1[] = [
-                'id' => $item['id'],
-                'titleKh' => $item['titleKh'],
-                'category' => $item['category'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-                
-            ];
-        }
-        $result2 = [];
-        foreach ($lastAtPub['data']   as $item) {
-            $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
-            $result2[] = [
-                'id' => $item['id'],
-                'title' => $item['title'],
-                'fileSize' => $item['fileSize'],
-                'thumbnailImageId' => $item['thumbnailImageId'],
-                'createdAt' => $formattedCreatedAt,
-                
-            ];
-        }
-        // dd(($data));
-        $_COOKIE = Cookie::get('user_Id');
-        $user = $httpClient->getRequest('/users/'.$_COOKIE);
-        $firstName = $user['data']['firstNameKh'];
-        $lastName = $user['data']['lastNameKh'];
-        $count = count($data['data']);
-        $countFilePub = count($pub['data']);
-        $countTrian = count($train['data']);
-        $countLib = count($lib['data']);
-      
-        // dd($firstName);
-       
-        return view('Back-end.Pages.homepage', [
-            'count' => $count,
-            'countFilePub' => $countFilePub,
-            'countLib' => $countLib,
-            'cate' => $cate,
-            'result' => $result,
-            'result1' => $result1,
-            'result2' => $result2,
-            'countTrian' => $countTrian,
-            'train' => $train,
-            'register' => $register,
-            'firstName' => $firstName,
-            'lastName' => $lastName
-    ]);
+           
         
     }
     public function newsSortCate(String $id){
@@ -774,8 +790,10 @@ class Controller extends BaseController
             $pub = $httpClient->getRequest('/publicize');
             $lib = $httpClient->getRequest('/library');
             $cate = $httpClient->getRequest('/categories');
-            $train = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=10&sortBy=createdAt');
-            $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
+            $trainFileCount = $httpClient->getRequest('/training');
+            $train = $httpClient->getRequest('/training/posts');
+            $trainLasted = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=5&sortBy=createdAt');
+            $trainFile = $httpClient->getRequest('/training?page=0&sortOrder=desc&size=5&sortBy=createdAt');            $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
             $_COOKIE = Cookie::get('user_Id');
             $user = $httpClient->getRequest('/users/'.$_COOKIE);
            
@@ -831,6 +849,7 @@ class Controller extends BaseController
             $count = count($data['data']);
             $countFilePub = count($pub['data']);
             $countTrian = count($train['data']);
+            $countTrianfile = count($trainFileCount['data']);
     
             $countLib = count($lib['data']);
             $result = [];
@@ -860,7 +879,10 @@ class Controller extends BaseController
                 'train' => $train,
                 'register' => $register,
                 'firstName' => $firstName,
-                'lastName' => $lastName
+                'lastName' => $lastName,
+                'trainLasted' => $trainLasted,
+                'trainFile' => $trainFile,
+                'countTrianfile' => $countTrianfile
             ]);
         } catch (\Throwable $th) {
             return redirect()->route('not-found');

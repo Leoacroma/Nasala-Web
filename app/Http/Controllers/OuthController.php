@@ -28,14 +28,13 @@ class OuthController extends Controller
             $result = $httpClient->postloginRequest('token', $params);
             $token_value = $result['access_token'];
             // dd($token_value);
-            $user = $httpUser->getRequest('/users/principal?'.$token_value);
-            $userID = $user['data']['id'];
+            
 
             if (isset($result['error']) && $result['error'] === 'unauthorized') {
                 Alert::error(' Please try again.', 'Username or password is incorrect.');
             } else {
                 Cookie::queue('token', $token_value);
-                Cookie::queue('user_Id', $userID);
+                
                 return redirect()->route('admin.dash');
             }
         } catch (\Exception $e) {

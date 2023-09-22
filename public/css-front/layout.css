@@ -20,6 +20,11 @@
     max-width: 23%;
 }
 
+.col-lay-2M {
+    flex: 0 0 24%;
+    max-width: 24%;
+}
+
 .col-lay-3 {
     flex: 0 0 30%;
     max-width: 30%;

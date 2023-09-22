@@ -11,67 +11,142 @@
             <div class="col-lay-5 d-flex mg-l-m10">
                 <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Leadership composition') }}</h2>
             </div>
-            {{-- <div class="col-lay-5 ">
-                <form class="float-end " action="">
-                    <div class="input-group width-400 mg-r-20m">
-                        <input type="search" class="form-control rounded search" placeholder="ស្វែងរក" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-primary search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                </form>
-            </div> --}}
             <div class="col-lay-10 divider-line"></div>
         </div>
     </div>
 </div>
     <!-- content -->
-    <div class="container">
+    {{-- <div class="container text-algin-center">
         <div class="row">
-            <div class="col-lay-10 text-algin-center Siemreap font-size-20 mt-5">
-                <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
+            <div class="col-lay-3"></div>
+            <div class="col-lay-3 text-algin-center Siemreap font-size-16 mt-5">
+                <img class="image-front-TT" src="{{ asset('images/ឯកឧត្តម សូ មុនីរក្សា.jpg') }}" alt="">
                 <br/>
                 <span>ឯកឧត្តម សូ​ មុនីរក្សា នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
                 <span >អ៊ីម៉ែល <a href="">somounyraksa@gmail.com</a></span>
             </div>
-            <div class="col-lay-10 text-algin-center Siemreap font-size-20 mt-5">
+            <div class="col-lay-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-lay-3 text-algin-center Siemreap font-size-16 mt-5">
+                <img class="image-front-TT" src="{{ asset('images/លោកជំទាវ_ជី_ច័ន្ទរស្មី.jpg') }}" alt="">
+                <br/>
+                <span >លោកជំទាវ ជី ច័ន្ទរស្មី <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">chychanraksmey@gmail.com</a></span>
+            </div>
+            <div class="col-lay-3 text-algin-center Siemreap font-size-16 mt-5">
                 <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
                 <br/>
-                <span >លោកស្រី ជី ច័ន្ទរស្មី <br/> នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
+                <span >ឯកឧត្តម គង់ ចាន់ថន <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">chychanraksmey@gmail.com</a></span>
+            </div>
+            <div class="col-lay-3 text-algin-center Siemreap font-size-16 mt-5">
+                <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
+                <br/>
+                <span >ឯកឧត្តម មុំ រីរៈ <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
                 <span >អ៊ីម៉ែល <a href="">chychanraksmey@gmail.com</a></span>
             </div>
         </div>
         <div class="row">
-            <div class="col-lay-2S text-algin-center Siemreap font-size-20 m-2">
+            <div class="col-lay-2 text-algin-center Siemreap font-size-16">
                 <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
                 <br/>
-                <span >លោកស្រី ជី ច័ន្ទរស្មី <br/> នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
+                <span >លោកស្រី ម៉ៅ មាលីស <br/> ប្រធាននាយកដ្ឋានកិច្ចការទូទៅ</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">malismoa@gmail.com</a></span>
+            </div>
+            <div class="col-lay-2 text-algin-center Siemreap font-size-16 ">
+                <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
+                <br/>
+                <span >លោក លឹម ពុទ្ធារី <br/> ប្រធាននាយកបណ្តុះបណ្តាល</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">potheary@iuj.ac.jp</a></span>
+            </div>
+            <div class="col-lay-2M text-algin-center Siemreap font-size-16 ">
+                <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
+                <br/>
+                <span >លោក ឯមតាន់ សុផានិត <br/> ប្រធាននាយកដ្ឋានផែនការ និង​កិច្ចសហប្រតិបត្តិការ</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">emtannsophanith.nasla@gmail.com</a></span>
+            </div>
+            <div class="col-lay-2M text-algin-center Siemreap font-size-16 ">
+                <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
+                <br/>
+                <span >លោក លី ពៅមណីរត្ន <br/> ប្រធាននាយកដ្ឋានស្រាវជ្រាវ និងផ្សព្វផ្សាយ</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">poeumoniroath@gmail.com</a></span>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lay-12 text-algin-center Siemreap font-size-16">
+                <img class="image-front-TT" src="{{ asset('images/ឯកឧត្តម សូ មុនីរក្សា.jpg') }}" alt="">
+                <br/>
+                <span>ឯកឧត្តម សូ​ មុនីរក្សា នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">somounyraksa@gmail.com</a></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-algin-center Siemreap font-size-16">
+                <img class="image-front-TT" src="{{ asset('images/លោកជំទាវ_ជី_ច័ន្ទរស្មី.jpg') }}" alt="">
+                <br/>
+                <span >លោកជំទាវ ជី ច័ន្ទរស្មី <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
                 <span >អ៊ីម៉ែល <a href="">chychanraksmey@gmail.com</a></span>
             </div>
-            <div class="col-lay-2S text-algin-center Siemreap font-size-20 m-2">
+            <div class="col-4 text-algin-center Siemreap font-size-16">
                 <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
                 <br/>
-                <span >លោកស្រី ជី ច័ន្ទរស្មី <br/> នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
+                <span >ឯកឧត្តម គង់ ចាន់ថន <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="">chychanraksmey@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="">potheary@iuj.ac.jp</a></span>
             </div>
-            <div class="col-lay-2S text-algin-center Siemreap font-size-20 m-2">
+            <div class="col-4 text-algin-center Siemreap font-size-16">
                 <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
                 <br/>
-                <span >លោកស្រី ជី ច័ន្ទរស្មី <br/> នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
-                <br/>
-                <span >អ៊ីម៉ែល <a href="">chychanraksmey@gmail.com</a></span>
-            </div>
-            <div class="col-lay-2S text-algin-center Siemreap font-size-20 m-2">
-                <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
-                <br/>
-                <span >លោកស្រី ជី ច័ន្ទរស្មី <br/> នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
+                <span >ឯកឧត្តម មុំ រីរៈ <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
                 <span >អ៊ីម៉ែល <a href="">chychanraksmey@gmail.com</a></span>
             </div>
         </div>
+        <div class="row">
+            <div class="col-3 text-algin-center Siemreap font-size-16">
+                <img class="image-front-TT" src="{{ asset('images/លោកស្រី ម៉ៅ ម៉ាលីស.JPG') }}" alt="">
+                <br/>
+                <span >លោកស្រី ម៉ៅ មាលីស <br/> ប្រធាននាយកដ្ឋានកិច្ចការទូទៅ</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">malismoa@gmail.com</a></span>
+            </div>
+            <div class="col-3 text-algin-center Siemreap font-size-16">
+                <img class="image-front-TT" src="{{ asset('images/លោក លឹម ពុទ្ធារី.JPG') }}" alt="">
+                <br/>
+                <span >លោក លឹម ពុទ្ធារី <br/> ប្រធាននាយកបណ្តុះបណ្តាល</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">potheary@iuj.ac.jp</a></span>
+            </div>
+            <div class="col-3 text-algin-center Siemreap font-size-16">
+                <img class="image-front-TT" src="{{ asset('images/លោក ឯមតាន់ សុផានិត.JPG') }}" alt="">
+                <br/>
+                <span >លោក ឯមតាន់ សុផានិត <br/> ប្រធាននាយកដ្ឋានផែនការ និង​កិច្ចសហប្រតិបត្តិការ</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">emtannsophanith.nasla@gmail.com</a></span>
+            </div>
+            <div class="col-3 text-algin-center Siemreap font-size-16">
+                <img class="image-front-TT" src="{{ asset('images/លោក លី ពៅមណីរត្ន.jpg') }}" alt="">
+                <br/>
+                <span >លោក លី ពៅមណីរត្ន <br/> ប្រធាននាយកដ្ឋានស្រាវជ្រាវ និងផ្សព្វផ្សាយ</span>
+                <br/>
+                <span >អ៊ីម៉ែល <a href="">poeumoniroath@gmail.com</a></span>
+            </div>
+            
+        </div>
     </div>
-
     <!-- -------------------------------------------- -->
 @endsection

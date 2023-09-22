@@ -23,7 +23,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-               <img src="http://nasla.k5moi.com/v1/api/files/93" alt="" width="100%">
+               <img src="{{ asset('images/image_2023-09-21_07-35-45.png') }}" alt="" width="100%">
             </div>
         </div>
     </div>

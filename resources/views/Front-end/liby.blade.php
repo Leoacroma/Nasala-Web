@@ -47,12 +47,12 @@
                 @foreach ($cate['data'] as $item)                    
                   <li class="list-group-item {{ request()->is('lib/sort/cate/' . $item['id']) ? ' liActive' : '' }}">
                     @if (app()->getLocale() === 'kh')
-                      <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}">{{ $item['nameKh'] }}</a>
+                      <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
                     @else
                     @if ($item['name'] !== null)
-                      <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}">{{ $item['name'] }}</a>
+                      <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['name'] }}</a>
                     @else
-                      <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}">{{ $item['nameKh'] }}</a>
+                      <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
 
                     @endif
                 @endif  

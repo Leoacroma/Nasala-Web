@@ -1,13 +1,21 @@
 @extends('Back-end.Layout.index')
 @section('template')
+<style>
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
+</style>
+
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-sm-6 mb-4 mb-xl-0">
-                <div class="d-lg-flex align-items-center">
+                <div class="d-lg-flex align-items-center kantumruy">
                     <div>
-                        <h3 class="text-dark font-weight-bold mb-2">Hi, welcome back! <span class="badge rounded-pill badge-primary Siemreap">@ {{ $lastName }} </span></h3>
-                        <h6 class="font-weight-normal mb-2">Last login was 23 hours ago. View details</h6>
+                        <h3 class="text-dark font-weight-bold mb-2 kantumruy">សួរស្តី, សូមស្វាគមន៍! <span class="badge rounded-pill badge-primary kantumruy">{{ $lastName }}</span></h3>
+                        <h6 class="font-weight-normal mb-2 kantumruy">ការត្រលប់មកកានប្រព័ន្ធវិញ.</h6>
                     </div>
 
                 </div>
@@ -17,33 +25,39 @@
             <div class="col-sm-8 flex-column d-flex stretch-card">
                 <div class="row">
                     <div class="col-lg-4 d-flex grid-margin stretch-card">
-                        <div class="card bg-primary">
-                            <div class="card-body text-white">
-                                <h3 class="font-weight-bold mb-3">Total : {{ $count }} </h3>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar  bg-warning" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="pb-0 mb-0">News Managment</p>
-
+                            <div class="card bg-primary">
+                                <a class="text-decoration-none hover-animation" href="{{ route('admin.post') }}">
+                                    <div class="card-body text-white">
+                                        <h3 class="font-weight-bold mb-3 kantumruy">ចំនួន : {{ $count }} ព័ត៌មាន</h3>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" role="progressbar" id="progress-bar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <p class="pb-0 mb-2 kantumruy" style="font-size: 20px">ការគ្រប់គ្រងព័ត៌មាន</p>
+                                        <small class="kantumruy hover-animation-sub" style="opacity: 20%">មើលបន្ថែម <i class="fa-solid fa-angles-right"></i></small>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
                     </div>
                     <div class="col-lg-4 d-flex grid-margin stretch-card">
                         <div class="card sale-diffrence-border">
-                            <div class="card-body">
-                                <h2 class="text-dark mb-2 font-weight-bold">Total : {{ $countFilePub }}</h2>
-                                <h4 class="card-title mb-2">Publication Management</h4>
-                                <small class="text-muted">APRIL 2019</small>
-                            </div>
+                            <a class="text-decoration-none hover-animation" href="{{ route('admin.pub.index') }}">
+                                <div class="card-body">
+                                    <h2 class="text-dark mb-2 font-size-20 kantumruy">ចំនួន : {{ $countFilePub }} ឯកសារ</h2>
+                                    <h5 class="card-title mb-2 kantumruy" style="font-size: 20px">ការគ្រប់គ្រងឯកសារអាហាររូបករណ៍</h5>
+                                    <small class="text-muted kantumruy hover-animation-sub">មើលបន្ថែម <i class="fa-solid fa-angles-right"></i></small>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-4 d-flex grid-margin stretch-card">
                         <div class="card sale-visit-statistics-border">
-                            <div class="card-body">
-                                <h2 class="text-dark mb-2 font-weight-bold">Total : {{ $countLib }}</h2>
-                                <h4 class="card-title mb-2">Library Management</h4>
-                                <small class="text-muted">APRIL 2019</small>
-                            </div>
+                            <a class="text-decoration-none hover-animation" href="{{ route('admin.pub.index') }}">
+                                <div class="card-body">
+                                    <h2 class="text-dark mb-2  font-size-20 kantumruy">ចំនួន : {{ $countLib }} ឯកសារ</h2>
+                                    <h4 class="card-title mb-2 kantumruy" style="font-size: 20px">ការគ្រប់គ្រងឯកសារបណ្ណាល័យ</h4>
+                                    <small class="text-muted kantumruy hover-animation-sub">មើលបន្ថែម <i class="fa-solid fa-angles-right"></i></small>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -52,8 +66,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <h4 class="card-title mb-2">Lastest News</h4>
-                                    <a href="{{ route('admin.post') }}" class="btn btn-outline-primary">View Table</a>
+                                    <h4 class="card-title mb-2 kantumruy">ព័ត៌មានថ្មីៗ</h4>
+                                    <a href="{{ route('admin.post') }}" class="btn btn-outline-primary kantumruy" style="font-weight: 400;">មើលបន្ថែម</a>
 
                                 </div>
                                 <div class="mt-3">
@@ -61,18 +75,14 @@
                                 <!-- Tabs navs -->
                                     <ul class="nav nav-tabs tab-no-active-fill" id="ex-with-icons" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                        <a class="nav-link " id="ex-with-icons-tab-1" href="{{ route('admin.dash') }}" role="tab"
-                                            aria-controls="ex-with-icons-tabs-1" aria-selected="true">All</a>
+                                        <a class="nav-link kantumruy" style="font-weight: 400; font-size: 15px" id="ex-with-icons-tab-1" data-mdb-toggle="tab" href="#All-tab" role="tab"
+                                            aria-controls="ex-with-icons-tabs-1" aria-selected="true">ទាំងអស់</a>
                                         </li>
-                                        {{-- <li class="nav-item" role="presentation">
-                                            <a class="nav-link active" id="ex-with-icons-tab-1"  href="#All-tab" role="tab"
-                                                aria-controls="ex-with-icons-tabs-1" aria-selected="true">Test</a>
-                                            </li> --}}
                                         @foreach ($cate['data'] as $item)
-                                        <li class="nav-item" role="presentation">
-                                        <a class="nav-link {{ request()->is('admin/sort/'. $item['id']) ? 'active' : '' }}" href="{{ route('admin.newsSortCate', $item['id']) }}" role="tab"
-                                            aria-controls="ex-with-icons-tabs-2" aria-selected="true">{{ $item['name'] }}</a>
-                                    </li>
+                                            <li class="nav-item" role="presentation">
+                                                <a class="nav-link kantumruy {{ request()->is('admin/sort/'. $item['id']) ? 'active' : '' }}" id="ex-with-icons-tab-2" href="{{ route('admin.newsSortCate', $item['id']) }}" role="tab"
+                                                    aria-controls="ex-with-icons-tabs-2" aria-selected="false" style="font-weight: 400; font-size: 15px">{{ $item['nameKh'] }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                     <!-- Tabs navs -->
@@ -81,20 +91,22 @@
                                     <div class="tab-content" id="ex-with-icons-content">
                                         <div class="tab-pane fade show active" id="All-tab" role="tabpanel" aria-labelledby="All-tab">
                                            <div class="row">
-                                            <div class="card-group">
-                                                @foreach ($result1   as $item)
-                                                <div class="col">
-                                                    <div class="card" >
-                                                        <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" style="height: 200px;" class="card-img-top" alt="Hollywood Sign on The Hill"/>
-                                                    <div class="card-body">
-                                                        <span class="card-title Siemreap" style="font-size: 15px;">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 90, $end = '...')}}</span>
-                                                        <br/>
-                                                        <small class="text-muted Siemreap">{{ $item['createdAt'] }}</small>
+                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                                @foreach ($result as $dd)
+                                                    <div class="col">
+                                                        <div class="card" >
+                                                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}"  class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                            <div class="card-body">
+                                                                <span class="card-title kantumruy" style="font-size: 16px; line-height: 25.5px;">{{ \Illuminate\Support\Str::limit($dd['titleKh'], $limit = 90, $end = '...')}}</span>
+                                                                <br/>
+                                                                <br/>
+                                                                <small class="text-muted kantumruy">{{ $dd['createdAt'] }}</small>
 
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    </div>
-                                                </div>
                                                 @endforeach
+
                                               </div>
                                            </div>
                                         </div>
@@ -103,16 +115,15 @@
                                                 <div class="row row-cols-1 row-cols-md-3 g-4">
                                                     @foreach ($result1 as $dd) 
                                                     <div class="col">
-                                                      <div class="card">
-                                                        <img src="http://188.166.211.230:8080/v1/api/files/{{ $dd['thumbnailImageId'] }}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                        <div class="card" >
+                                                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}" style="height: 200px;" class="card-img-top" alt="Hollywood Sign on The Hill"/>
                                                         <div class="card-body">
-                                                            <a style="font-size: 20px; color: black; text-decoration: none" class="card-title Siemreap">{{ $dd['titleKh'] }}</a>
-                                                            |<span class="badge badge-primary Siemreap">{{ $dd['category']['nameKh'] }}</span>
-                                                            <p class="card-text">
-                                                              <small class="text-muted Siemreap">{{ $dd['createdAt'] }}</small>
-                                                            </p>
+                                                            <span class="card-title kantumruy" style="font-size: 16px; line-height: 25.5px;">{{ \Illuminate\Support\Str::limit($dd['titleKh'], $limit = 90, $end = '...')}}</span>
+                                                            <br/>
+                                                            <small class="text-muted kantumruy">{{ $dd['createdAt'] }}</small>
+
                                                         </div>
-                                                      </div>
+                                                        </div>
                                                     </div>
                                                     @endforeach
                                                 </div>
@@ -134,26 +145,27 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <h4 class="card-title mb-0">Publication</h4>
-                                            <a href="{{ route('admin.pub.index') }}" class="btn btn-outline-primary">View Table</a>
+                                            <h4 class="card-title mb-0 kantumruy">អាហាររូបករណ៍</h4>
+                                            <a href="{{ route('admin.pub.index') }}" class="btn btn-outline-primary kantumruy" style="font-weight: 400;">មើលបន្ថែម</a>
                                         </div>
-                                        <p class="mt-1">Lastest Publication news</p>
+                                        <p class="mt-1 kantumruy"  style="font-weight: 400;">ឯកសារបញ្ចូលចុងក្រោយ</p>
                                         @foreach ($result2 as $tt)
                                             
                                         <div class="card-group">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                   <img
-                                                    src="http://188.166.211.230:8080/v1/api/files/{{ $tt['thumbnailImageId'] }}"
+                                                    src="https://nasla.k5moi.com/v1/api/files/{{ $tt['thumbnailImageId'] }}"
                                                     alt="Trendy Pants and Shoes"
                                                     class="img-fluid rounded-start"
                                                   />
                                                 </div>
                                                 <div class="col-md-8">
                                                   <div class="card-body">
-                                                    <a style="font-size: 20px; color: black; text-decoration: none" class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($tt['title'], $limit = 100, $end = '...') }}</a>
+                                                    <a style="font-size: 18px; line-height: 25.5px; color: black; text-decoration: none" class="card-title kantumruy"
+                                                   >{{ \Illuminate\Support\Str::limit($tt['title'], $limit = 100, $end = '...') }}</a>
                                                     <p class="card-text">
-                                                      <small class="text-muted Siemreap">{{ $tt['createdAt'] }}</small>
+                                                      <small class="text-muted kantumruy">{{ $tt['createdAt'] }}</small>
                                                     </p>
                                                   </div>
                                                 </div>
@@ -173,26 +185,27 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h4 class="card-title">Trianing</h4>
-                            <h4 class="text-success font-weight-bold">Total<span class="text-dark ms-3">{{ $countTrian }}</span></h4>
+                            <h4 class="card-title kantumruy">វគ្គបណ្តុះបណ្តាល</h4>
+                            <h4 class="text-success font-weight-bold kantumruy">ចំនួន : <span class="text-dark ms-3">{{ $countTrian }} វគ្គ</span></h4>
                         </div>
-                        <table class="table" style="font-size: 25px;">
+                        <p class="kantumruy"  style="font-weight: 400;">តារាងវគ្គបណ្តុះបណ្តាលបញ្ចូលចុងក្រោយ</p>
+                        <table class="table table-hover" style="font-size: 25px;">
                             <thead>
-                                <tr class="table-primary">
-                                  <th scope="col">ID</th>
-                                  <th scope="col">Title</th>
+                                <tr class="table kantumruy">
+                                  <th scope="col">ល.រ</th>
+                                  <th scope="col">ឈ្មោះ</th>
                                 </tr>
                               </thead>
-                              @foreach ($train['data'] as $item)
+                              @foreach ($trainLasted['data'] as $item)
                                 <tbody >
                                     <td>{{ $item['id'] }}</td>
-                                    <td class="Siemreap">{{ $item['titleKh'] }}</td>
+                                    <td class="kantumruy">{{ $item['titleKh'] }}</td>
                                 </tbody>
                               @endforeach
                         </table>
                         <div class="row">
                             <div class="col-12">
-                                <a href="{{ route('admin.train.post') }}" class="btn btn-outline-primary float-end">View Table</a>
+                                <a href="{{ route('admin.train.post') }}" class="btn btn-outline-primary float-end kantumruy" style="font-weight: 400;">មើលបន្ថែម</a>
                             </div>
                         </div>
                     </div>
@@ -201,22 +214,54 @@
             <div class="col-sm-6 grid-margin grid-margin-md-0 stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-lg-flex align-items-center justify-content-between mb-4">
-                            <h4 class="card-title">Register</h4>
-                            <a href="{{ route('admin.reg.index') }}" class="btn btn-outline-primary">View Table</a>
-
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h4 class="card-title kantumruy">ឯកសារបណ្តុះបណ្តាល</h4>
+                            <h4 class="text-success font-weight-bold kantumruy">ចំនួន : <span class="text-dark ms-3">{{ $countTrianfile }} ឯកសារ</span></h4>
                         </div>
+                        <p class="kantumruy"  style="font-weight: 400;">តារាងឯកសារចុងក្រោយ</p>
+                        <table class="table table-hover" style="font-size: 25px;">
+                            <thead>
+                                <tr class="table kantumruy">
+                                  <th scope="col">ល.រ</th>
+                                  <th scope="col">ឈ្មោះ</th>
+                                </tr>
+                              </thead>
+                              @foreach ($trainFile['data'] as $item)
+                                <tbody >
+                                    <td>{{ $item['id'] }}</td>
+                                    <td class="kantumruy">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 90, $end = '...')}}</td>
+                                </tbody>
+                              @endforeach
+                        </table>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="{{ route('admin.train.post') }}" class="btn btn-outline-primary float-end kantumruy" style="font-weight: 400;">មើលបន្ថែម</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 grid-margin mt-4 grid-margin-md-0 stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-lg-flex align-items-center justify-content-between ">
+                            <h4 class="card-title kantumruy">វគ្គចុះឈ្មោះចូលរៀន</h4>
+                            <a href="{{ route('admin.reg.index') }}" class="btn btn-outline-primary kantumruy" style="font-weight: 400;">មើលបន្ថែម</a>
+                        </div>
+                        <p class="kantumruy mb-3"  style="font-weight: 400;">វគ្គចូលរៀនថ្មីដែលចាប់បើក</p>
                         <div class="product-order-wrap padding-reduced">
                             @php
                             $colors = ['bg-primary', 'bg-success', 'bg-danger', 'bg-warning', 'bg-info'];
                             $randomColors = array_rand($colors, 3);
                         @endphp
-                        @foreach ($register['data'] as $index => $item)
-                            @php
-                                $bgClass = $colors[$randomColors[$index % 3]];
-                            @endphp
                             <div class="row">
-                                <div class="col-6">
+                                @foreach ($register['data'] as $index => $item)
+                                @php
+                                    $bgClass = $colors[$randomColors[$index % 3]];
+                                @endphp
+                                <div class="col-3">
                                     <div class="card  text-white {{ $bgClass }} shadow-0 mb-3">
                                         @php
                                             $hyperlink = $item['hyperlink'];
@@ -224,26 +269,54 @@
                                                 $hyperlink = 'https://' . $hyperlink;
                                             }
                                         @endphp
-                                        <a href="{{ $hyperlink  }}"  target="__blank" el="noopener noreferrer" style="text-decoration: none">
-                                            <div class="card-header text-white">Register</div>
+                                        <a href="{{ $hyperlink  }}"  target="__blank" el="noopener noreferrer" style="text-decoration: none; max-width: 18rem;">
+                                            {{-- <div class="card-header text-white">Register</div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <h5 class="card-title text-white Siemreap">{{ $item['hypertext'] }}</h5>
+                                                        
                                                     </div>
                                                     <div class="col-12 text-algin-center">
-                                                        <img src="{{ asset('images/front/Thesis-pana.png') }}" alt="" width="200px">
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
+                                    
+                                                <div class="card-header text-white kantumruy">វគ្គចូលរៀនថ្មី</div>
+                                                <div class=" card-body">
+                                                    <div class="row">
+                                                        <h5 class="card-title text-white kantumruy" style="font-size: 20px">{{ $item['hypertext'] }}</h5>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <p class="text-white kantumruy">ការចាប់បើកវគ្គចូលរៀនថ្មី នៃសាលាជាតិមូលដ្ឋាន</p>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <img src="{{ asset('images/front/Thesis-pana.png') }}" alt="" width="150px">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                    
                                         </a>
                                     </div>
                                 </div>
+                                @endforeach 
                             </div>
-                        @endforeach 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            // Assuming you have the count stored in a variable called 'count'
+var count = {{ $count }}; // Replace with your actual count
+
+// Calculate the percentage
+var percentage = (count / 100) * 100;
+
+// Update the width of the progress bar
+var progressBar = document.getElementById('progress-bar');
+progressBar.style.width = percentage + '%';
+progressBar.setAttribute('aria-valuenow', percentage);
+        </script>
 @endsection

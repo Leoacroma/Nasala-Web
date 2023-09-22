@@ -24,7 +24,7 @@
                 <a class="nav-link dropdown" href="#" data-bs-toggle="dropdown" id="profileDropdown">
                     <div class="row">
                         <div class="col-12">
-                            <span class="nav-profile-name Siemreap">@ {{ $firstName }} {{ $lastName }}</span>
+                            <span class="nav-profile-name kantumruy">@ {{ $firstName }} {{ $lastName }}</span>
                         </div>
                          
                     </div>
@@ -37,10 +37,10 @@
     <nav class="bottom-navbar">
         <div class="container">
             <ul class="nav page-navigation">
-            <li class="nav-item  {{ Route::currentRouteNamed('admin.dash') ? 'active' : '' }}">
+            <li class="nav-item  {{ Route::currentRouteNamed('admin.dash', 'admin.newsSortCate') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ Route('admin.dash') }}">
                     <i class="fa-solid fa-gauge-high mb-3 font-size-20"></i>
-                    <span class="menu-title">Dashbord</span>
+                    <span class="menu-title kantumruy">ទំព័រដើម</span>
                 </a>
             </li>
             {{-- <li class="nav-item {{ Route::currentRouteNamed('admin.pagemake') ? 'active' : '' }}">
@@ -53,54 +53,54 @@
             <li class="nav-item {{ Route::currentRouteNamed('admin.post', 'admin.create', 'admin.postcate', 'admin.edit', 'admin.editcate', ) ? 'active' : '' }}">
                 <a href="#" class="nav-link">
                     <i class="fa-solid fa-cloud mb-3 font-size-20"></i>
-                    <span class="menu-title " >News Management</span>
+                    <span class="menu-title kantumruy" >គ្រប់គ្រងព័ត៌មាន</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                     <ul>
-                        <li class="nav-item"><a class="nav-link " href="{{ route('admin.postcate') }}">Categories</a></li>
-                        <li class="nav-item"><a class="nav-link " href="{{ route('admin.post') }}">Post News</a></li>
+                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.postcate') }}">ប្រភេទព័ត៌មាន</a></li>
+                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.post') }}">ការបង្ហោះព័ត៌មាន</a></li>
                     </ul>
                 </div>
             </li>
             <li class="nav-item {{ Route::currentRouteNamed( 'admin.train.cate', 'admin.train.post', 'admin.trian.cate.edit') ? 'active' : '' }}">
                 <a href="#" class="nav-link">
                     <i class="fa-solid fa-layer-group mb-3 font-size-20"></i>
-                    <span class="menu-title " >Training Management</span>
+                    <span class="menu-title kantumruy" >ការបណ្តុះបណ្តាល</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                     <ul>
-                        <li class="nav-item"><a class="nav-link " href="{{ route('admin.train.cate') }}">Categories</a></li>
-                        <li class="nav-item"><a class="nav-link " href="{{ route('admin.train.post') }}">Training</a></li>
+                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.train.cate') }}">ប្រភេទការបណ្តុះបណ្តាល</a></li>
+                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.train.post') }}">វគ្គបណ្តុះបណ្តាល</a></li>
                     </ul>
                 </div>
             </li>
             <li class="nav-item {{ Route::currentRouteNamed('admin.library', 'admin.lib.cate.edit') ? 'active' : '' }}">
                 <a href="{{ route('admin.library') }}" class="nav-link">
                     <i class="fa-solid fa-book mb-3 font-size-20"></i>
-                    <span class="menu-title" >Library</span>
+                    <span class="menu-title kantumruy" >បណ្ណាល័យ</span>
                     <i class="menu-arrow"></i>
                 </a>
             </li>
             <li class="nav-item {{ Route::currentRouteNamed('admin.pub.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.pub.index') }}" class="nav-link">
                     <i class="fa-solid fa-book mb-3 font-size-20"></i>
-                    <span class="menu-title" >Publication</span>
+                    <span class="menu-title kantumruy" >អាហាររូបករណ៍</span>
                     <i class="menu-arrow"></i>
                 </a>
             </li>
             <li class="nav-item {{ Route::currentRouteNamed('admin.reg.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.reg.index') }}" class="nav-link">
                     <i class="fa-solid fa-landmark mb-3 font-size-20"></i>
-                    <span class="menu-title" >Register</span>
+                    <span class="menu-title kantumruy" >ការចុះឈ្មោះចូលរៀន</span>
                     <i class="menu-arrow"></i>
                 </a>
             </li>
             <li class="nav-item {{ Route::currentRouteNamed('admin.user') ? 'active' : '' }}">
                 <a href="{{  route('admin.user')}}" class="nav-link">
                     <i class="fa-solid fa-cloud mb-3 font-size-20"></i>
-                    <span class="menu-title" >User Management</span>
+                    <span class="menu-title kantumruy" >គ្រប់គ្រងគណនីប្រើប្រាស</span>
                     <i class="menu-arrow"></i>
                 </a>
             </li>

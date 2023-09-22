@@ -12,7 +12,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         try {
-            $Endpoint = 'http://188.166.211.230:8080/v1/api/users';
+            $Endpoint = 'http://157.230.250.96:8080/v1/api/users';
             $client = Http::withHeaders([
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
@@ -32,7 +32,7 @@ class AdminMiddleware
             }
         }
         catch (RequestException $exception) {
-
+            return redirect()->route('not-found');
         }
         return redirect()->route('admin.login');
     }

@@ -37,11 +37,21 @@
         <div class="col-lay-3">
             <ul class="list-group  ">
                 <li class="list-group-item dp-font bg-color-355fb6 color-white font-size-25" data-locale="{{ $locale }}">{{ __('messages.File type') }}</li>
-                <li class="list-group-item activated"><a class="items-LG  dp-font" href="{{ route('front.liby') }}" data-locale="{{ $locale }}">{{ __('messages.Show all') }}</a></li>
-                @foreach ($cate['data'] as $item)
-                    <li class="list-group-item {{ request()->is('lib/sort/cate/' . $item['id']) ? ' activated' : '' }}"><a class="items-LG" href="{{ route('sort.cate.lib', $item['id']) }}">{{ $item['nameKh'] }}</a></li>
-                @endforeach
-              </ul>
+                <li class="list-group-item "><a class="items-LG  dp-font" href="{{ route('front.liby') }}" data-locale="{{ $locale }}">{{ __('messages.Show all') }}</a></li>
+                @foreach ($cate['data'] as $item)                    
+                <li class="list-group-item {{ request()->is('lib/sort/cate/' . $item['id']) ? ' activated' : '' }}">
+                    @if (app()->getLocale() === 'kh')
+                        <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
+                    @else
+                        @if ($item['name'] !== null)
+                            <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['name'] }}</a>
+                        @else
+                            <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
+                        @endif
+                    @endif  
+                </li>
+                 @endforeach             
+             </ul>
         </div>
         <div class="col-lay-1"></div>
         <div class="col-lay-6">
