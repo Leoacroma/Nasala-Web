@@ -10,12 +10,12 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-11">
-                    <h4 class="card-title">Training Genre Management</h4>
+                    <h4 class="card-title kantumruy">ប្រភេទការងារបណ្តុះបណ្តាល</h4>
                   </div>
                 </div>
                 <div class="row">
-                  <p class="card-description">
-                    All Training Genre elements
+                  <p class="card-description kantumruy">
+                    តារាងប្រភេទការងារបណ្តុះបណ្តាល
                   </p>
                   <div class="col-12">
                     <div class="divider-line"> </div>
@@ -23,35 +23,18 @@
                 </div>
                 <div class="row">
                  <div class="col-12">
-                  <table class="table ">
+                  <table class="table kantumruy" id="newsTable">
                     <thead >
                       <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name English</th>
-                        <th scope="col">Name Khmer</th>
-                        <th scope="col">Sub Menu</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">ល.រ</th>
+                        <th scope="col">ឈ្មោះជាភាសាអង់គ្លេស</th>
+                        <th scope="col">ឈ្មោះជាភាសាខ្មែរ</th>
+                        <th scope="col">នៅក្រោម</th>
+                        <th scope="col">សកម្មភាព</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      @foreach ($data['data'] as $item)
-                      <tr>
-                          <th scope="row">{{ $item['id'] }}</th>
-                          <td>{{ $item['name'] }}</td>
-                          <td class="Siemreap">{{ $item['nameKh'] }}</td>
-                          <td class="Siemreap">{{ $item['subMenu'] ? $item['subMenu']['nameKh'] : null }}</td>
-                          <td class="d-flex">
-                            <form action="{{ route('admin.trian.cate.edit', $item['id']) }}">
-                              <button  type="submit" class="btn btn-warning text-white mr-2" >Edit</button>
-                            </form>
-                            <form method="POST" action="{{ route('admin.destroycate', $item['id']) }}">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" class="btn btn-danger text-white">Delete</button>
-                            </form>                        
-                          </td>
-                      </tr>
-                  @endforeach
+                    <tbody class="kantumruy">
+                      
                     </tbody>
                   </table>
                  </div>
@@ -64,12 +47,12 @@
                 <div class="card-body">
                     <div class="row">
                       <div class="col-11">
-                        <h4 class="card-title">Edit Genre</h4>
+                        <h4 class="card-title kantumruy">កែប្រែប្រភេទការងារបណ្តុះបណ្តាល</h4>
                       </div>
                     </div>
                     <div  class="row">
-                      <p class="card-description">
-                        Edit elements
+                      <p class="card-description kantumruy">
+                        កែប្រែប្រភេទ
                       </p>
                       <div class="col-12">
                         <div class="divider-line"> </div>
@@ -77,28 +60,29 @@
                     </div>
                     <div class="row">
                      <div class="col-12">
-                      <form method="POST" action="{{ route('admin.trian.cate.update', $item['id']) }}">
+                      <form method="POST" class="kantumruy" action="{{ route('admin.trian.cate.update', $datae['data']['id']) }}">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
-                          <label for="exampleFormControlInput1">Name English</label>
-                          <input type="text" name="name" value="{{ $datae['data']['name'] }}" class="form-control" id="exampleFormControlInput1" placeholder="title in english" required>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Name Khmer</label>
+                          <label for="exampleFormControlInput1">ឈ្មោះ</label>
                           <input type="text" name="nameKh" value="{{ $datae['data']['nameKh'] }}" class="form-control" id="exampleFormControlInput1" placeholder="title in khmer" required>
                         </div>
                         <div class="form-group">
-                          <label for="exampleFormControlSelect1">Sub Menu</label>
-                          <select class="form-select Siemreap" name="subMenu" id="exampleFormControlSelect1" required>
+                          <label for="exampleFormControlInput1">ឈ្មោះជាភាសាអង់គ្លេស</label>
+                          <input type="text" name="name" value="{{ $datae['data']['name'] }}" class="form-control" id="exampleFormControlInput1" placeholder="title in english" required>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">នៅក្រោម</label>
+                          <select class="form-select kantumruy" name="subMenu" id="exampleFormControlSelect1" required>
                               <option value="" selected>-- សូមជ្រើសរើស --</option>
                               @foreach($data1['data'] as $submenu)
                                 <option value="{{ $submenu['id'] }}" {{ $submenu['id'] == $getSubMenu ? 'selected' : ''  }}>{{ $submenu['nameKh'] }}</option>
                               @endforeach
                           </select>
                         </div>
-                        <button type="submit" class="btn btn-primary text-white mr-2">save</button>
-                        <a href="{{ route('admin.train.cate') }}" class="btn btn-secondary">cancel</a>
+                        <button type="submit" class="btn btn-primary text-white mr-2" style="font-weight: 400">រក្សាទុក</button>
+                        <a href="{{ route('admin.train.cate') }}" class="btn btn-secondary" style="font-weight: 400">ត្រលប់ក្រោយ</a>
                       </form>
                      </div>
                     </div>
@@ -113,4 +97,31 @@
     <!-- main-panel ends -->
   <!-- page-body-wrapper ends -->
 </div>
+<script src="{{ asset('js/alert.js') }}"></script>
+<script>
+  $(document).ready(function() {
+      var data = {!! $dataJson !!};      
+      $('#newsTable').DataTable({
+          data: data,
+          columns: [
+              { data: 'id' },
+              { data: 'name' },
+              { data: 'nameKh' },
+              { data: 'subMenu' },
+              { 
+                data: null,
+                render: function(data, type, row) {
+                    return '<a href="' + data.editUrl + '"><i class="fa-solid fa-pen-to-square"></i></a>' +
+                        '<a href="#" class="ml-2 mr-2" style="color: red;"><i class="fa-solid fa-trash" onclick="confirmDelete(event, document.getElementById(\'delete-form' + data.id + '\'))"></i></a>' +
+                        '<form method="POST" id="delete-form' + data.id + '" action="' + data.deleteUrl + '">' +
+                        '<input type="hidden" name="_token" value="{{ csrf_token() }}">' +
+                        '<input type="hidden" name="_method" value="DELETE">' +
+                        '</form>';
+              }
+            }
+
+          ]
+      });
+  });
+</script>
 @endsection

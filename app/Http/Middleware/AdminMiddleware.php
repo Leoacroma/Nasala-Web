@@ -12,7 +12,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         try {
-            $Endpoint = 'http://157.230.250.96:8080/v1/api/users';
+            $Endpoint = 'https://nasla.k5moi.com/v1/api/users';
             $client = Http::withHeaders([
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',

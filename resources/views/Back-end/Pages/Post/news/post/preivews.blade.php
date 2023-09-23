@@ -13,7 +13,7 @@
             <div class="col-lay-6 m-auto p-0">
                 <div class="row">
                     <div class="col-lay-10 p-0 ">
-                        <h2 class="Siemreap font-size-40 title">{{ $data['data']['titleKh'] }}</h2>
+                        <h2 class="kantumruy font-size-40 title">{{ $data['data']['titleKh'] }}</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -21,10 +21,8 @@
                         <div class="row">
                             <div class="col-lay-10">
                                 <i class="fa-solid fa-calendar-days font-size-20"></i>
-                                <small class="Siemreap mg-r-10px font-size-17">{{ $formattedCreatedAt }}</small>
-                                <i class="fa-solid fa-eye"></i>
-                                <small class="Siemreap font-size-17">10k</small> |
-                                    <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $data['data']['category']['nameKh'] }}</span>
+                                <small class="kantumruy mg-r-10px font-size-17">{{ $formattedCreatedAt }}</small> |
+                                    <span class="badge bg-warning text-dark font-size-14 kantumruy">{{ $data['data']['category']['nameKh'] }}</span>
                                 <div class="col-lay-1 "></div>
                             </div>
                         </div>
@@ -39,7 +37,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lay-10 mt-3 p-0 Siemreap" style="font-size: 15px">
+                    <div class="col-lay-10 mt-3 p-0" style="font-size: 15px; font-weight: bold">
                         {!! $data['data']['contentKh'] !!}
                     </div>
                 </div>

@@ -34,13 +34,13 @@ class TrainingController extends Controller
             $fileData[] = [
                 'id' => $dd['id'],
                 'title' => $dd['title'],
-                'fileSize' => $dd['fileSize'],
+                'fileSize' => number_format($dd['fileSize'] / 1024) ,
                 'subMenu'=> $dd['subMenu'],
                 'name' => $dd['name'],
-                'url' => $dd['url'],
                 'createdAt' => $formattedCreatedAt,
             ];
         }
+     
 
         $result = [];
         foreach ($data['data'] as $item) {
@@ -51,10 +51,13 @@ class TrainingController extends Controller
                 'title' => $item['title'],
                 'titleKh' => $item['titleKh'],
                 'createdAt' => $formattedCreatedAt,
+                'editUrl' => route('admin.train.edit', $item['id']),
+                'deleteUrl' => route('admin.train.delete', $item['id']),
             ];
         }
+        $dataJson = json_encode($result);
         return view('Back-end.Pages.Training.traning',[
-            'result' => $result, 
+            'dataJson' => $dataJson,
             'fileData' => $fileData,
             'sub' => $sub,
             'firstName' => $firstName,

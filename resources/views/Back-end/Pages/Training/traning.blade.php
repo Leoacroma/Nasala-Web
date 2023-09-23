@@ -27,41 +27,27 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-10">
-                    <h4 class="card-title">Training Management</h4>
+                    <h4 class="card-title kantumruy">វគ្គបណ្តុះបណ្តាល</h4>
                   </div>
                   <div class="col-2">
-                    <a href="{{ route('admin.train.create') }}" class="btn btn-primary float-end">Add Training</a>
+                    <a href="{{ route('admin.train.create') }}" class="btn btn-primary float-end kantumruy" style="font-weight: 400">បន្ថែមវគ្គ</a>
                   </div>
                 </div>
-                <p class="card-description">
-                  All post elements
+                <p class="card-description kantumruy">
+                  តារាងវគ្គបណ្តុះបណ្តាល
                 </p>
                 <div class="divider-line"> </div>
-                <table class="table ">
+                <table class="table kantumruy" id="newsTable">
                   <thead >
                     <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">Title</th>
-                      <th scope="col">Date</th>
-                      <th scope="col">Action</th>
+                      <th scope="col">ល.រ</th>
+                      <th scope="col">វគ្គ</th>
+                      <th scope="col">ថ្ងៃ</th>
+                      <th scope="col">សកម្មភាព</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    @foreach ($result as $item)
-                    <tr>
-                        <th scope="row">{{ $item['id'] }}</th>
-                        <td class="Siemreap">{{ $item['titleKh'] }}</td>
-                        <td class="Siemreap">{{ $item['createdAt'] }}</td>
-                        <td class="d-flex">
-                          <a class="btn btn-warning text-white mr-2" type="button" href="{{ route('admin.train.edit', $item['id']) }}" >Edit</a>
-                          <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.train.delete', $item['id']) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger text-white mr-2" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))">Delete</button>
-                          </form>                       
-                        </td>
-                    </tr>
-                @endforeach
+                  <tbody class="kantumruy">
+                
                   </tbody>
                 </table>
                
@@ -74,45 +60,43 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-10">
-                    <h4 class="card-title">File Training Management</h4>
+                    <h4 class="card-title kantumruy">ឯកសារបណ្តុះបណ្តាល</h4>
                   </div>
                   <div class="col-2">
-                    <a  data-toggle="modal"  data-target="#uploadmethod" class="btn btn-primary float-end">Upload File</a>
+                    <a  data-toggle="modal"  data-target="#uploadmethod" class="btn btn-primary float-end kantumruy" style="font-weight: 400">បញ្ចូលឯកសារ</a>
                     @include('Back-end.Pages.Training.files.upload-file')
                   </div>
                 </div>
-                <p class="card-description">
-                  All post elements
+                <p class="card-description kantumruy">
+                 តារាងឯកសារបណ្តុះបណ្តាល
                 </p>
                 <div class="divider-line"> </div>
-                <table class="table ">
-                  <thead >
+                <table class="table" >
+                  <thead class="kantumruy">
                     <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">Title</th>
-                      <th scope="col">File Size</th>
-                      <th scope="col">Date</th>
-                      <th scope="col">Action</th>
+                      <th scope="col">ល.រ</th>
+                      <th scope="col">ចំណង់ជើង</th>
+                      <th scope="col">ទំហំ</th>
+                      <th scope="col">ថ្ងៃ</th>
+                      <th scope="col">សកម្មភាព</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody class="kantumruy">
                     @foreach ($fileData as $item)
                     <tr>
                         <th scope="row">{{ $item['id'] }}</th>
                         <td class="Siemreap">{{ $item['title'] }}</td>
-                        <td class="Siemreap">{{ number_format($item['fileSize'] / 1024) }} Kbytes</td>
+                        <td class="Siemreap">{{ $item['fileSize'] }} Kbyes</td>
                         <td class="Siemreap">{{ $item['createdAt'] }}</td>
                         <td class="d-flex">
-                          <a class="btn btn-warning text-white mr-2" data-toggle="modal"  data-target="#Editmethod{{ $item['id'] }}" type="button"  >Edit</a>
+                          <a  href="" data-toggle="modal"  data-target="#Editmethod{{ $item['id'] }}" ><i class="fa-solid fa-pen-to-square"></i></a>
                           @include('Back-end.Pages.Training.files.Editfile')
                           <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.trian.file.destroy', $item['id']) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger text-white mr-2" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{  $item['id'] }}')))">Delete</button>
-                          </form>      
-                          <a href="https://nasla.k5moi.com/v1/api/training/{{ $item['id'] }}" class="btn btn-primary" download>Download File</a>                     
-                          {{-- <a href="" data-toggle="modal"  data-target="#Viewmethod{{ $item['id'] }}"  class="btn btn-primary" >View PDF</a>     
-                          @include('Back-end.Pages.Training.files.viewfile') --}}
+                            <a href="" class="mr-2 ml-2 " style="color: red"><i class="fa-solid fa-trash" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
+                          </form>   
+                          <a href="https://nasla.k5moi.com/v1/api/files/{{ $item['id'] }}" style="color: green"><i class="fa-solid fa-download"></i></a>                    
                         </td>
                     </tr>
                 @endforeach
@@ -130,24 +114,34 @@
   <!-- page-body-wrapper ends -->
   
 </div>
+<script src="{{ asset('js/alert.js') }}"></script>
+
 <script>
-function confirmDelete(event, form) {
-    event.preventDefault();
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'You will not be able to recover this record!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            form.submit();
-        }
-    });
-}
+$(document).ready(function() {
+    var data = {!! $dataJson !!};    
+      $('#newsTable').DataTable({
+          data: data,
+          columns: [
+              { data: 'id' },
+              { data: 'titleKh' },
+              { data: 'createdAt' },
+              { 
+                data: null,
+                render: function(data, type, row) {
+                    return '<a href="' + data.editUrl + '"><i class="fa-solid fa-pen-to-square"></i></a>' +
+                        '<a href="#" class="ml-2 mr-2" style="color: red;"><i class="fa-solid fa-trash" onclick="confirmDelete(event, document.getElementById(\'delete-form' + data.id + '\'))"></i></a>' +
+                        '<form method="POST" id="delete-form' + data.id + '" action="' + data.deleteUrl + '">' +
+                        '<input type="hidden" name="_token" value="{{ csrf_token() }}">' +
+                        '<input type="hidden" name="_method" value="DELETE">' +
+                        '</form>';
+              }
+            }
+
+          ]
+      });
+  });
+
+
 document.getElementById('checkFile').addEventListener('change', function() {
   var fileInput = this;
   var file = fileInput.files[0];

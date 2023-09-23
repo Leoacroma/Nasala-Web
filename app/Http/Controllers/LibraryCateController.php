@@ -25,6 +25,18 @@ class LibraryCateController extends Controller
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
         $lastName = $user['data']['lastNameKh'];
+        $result1 = [];
+        foreach ($data['data'] as $dd) {
+            $result1[] = [
+                'id' => $dd['id'],
+                'name' => $dd['name'],
+                'nameKh' => $dd['nameKh'],
+                'editUrl' => route('admin.lib.cate.edit', $dd['id']),
+                'deleteUrl' =>  route('admin.cate.lib.del', $dd['id']),
+            ];
+        }
+        $dataJson = json_encode($result1);
+        
         $result = [];
         foreach ($lib['data'] as $lib) {
             $dateTime = KhmerDateTime::parse($lib['createdAt']);
@@ -39,8 +51,11 @@ class LibraryCateController extends Controller
                 'createdAt' => $formattedCreatedAt,
             ];
         }
+        
+
         return view('Back-end.Pages.library.libraryCate',[
             'data' => $data,
+            'dataJson' => $dataJson,
             'result' => $result,
             'firstName' => $firstName,
             'lastName' => $lastName
@@ -116,8 +131,20 @@ class LibraryCateController extends Controller
             ];
         }
 
+        $result1 = [];
+        foreach ($data['data'] as $dd) {
+            $result1[] = [
+                'id' => $dd['id'],
+                'name' => $dd['name'],
+                'nameKh' => $dd['nameKh'],
+                'editUrl' => route('admin.lib.cate.edit', $dd['id']),
+                'deleteUrl' =>  route('admin.cate.lib.del', $dd['id']),
+            ];
+        }
+        $dataJson = json_encode($result1);
         return view('Back-end.Pages.library.editlibCate', [
             'result' => $result,
+            'dataJson' => $dataJson,
             'data' => $data,
             'datae' => $datae,
             'firstName' => $firstName,

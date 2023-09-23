@@ -10,35 +10,35 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-12">
-                    <h4 class="card-title">Edit Post</h4>
+                    <h4 class="card-title kantumruy">កែប្រែព័ត៌មាន</h4>
                   </div>
                 </div>
-                <p class="card-description">
-                  Edit elements
+                <p class="card-description kantumruy">
+                  កែប្រែព័ត៌មាន
                 </p>
                 <div class="divider-line"> </div>
-                <form class="forms-sample" method="POST" action="{{ route('admin.update', $data['data']['id']) }}" enctype="multipart/form-data" >
+                <form class="forms-sample kantumruy" method="POST" action="{{ route('admin.update', $data['data']['id']) }}" enctype="multipart/form-data" >
                   @csrf
                   @method('PATCH')
                   <div class="form-group">
-                    <label for="exampleInputEmail3">Title</label>
+                    <label for="exampleInputEmail3">ចំណង់ជើង <span class="required"></span></label>
                     <input type="text" class="form-control" name="titleKh" value="{{ $data['data']['titleKh'] }}" placeholder="Title Khmer" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputName1">Title English</label>
+                    <label for="exampleInputName1">ចំណង់ជើងជាភាសាអង់គ្លេស</label>
                     <input type="text" class="form-control" name="title" value="{{ $data['data']['title'] }}" placeholder="Title English">
                   </div>
                   
                   <div class="form-group">
-                    <label for="exampleSelectGender">Caetgories</label>
-                      <select class="form-select Siemreap" id="exampleSelectGender" name="categoryId">
+                    <label for="exampleSelectGender">ប្រភេទព័ត៌មាន</label>
+                      <select class="form-select kantumruy" id="exampleSelectGender" name="categoryId">
                         @foreach ($All_cate['data'] as $item)
                           <option value="{{ $item['id'] }}" {{ $item['id'] == $data['data']['category']['id'] ? 'selected' : '' }}>{{ $item['nameKh'] }}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword4">Thumbnail</label>
+                      <label for="exampleInputPassword4">រូបភាព</label>
                       <input type="file" name="thumbnailImageId" class="form-control file-upload-info" id="image-upload-input2" accept="image/*">
                       <div  id="uploaded-image-container2" class="m-3"></div>
                       <img id="previous-img" src="{{ $image }}" alt="" width="250px" height="200px">
@@ -47,15 +47,15 @@
                       សូម upload រូបភាព
                     </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Content</label>
+                    <label for="exampleInputPassword4">ឃ្លឹមសារ</label>
                     <textarea class="form-control" name="contentKh" id="summernoteKh" required> {!! $data['data']['contentKh'] !!}</textarea>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Content English</label>
+                    <label for="exampleInputPassword4">ឃ្លឹមសារជាភាសាអង់គ្លេស</label>
                     <textarea class="form-control" name="content"  id="summernoteEng">{!! $data['data']['content'] !!}</textarea>
                   </div>   
-                  <button type="submit" class="btn btn-primary me-2">Save</button>
-                  <a type="submit" class="btn btn-secondary" href="{{ route('admin.post') }}">Cancel</a>
+                  <button type="submit" class="btn btn-primary text-white me-2" style="font-weight: 400">រក្សាទុក</button>
+                  <a type="submit" class="btn btn-secondary" href="{{ route('admin.post') }}" style="font-weight: 400">ត្រលប់ក្រោយ</a>
                 </form>
               </div>
             </div>

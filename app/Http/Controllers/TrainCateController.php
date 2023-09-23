@@ -22,8 +22,21 @@ class TrainCateController extends Controller
         $firstName = $user['data']['firstNameKh'];
         $lastName = $user['data']['lastNameKh'];
         $data1 = $httpClient->getRequest('/sub-menus');
+        $result = [];
+        foreach ($data['data'] as $item) {
+           
+            $result[] = [
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'nameKh' => $item['nameKh'],
+                'subMenu' => $item['subMenu']['nameKh'],
+                'editUrl' => route('admin.trian.cate.edit', $item['id']),
+                'deleteUrl' => route('admin.trian.cate.delete', $item['id']),
+            ];
+        }
+        $dataJson = json_encode($result);
         return view('Back-end.Pages.Training.traning-cate', [
-            'data' => $data,
+            'dataJson' => $dataJson,
             'data1' => $data1,
             'firstName' => $firstName,
             'lastName' => $lastName
@@ -88,8 +101,21 @@ class TrainCateController extends Controller
         foreach ($data['data'] as $sub){
             $getSubMenu = $sub['subMenu']['id'];
         }
+        $result = [];
+        foreach ($data['data'] as $item) {
+           
+            $result[] = [
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'nameKh' => $item['nameKh'],
+                'subMenu' => $item['subMenu']['nameKh'],
+                'editUrl' => route('admin.trian.cate.edit', $item['id']),
+                'deleteUrl' => route('admin.trian.cate.delete', $item['id']),
+            ];
+        }
+        $dataJson = json_encode($result);
         return view('Back-end.Pages.Training.editcate', [
-            'data' => $data,
+            'dataJson' => $dataJson,
             'datae' => $datae,
             'data1' => $data1,
             'getSubMenu' => $getSubMenu,

@@ -2,25 +2,25 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Register</h5>
+          <h5 class="modal-title kantumruy" id="exampleModalLabel">កែប្រែ</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ route('admin.reg.update', $item['id'])}}" method="POST">
+        <form class="kantumruy" action="{{ route('admin.reg.update', $item['id'])}}" method="POST">
             @csrf
             @method('PATCH')
             <div class="modal-body">
                 <div class="form-group">
-                  <label for="exampleFormControlInput1 ">Course Name <span class="required"></span></label>
+                  <label for="exampleFormControlInput1 ">ចំណង់ជើង </label>
                   <input type="text" name="courseName" class="form-control" value="{{ $item['courseName'] }}"  id="exampleFormControlInput1" placeholder="Course Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1 ">Khmer Title <span class="required"></span></label>
+                    <label for="exampleFormControlInput1 ">ចំណង់ជើងជាភាសាខ្មែរ </label>
                     <input type="text" name="hypertext" class="form-control" value="{{ $item['hypertext'] }}"  id="exampleFormControlInput1" placeholder="Khmer Title" required>
                 </div>
                 <div class="form-group">
-                <label for="exampleFormControlInput1 ">Link <span class="required"></span></label>
+                <label for="exampleFormControlInput1 ">Link </label>
                 <input type="link" name="hyperlink" class="form-control" value="{{ $item['hyperlink'] }}"  id="exampleFormControlInput1" placeholder="Link" required>
                 </div>
             </div>

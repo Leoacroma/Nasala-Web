@@ -10,12 +10,12 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-11">
-                    <h4 class="card-title">Library Categories Management</h4>
+                    <h4 class="card-title kantumruy">ប្រភេទបណ្ណាល័យ</h4>
                   </div>
                 </div>
                 <div class="row">
-                  <p class="card-description">
-                    All Categories elements
+                  <p class="card-description kantumruy">
+                    តារាងប្រភេទបណ្ណាល័យ
                   </p>
                   <div class="col-12">
                     <div class="divider-line"> </div>
@@ -23,34 +23,16 @@
                 </div>
                 <div class="row">
                  <div class="col-12">
-                  <table class="table ">
+                  <table class="table kantumruy" id="newsTable">
                     <thead >
                       <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name English</th>
-                        <th scope="col">Name Khmer</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">ល.រ</th>
+                        <th scope="col">ឈ្មោះជាភាសាអង់គ្លេស</th>
+                        <th scope="col">ឈ្មោះជាភាសាខ្មែរ</th>
+                        <th scope="col">សកម្មភាព</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      @foreach ($data['data'] as $item)
-                      <tr>
-                          <th scope="row">{{ $item['id'] }}</th>
-                          <td>{{ $item['name'] }}</td>
-                          <td class="Siemreap">{{ $item['nameKh'] }}</td>
-                          <td class="d-flex">
-                            <form action="{{ route('admin.lib.cate.edit', $item['id']) }}">
-                              <button  type="submit" class="btn btn-warning text-white mr-2" >Edit</button>
-                            </form>
-                          
-                            <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.cate.lib.del', $item['id']) }}">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" class="btn btn-danger text-white " onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))">Delete</button>
-                            </form>                       
-                          </td>
-                      </tr>
-                  @endforeach
+                    <tbody class="kantumruy">
                     </tbody>
                   </table>
                  </div>
@@ -75,24 +57,32 @@
     <!-- main-panel ends -->
   <!-- page-body-wrapper ends -->
 </div>
+<script src="{{ asset('js/alert.js') }}"></script>
+
 <script>
- function confirmDelete(event, form) {
-    event.preventDefault();
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'You will not be able to recover this record!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            form.submit();
-        }
-    });
-}
+$(document).ready(function() {
+    var data = {!! $dataJson !!};    
+      $('#newsTable').DataTable({
+          data: data,
+          columns: [
+              { data: 'id' },
+              { data: 'name' },
+              { data: 'nameKh' },
+              { 
+                data: null,
+                render: function(data, type, row) {
+                    return '<a href="' + data.editUrl + '"><i class="fa-solid fa-pen-to-square"></i></a>' +
+                        '<a href="#" class="ml-2 mr-2" style="color: red;"><i class="fa-solid fa-trash" onclick="confirmDelete(event, document.getElementById(\'delete-form' + data.id + '\'))"></i></a>' +
+                        '<form method="POST" id="delete-form' + data.id + '" action="' + data.deleteUrl + '">' +
+                        '<input type="hidden" name="_token" value="{{ csrf_token() }}">' +
+                        '<input type="hidden" name="_method" value="DELETE">' +
+                        '</form>';
+              }
+            }
+          ]
+      });
+  });
+
 document.getElementById('checkFile').addEventListener('change', function() {
   var fileInput = this;
   var file = fileInput.files[0];
@@ -173,7 +163,9 @@ $('#submitUpload').click(function(event) {
       }
     }, 500);
   });
+
 {{-- @yield('script-file') --}}
+</script>
 
 
 @endsection

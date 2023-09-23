@@ -17,20 +17,20 @@
                   បន្ថែមព័ត៌មានចូលតារាង
                 </p>
                 <div class="divider-line"> </div>
-                <form class="forms-sample" method="POST" action="{{ route('admin.store') }}" enctype="multipart/form-data" >
+                <form class="forms-sample kantumruy" method="POST" action="{{ route('admin.store') }}" enctype="multipart/form-data" >
                   @csrf
-                  <div class="form-group">
-                    <label for="exampleInputEmail3">Title <span class="required"></span></label>
-                    <input type="text" class="form-control" name="titleKh" placeholder="Title Khmer" required>
+                  <div class="form-group ">
+                    <label for="exampleInputEmail3">ចំណង់ជើង <span class="required"></span></label>
+                    <input type="text" class="form-control" name="titleKh" placeholder="ចំណង់ជើង" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputName1">Title English </label>
-                    <input type="text" class="form-control" name="title" placeholder="Title English">
+                    <label for="exampleInputName1">ចំណង់ជើងជាភាសាអង់គ្លេស </label>
+                    <input type="text" class="form-control" name="title" placeholder="ចំណង់ជើងជាភាសាអង់គ្លេស">
                   </div>
                   
                   <div class="form-group">
-                    <label for="exampleSelectGender">Categories <span class="required"></span></label>
-                      <select class="form-select Siemreap" id="exampleSelectGender" name="categoryId" required>
+                    <label for="exampleSelectGender">ប្រភេទព័ត៌មាន <span class="required"></span></label>
+                      <select class="form-select kantumruy" id="exampleSelectGender" name="categoryId" required>
                         <option value="">-- សូមជ្រើសរើស --</option>
                         @foreach ($data['data'] as $item)
                           <option value="{{ $item['id'] }}">{{ $item['nameKh'] }}</option>
@@ -38,7 +38,7 @@
                       </select>
                     </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Thumbnail <span class="required"></span></label>
+                    <label for="exampleInputPassword4">រូបភាព <span class="required"></span></label>
                     <input type="file" name="thumbnailImageId"  class="form-control file-upload-info" id="image-upload-input" accept="image/*" required>
                     <div  id="uploaded-image-container" class="m-3"></div>
                   </div>
@@ -46,15 +46,15 @@
                     សូម upload រូបភាព
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Content <span class="required"></span> </label>
+                    <label for="exampleInputPassword4">ឃ្លឹមសារ <span class="required"></span> </label>
                     <textarea class="form-control Siemreap" name="contentKh" id="summernoteKh" required></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">Content English </label>
+                    <label for="exampleInputPassword4">ឃ្លឹមសារជាភាសាអង់គ្លេស </label>
                     <textarea class="form-control Siemreap" name="content" id="summernoteEng" ></textarea>
                   </div>    
-                  <button type="submit" class="btn btn-primary text-white me-2">Save</button>
-                  <a type="submit" class="btn btn-secondary" href="{{ route('admin.post') }}">Cancel</a>
+                  <button type="submit" class="btn btn-primary text-white me-2" style="font-weight: 400">រក្សាទុក</button>
+                  <a type="submit" class="btn btn-secondary" href="{{ route('admin.post') }}" style="font-weight: 400">ត្រលប់ក្រោយ</a>
                 </form>
               </div>
             </div>

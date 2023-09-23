@@ -10,25 +10,25 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-10">
-                    <h4 class="card-title">User Management</h4>
+                    <h4 class="card-title kantumruy">គណនីប្រើប្រាស</h4>
                   </div>
                   <div class="col-2">
-                    <a  data-toggle="modal"  data-target="#addmethod" class="btn btn-primary float-end">Add User</a>
+                    <a  data-toggle="modal"  data-target="#addmethod" class="btn btn-primary float-end kantumruy" style="font-weight: 400">បន្ថែមគណនី</a>
                     @include('Back-end.user-managment.Crud.adduser')
                 </div>
                 </div>
-                <p class="card-description">
-                  All user
+                <p class="card-description kantumruy">
+                 តារាងគណនី
                 </p>
                 <div class="divider-line"> </div>
-                <table class="table ">
+                <table class="table kantumruy"  id="newsTable">
                   <thead >
                     <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">first Name</th>
-                      <th scope="col">last Name</th>
-                      <th scope="col">Date</th>
-                      <th scope="col">Action</th>
+                      <th scope="col">ល.រ</th>
+                      <th scope="col">គោត្តនាម</th>
+                      <th scope="col">នាម</th>
+                      <th scope="col">ថ្ងៃ</th>
+                      <th scope="col">សកម្មភាព</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -39,12 +39,12 @@
                         <td class="Siemreap">{{ $item['lastNameKh'] }}</td>
                         <td class="Siemreap">{{ $item['createdAt'] }}</td>
                         <td class="d-flex">                    
-                          <a  data-toggle="modal"  data-target="#editmethod{{ $item['id'] }}" class="btn btn-warning text-white mr-2">Edit</a>
+                          <a  data-toggle="modal" href=""  data-target="#editmethod{{ $item['id'] }}" ><i class="fa-solid fa-pen-to-square"></i></a>
                           @include('Back-end.user-managment.Crud.edituser')
                           <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.user.destroy', $item['id']) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger text-white mr-2" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))">Delete</button>
+                            <a href=""  class=" ml-2" style="color: red"><i class="fa-solid fa-trash" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
                           </form>                       
                         </td>
                     </tr>
@@ -63,23 +63,6 @@
     <!-- main-panel ends -->
   <!-- page-body-wrapper ends -->
 </div>
-<script>
-    function confirmDelete(event, form) {
-    event.preventDefault();
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'You will not be able to recover this record!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            form.submit();
-        }
-    });
-}
-</script>
+<script src="{{ asset('js/alert.js') }}"></script>
+
 @endsection

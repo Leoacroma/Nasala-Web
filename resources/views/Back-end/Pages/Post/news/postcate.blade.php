@@ -67,7 +67,6 @@
                 render: function(data, type, row) {
                     return '<a href="' + data.editUrl + '"><i class="fa-solid fa-pen-to-square"></i></a>' +
                         '<a href="#" class="ml-2 mr-2" style="color: red;"><i class="fa-solid fa-trash" onclick="confirmDelete(event, document.getElementById(\'delete-form' + data.id + '\'))"></i></a>' +
-                        '<a href="' + data.viewUrl + '"><i class="fa-solid fa-eye"></i></a>' +
                         '<form method="POST" id="delete-form' + data.id + '" action="' + data.deleteUrl + '">' +
                         '<input type="hidden" name="_token" value="{{ csrf_token() }}">' +
                         '<input type="hidden" name="_method" value="DELETE">' +

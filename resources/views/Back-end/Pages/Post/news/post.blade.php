@@ -16,8 +16,8 @@
                     <a href="{{ route('admin.create') }}" class="btn btn-primary kantumruy" style="font-weight: 400">បន្ថែមព័ត៌មាន </a>
                   </div>
                 </div>
-                <p class="card-description">
-                  All post elements
+                <p class="card-description kantumruy">
+                 ព័ត៌មាននៅក្នុងតារាង
                 </p>
                 <div class="divider-line"> </div>
                 <table class="table" id="newsTable">
