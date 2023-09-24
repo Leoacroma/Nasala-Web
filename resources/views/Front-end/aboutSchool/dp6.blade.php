@@ -63,11 +63,11 @@
                 <span >អ៊ីម៉ែល <a href="{{ $email3 }}">chychanraksmey@gmail.com</a></span>
             </div>
             <div class="col-4 text-algin-center Siemreap font-size-16">
-                <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
+                <img class="image-front-TT" src="{{ asset('images/photo_2023-09-24_10-17-16.jpg') }}" alt="">
                 <br/>
                 <span >ឯកឧត្តម គង់ ចាន់ថន <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email4 }}">potheary@iuj.ac.jp</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email4 }}">chanthankong@gmail.com</a></span>
             </div>
            
         </div>
