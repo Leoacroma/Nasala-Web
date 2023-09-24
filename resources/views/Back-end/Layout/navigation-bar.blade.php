@@ -4,8 +4,10 @@
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-around">
             <ul class="navbar-nav navbar-nav-left">
             <li class="nav-item ms-0 me-5 d-lg-flex d-none">
-                <a href="{{ route('admin.logout') }}" class="nav-link horizontal-nav-left-menu " style="color: rgb(248, 78, 78)">
-                    <i class="fa-solid fa-right-from-bracket"></i></a>
+                {{-- <form action="{{ route('admin.logout') }}" id="delete-form{{ $item['id'] }}" method="POST">
+                    <a href="" class="nav-link horizontal-nav-left-menu " style="color: rgb(248, 78, 78)"><i class="fa-solid fa-right-from-bracket" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
+                </form> --}}
+                <a href="{{ route('admin.logout') }}" class="nav-link horizontal-nav-left-menu " style="color: rgb(248, 78, 78)"><i class="fa-solid fa-right-from-bracket" ></i></a>
             </li>
             <li class="nav-item nav-search">
                 {{-- <div class="input-group">
@@ -108,3 +110,22 @@
             </ul>
         </div>
     </nav>
+{{-- <script>
+    function confirmDelete(event, form) {
+    event.preventDefault();
+    Swal.fire({
+        title: 'តើអ្នកចង់ចេញពីប្រព័ន្ធ',
+        icon: 'warning',
+        html: '<img src="path/to/image.jpg" class="custom-icon-img">',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'យល់ព្រម',
+        cancelButtonText: 'មិនយល់ព្រម'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+        }
+    });
+}
+</script> --}}

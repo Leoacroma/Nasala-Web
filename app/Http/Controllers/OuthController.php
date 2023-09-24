@@ -33,10 +33,12 @@ class OuthController extends Controller
             } else {
                
                 Cookie::queue('token', $token_value);
+                
                 $token = Cookie::get('token');
                 $user = $httpClient->getRequest('/users/principal?'.$token);
                 $userID = $user['data']['id'];
                 Cookie::queue('user_Id', $userID);
+
                 return redirect()->route('admin.dash');
             }
         } catch (\Exception $e) {

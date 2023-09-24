@@ -47,7 +47,7 @@
           @foreach ($result as $item)
           <div class="row p-0 mb-3">
               <div class="col-lay-1">
-                  <img src="{{ asset('images/front/pdf.png') }}" alt="" width="60px">
+                <img src="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}?isPdf=false" alt="" width="90px">
               </div>
               <div class="col-lay-6">
                   <h1 class="Siemreap font-size-20">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 50, $end = '...') }}</h1>

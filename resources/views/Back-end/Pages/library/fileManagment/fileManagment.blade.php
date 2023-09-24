@@ -43,7 +43,7 @@
               <form method="POST" id="delete-file-form{{ $item['id'] }}" action="{{ route('admin.lib.file.delete', $item['id']) }}">
                 @csrf
                 @method('DELETE')
-                <a  class="  ml-2 mr-2" style="color: red"><i class="fa-solid fa-trash" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
+                <a href="" class="ml-2 mr-2" style="color: red"><i class="fa-solid fa-trash" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
               </form>
                {{-- View Method --}}
               {{-- <a  class="btn btn-primary text-white" data-toggle="modal"  data-target="#Previewmethod{{ $item['id'] }}">Download</a>                       

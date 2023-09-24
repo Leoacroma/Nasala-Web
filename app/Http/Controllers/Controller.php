@@ -692,10 +692,10 @@ class Controller extends BaseController
             $trainLasted = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=5&sortBy=createdAt');
             $trainFile = $httpClient->getRequest('/training?page=0&sortOrder=desc&size=5&sortBy=createdAt');
             $register = $httpClient->getRequest('/register?page=0&sortOrder=desc&size=4&sortBy=createdAt');
-            $token_value = Cookie::get('token');
-            $user = $httpClient->getRequest('/users/principal?'.$token_value);
-            $userID = $user['data']['id'];
-            Cookie::queue('user_Id', $userID);
+            $user_Id_Store = Cookie::get('user_Id');
+            $user = $httpClient->getRequest('/users/'.$user_Id_Store);
+           
+            // $userID = $user['data']['id'];
         
            
             

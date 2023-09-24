@@ -39,8 +39,6 @@ class HttpClientHelper
             ]);
         $data = json_decode($response->getBody(), true);
         return $data;
-
-        
     }
 
     public function getRequest($url, $params = null){
