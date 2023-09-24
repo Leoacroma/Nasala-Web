@@ -27,19 +27,24 @@ class OuthController extends Controller
             ];
             $result = $httpClient->postloginRequest('token', $params);
             $token_value = $result['access_token'];
-            // dd($token_value);
+           
+            
             
 
             if (isset($result['error']) && $result['error'] === 'unauthorized') {
                 Alert::error(' Please try again.', 'Username or password is incorrect.');
             } else {
+               
                 Cookie::queue('token', $token_value);
-                
+                $token = Cookie::get('token');
+                $user = $httpClient->getRequest('/users/principal?'.$token);
+                $userID = $user['data']['id'];
+                Cookie::queue('user_Id', $userID);
                 return redirect()->route('admin.dash');
             }
         } catch (\Exception $e) {
-        //    alert($e->getMessage());
-            Alert::error('Error : '. 'Invalid User');
+           alert($e->getMessage());
+            // Alert::error('Error : '. 'Invalid User');
         }
         return redirect()->back();
 

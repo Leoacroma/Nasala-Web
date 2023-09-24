@@ -43,7 +43,7 @@
                                 {{ __('messages.Phone Number') }}
                             </div>
                             <div class="col-lay-5">
-                                :  {{ __('messages.(+855) 89 876 542') }}
+                                :  {{ __('messages.089 876 542') }}
                             </div>
                         </div>
                     </li>

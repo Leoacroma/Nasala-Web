@@ -28,7 +28,7 @@
                             <div class="card mb-3" >
                                 <div class="row no-gutters">
                                   <div class="col-md-2 d-flex align-items-center">
-                                    <img src="{{ asset('images/MOI-leader.jpg') }}" class="card-img" alt="...">
+                                    <img src="{{ asset('images/photo_2023-09-24_09-52-54.jpg') }}" class="card-img" alt="...">
                                   </div>
                                   <div class="col-md-10">
                                     <div class="card-body">

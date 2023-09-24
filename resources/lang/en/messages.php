@@ -47,6 +47,6 @@ return [
     'Phone Number' => 'Phone Number',
     'Working hours' => 'Working hours',
     'Morning: 7:00 a.m. to 12:00 p.m' => 'Morning: 7:00 a.m. to 12:00 p.m',
-    '(+855) 89 876 542'=>  '(+855) 89 876 542'
+    '089 876 542'=>  '089 876 542'
 
 ];

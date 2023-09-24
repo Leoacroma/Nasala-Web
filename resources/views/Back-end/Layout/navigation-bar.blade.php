@@ -24,7 +24,7 @@
                 <a class="nav-link dropdown" href="#" data-bs-toggle="dropdown" id="profileDropdown">
                     <div class="row">
                         <div class="col-12">
-                            <span class="nav-profile-name kantumruy">@ {{ $firstName }} {{ $lastName }}</span>
+                            <span class="nav-profile-name kantumruy"> {{ $firstName }} {{ $lastName }}</span>
                         </div>
                          
                     </div>

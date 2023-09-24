@@ -14,7 +14,7 @@
             <div class="col-sm-6 mb-4 mb-xl-0">
                 <div class="d-lg-flex align-items-center kantumruy">
                     <div>
-                        <h3 class="text-dark font-weight-bold mb-2 kantumruy">សួរស្តី, សូមស្វាគមន៍! <span class="badge rounded-pill badge-primary kantumruy">{{ $lastName }}</span></h3>
+                        <h3 class="text-dark font-weight-bold mb-2 kantumruy">សួរស្តី, សូមស្វាគមន៍!  <span class="badge badge-primary">{{ $lastName }}</span></h3>
                         <h6 class="font-weight-normal mb-2 kantumruy">ការត្រលប់មកកានប្រព័ន្ធវិញ.</h6>
                     </div>
 

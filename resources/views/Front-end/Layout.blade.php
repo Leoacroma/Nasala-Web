@@ -205,14 +205,14 @@
                             <ul class="list-unstyled">
                                 @php
                                     $hyperlink = 'www.facebook.com';
-                                    $email =  'nasala@gmail.com';
+                                    $email =  'naslacambodia@gmail.com';
                                     if (!str_starts_with($hyperlink && $email, 'http://') && !str_starts_with($hyperlink && $email, 'https://')) {
                                         $hyperlink = 'https://' . $hyperlink;
                                         $email = 'https://' . $email;
                                     }
                                 @endphp  
                                 <li><i class="fa-solid fa-square-phone mg-r-10px" ></i>023 456 789</li>
-                                <li><i class="fa-solid fa-square-envelope mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $email }}">nasala@gmail.com</a></li>
+                                <li><i class="fa-solid fa-square-envelope mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $email }}">naslacambodia@gmail.com</a></li>
                                
                                 <li><i class="fa-brands fa-square-facebook mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $hyperlink }}">facebook.com</a></li>
                                 <li><i class="fa-solid fa-location-dot mg-r-10px" ></i>{{ __('messages.Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.') }}</li>
