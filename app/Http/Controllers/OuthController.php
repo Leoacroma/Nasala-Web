@@ -40,8 +40,8 @@ class OuthController extends Controller
                 return redirect()->route('admin.dash');
             }
         } catch (\Exception $e) {
-           alert($e->getMessage());
-            // Alert::error('Error : '. 'Invalid User');
+        //    alert($e->getMessage());
+            Alert::error('Error : '. 'Invalid User');
         }
         return redirect()->back();
 
