@@ -28,9 +28,6 @@ class OuthController extends Controller
             $result = $httpClient->postloginRequest('token', $params);
             $token_value = $result['access_token'];
            
-            
-            
-
             if (isset($result['error']) && $result['error'] === 'unauthorized') {
                 Alert::error(' Please try again.', 'Username or password is incorrect.');
             } else {
