@@ -102,7 +102,7 @@
             <li class="nav-item {{ Route::currentRouteNamed('admin.user') ? 'active' : '' }}">
                 <a href="{{  route('admin.user')}}" class="nav-link">
                     <i class="fa-solid fa-cloud mb-3 font-size-20"></i>
-                    <span class="menu-title kantumruy" >គ្រប់គ្រងគណនីប្រើប្រាស</span>
+                    <span class="menu-title kantumruy" >គ្រប់គ្រងគណនីប្រើប្រាស់</span>
                     <i class="menu-arrow"></i>
                 </a>
             </li>

@@ -26,31 +26,63 @@
     <!-- content -->
     <div class="container">
         <div class="row">
-            <ul>
-                <li>
-                    <div class="row p-0">
-                        <div class="col-lay-10">
-                            <p class=" font-size-23 dp-font" data-locale="{{ $locale }}">{{ __('messages.Enrollment') }}</p>
-                          
+                    <div class="row p-0">            
                             @foreach ($reg['data'] as $item)
                             @php
                                 $hyperlink = $item['hyperlink'];
                                 if (!str_starts_with($hyperlink, 'http://') && !str_starts_with($hyperlink, 'https://')) {
                                     $hyperlink = 'https://' . $hyperlink;
                                 }
-                            @endphp    
-                            <ul>
-                                    <li class="Siemreap"><p>{{ $item['courseName'] }}</p></li>
+                            @endphp
+                             <div class="col-lay-3">
+                                {{-- <div class="card w-100">
+                                    <div class="card-body">
+                                      <h5 class="card-title Kantumruy" style="font-weight: bold"> </h5>
+                                      <small class="Kantumruy" style="font-size: 15px">រយៈពេលសិក្សា: ១១ ខែកញ្ញា ដល់ ១២ ខែតុលា</small>
+                                      <div class="row mt-3">
+                                        <div class="col-lay-5">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                        </div>
+                                        <div class="col-lay-5">
+                                            <img src="{{ asset('images/front/Thesis-pana.png') }}" alt="" width="150px">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-lay-12">
+                                            <a href="" class="btn btn-primary Kantumruy float-right" style="font-weight: 400; font-size: 15px">ចុះឈ្មោះ</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>     --}}
+                                  <div class="card">
+                                    <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fix" alt="Fissure in Sandstone"/>
+                                    <div class="card-body">
+                                      <h5 class="card-title Kantumruy" style=" font-weight: bold">{{ $item['courseName'] }}</h5>
+                                      <h1 class="Kantumruy" style="font-size: 15px; font-weight: bold">ចាប់ពីថ្ងៃ : <span class="badge badge-warning Kantumruy" style="font-size: 15px; font-weight: bold">{{ $item['courseStartDate'] }} <i class="fa-solid fa-arrow-right fa-bounce"></i> {{ $item['courseEndDate'] }}</span></h1>
+                                      <p class="card-text Kantumruy" style="font-size: 15px">{{\Illuminate\Support\Str::limit($item['description'], $limit = 100, $end = '...')}}</p>
+                                      
+                                      <a href="{{ $hyperlink }}" class="btn btn-primary Kantumruy" style="font-size: 15px; font-weight: 400">ចុះឈ្មោះ</a>
+                                      {{-- <a href="{{ $hyperlink }}" class="btn btn-info Kantumruy" ></a> --}}
+                                   
+                                     <button type="button" class="btn btn-info  Kantumruy" data-mdb-toggle="modal" data-mdb-target="#exampleModal{{ $item['id'] }}" style="font-size: 15px; font-weight: 400">
+                                        មើលលំអិត
+                                      </button>
+                                     @include('Front-end.vendor.central-drop')
+                                    </div>
+                                  </div>
+                             </div>
+                            {{-- <ul>
+                                    <li class="Siemreap"><p></p></li>
                                     <ul>
-                                        <li class="Siemreap"><a href="{{ $hyperlink }}">{{ $item['hypertext'] }}</a></li>
+                                        <li class="Siemreap"><a href="">{{ $item['hypertext'] }}</a></li>
                                     </ul>
-                                </ul>
+                                </ul> --}}
                             @endforeach
                             
-                        </div>
+                      
+                       
                     </div>
-                </li>
-            </ul>
+
 
         </div>
     </div>

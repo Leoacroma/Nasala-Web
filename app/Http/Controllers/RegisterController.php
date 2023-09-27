@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\HttpClientHelper;
+use App\Helpers\UploadHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use KhmerDateTime\KhmerDateTime;
@@ -32,6 +33,10 @@ class RegisterController extends Controller
                 'courseName' => $dd['courseName'],
                 'hypertext' => $dd['hypertext'],
                 'hyperlink' => $dd['hyperlink'],
+                'description' => $dd['description'],
+                'courseStartDate' => $dd['courseStartDate'],
+                'courseEndDate' => $dd['courseEndDate'],
+                'thumbnailImageId' => $dd['thumbnailImageId'],
                 'createdAt' => $formattedCreatedAt,
             ];
         }
@@ -59,12 +64,25 @@ class RegisterController extends Controller
         $validation = $request->validate([
             'courseName' => 'required|max:255',
             'hypertext' => 'required|max:255',
-            'hyperlink' => 'required'
+            'hyperlink' => 'required',
+            'description' => 'required',
+            'coursePeriod' => 'required',
         ]);
+
+        $file = $request->file('image');
+        
+        $httpUpload = new UploadHelper();
+        $upload =  $httpUpload->postRequest('/files/upload', $file);
+        $thumbnailImageId = $upload['id'];
+
         $body = [
             'courseName' => request('courseName'),
             'hypertext' => request('hypertext'),
             'hyperlink' => request('hyperlink'),
+            'description' => request('description'),
+            'courseStartDate' => request('courseStartDate'),
+            'courseEndDate' => request('courseEndDate'),
+            'thumbnailImageId' => $thumbnailImageId,
         ];
         $httpClient = new HttpClientHelper();
         $data = $httpClient->postRequest('/register', $body);
@@ -98,15 +116,35 @@ class RegisterController extends Controller
     {
         //
         $requestId = $id;
-        $validation = $request->validate([
-            'courseName' => 'required|max:255',
-            'hypertext' => 'required|max:255',
-            'hyperlink' => 'required'
-        ]);
+        $file = $request->file('image');
+        if($file != null ){
+            $maxFile = 20*1024*1024;
+            $fileSize = $file -> getSize();
+            if($fileSize > $maxFile){
+                Alert::error('File Size Exceeded', 'Error Message');
+                return redirect()->back();
+            }else{
+                $httpUpload = new UploadHelper();
+                $upload =  $httpUpload->postRequest('  /upload/', $file);
+                $thumbnailImageId = $upload['id'];
+            }
+        }else{
+            $httpClient = new HttpClientHelper();
+            $data = $httpClient->getRequest('/news/'.$requestId);
+            $thumbnailImageId = $data['data']['thumbnailImageId'];
+           if ($thumbnailImageId == null){
+                Alert::error('Please Upload and Image', 'Error Message');
+                return redirect()->back();
+            } 
+        }
         $body = [
             'courseName' => request('courseName'),
             'hypertext' => request('hypertext'),
             'hyperlink' => request('hyperlink'),
+            'description' => request('description'),
+            'courseStartDate' => request('courseStartDate'),
+            'courseEndDate' => request('courseEndDate'),
+            'thumbnailImageId' => $thumbnailImageId,
         ];
         $httpClient = new HttpClientHelper();
         $data = $httpClient->putRequest('/register/'.$requestId, $body);

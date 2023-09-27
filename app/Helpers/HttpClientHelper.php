@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Cookie;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,26 +22,49 @@ class HttpClientHelper
     private $clientSecret = '';
   
     function __construct() {
+        
         $this->accessToken = Cookie::get('token');
         $this->clientId = 'azUtbmFzbGEtY2xpZW50SWQ=';
         $this->clientSecret = 'YXpVdGJtRnpiR0V0WTJ4cFpXNTBVMlZqY21WMA==';
     }
 
-    public function postloginRequest($url, $parems){
-
+    public function postloginRequest($url, $params){
         //code...
         $client = new Client();
         $grand_type = '?grant_type=password';
-        $response = $client->post($this->apiOuthUrl . $url .$grand_type, [
+        $response = $client->requestAsync('POST', $this->apiOuthUrl . $url .$grand_type, [
             'headers' => [
                 'Authorization' => 'Basic '. base64_encode($this->clientId . ':' . $this->clientSecret),
             ],
-            'form_params' => $parems,
-            ]);
+            'form_params' => $params,
+        ])->wait();
         $data = json_decode($response->getBody(), true);
         return $data;
     }
 
+    public function sendAsync($url, $parems =null)
+    {
+        $client = new Client();
+        $response = $client->requestAsync('GET',$this->apiBaseUrl. $url, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->accessToken,
+            ]
+        ])->wait();
+        $data = json_decode($response->getBody(), true);
+        return $data;
+    }
+    public function getUserOnLogin($url, $parems =null)
+        {
+            $client = new Client();
+            $token = session('token');
+            $response = $client->requestAsync('GET',$this->apiBaseUrl. $url, [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $token,
+                ]
+            ])->wait();
+            $data = json_decode($response->getBody(), true);
+            return $data;
+    }
     public function getRequest($url, $params = null){
             //code...
             $client = new Client();

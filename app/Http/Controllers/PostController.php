@@ -116,7 +116,7 @@ class PostController extends Controller
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
         $lastName = $user['data']['lastNameKh'];
-        $image = 'http://188.166.211.230:9091/v1/api/files/'. $image_Id;
+        $image = 'https://nasla.k5moi.com/v1/api/files/'. $image_Id;
       
         // dd($image);
         $dateTime = KhmerDateTime::parse($data['data']['createdAt']);

@@ -252,53 +252,32 @@
                         </div>
                         <p class="kantumruy mb-3"  style="font-weight: 400;">វគ្គចូលរៀនថ្មីដែលចាប់បើក</p>
                         <div class="product-order-wrap padding-reduced">
-                            @php
-                            $colors = ['bg-primary', 'bg-success', 'bg-danger', 'bg-warning', 'bg-info'];
-                            $randomColors = array_rand($colors, 3);
-                        @endphp
                             <div class="row">
                                 @foreach ($register['data'] as $index => $item)
                                 @php
-                                    $bgClass = $colors[$randomColors[$index % 3]];
-                                @endphp
-                                <div class="col-3">
-                                    <div class="card  text-white {{ $bgClass }} shadow-0 mb-3">
-                                        @php
-                                            $hyperlink = $item['hyperlink'];
-                                            if (!str_starts_with($hyperlink, 'http://') && !str_starts_with($hyperlink, 'https://')) {
-                                                $hyperlink = 'https://' . $hyperlink;
-                                            }
-                                        @endphp
-                                        <a href="{{ $hyperlink  }}"  target="__blank" el="noopener noreferrer" style="text-decoration: none; max-width: 18rem;">
-                                            {{-- <div class="card-header text-white">Register</div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        
-                                                    </div>
-                                                    <div class="col-12 text-algin-center">
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                                    
-                                                <div class="card-header text-white kantumruy">វគ្គចូលរៀនថ្មី</div>
-                                                <div class=" card-body">
-                                                    <div class="row">
-                                                        <h5 class="card-title text-white kantumruy" style="font-size: 20px">{{ $item['hypertext'] }}</h5>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-10">
-                                                            <p class="text-white kantumruy">ការចាប់បើកវគ្គចូលរៀនថ្មី នៃសាលាជាតិមូលដ្ឋាន</p>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <img src="{{ asset('images/front/Thesis-pana.png') }}" alt="" width="150px">
+                                $hyperlink = $item['hyperlink'];
+                                if (!str_starts_with($hyperlink, 'http://') && !str_starts_with($hyperlink, 'https://')) {
+                                    $hyperlink = 'https://' . $hyperlink;
+                                }
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                    
-                                        </a>
-                                    </div>
+                            @endphp
+                                <div class="col-3">
+                                    <div class="card">
+                                        <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fix" alt="Fissure in Sandstone"/>
+                                        <div class="card-body">
+                                          <h5 class="card-title kantumruy" style=" font-size: 20px">{{ $item['courseName'] }}</h5>
+                                          <h1 class="kantumruy" style="font-size: 15px; font-weight: bold">ចាប់ពីថ្ងៃ : <span class="badge badge-primary kantumruy" style="font-size: 15px; font-weight: bold">{{ $item['courseStartDate'] }} <i class="fa-solid fa-arrow-right fa-bounce"></i> {{ $item['courseEndDate'] }}</span></h1>
+
+                                          <p class="card-text kantumruy" style="font-size: 15px; font-weight: 100">{{\Illuminate\Support\Str::limit($item['description'], $limit = 100, $end = '...')}}</p>
+                                          <a href="{{ $hyperlink }}" class="btn btn-primary kantumruy" style="font-size: 15px; font-weight: 400">ចុះឈ្មោះ</a>
+                                          {{-- <a href="{{ $hyperlink }}" class="btn btn-info Kantumruy" ></a> --}}
+                                       
+                                         <button type="button" class="btn btn-info  kantumruy" data-mdb-toggle="modal" data-mdb-target="#exampleModal{{ $item['id'] }}" style="font-size: 15px; font-weight: 400">
+                                            មើលលំអិត
+                                          </button>
+                                         @include('Back-end.plugin.central-drop')
+                                        </div>
+                                      </div>
                                 </div>
                                 @endforeach 
                             </div>

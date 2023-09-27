@@ -61,7 +61,9 @@ class PublicztionController extends Controller
         $validate = $request->validate([
             'title' => 'required|max:255',
         ]);
+
         $file = $request->file('image');
+   
         $uploadFile = new UploadHelper();
         $upload = $uploadFile->postRequest('/files/upload', $file);
         $thumbnailId = $upload['id'];
