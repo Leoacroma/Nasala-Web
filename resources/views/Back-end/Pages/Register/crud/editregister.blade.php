@@ -50,8 +50,8 @@
             </div>
           </div>
           <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary kantumruy" data-dismiss="modal" style="font-weight: 400">ត្រលប់ក្រោយ</button>
+            <button type="submit" class="btn btn-primary kantumruy" style="font-weight: 400">រក្សាទុក</button>
           </div>
       </form>
       </div>  

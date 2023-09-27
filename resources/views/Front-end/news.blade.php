@@ -33,28 +33,28 @@
         <div class="row new-card" >
             @foreach ($result as $item)
                 <div class="col-lay-3 mt-3">
-                    <a  href="{{ route('front.subnews', $item['id']) }}" class=" text-decoration-none color-black Siemreap  font-size-20">
-                        <img class="mb-3" src="https://nasla.k5moi.com/v1/api/files/{{$item['thumbnailImageId'] }}" alt="" width="400px" height="300px">
-                      @if (app()->getLocale() === 'kh')
-                        <span class="font-size-20  hover-title-animate Siemreap">
-                            {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 80, $end = '...')}}
-                        </span>
-                    @else
-                        @if ($item['title'] !== null)
-                            <span class="font-size-20  hover-title-animate Siemreap">
-                                {{\Illuminate\Support\Str::limit($item['title'], $limit = 80, $end = '...')}}
-                            </span>
-                        @else
-                            <span class="font-size-20  hover-title-animate Siemreap">
-                                {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 80, $end = '...')}}
-                            </span>
-                        @endif
-                    @endif
-                    <br/>
-                        <small class="font-size-15">{{ $item['createdAt'] }}</small>
+                        <div class="card" style="height: 450px">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                              <img class="img-news" src="https://nasla.k5moi.com/v1/api/files/{{$item['thumbnailImageId'] }}" class="img-fluid"/>
+                              <a href="{{ route('front.subnews', $item['id']) }}">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                              </a>
+                            </div>
+                            <div class="card-body">
+                            @if (app()->getLocale() === 'kh')
+                              <h5 class="card-title Siemreap" style="line-height: 30px" >{{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 85, $end = '...')}}</h5>
+                            @else
+                                @if ($item['title'] !== null)
+                                    <h5 class="card-title Siemreap">{{\Illuminate\Support\Str::limit($item['title'], $limit = 85, $end = '...')}}</h5>
+                                @else
+                                    <h5 class="card-title Siemreap"> {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 85, $end = '...')}}</h5>
+                                @endif
+                            @endif
+                            <small class="font-size-15 Siemreap">{{ $item['createdAt'] }}</small> 
+                            </div>
+                        </div>
                         {{-- <span class="badge bg-warning text-dark Siemreap font-size-12">{{ $item['category']['nameKh'] }}</span> --}}
-                    </a>
-                </div>
+                </div> 
             @endforeach
         </div>
     </div>

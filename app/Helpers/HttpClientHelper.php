@@ -53,6 +53,7 @@ class HttpClientHelper
         $data = json_decode($response->getBody(), true);
         return $data;
     }
+
     public function getUserOnLogin($url, $parems =null)
         {
             $client = new Client();
@@ -65,9 +66,10 @@ class HttpClientHelper
             $data = json_decode($response->getBody(), true);
             return $data;
     }
+
     public function getRequest($url, $params = null){
             //code...
-            $client = new Client();
+        $client = new Client();
         $response = $client->get($this->apiBaseUrl . $url, [
             'headers' => [
                 'Authorization' => 'Bearer' . $this->accessToken,
@@ -75,8 +77,6 @@ class HttpClientHelper
         ]);
         $data = json_decode($response->getBody(), true);
         return $data;
-       
-        
     }
     public function postRequest($url, $body = null){
 

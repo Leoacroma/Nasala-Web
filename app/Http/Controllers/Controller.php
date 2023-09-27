@@ -574,7 +574,26 @@ class Controller extends BaseController
             $httpClient = new HttpUserHelper();
             $cateSub = $httpClient->getRequest('/training/posts');
             $reg = $httpClient->getRequest('/register');
-            return view('Front-end.enrollment', ['reg' => $reg ,'cateSub' => $cateSub,]);
+            $result = [];
+            foreach ($reg['data'] as $dd) {
+                $courseStartDate = KhmerDateTime::parse($dd['courseStartDate']);
+                $formatteddate1 = $courseStartDate->format("LL");
+                
+                $courseEndDate = KhmerDateTime::parse($dd['courseEndDate']);
+                $formatteddate2 = $courseEndDate->format("LL");
+                $result[] = [
+                    'id' => $dd['id'],
+                    'courseName' => $dd['courseName'],
+                    'hyperlink' => $dd['hyperlink'],
+                    'hypertext' => $dd['hypertext'],
+                    'thumbnailImageId' => $dd['thumbnailImageId'],
+                    'description' => $dd['description'],
+                    'courseStartDate' => $formatteddate1,
+                    'courseEndDate' => $formatteddate2,
+            ];
+    
+        }
+            return view('Front-end.enrollment', ['result' => $result ,'cateSub' => $cateSub,]);
         } catch (\Throwable $th) {
             return redirect()->route('not-found');
         }

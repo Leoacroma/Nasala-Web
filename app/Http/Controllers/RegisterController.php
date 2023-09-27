@@ -66,11 +66,11 @@ class RegisterController extends Controller
             'hypertext' => 'required|max:255',
             'hyperlink' => 'required',
             'description' => 'required',
-            'coursePeriod' => 'required',
+            'courseStartDate' => 'required',
+            'courseEndDate' => 'required',
         ]);
 
         $file = $request->file('image');
-        
         $httpUpload = new UploadHelper();
         $upload =  $httpUpload->postRequest('/files/upload', $file);
         $thumbnailImageId = $upload['id'];
@@ -84,6 +84,7 @@ class RegisterController extends Controller
             'courseEndDate' => request('courseEndDate'),
             'thumbnailImageId' => $thumbnailImageId,
         ];
+        
         $httpClient = new HttpClientHelper();
         $data = $httpClient->postRequest('/register', $body);
         if($data){
@@ -130,7 +131,7 @@ class RegisterController extends Controller
             }
         }else{
             $httpClient = new HttpClientHelper();
-            $data = $httpClient->getRequest('/news/'.$requestId);
+            $data = $httpClient->getRequest('/register/'.$requestId);
             $thumbnailImageId = $data['data']['thumbnailImageId'];
            if ($thumbnailImageId == null){
                 Alert::error('Please Upload and Image', 'Error Message');

@@ -196,10 +196,8 @@ class PostController extends Controller
             'content' => request('content'),
             'contentKh' => request('contentKh'),
         ];
-        dd($body);
         $httpClient = new HttpClientHelper();
         $result = $httpClient->putRequest('/news/'.$request_ID, $body);
-        dd($result);
 
         Alert::success('Update Successfully', 'Success Message');
         return redirect()->route('admin.post');

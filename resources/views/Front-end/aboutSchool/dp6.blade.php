@@ -19,7 +19,7 @@
 @php
     $email1 =  'somounyraksa@gmail.com';
     $email2 =  'chychanraksmey@gmail.com';
-    $email3 =  'naslacambodia@gmail.com';
+    $email3 =  'virakmommoi@gmail.com';
     $email4 =  'naslacambodia@gmail.com';
     $email5 =  'malismoa@gmail.com';
     $email6 =  'potheary@iuj.ac.jp';
@@ -56,11 +56,11 @@
                 <span >អ៊ីម៉ែល <a href="{{  $email2 }}">chychanraksmey@gmail.com</a></span>
             </div>
             <div class="col-4 text-algin-center Siemreap font-size-16">
-                <img class="image-front-TT" src="http://nasla.k5moi.com/v1/api/files/95" alt="">
+                <img class="image-front-TT" src="{{ asset('images/E 200.jpg') }}" alt="">
                 <br/>
                 <span >ឯកឧត្តម មុំ រីរៈ <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email3 }}">chychanraksmey@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email3 }}">virakmommoi@gmail.com</a></span>
             </div>
             <div class="col-4 text-algin-center Siemreap font-size-16">
                 <img class="image-front-TT" src="{{ asset('images/photo_2023-09-24_10-17-16.jpg') }}" alt="">
