@@ -7,6 +7,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading kantumruy"><i class="fa-regular fa-lightbulb fa-bounce"></i> ចំណាំ!</h4>
+        <p class="kantumruy" style="font-weight: 100">សូមភ្ចាប់ រូបភាពដែលមានលក្ខណៈ ផ្តេក់ ដើម្បីកម្រិតច្បាស់នៃព័ត៌មាន <i class="fa-solid fa-images"></i></p>
+      </div>
       <form class="kantumruy" action="{{ route('admin.reg.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="modal-body">
@@ -24,7 +28,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput1 ">ការពិពណ៌នាអំពីវគ្គសិក្សា <span class="required"></span></label>
-                <input type="text" name="description" class="form-control"  id="exampleFormControlInput1" placeholder="ការពិពណ៌នាអំពីវគ្គសិក្សា" >
+                <textarea class="form-control"  name="description" id="textAreaExample" rows="4"  placeholder="ការពិពណ៌នាអំពីវគ្គសិក្សា"></textarea>
               </div>
                 <div class="form-group">
                   <label for="exampleFormControlInput1 ">រយះពេលសិក្សា <span class="required"></span></label>

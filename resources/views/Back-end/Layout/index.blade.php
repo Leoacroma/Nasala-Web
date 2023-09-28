@@ -111,11 +111,11 @@
      <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
      <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
     <!-- End plugin js for this page -->
-    <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
+    {{-- <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script> --}}
     <script src="{{ asset('vendors/progressbar.js/progressbar.min.js') }}"></script>
-		<script src="{{ asset('vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
-		<script src="{{ asset('vendors/justgage/raphael-2.1.4.min.js') }}"></script>
-		<script src="{{ asset('vendors/justgage/justgage.js') }}"></script>
+		{{-- <script src="{{ asset('vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script> --}}
+		{{-- <script src="{{ asset('vendors/justgage/raphael-2.1.4.min.js') }}"></script>
+		<script src="{{ asset('vendors/justgage/justgage.js') }}"></script> --}}
     <script src="{{ asset('js/jquery.cookie.js') }}" type="text/javascript"></script>
     <!-- Custom js for this page-->
     <script src="{{ asset('js/dashboard.js') }}"></script>

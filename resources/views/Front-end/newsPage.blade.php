@@ -12,13 +12,19 @@
                 <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.News') }}</h2>
             </div>
             <div class="col-lay-5 ">
-                <form class="float-end " action="">
-                    <div class="input-group width-200">
-                        <input type="search" class="form-control rounded search" placeholder="ស្វែងរកព័ត៌មាន" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-primary search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+              <form class="float-end " method="GET" action="{{ route( 'searchNews.news', ['page' => 0]) }}">
+                  @csrf
+                  <div class="input-group">
+                      <div class="form-outline">
+                        <input type="search" name="searchNews" id="searchInput" class="form-control" />
+                        <label class="form-label" for="form1">Search</label>
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                      </button>
                     </div>
-                </form>
-            </div>
+              </form>
+          </div>
             <div class="col-lay-10 divider-line"></div>
         </div>
     </div>
@@ -57,27 +63,24 @@
     <div class="container ">
         <div class="row ">
             <nav class="mt-5" aria-label="...">
-                @php
-                    $totalpage= $pagination['totalPage'];
-                    $currentPage = $pagination['page'] // Replace with the actual total number of pages
-                @endphp
-                <ul class="pagination font-size-30 ">
+                <ul class="pagination">
                 @if ($currentPage > 0)
-                  <li class="page-item">
-                    <a class="page-link" href="{{ route('page.news', ['page' => $currentPage - 1]) }}" tabindex="-1">Previous</a>
+                  <li class="page-item ">
+                    <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.news', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
                   </li>
                 @endif
-                  <li class="page-item "><a class="page-link" href="{{ route('front.news') }}">1</a></li>
-                  @for ($i = 1; $i <= $totalpage-1; $i++)
-                    <li class="page-item {{  request()->is('news/page/' . $i) ? ' active' : ''  }}"><a class="page-link" href="{{ route('page.news', ['page' => $i]) }}">{{ $i +1 }}</a></li>
+                  @for ($i = 0; $i <= $totalpage-1; $i++)
+                    <li class="page-item {{  request()->is('news/page/' . $i) ? ' active' : ''  }}">
+                      <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.news', ['page' => $i]) }}">{{ $i +1 }}</a>
+                    </li>
                   @endfor
-                @if ($currentPage < $totalpage && $currentPage > $totalpage)
+                @if ($currentPage+1 < $totalpage )
                   <li class="page-item">
-                    <a class="page-link next-link" href="{{ route('page.news', ['page' => $currentPage + 1]) }}">Next</a>
+                    <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.news', ['page' => $currentPage + 1]) }}" > <i class="fa-solid fa-forward"></i></a>
                   </li>
                 @endif
                 </ul>
-              </nav>
+            </nav>
         </div>
     </div>
     <!-- -------------------------------------------- -->

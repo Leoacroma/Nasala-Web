@@ -123,7 +123,7 @@
             <div class="collapse navbar-collapse  " id="navbarSupportedContent">
                 <ul class="navbar-nav m-auto ">
                     <li  class="nav-item {{ Route::currentRouteNamed('front.home') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"   href="{{ route('front.home') }}">{{ __('messages.Home') }}</a></li>
-                    <li class="nav-item {{ Route::currentRouteNamed('front.news', 'front.subnews') ? 'actived' : '' }}"><a class="nav-link nav-font"   data-locale="{{ $locale }}"  href="{{ route('front.news') }}">{{ __('messages.News') }}</a></li>
+                    <li class="nav-item {{ Route::currentRouteNamed('page.news', 'front.subnews') ? 'actived' : '' }}"><a class="nav-link nav-font"   data-locale="{{ $locale }}"  href="{{ route('page.news', ['page' => 0]) }}">{{ __('messages.News') }}</a></li>
                     <li class="nav-item dropdown {{ Route::currentRouteNamed('front.work.dp1' , 'front.work.dp2Content' , 'front.work.dp3')  ? 'actived' : '' }}">
                         <a class="nav-link dropdown-toggle nav-font "  data-locale="{{ $locale }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.Training') }}</a>
                         <ul class="dropdown-menu">

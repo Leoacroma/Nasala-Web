@@ -4,6 +4,11 @@
   <div class="container-fluid page-body-wrapper">
     <div class="main-panel">
       <div class="content-wrapper">
+        <div class="alert alert-warning" role="alert">
+          <h4 class="alert-heading kantumruy"><i class="fa-regular fa-lightbulb fa-bounce"></i> ចំណាំ!</h4>
+          <p class="kantumruy" style="font-weight: 100">សូមភ្ចាប់ រូបភាពដែលមានលក្ខណៈ ផ្តេក់ ដើម្បីកម្រិតច្បាស់នៃព័ត៌មាន <i class="fa-solid fa-images"></i></p>
+    
+        </div>
         <div class="row">
           <div class="col-12 grid-margin stretch-card">
             <div class="card">
@@ -37,6 +42,7 @@
                         @endforeach
                       </select>
                     </div>
+                    
                   <div class="form-group">
                     <label for="exampleInputPassword4">រូបភាព <span class="required"></span></label>
                     <input type="file" name="thumbnailImageId"  class="form-control file-upload-info" id="image-upload-input" accept="image/*" required>
@@ -46,11 +52,11 @@
                     សូម upload រូបភាព
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">ឃ្លឹមសារ <span class="required"></span> </label>
+                    <label for="exampleInputPassword4">ខ្លឹមសារ <span class="required"></span> </label>
                     <textarea class="form-control Siemreap" name="contentKh" id="summernoteKh" required></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">ឃ្លឹមសារជាភាសាអង់គ្លេស </label>
+                    <label for="exampleInputPassword4">ខ្លឹមសារជាភាសាអង់គ្លេស </label>
                     <textarea class="form-control Siemreap" name="content" id="summernoteEng" ></textarea>
                   </div>    
                   <button type="submit" class="btn btn-primary text-white me-2" style="font-weight: 400">រក្សាទុក</button>

@@ -32,6 +32,8 @@ class Controller extends BaseController
             $httpClient = new HttpUserHelper();
             $dataSort1 = $httpClient->getRequest('/news?page=0&size=1&sortBy=createdAt&sortOrder=desc');
             $dataSort3 = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
+            $video = $httpClient->getRequest('/home/video?page=0&size=1&sortBy=createdAt&sortOrder=desc');
+         
             $cateSub = $httpClient->getRequest('/training/posts');
             // session()->put('locale', 'kh');
             $SortLastedPub = $httpClient->getRequest('/publicize?page=0&sortOrder=desc&size=3&sortBy=createdAt');
@@ -72,7 +74,8 @@ class Controller extends BaseController
                     'thumbnailImageId' => $item['thumbnailImageId'],
                     'createdAt' => $formattedCreatedAt,
                 ];
-            }
+            };
+         
             $subMenu = $httpClient->getRequest('/sub-menus');
             // dd($subMenu);
     
@@ -81,7 +84,8 @@ class Controller extends BaseController
                 'result' => $result,
                 'result1' => $result1,
                 'cateSub' => $cateSub,
-                'result2' => $result2
+                'result2' => $result2,
+                'video' => $video,
             ]);
         } catch (\Throwable $th) {
             return redirect()->route('not-found');
@@ -97,6 +101,7 @@ class Controller extends BaseController
             $cateSub = $httpClient->getRequest('/training/posts');
             $pagination = $httpClient->getRequest('/news?page=0&size=9&sortOrder=desc&sortBy=createdAt');
             // dd($pagination);
+
 
             $result = [];
             foreach ($pagination['data'] as $item) {
@@ -124,13 +129,14 @@ class Controller extends BaseController
         
     }
     
-    public function searchNews(){
+    public function searchNews(String $page){
         try {
+            $request_page = $page;
             $requeste_Keyword = request()->input('searchNews');
             $httpUser = new HttpUserHelper();
             $subMenu = $httpUser->getRequest('/sub-menus');
             $cateSub = $httpUser->getRequest('/training/posts');
-            $searchNews = $httpUser->getRequest('/news?page=0&size=20&sortOrder=desc&keyword='.$requeste_Keyword);
+            $searchNews = $httpUser->getRequest('/news?page='.$request_page.'&size=9&sortOrder=desc&keyword='.$requeste_Keyword);
             if(empty($requeste_Keyword)){
                 return redirect()->route('front.news');
             }
@@ -147,8 +153,13 @@ class Controller extends BaseController
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
+            $totalpage= $searchNews['totalPage'];
+            $currentPage = $searchNews['page'];
+           
             return view('Front-end.newsSearch', [
                 'result' => $result,
+                'totalpage' => $totalpage,
+                'currentPage' => $currentPage,
                 'requeste_Keyword' => $requeste_Keyword,
                 'subMenu' => $subMenu,
                 'cateSub' => $cateSub,
@@ -167,7 +178,7 @@ class Controller extends BaseController
             $cateSub = $httpUser->getRequest('/training/posts');
             $pagination = $httpUser->getRequest('/news?page='.$request_Page.'&size=9&sortOrder=desc&sortBy=createdAt');
             $result = [];
-            foreach ($pagination    ['data'] as $item) {
+            foreach ($pagination['data'] as $item) {
                 $dateTime = KhmerDateTime::parse($item['createdAt']);
                 $formattedCreatedAt = $dateTime->format("LLLLT");
                 $result[] = [
@@ -179,10 +190,16 @@ class Controller extends BaseController
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
+            $totalpage= $pagination['totalPage'];
+            $currentPage = $pagination['page'];
+         
+            // dd($totalpage);
             return view('Front-end.newsPage', [
                 'result' => $result,  
                 'cateSub' => $cateSub,
-                'pagination'=>$pagination
+                'pagination'=>$pagination,
+                'totalpage' => $totalpage,
+                'currentPage' => $currentPage
             ]);
         } catch (\Throwable $th) {
             return redirect()->route('not-found');
@@ -707,6 +724,7 @@ class Controller extends BaseController
             $lib = $httpClient->getRequest('/library');
             $cate = $httpClient->getRequest('/categories');
             $trainFileCount = $httpClient->getRequest('/training');
+
             $train = $httpClient->getRequest('/training/posts');
             $trainLasted = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&size=5&sortBy=createdAt');
             $trainFile = $httpClient->getRequest('/training?page=0&sortOrder=desc&size=5&sortBy=createdAt');

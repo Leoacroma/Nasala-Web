@@ -65,7 +65,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item {{ Route::currentRouteNamed( 'admin.train.cate', 'admin.train.post', 'admin.trian.cate.edit') ? 'active' : '' }}">
+            <li class="nav-item {{ Route::currentRouteNamed( 'admin.train.cate', 'admin.reg.index', 'admin.train.post', 'admin.trian.cate.edit') ? 'active' : '' }}">
                 <a href="#" class="nav-link">
                     <i class="fa-solid fa-layer-group mb-3 font-size-20"></i>
                     <span class="menu-title kantumruy" >ការបណ្តុះបណ្តាល</span>
@@ -75,6 +75,8 @@
                     <ul>
                         <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.train.cate') }}">ប្រភេទការបណ្តុះបណ្តាល</a></li>
                         <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.train.post') }}">វគ្គបណ្តុះបណ្តាល</a></li>
+                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.reg.index') }}">ការចុះឈ្មោះចូលរៀន</a></li>
+
                     </ul>
                 </div>
             </li>
@@ -92,10 +94,10 @@
                     <i class="menu-arrow"></i>
                 </a>
             </li>
-            <li class="nav-item {{ Route::currentRouteNamed('admin.reg.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.reg.index') }}" class="nav-link">
-                    <i class="fa-solid fa-landmark mb-3 font-size-20"></i>
-                    <span class="menu-title kantumruy" >ការចុះឈ្មោះចូលរៀន</span>
+            <li class="nav-item {{ Route::currentRouteNamed('admin.ab.video') ? 'active' : '' }}">
+                <a href="{{ route('admin.ab.video') }}" class="nav-link">
+                    <i class="fa-solid fa-school mb-3 font-size-20"></i>
+                    <span class="menu-title kantumruy" >អំពីសាលា</span>
                     <i class="menu-arrow"></i>
                 </a>
             </li>

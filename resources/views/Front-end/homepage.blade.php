@@ -127,7 +127,13 @@
                     <i class="fa-brands fa-youtube font-size-30 color-red mg-r-10px"></i>
                     <h2 class="nav-font color-red" data-locale="{{ $locale }}">{{ __('messages.Video') }}</h2>
                 </div>
-                <iframe width="650" height="350" src="https://www.youtube.com/embed/GaQAd-0W0Z8?si=fmZrVPXixFH6qVx3"></iframe>
+                @foreach ($video['data'] as $item)
+                <?php
+                    $lastedVideo = $item['videoLink'];
+                ?>
+                    <iframe width="650" height="350" src="{{ $lastedVideo }}"></iframe>
+
+                @endforeach
             </div>
         </div>
     </div>

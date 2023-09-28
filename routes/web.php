@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutSchoolController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LanguageController;
@@ -38,7 +39,7 @@ Route::middleware([SetLocaleFromSession::class])->group(function ()  {
         Route::get('/news', [Controller::class, 'news'])->name('front.news');
         Route::get('/news/subnews/{id}', [Controller::class, 'subenews'])->name('front.subnews');
         Route::get('/news/page/{page}', [Controller::class, 'pageNews'])->name('page.news');
-        Route::get('/news/searchNews/{keyword?}', [Controller::class, 'searchNews'])->name('searchNews.news');
+        Route::get('/news/searchNews/{page}/{keyword?}', [Controller::class, 'searchNews'])->name('searchNews.news');
         Route::get('/work/dp1', [Controller::class, 'dp1'])->name('front.work.dp1');
         Route::get('/work/dp2/{id}', [Controller::class, 'dp2Content'])->name('front.work.dp2Content');
         Route::get('/work/dp3', [Controller::class, 'dp3'])->name('front.work.dp3');
@@ -153,6 +154,12 @@ Route::prefix('admin')->middleware('admin')->group(function(){
         Route::post('register/store', [RegisterController::class, 'store'])->name('admin.reg.store');
         Route::patch('register/update/{id}', [RegisterController::class, 'update'])->name('admin.reg.update');
         Route::delete('register/delete/{id}', [RegisterController::class, 'destroy'])->name('admin.reg.delete');
+        //Aboutschool
+        Route::get('Ab/video/all', [AboutSchoolController::class, 'index'])->name('admin.ab.video');
+        Route::post('Ab/video/store', [AboutSchoolController::class, 'store'])->name('admin.ab.store');
+        Route::patch('Ab/video/update/{id}', [AboutSchoolController::class, 'update'])->name('admin.ab.update');
+        Route::delete('Ab/video/delete/{id}', [AboutSchoolController::class, 'destroy'])->name('admin.ab.delete');
+
     });
 });      
 

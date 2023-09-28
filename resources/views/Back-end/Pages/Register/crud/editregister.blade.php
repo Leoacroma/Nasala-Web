@@ -25,7 +25,8 @@
               </div>
               <div class="form-group">
               <label for="exampleFormControlInput1 ">ការពិពណ៌នាអំពីវគ្គសិក្សា </label>
-              <input type="text" name="description" class="form-control"  value="{{ $item['description'] }}"  id="exampleFormControlInput1" placeholder="ការពិពណ៌នាអំពីវគ្គសិក្សា" required>
+              <textarea class="form-control"  name="description" id="textAreaExample" style="line-height: 20px;"  placeholder="ការពិពណ៌នាអំពីវគ្គសិក្សា"> {{ $item['description'] }}</textarea>
+
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput1 ">រយះពេលសិក្សា <span class="required"></span></label>

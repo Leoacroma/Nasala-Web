@@ -47,11 +47,11 @@
                       សូម upload រូបភាព
                     </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">ឃ្លឹមសារ</label>
+                    <label for="exampleInputPassword4">ខ្លឹមសារ</label>
                     <textarea class="form-control" name="contentKh" id="summernoteKh" required> {!! $data['data']['contentKh'] !!}</textarea>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">ឃ្លឹមសារជាភាសាអង់គ្លេស</label>
+                    <label for="exampleInputPassword4">ខ្លឹមសារជាភាសាអង់គ្លេស</label>
                     <textarea class="form-control" name="content"  id="summernoteEng">{!! $data['data']['content'] !!}</textarea>
                   </div>   
                   <button type="submit" class="btn btn-primary text-white me-2" style="font-weight: 400">រក្សាទុក</button>

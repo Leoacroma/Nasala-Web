@@ -72,7 +72,7 @@
               </li>
             @endif
               <li class="page-item active"><a class="page-link" href="{{ route('front.news') }}">1</a></li>
-              @for ($i = 1; $i <= $totalpage-1; $i++)
+              @for ($i = 0; $i <= $totalpage-1; $i++)
                 <li class="page-item {{  request()->is('news/page/' . $i) ? ' active' : ''  }}"><a class="page-link" href="{{ route('page.news', ['page' => $i]) }}">{{ $i +1 }}</a></li>
               @endfor
             @if ($currentPage < $totalpage )
