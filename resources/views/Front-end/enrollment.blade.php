@@ -36,7 +36,7 @@
                             @endphp
                              <div class="col-lay-3">
                                 
-                                  <div class="card">
+                                  <div class="card" style="height: 470px">
                                     <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fix" alt="Fissure in Sandstone"/>
                                     <div class="card-body">
                                       <h5 class="card-title Kantumruy" style=" font-weight: bold">{{ $item['courseName'] }}   </h5>
