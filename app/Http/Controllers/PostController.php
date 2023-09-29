@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use KhmerDateTime\KhmerDateTime;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 
 class PostController extends Controller
@@ -30,11 +31,11 @@ class PostController extends Controller
         $result = [];
         foreach ($data['data'] as $item) {
             $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $formattedCreatedAt = $dateTime->format("LLT");
             $result[] = [
                 'id' => $item['id'],
                 'title' => $item['title'],
-                'titleKh' => $item['titleKh'],
+                'titleKh' => Str::limit($item['titleKh'], $limit = 20, '...') ,
                 'createdAt' => $formattedCreatedAt,
                 'editUrl' => route('admin.edit', $item['id']),
                 'deleteUrl' => route('admin.destroy', $item['id']),

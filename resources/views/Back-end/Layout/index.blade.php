@@ -43,10 +43,7 @@
         color: red;
       }
       .delete-icon {
-        position: absolute;
-        top: 454px;
-        right: 49px;
-        font-size: 18px;
+        font-size: 20px;
         color: red;
         cursor: pointer;
     }

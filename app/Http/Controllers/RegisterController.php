@@ -61,19 +61,20 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         //
-        $validation = $request->validate([
-            'courseName' => 'required|max:255',
-            'hypertext' => 'required|max:255',
-            'hyperlink' => 'required',
-            'description' => 'required',
-            'courseStartDate' => 'required',
-            'courseEndDate' => 'required',
-        ]);
+        // $validation = $request->validate([
+        //     'courseName' => 'required|max:255',
+        //     'hypertext' => 'required|max:255',
+        //     'hyperlink' => 'required',
+        //     'description' => 'required',
+        //     'courseStartDate' => 'required',
+        //     'courseEndDate' => 'required',
+        // ]);
 
         $file = $request->file('image');
         $httpUpload = new UploadHelper();
         $upload =  $httpUpload->postRequest('/files/upload', $file);
         $thumbnailImageId = $upload['id'];
+        // dd($thumbnailImageId);
 
         $body = [
             'courseName' => request('courseName'),
@@ -84,8 +85,9 @@ class RegisterController extends Controller
             'courseEndDate' => request('courseEndDate'),
             'thumbnailImageId' => $thumbnailImageId,
         ];
-        
+        // dd($body);
         $httpClient = new HttpClientHelper();
+        // dd($httpClient);
         $data = $httpClient->postRequest('/register', $body);
         if($data){
             Alert::success('Add Successfully', 'Success Message');

@@ -38,8 +38,8 @@ input.addEventListener('change', function(e) {
 
             imageElement.width = width;
             imageElement.height = height;
-            var deleteIcon = document.createElement('span');
-            deleteIcon.className = 'delete-icon fas fa-times';
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'delete-icon fa-solid fa-trash-can fa-bounce ml-2';
             deleteIcon.addEventListener('click', function() {
                 imageContainer.innerHTML = '';
                 input.value = '';

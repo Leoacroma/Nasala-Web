@@ -21,6 +21,7 @@ input.addEventListener('change', function(e) {
     reader.onload = function(event) {
         var imageUrl = event.target.result;
         var imageElement = document.createElement('img');
+        imageElement.className = 'img-size';
         imageElement.onload = function() {
             var width = imageElement.width;
             var height = imageElement.height;
@@ -39,13 +40,13 @@ input.addEventListener('change', function(e) {
 
             imageElement.width = width;
             imageElement.height = height;
-            var deleteIcon = document.createElement('span');
-            deleteIcon.className = 'delete-icon fas fa-times';
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'delete-icon fa-solid fa-trash-can fa-bounce';
             deleteIcon.addEventListener('click', function() {
                 imageContainer.innerHTML = '';
                 input.value = '';
             });
-            var previousImage = document.getElementById('previous-img2');
+            var previousImage = document.querySelector('#previous2');
             previousImage.style.display = 'none';
             imageContainer.innerHTML = '';
             imageContainer.appendChild(imageElement);

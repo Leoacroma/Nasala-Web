@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.min.css"> --}}
     <title>NASALA</title>
     
-    
+    <x-embed-styles />
 </head>
 <style>
 

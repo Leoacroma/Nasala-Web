@@ -4,6 +4,11 @@
   <div class="container-fluid page-body-wrapper">
     <div class="main-panel">
       <div class="content-wrapper">
+        <div class="alert alert-warning" role="alert">
+          <h4 class="alert-heading kantumruy"><i class="fa-regular fa-lightbulb fa-bounce"></i> ចំណាំ!</h4>
+          <p class="kantumruy" style="font-weight: 100">សូមភ្ចាប់ រូបភាពដែលមានលក្ខណៈ ផ្តេក ដើម្បីកម្រិតច្បាស់នៃព័ត៌មាន <i class="fa-solid fa-images"></i></p>
+    
+        </div>
         <div class="row">
           <div class="col-12 grid-margin stretch-card">
             <div class="card">

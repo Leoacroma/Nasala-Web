@@ -127,12 +127,35 @@
                     <i class="fa-brands fa-youtube font-size-30 color-red mg-r-10px"></i>
                     <h2 class="nav-font color-red" data-locale="{{ $locale }}">{{ __('messages.Video') }}</h2>
                 </div>
+                {{-- <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img
+                          src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                          alt="Trendy Pants and Shoes"
+                          class="img-fluid rounded-start"
+                        />
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">
+                            This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.
+                          </p>
+                          <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div> --}}
+
                 @foreach ($video['data'] as $item)
                 <?php
                     $lastedVideo = $item['videoLink'];
                 ?>
-                    <iframe width="650" height="350" src="{{ $lastedVideo }}"></iframe>
-
+                    <x-embed url="{{ $lastedVideo }}"/>
                 @endforeach
             </div>
         </div>

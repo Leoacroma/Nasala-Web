@@ -43,12 +43,13 @@
                     <label class="form-label">ជ្រើសរើសរូបភាពវគ្គសិក្សាដើម្បីបញ្ចូល </label>
                     <input type="file" name="image" class="form-control file-upload-info" id="image-upload-input2" accept="image/*">
                     <div  id="uploaded-image-container2" class="m-3"></div>
-                   <img id="previous-img2" src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}?isPdf=false" alt="" style="display: block; width:150px; height:150px; raduis:0px">
+                    <img  id="previous2" src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}?isPdf=false" alt="" >
                   </div>
-              <div  id="uploaded-image-container2" class="m-3"></div>
+              {{-- <div  id="uploaded-image-container2" class="m-3"></div> --}}
               <div class="alert alert-danger Siemreap" style="display: none" role="alert">
                 បញ្ចូលបានតែរូបភាពប៉ុណ្ណោះ
             </div>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary kantumruy" data-dismiss="modal" style="font-weight: 400">ត្រលប់ក្រោយ</button>
@@ -58,4 +59,3 @@
       </div>  
   </div>
 </div>
-<script src="{{ asset('js/imgjs.js') }}"></script>

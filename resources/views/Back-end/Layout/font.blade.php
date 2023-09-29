@@ -179,7 +179,7 @@
 
 #newsTable th,
 #newsTable td {
-  padding: 15px;
+  padding: 10px;
 }
 
 #newsTable thead th {

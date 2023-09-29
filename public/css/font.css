@@ -14,6 +14,18 @@
     object-fit: cover;
 }
 
+#previous2 {
+    width: 415px !important;
+    height: 156px !important;
+    border-radius: 0px !important;
+}
+
+.img-size {
+    width: 415px !important;
+    height: 156px !important;
+    border-radius: 0px !important;
+}
+
 
 /* font-size */
 

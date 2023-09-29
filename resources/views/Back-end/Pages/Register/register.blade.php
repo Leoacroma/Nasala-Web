@@ -62,6 +62,7 @@
   <!-- page-body-wrapper ends -->
 </div>
 <script src="{{ asset('js/alert.js') }}"></script>
-
+<script src="{{ asset('js/addImage.js') }}"></script>
+<script src="{{ asset('js/imgjs.js') }}"></script>
 
 @endsection

@@ -45,7 +45,8 @@
               <div class="form-group">
                   <label for="exampleInputPassword4">ជ្រើសរើសរូបភាពវគ្គសិក្សាដើម្បីបញ្ចូល <span class="required"></span></label>
                   <input type="file" name="image" class="form-control file-upload-info" id="image-upload-input" accept="image/*">
-                  <div  id="uploaded-image-container" class="m-3"></div>
+                  <div  id="uploaded-image-container" class="m-3"></div><br/>
+                  {{-- <i class="fa-solid fa-circle-minus fa-bounce"></i> --}}
                 </div>
               <div class="alert alert-danger Siemreap" style="display: none" role="alert">
                 បញ្ចូលបានតែរូបភាពប៉ុណ្ណោះ
@@ -59,4 +60,3 @@
       </div>  
   </div>
 </div>
-<script src="{{ asset('js/addImage.js') }}"></script>
