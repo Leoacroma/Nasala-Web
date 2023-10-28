@@ -51,31 +51,28 @@
         </div>
      </div>
      <div class="container ">
-        <div class="row ">
-            <nav class="mt-5" aria-label="...">
-            @php
-                $totalpage= $pagination['totalPage'];
-                $currentPage = $pagination['page'] // Replace with the actual total number of pages
-            @endphp
-            <ul class="pagination font-size-25 ">
-            @if ($currentPage > 1)
-              <li class="page-item">
-                <a class="page-link" href="{{ route('page.scholar', ['page' => $currentPage - 1]) }}">Previous</a>
+      <div class="row ">
+        <nav class="mt-5" aria-label="...">
+          <ul class="pagination">
+          @if ($currentPage > 0)
+            <li class="page-item ">
+              <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+            </li>
+          @endif
+            @for ($i = 0; $i <= $totalpage-1; $i++)
+              <li class="page-item {{  request()->is('lib/page/'.$i.'/sort/cate/' . $cate) ? ' active' : ''  }}">
+                <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $i, 'id' => $cate]) }}">{{ $i +1 }}</a>
               </li>
-            @endif
-              <li class="page-item active"><a class="page-link" href="{{ route('front.news') }}">1</a></li>
-              @for ($i = 1; $i <= $totalpage-1; $i++)
-                <li class="page-item {{  request()->is('scholar/page/' . $i) ? ' active' : ''  }}"><a class="page-link" href="{{ route('page.scholar', ['page' => $i]) }}">{{ $i +1 }}</a></li>
-              @endfor
-            @if ($currentPage < $totalpage)
-              <li class="page-item">
-                <a class="page-link" href="{{ route('page.scholar', ['page' => $currentPage + 1]) }}">Next</a>
-              </li>
-            @endif
-                </ul>
-              </nav>
-        </div>
-    </div>
+            @endfor
+          @if ($currentPage+1 < $totalpage )
+            <li class="page-item">
+              <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
+            </li>
+          @endif
+          </ul>
+      </nav>
+      </div>
+  </div>
     </div>
     <!-- -------------------------- -->
     <!-- -------------------------------------------- -->

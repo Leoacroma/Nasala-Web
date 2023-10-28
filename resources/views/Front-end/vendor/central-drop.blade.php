@@ -8,8 +8,7 @@
         </div>
 
         <div class="modal-body Kantumruy" style="font-size: 16px">
-          <h1 class="Kantumruy" style="font-size: 15px; font-weight: bold">ចាប់ពីថ្ងៃ : <span class="badge badge-warning Kantumruy" style="font-size: 15px; font-weight: bold">{{ $item['courseStartDate'] }} <i class="fa-solid fa-arrow-right fa-bounce"></i> {{ $item['courseEndDate'] }}</span></h1>
-
+          <h1 class="Kantumruy" style="font-size: 15px; font-weight: bold">ចាប់ពីថ្ងៃ ៖ <span class="badge badge-warning Kantumruy" style="font-size: 15px; font-weight: bold">{{ $item['courseStartDate'] }} <i class="fa-solid fa-arrow-right fa-bounce"></i> {{ $item['courseEndDate'] }}</span></h1>
             <p>{{ $item['description'] }}</p>
         </div>
         <div class="col-lay-12 text-algin-center">

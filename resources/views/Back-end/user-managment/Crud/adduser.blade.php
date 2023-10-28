@@ -7,7 +7,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form class="kantumruy" action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="kantumruy" action="{{ route('admin.user.store') }}" method="POST">
             @csrf
             <div class="modal-body">
                 <div class="form-group">

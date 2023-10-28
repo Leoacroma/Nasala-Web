@@ -2,7 +2,7 @@
 @section('content')
 <?php
         // Retrieve the locale value from the session
-        $locale = session('locale');
+        $locale = app()->getLocale();
 ?>
     <!-- Content title -->
     <div class="container mt-4">
@@ -10,12 +10,12 @@
             <div class="row">
                 <div class="col-lay-5 d-flex mg-l-m10">
                     @if (app()->getLocale() === 'kh')
-                        <h2 class="nav-font color-blue-355fb6" data-locale="{{ $locale }}">{{ $trian['data']['titleKh'] }}</h2>
+                        <h2 class="nav-font color-blue-355fb6" data-locale="{{ $locale }}" >{{ $trian['data']['titleKh'] }}</h2>
                     @else
                         @if ($trian['data']['title'] !== null)
-                            <h2 class="nav-font color-blue-355fb6 font-size-30" data-locale="{{ $locale }}">{{ $trian['data']['title'] }}</h2>
+                            <h2 class="nav-font color-blue-355fb6 font-size-30" data-locale="{{ $locale }}" >{{ $trian['data']['title'] }}</h2>
                         @else
-                            <h2 class="nav-font color-blue-355fb6" data-locale="{{ $locale }}">{{ $trian['data']['titleKh'] }}</h2>
+                            <h2 class="nav-font color-blue-355fb6" data-locale="{{ $locale }}"  >{{ $trian['data']['titleKh'] }}</h2>
                         @endif
                     @endif
                    

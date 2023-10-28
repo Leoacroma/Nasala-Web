@@ -36,7 +36,9 @@ Route::post('/language/switch', [LanguageController::class, 'switchLanguage'])->
 Route::middleware([SetLocaleFromSession::class])->group(function ()  {
     Route::prefix('/')->group(function(){
         Route::get('/', [Controller::class, 'home'])->name('front.home');
-        Route::get('/news', [Controller::class, 'news'])->name('front.news');
+        /**
+         * Front.News
+         */
         Route::get('/news/subnews/{id}', [Controller::class, 'subenews'])->name('front.subnews');
         Route::get('/news/page/{page}', [Controller::class, 'pageNews'])->name('page.news');
         Route::get('/news/searchNews/{page}/{keyword?}', [Controller::class, 'searchNews'])->name('searchNews.news');
@@ -44,16 +46,20 @@ Route::middleware([SetLocaleFromSession::class])->group(function ()  {
         Route::get('/work/dp2/{id}', [Controller::class, 'dp2Content'])->name('front.work.dp2Content');
         Route::get('/work/dp3', [Controller::class, 'dp3'])->name('front.work.dp3');
 
-        Route::get('/lib', [Controller::class, 'liby'])->name('front.liby');
-        Route::get('/lib/sort/cate/{id}', [Controller::class, 'cateLib'])->name('sort.cate.lib');
-        Route::get('/lib/page/{page}', [Controller::class, 'pageLib'])->name('page.lib');
-        Route::get('/lib/searchLib/{keyword?}', [Controller::class, 'searchLib'])->name('searchLib.lib');
-        Route::get('/lib/cate/{id}', [Controller::class, 'Nolib'])->name('front.nolib');
+         /**
+         * Front.libary
+         */
+        Route::get('/lib/page/{page}/sort/cate/{id}', [Controller::class, 'cateLib'])->name('page.lib');
+        Route::get('/lib/page/all/{page}', [Controller::class, 'pageLib'])->name('page.lib.all');
+        Route::get('/lib/searchLib/{page}/{keyword?}', [Controller::class, 'searchLib'])->name('searchLib.lib');
+        Route::get('/lib/page/cate/{id}', [Controller::class, 'Nolib'])->name('front.nolib');
 
-        Route::get('/scholar',[Controller::class, 'scholar'])->name('front.scholar');
+        /**
+         * Front.Scholarship
+        */       
         Route::get('/scholar/sub/{id}', [Controller::class, 'subScholar'])->name('front.subScholar');
-        Route::get('/scholar/page/{page}',[Controller::class, 'pageScholar'])->name('page.scholar');
-        Route::get('/scholar/search/{keyword?}', [Controller::class, 'searchScholar'])->name('search.scholar');
+        Route::get('/scholar/page/{page}',[Controller::class, 'pageScholar'])->name('front.page.scholar');
+        Route::get('/scholar/search/{page}/{keyword?}', [Controller::class, 'searchScholar'])->name('search.scholar');
 
 
         Route::get('/enroll/all', [Controller::class, 'enrollMent'])->name('front.enrollMent');

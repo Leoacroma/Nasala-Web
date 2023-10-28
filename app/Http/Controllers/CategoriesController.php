@@ -61,18 +61,24 @@ class CategoriesController extends Controller
         //
         try {
             $validate = $request->validate([
-                'name' => 'required|Max:30',
                 'nameKh' => 'required|Max:30',
             ]);
+
+            $name = request('name');
+            $nameKh = request('nameKh');
+            if ($name === null) {
+                $name = $nameKh;
+            }
+
             $body = [
-                'name' => request('name'),
-                'nameKh' => request('nameKh'),
+                'name' => $name,
+                'nameKh' => $nameKh,
             ];
-            
+            // dd($body);
             $httpClient = new HttpClientHelper();
             $result = $httpClient->postRequest('/categories', $body);
             if($result){
-                Alert::success('Add Successfully', 'Success Message');
+                Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
                 return redirect()->route('admin.postcate');    
             }
             return redirect()->back();
@@ -145,7 +151,7 @@ class CategoriesController extends Controller
         // $lastName = $user['data']['lastNameKh'];
 
         if($datae){
-            Alert::success('Update Successfully', 'Success Message');
+            Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
             return redirect()->route('admin.postcate');    
             // return view('Back-end.Pages.Post.news.postcate',['data' => $data , 'datae' => $datae,  'firstName' => $firstName,
             // 'lastName' => $lastName]);
@@ -163,10 +169,7 @@ class CategoriesController extends Controller
         $requestId = $id;
         $httpClient = new HttpClientHelper();
         $data = $httpClient->deleteRequest('/categories/'.$requestId);
-        if($data){
-            Alert::success('Delete Successfully', 'Success Message');
-            return redirect()->route('admin.postcate');
-        }
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->back();
         
     }

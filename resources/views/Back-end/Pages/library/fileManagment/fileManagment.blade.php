@@ -40,7 +40,7 @@
               <a href=""  data-toggle="modal"  data-target="#Editmethod{{ $item['id'] }}" ><i class="fa-solid fa-pen-to-square"></i></a>
               @include('Back-end.Pages.library.fileManagment.editfile')
 
-              <form method="POST" id="delete-file-form{{ $item['id'] }}" action="{{ route('admin.lib.file.delete', $item['id']) }}">
+              <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.lib.file.delete', $item['id']) }}">
                 @csrf
                 @method('DELETE')
                 <a href="" class="ml-2 mr-2" style="color: red"><i class="fa-solid fa-trash" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
@@ -58,3 +58,4 @@
    </div>
   </div>
 </div>
+

@@ -7,7 +7,7 @@
           <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body kantumruy" style="font-size: 16px">
-          <h1 class="kantumruy" style="font-size: 15px; font-weight: bold">ចាប់ពីថ្ងៃ : <span class="badge badge-primary Kantumruy" style="font-size: 15px; font-weight: bold">{{ $item['courseStartDate'] }} <i class="fa-solid fa-arrow-right fa-bounce"></i> {{ $item['courseEndDate'] }}</span></h1>
+          <h1 class="kantumruy" style="font-size: 15px; font-weight: 100">ចាប់ពីថ្ងៃ : <span class="badge badge-primary Kantumruy" style="font-size: 15px; font-weight: 100">{{ $item['courseStartDate'] }} <i class="fa-solid fa-arrow-right fa-bounce"></i> {{ $item['courseEndDate'] }}</span></h1>
 
             <p>{{ $item['description'] }}</p>
         </div>

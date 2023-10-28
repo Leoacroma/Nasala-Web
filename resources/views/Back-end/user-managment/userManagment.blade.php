@@ -24,7 +24,7 @@
                 <table class="table kantumruy"  id="newsTable">
                   <thead >
                     <tr>
-                      <th scope="col">ល.រ</th>
+                      <th scope="col">គណនីប្រើប្រាស</th>
                       <th scope="col">គោត្តនាម</th>
                       <th scope="col">នាម</th>
                       <th scope="col">ថ្ងៃ</th>
@@ -33,8 +33,8 @@
                   </thead>
                   <tbody>
                     @foreach ($result as $item)
-                    <tr>
-                        <th scope="row">{{ $item['id'] }}</th>
+                    <tr >
+                        <th scope="row"><i class="fa-solid fa-user"></i></th>
                         <td class="Siemreap">{{ $item['firstNameKh'] }}</td>
                         <td class="Siemreap">{{ $item['lastNameKh'] }}</td>
                         <td class="Siemreap">{{ $item['createdAt'] }}</td>

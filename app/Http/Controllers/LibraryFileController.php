@@ -56,7 +56,7 @@ class LibraryFileController extends Controller
         $uploadFile = new UploadHelper();
         $upload = $uploadFile->postLibRequest('/library', $file, $title, $cateId);
 
-        Alert::success('Add Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
         return redirect()->route('admin.library');
     }
 
@@ -111,7 +111,7 @@ class LibraryFileController extends Controller
             $uploadFile = new UploadHelper();
             $upload = $uploadFile->patchwithoutfileLibRequest('/library/'.$requestId, $title, $cateId);
         }       
-        Alert::success('Update Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
         return redirect()->route('admin.library');
     }
 
@@ -125,7 +125,7 @@ class LibraryFileController extends Controller
         $httpClient = new HttpClientHelper();
         $result = $httpClient->deleteRequest('/library/'.$requestId);
 
-        Alert::success('Delete Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->route('admin.library');
     }
 }

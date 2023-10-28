@@ -61,14 +61,14 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         //
-        // $validation = $request->validate([
-        //     'courseName' => 'required|max:255',
-        //     'hypertext' => 'required|max:255',
-        //     'hyperlink' => 'required',
-        //     'description' => 'required',
-        //     'courseStartDate' => 'required',
-        //     'courseEndDate' => 'required',
-        // ]);
+        $validation = $request->validate([
+            'courseName' => 'required',
+            'hyperlink' => 'required',
+            'description' => 'required',
+            'courseStartDate' => 'required',
+            'courseEndDate' => 'required',
+            'registerEndDate' => 'required'
+        ]);
 
         $file = $request->file('image');
         $httpUpload = new UploadHelper();
@@ -78,11 +78,12 @@ class RegisterController extends Controller
 
         $body = [
             'courseName' => request('courseName'),
-            'hypertext' => request('hypertext'),
+            'hypertext' => request('courseName'),
             'hyperlink' => request('hyperlink'),
             'description' => request('description'),
             'courseStartDate' => request('courseStartDate'),
             'courseEndDate' => request('courseEndDate'),
+            'registerEndDate' => request('registerEndDate'),
             'thumbnailImageId' => $thumbnailImageId,
         ];
         // dd($body);
@@ -90,7 +91,7 @@ class RegisterController extends Controller
         // dd($httpClient);
         $data = $httpClient->postRequest('/register', $body);
         if($data){
-            Alert::success('Add Successfully', 'Success Message');
+            Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
         }
         return redirect()->route('admin.reg.index');
     }
@@ -147,12 +148,13 @@ class RegisterController extends Controller
             'description' => request('description'),
             'courseStartDate' => request('courseStartDate'),
             'courseEndDate' => request('courseEndDate'),
+            'registerEndDate' => request('registerEndDate'),
             'thumbnailImageId' => $thumbnailImageId,
         ];
         $httpClient = new HttpClientHelper();
         $data = $httpClient->putRequest('/register/'.$requestId, $body);
         if($data){
-            Alert::success('Add Successfully', 'Success Message');
+            Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
         }
         return redirect()->route('admin.reg.index');
     }
@@ -167,7 +169,7 @@ class RegisterController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->deleteRequest('/register/'.$requestId);
         
-        Alert::success('Delete Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->route('admin.reg.index');
     }
 }

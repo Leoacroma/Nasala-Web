@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css') }}" />
     {{-- <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.css">
     <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.min.css"> --}}
-    <title>NASALA</title>
+    <title>សាលាជាតិរដ្ឋបាលមូលដ្ឋាន</title>
     
     <x-embed-styles />
 </head>
@@ -101,9 +101,20 @@
                         <div class="row">
                             <div class="col-lay-3"></div>
                             <div class="col-lay-3 mt-2">
-                                <a href=""><i class="fa-brands fa-telegram font-size-40 color-rgb-10-137-240"></i></a>
-                                <a href=""><i class="fa-brands fa-youtube  font-size-40 color-red"></i></a>
-                                <a href=""><i class="fa-brands fa-square-facebook  font-size-40 color-blue"></i></a>
+                                @php
+                                $facebook = 'www.facebook.com/training.interior';
+                                $tele =  't.me/tddocuments';
+                                $youtube = 'www.youtube.com/channel/UC2qWTubQ1K48RFjIreGCPkA';
+                                if (!str_starts_with($facebook && $tele && $youtube, 'http://') && !str_starts_with($facebook && $tele && $youtube, 'https://')) {
+                                    $facebook = 'https://' . $facebook;
+                                    $tele = 'https://' . $tele;
+                                    $youtube = 'https://' . $youtube;
+                                }
+                                @endphp
+
+                                <a href="{{ $tele }}"><i class="fa-brands fa-telegram font-size-40 color-rgb-10-137-240"></i></a>
+                                <a href="{{ $youtube }}"><i class="fa-brands fa-youtube  font-size-40 color-red"></i></a>
+                                <a href="{{ $facebook }}"><i class="fa-brands fa-square-facebook  font-size-40 color-blue"></i></a>
                             </div>
                             <div class="col-lay-3 mt-2">
                                 <!-- language -->
@@ -152,8 +163,8 @@
                             <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{ Route::currentRouteNamed('front.enrollMent') ? 'drop-actived' : '' }}" href="{{ route('front.enrollMent') }}" data-locale="{{ $locale }}">{{ __('messages.Enroll') }}</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item {{ Route::currentRouteNamed('front.liby') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.liby') }}">{{ __('messages.Library') }}</a></li>
-                    <li class="nav-item {{ Route::currentRouteNamed('front.scholar') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.scholar') }}">{{ __('messages.Scholarship') }}</a></li>
+                    <li class="nav-item {{ Route::currentRouteNamed('page.lib.all') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('page.lib.all',['page' => 0]) }}">{{ __('messages.Library') }}</a></li>
+                    <li class="nav-item {{ Route::currentRouteNamed('front.page.scholar') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"  aria-current="page" href="{{ route('front.page.scholar', ['page' =>0]) }}">{{ __('messages.Scholarship') }}</a></li>
                     <li class="nav-item dropdown 
                     {{ Route::currentRouteNamed([
                         'front.aboutschool.dp1',
@@ -204,7 +215,7 @@
                         <span>
                             <ul class="list-unstyled">
                                 @php
-                                    $hyperlink = 'www.facebook.com';
+                                    $hyperlink = 'www.facebook.com/training.interior';
                                     $email =  'naslacambodia@gmail.com';
                                     if (!str_starts_with($hyperlink && $email, 'http://') && !str_starts_with($hyperlink && $email, 'https://')) {
                                         $hyperlink = 'https://' . $hyperlink;
@@ -214,7 +225,7 @@
                                 <li><i class="fa-solid fa-square-phone mg-r-10px" ></i>023 456 789</li>
                                 <li><i class="fa-solid fa-square-envelope mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $email }}">naslacambodia@gmail.com</a></li>
                                
-                                <li><i class="fa-brands fa-square-facebook mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $hyperlink }}">facebook.com</a></li>
+                                <li><i class="fa-brands fa-square-facebook mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $hyperlink }}">naslacambodia</a></li>
                                 <li><i class="fa-solid fa-location-dot mg-r-10px" ></i>{{ __('messages.Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.') }}</li>
                             </ul>
                         </span>
@@ -247,5 +258,14 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js	"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Get the carousel element
+    var carousel = document.querySelector('#carouselExampleControls');
 
+    // Initialize the carousel
+    var carouselInstance = new mdb.Carousel(carousel);
+
+    // Stop the interval
+    carouselInstance.pause();
+</script>
 </html>

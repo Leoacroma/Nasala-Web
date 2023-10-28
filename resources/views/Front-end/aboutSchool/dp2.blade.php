@@ -29,7 +29,7 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-12 Kantumruy">
-                                    <div class="card bg-warning mb-3 " >
+                                    <div class="card bg-secondary mb-3 " >
                                         <div class="card-header " >ចក្ខុវិស័យ <i class="fa-solid fa-fire-flame-curved"></i></div>
                                         <div class="card-body">
                                           <!-- <h5 class="card-title">Primary card title</h5> -->
@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 Kantumruy">
-                                    <div class="card text-body bg-info mb-3 " >
+                                    <div class="card text-body bg-light mb-3 " >
                                         <div class="card-header ">គោលបំណង <i class="fa-solid fa-bullseye"></i></div>
                                         <div class="card-body">
                                           <!-- <h5 class="card-title">Primary card title</h5> -->
@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 Kantumruy">
-                                    <div class="card bg-light  mb-3" >
+                                    <div class="card bg-secondary  mb-3" >
                                         <div class="card-header ">គោលដៅ <i class="fa-solid fa-location-dot"></i></div>
                                         <div class="card-body">
                                           <!-- <h5 class="card-title">Primary card title</h5> -->
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 Kantumruy">
-                                    <div class="card text-white bg-dark  mb-3" >
+                                    <div class="card bg-light  mb-3" >
                                         <div class="card-header "> យុទ្ធសាស្រ្ត <i class="fa-solid fa-list-check"></i></div>
                                         <div class="card-body">
                                           <!-- <h5 class="card-title">Primary card title</h5> -->

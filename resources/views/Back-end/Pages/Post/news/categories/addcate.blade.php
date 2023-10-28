@@ -24,7 +24,7 @@
             <label for="exampleFormControlInput1 ">ឈ្មោះជាភាសាអង់គ្លេស</label>
             <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="ឈ្មោះជាភាសាអង់គ្លេស">
           </div>
-          <button type="submit" class="btn btn-primary text-white kantumruy" style="font-weight: 400">បន្ថែម</button>
+          <button type="submit" class="btn btn-primary text-white kantumruy" style="font-weight: 400"><i class="fa-solid fa-plus"></i> បន្ថែម</button>
         </form>
        </div>
       </div>

@@ -13,7 +13,7 @@
 
                 </div>
                 <div class="col-lay-5 ">
-                    <form class="float-end" action="{{ route('searchLib.lib') }}" method="GET">
+                    <form class="float-end" action="{{ route('searchLib.lib',  ['page' => 0]) }}" method="GET">
                         @csrf
                         <div class="input-group">
                             <div class="form-outline">
@@ -36,16 +36,16 @@
         <div class="col-lay-3">
             <ul class="list-group  ">
               <li class="list-group-item dp-font bg-color-355fb6 color-white font-size-25" data-locale="{{ $locale }}">{{ __('messages.File type') }}</li>
-              <li class="list-group-item "><a class="items-LG  dp-font" href="{{ route('front.liby') }}" data-locale="{{ $locale }}">{{ __('messages.Show all') }}</a></li>
+              <li class="list-group-item "><a class="items-LG  dp-font" href="{{ route('page.lib.all',['page' => 0]) }}" data-locale="{{ $locale }}">{{ __('messages.Show all') }}</a></li>
                 @foreach ($cate['data'] as $item)                    
                 <li class="list-group-item {{ request()->is('lib/sort/cate/' . $item['id']) ? ' activated' : '' }}">
                     @if (app()->getLocale() === 'kh')
-                        <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
+                        <a class="items-LG dp-font" href="{{ route('page.lib',['page' => 0, 'id' => $item['id']]) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
                     @else
                         @if ($item['name'] !== null)
-                            <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['name'] }}</a>
+                            <a class="items-LG dp-font" href="{{ route('page.lib',['page' => 0, 'id' => $item['id']]) }}" data-locale="{{ $locale }}">{{ $item['name'] }}</a>
                         @else
-                            <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
+                            <a class="items-LG dp-font" href="{{ route('page.lib',['page' => 0, 'id' => $item['id']]) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
                         @endif
                     @endif  
                 </li>
@@ -69,34 +69,32 @@
                   
               </div>
           </div>
-      @endforeach
-            
-            {{-- <div class="container ">
-                <div class="row ">
-                    <nav class="mt-5" aria-label="...">
-                        @php
-                        $totalpage= $pagination['totalPage'];
-                        $currentPage = $pagination['page'] // Replace with the actual total number of pages
-                    @endphp
-                    <ul class="pagination font-size-25 ">
-                    @if ($currentPage > 1)
-                      <li class="page-item">
-                        <a class="page-link" href="{{ route('page.news', ['page' => $currentPage - 1]) }}">Previous</a>
-                      </li>
-                    @endif
-                      <li class="page-item active"><a class="page-link" href="{{ route('front.news') }}">1</a></li>
-                      @for ($i = 1; $i <= $totalpage-1; $i++)
-                        <li class="page-item {{  request()->is('news/page/' . $i) ? ' active' : ''  }}"><a class="page-link" href="{{ route('page.news', ['page' => $i]) }}">{{ $i +1 }}</a></li>
-                      @endfor
-                    @if ($currentPage < $totalpage)
-                      <li class="page-item">
-                        <a class="page-link" href="{{ route('page.news', ['page' => $currentPage + 1]) }}">Next</a>
-                      </li>
-                    @endif
-                        </ul>
-                      </nav>
-                </div>
-            </div> --}}
+      @endforeach  
+  <div class="container ">
+      <div class="row ">
+        <nav class="mt-5" aria-label="...">
+          <ul class="pagination">
+          @if ($currentPage > 0)
+            <li class="page-item ">
+              <a class="page-link  font-size-18 Kantumruy" href="{{ route('searchLib.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+            </li>
+          @endif
+            @for ($i = 0; $i <= $totalpage-1; $i++)
+              <li class="page-item {{   Route::currentRouteNamed('searchLib.lib', ['page'=>$i, 'keyword' => $request_Keyword] ) ? 'active' : ''  }}">
+                <a class="page-link  font-size-18 Kantumruy" href="{{ route('searchLib.lib', ['page' => $i]) }}">{{ $i +1 }}</a>
+              </li>
+            @endfor
+          @if ($currentPage+1 < $totalpage )
+            <li class="page-item">
+              <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('searchLib.lib', ['page' => $currentPage + 1]) }}" > <i class="fa-solid fa-forward"></i></a>
+            </li>
+          @endif
+          </ul>
+      </nav>
+      </div>
+    </div>
+        </div>
+    </div>
         </div>
     </div>
 </div>

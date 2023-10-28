@@ -23,7 +23,7 @@ class PostController extends Controller
     {
         //
         $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/news'); 
+        $data = $httpClient->getRequest('/news?page=0&sortOrder=desc'); 
         $_COOKIE = Cookie::get('user_Id');
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
@@ -35,7 +35,7 @@ class PostController extends Controller
             $result[] = [
                 'id' => $item['id'],
                 'title' => $item['title'],
-                'titleKh' => Str::limit($item['titleKh'], $limit = 20, '...') ,
+                'titleKh' => Str::limit($item['titleKh'], $limit = 150, '...') ,
                 'createdAt' => $formattedCreatedAt,
                 'editUrl' => route('admin.edit', $item['id']),
                 'deleteUrl' => route('admin.destroy', $item['id']),
@@ -97,7 +97,7 @@ class PostController extends Controller
         $result = $httpClient->postRequest('/news', $body);
         
         if($upload){
-            Alert::success('Add Successfully', 'Success Message');
+            Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
         }
         return redirect()->route('admin.post');
     }
@@ -185,7 +185,7 @@ class PostController extends Controller
             $data = $httpClient->getRequest('/news/'.$request_ID);
             $thumbnailImageId = $data['data']['thumbnailImageId'];
            if ($thumbnailImageId == null){
-                Alert::error('Please Upload and Image', 'Error Message');
+                Alert::error('សូមបង្ហោះរូបភាព');
                 return redirect()->back();
             } 
         }
@@ -200,7 +200,7 @@ class PostController extends Controller
         $httpClient = new HttpClientHelper();
         $result = $httpClient->putRequest('/news/'.$request_ID, $body);
 
-        Alert::success('Update Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
         return redirect()->route('admin.post');
        
     }
@@ -215,7 +215,7 @@ class PostController extends Controller
         $httpClient = new HttpClientHelper();
         $result = $httpClient->deleteRequest('/news/'.$request_Id);
 
-        Alert::success('Delete Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->route('admin.post');
     }
 }

@@ -12,7 +12,7 @@
                     <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Scholarship') }}</h2>
                 </div>
                 <div class="col-lay-5 ">
-                  <form class="float-end " method="GET" action="{{ route('search.scholar') }}">
+                  <form class="float-end " method="GET" action="{{ route('search.scholar', ['page' => 0]) }}">
                     @csrf
                         <div class="input-group">
                             <div class="form-outline">
@@ -48,7 +48,29 @@
             @endforeach
         </div>
      </div>
-   
+     <div class="container ">
+        <div class="row ">
+          <nav class="mt-5" aria-label="...">
+            <ul class="pagination">
+            @if ($currentPage > 0)
+              <li class="page-item ">
+                <a class="page-link  font-size-18 Kantumruy" href="{{ route('search.scholar', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+              </li>
+            @endif
+              @for ($i = 0; $i <= $totalpage-1; $i++)
+                <li class="page-item {{  Route::currentRouteNamed('search.scholar', ['page'=>$i, 'keyword' => $request_Keyword] ) ? 'active' : '' }}">
+                  <a class="page-link  font-size-18 Kantumruy" href="{{ route('search.scholar', ['page' => $i]) }}">{{ $i +1 }}</a>
+                </li>
+              @endfor
+            @if ($currentPage+1 < $totalpage )
+              <li class="page-item">
+                <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('search.scholar', ['page' => $currentPage + 1]) }}" > <i class="fa-solid fa-forward"></i></a>
+              </li>
+            @endif
+            </ul>
+        </nav>
+        </div>
+      </div>
     </div>
     <!-- -------------------------- -->
     <!-- -------------------------------------------- -->

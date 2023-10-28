@@ -17,6 +17,8 @@ class AboutSchoolController extends Controller
     public function index()
     {
         //
+
+
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/home/video');
         $_COOKIE = Cookie::get('user_Id');
@@ -59,7 +61,7 @@ class AboutSchoolController extends Controller
             'videoLink' =>request('videoLink')
         ];
         $data = $httpClient->postRequest('/home/video',$body);
-        Alert::success('Add Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
         return redirect()->back();
 
     }
@@ -92,7 +94,7 @@ class AboutSchoolController extends Controller
             'videoLink' =>request('videoLink')
         ];
         $data = $httpClient->putRequest('/home/video/'.$request_Id,$body);
-        Alert::success('Add Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
         return redirect()->back();
     }
 
@@ -108,7 +110,7 @@ class AboutSchoolController extends Controller
             'videoLink' =>request('videoLink')
         ];
         $data = $httpClient->deleteRequest('/home/video/'.$request_Id,$body);
-        Alert::success('Delete Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->back();
     }
 }

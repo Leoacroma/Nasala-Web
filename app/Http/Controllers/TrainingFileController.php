@@ -59,7 +59,7 @@ class TrainingFileController extends Controller
         $upload = $uploadFile->postTfileRequest('/training', $file, $title, $cateId);
         // Hide loading element
         if($upload){
-            Alert::success('Add Successfully', 'Success Message');
+            Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
         }
         return redirect()->route('admin.train.post');
     }
@@ -118,7 +118,7 @@ class TrainingFileController extends Controller
         }       
 
         if($upload){
-            Alert::success('Update Successfully', 'Success Message');
+            Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
         }
         return redirect()->route('admin.train.post');
     }
@@ -133,7 +133,7 @@ class TrainingFileController extends Controller
         $httpClient = new HttpClientHelper();
         $result = $httpClient->deleteRequest('/training/'.$requestId);
     
-        Alert::success('Delete Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->route('admin.train.post');
     }
 }

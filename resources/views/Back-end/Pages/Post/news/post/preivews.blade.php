@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lay-10 mt-3 p-0" style="font-size: 15px; font-weight: bold">
+                    <div class="col-lay-10 mt-3 p-0 kantumruy" style="font-size: 15px; font-weight: bold">
                         {!! $data['data']['contentKh'] !!}
                     </div>
                 </div>

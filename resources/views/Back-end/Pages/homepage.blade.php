@@ -253,7 +253,7 @@
                         <p class="kantumruy mb-3"  style="font-weight: 400;">វគ្គចូលរៀនថ្មីដែលចាប់បើក</p>
                         <div class="product-order-wrap padding-reduced">
                             <div class="row">
-                                @foreach ($register['data'] as $index => $item)
+                            @foreach ($result3 as $index => $item)
                                 @php
                                 $hyperlink = $item['hyperlink'];
                                 if (!str_starts_with($hyperlink, 'http://') && !str_starts_with($hyperlink, 'https://')) {
@@ -262,20 +262,23 @@
 
                             @endphp
                                 <div class="col-3">
-                                    <div class="card">
-                                        <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fix" alt="Fissure in Sandstone"/>
+        
+                                      <div class="card" >
+                                        <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-cdd" alt="Fissure in Sandstone"/>
+                                        <span class="badge badge-danger kantumruy" style="font-size: 15px"><i class="fa-solid fa-calendar-days fa-beat-fade"></i> ផុតកំណត់ ៖ {{ $item['registerEndDate'] }} </span> 
                                         <div class="card-body">
-                                          <h5 class="card-title kantumruy" style=" font-size: 20px">{{ $item['courseName'] }}</h5>
-                                          <h1 class="kantumruy" style="font-size: 15px; font-weight: bold">ចាប់ពីថ្ងៃ : <span class="badge badge-primary kantumruy" style="font-size: 15px; font-weight: bold">{{ $item['courseStartDate'] }} <i class="fa-solid fa-arrow-right fa-bounce"></i> {{ $item['courseEndDate'] }}</span></h1>
-
-                                          <p class="card-text kantumruy" style="font-size: 15px; font-weight: 100">{{\Illuminate\Support\Str::limit($item['description'], $limit = 100, $end = '...')}}</p>
+                                          <h5 class="card-title kantumruy" style=" font-weight: bold; font-size: 20px">{{\Illuminate\Support\Str::limit($item['courseName'], $limit = 36, $end = '...')}} </h5>
+                                          <span class="kantumruy" style="font-size: 15px; font-weight: 100">ចាប់ពីថ្ងៃ : <span class="badge badge-primary Kantumruy" style="font-size: 15px; font-weight: 100">{{ $item['courseStartDate'] }} <i class="fa-solid fa-arrow-right fa-bounce"></i> {{ $item['courseEndDate'] }}</span></span>
+                                          <p class="card-text kantumruy" style="font-size: 15px">{{\Illuminate\Support\Str::limit($item['description'], $limit = 90, $end = '...')}}</p>
+                                          
                                           <a href="{{ $hyperlink }}" class="btn btn-primary kantumruy" style="font-size: 15px; font-weight: 400">ចុះឈ្មោះ</a>
                                           {{-- <a href="{{ $hyperlink }}" class="btn btn-info Kantumruy" ></a> --}}
                                        
-                                         <button type="button" class="btn btn-info  kantumruy" data-mdb-toggle="modal" data-mdb-target="#exampleModal{{ $item['id'] }}" style="font-size: 15px; font-weight: 400">
+                                         <button type="button" class="btn btn-secondary kantumruy" data-mdb-toggle="modal" data-mdb-target="#exampleModal{{ $item['id'] }}" style="font-size: 15px; font-weight: 400">
                                             មើលលំអិត
                                           </button>
-                                         @include('Back-end.plugin.central-drop')
+                        
+                                          @include('Back-end.plugin.central-drop')
                                         </div>
                                       </div>
                                 </div>

@@ -78,7 +78,7 @@
                 </a>
                 @endforeach
                 
-                <a class="btn btn-primary btn-show-all dp-font font-size-15" href="{{ route('front.news') }}" data-locale="{{ $locale }}">{{ __('messages.Show all News') }}</a>
+                <a class="btn btn-primary btn-show-all dp-font font-size-15" href="{{ route('page.news', ['page' => 0]) }}" data-locale="{{ $locale }}">{{ __('messages.Show all News') }}</a>
             </div>
 
         </div>
@@ -115,7 +115,7 @@
                         @endforeach 
                         <div class="row float-end">
                             <div class="col-12">
-                                <a class="btn btn-primary btn-show-all-2 dp-font font-size-15" href="{{ route('front.scholar') }}" data-locale="{{ $locale }}">{{ __('messages.Show all') }}</a>
+                                <a class="btn btn-primary btn-show-all-2 dp-font font-size-15" href="{{ route('front.page.scholar', ['page' =>0]) }}" data-locale="{{ $locale }}">{{ __('messages.Show all') }}</a>
                             </div>
                         </div>
                     </div>
@@ -125,38 +125,36 @@
             <div class=" col-6 ">
                 <div class="col-12 d-flex ">
                     <i class="fa-brands fa-youtube font-size-30 color-red mg-r-10px"></i>
-                    <h2 class="nav-font color-red" data-locale="{{ $locale }}">{{ __('messages.Video') }}</h2>
+                    <h2 class="nav-font color-red" data-locale="{{ $locale }}" >{{ __('messages.Video') }}</h2>
                 </div>
-                {{-- <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img
-                          src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
-                          alt="Trendy Pants and Shoes"
-                          class="img-fluid rounded-start"
-                        />
+                <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach ($video['data'] as $item)
+                        <?php
+                            $lastedVideo = $item['videoLink'];
+                        ?>
+                      <div class="carousel-item active">
+                        <x-embed url="{{ $lastedVideo }}"/>
                       </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-                          </p>
-                          <p class="card-text">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                          </p>
-                        </div>
+                      @endforeach
+                      @foreach ($Lastedvideo['data'] as $item)
+                     <?php
+                         $lastedVideo = $item['videoLink'];
+                     ?>
+                      <div class="carousel-item">
+                        <x-embed url="{{ $lastedVideo }}"/>
                       </div>
+                     @endforeach
                     </div>
-                  </div> --}}
-
-                @foreach ($video['data'] as $item)
-                <?php
-                    $lastedVideo = $item['videoLink'];
-                ?>
-                    <x-embed url="{{ $lastedVideo }}"/>
-                @endforeach
+                    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls" data-mdb-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
             </div>
         </div>
     </div>

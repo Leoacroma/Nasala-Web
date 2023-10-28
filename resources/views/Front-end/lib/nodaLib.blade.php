@@ -20,11 +20,11 @@
                     <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Library') }}</h2>
                 </div>
                 <div class="col-lay-5 ">
-                    <form class="float-end " action="{{ route('searchLib.lib') }}" method="GET">
+                    <form class="float-end" action="{{ route('searchLib.lib', ['page' => 0]) }}" method="GET">
                         @csrf
                         <div class="input-group">
                             <div class="form-outline">
-                              <input type="search" name="searchLibs" id="searchInput" class="form-control" />
+                              <input type="search" name="searchLibs"  id="searchInput" class="form-control" />
                               <label class="form-label" for="form1">Search</label>
                             </div>
                             <button type="submit" class="btn btn-primary">
@@ -43,16 +43,16 @@
         <div class="col-lay-3">
             <ul class="list-group  ">
                 <li class="list-group-item dp-font bg-color-355fb6 color-white font-size-25" data-locale="{{ $locale }}">{{ __('messages.File type') }}</li>
-                <li class="list-group-item "><a class="items-LG  dp-font" href="{{ route('front.liby') }}" data-locale="{{ $locale }}">{{ __('messages.Show all') }}</a></li>
+                <li class="list-group-item "><a class="items-LG  dp-font" href="{{ route('page.lib.all',['page' => 0]) }}" data-locale="{{ $locale }}">{{ __('messages.Show all') }}</a></li>
                 @foreach ($cate['data'] as $item)                    
-                <li class="list-group-item {{ request()->is('lib/cate/' . $item['id']) ? ' activated' : '' }}">
+                <li class="list-group-item {{ request()->is('lib/page/cate/' . $item['id']) ? ' active' : '' }}">
                     @if (app()->getLocale() === 'kh')
-                        <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
+                        <a class="items-LG dp-font" href="{{ route('page.lib',['page' => 0, 'id' => $item['id']]) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
                     @else
                         @if ($item['name'] !== null)
-                            <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['name'] }}</a>
+                            <a class="items-LG dp-font" href="{{ route('page.lib',['page' => 0, 'id' => $item['id']]) }}" data-locale="{{ $locale }}">{{ $item['name'] }}</a>
                         @else
-                            <a class="items-LG dp-font" href="{{ route('sort.cate.lib', $item['id']) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
+                            <a class="items-LG dp-font" href="{{ route('page.lib',['page' => 0, 'id' => $item['id']]) }}" data-locale="{{ $locale }}">{{ $item['nameKh'] }}</a>
                         @endif
                     @endif  
                 </li>

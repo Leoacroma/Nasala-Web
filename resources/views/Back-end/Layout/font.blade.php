@@ -171,22 +171,30 @@
   margin-bottom: 10px;
 }
 #newsTable {
+  
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
   margin-bottom: 10px;
+
 }
+
 
 #newsTable th,
 #newsTable td {
-  padding: 10px;
+  padding: 20px;
 }
 
 #newsTable thead th {
+  
   background-color: #f2f2f2;
   font-weight: bold;
 }
 
+table.dataTable tbody tr{
+
+  border-bottom: solid 1.5px #ededed;
+}
 #newsTable tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }

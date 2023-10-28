@@ -84,7 +84,7 @@ class PublicztionController extends Controller
         $upload = $uploadFile->postPubfilerequets('/publicize', $filePdf, $title, $image);
 
         if($upload){
-            Alert::success('Add Successfully', 'Success Message');
+            Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
         }
         return redirect()->route('admin.pub.index');
     }
@@ -112,10 +112,6 @@ class PublicztionController extends Controller
     {
         //
         $requestId = $id;
-        // $validate = $request->validate([
-        //     'title' => 'required|max:255',
-        // ]);
-      
         //Check Image upload
         $file = $request->file('image');
         if($file != null ){
@@ -157,7 +153,7 @@ class PublicztionController extends Controller
         }
         //Check upload
         if($upload){
-            Alert::success('Add Successfully', 'Success Message');
+            Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
         }
         return redirect()->route('admin.pub.index');
     }
@@ -172,7 +168,7 @@ class PublicztionController extends Controller
         $httpClient = new HttpClientHelper();
         $result = $httpClient->deleteRequest('/publicize/'.$requestId);
     
-        Alert::success('Delete Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->route('admin.pub.index');
 
     }

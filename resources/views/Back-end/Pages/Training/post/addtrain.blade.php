@@ -38,11 +38,11 @@
                       </select>
                     </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword4">ឃ្លឹមសារ <span class="required"></span></label>
+                    <label for="exampleInputPassword4">ខ្លឹមសារ <span class="required"></span></label>
                     <textarea class="form-control" name="contentKh" id="summernoteKh" required></textarea>
                   </div>   
                   <div class="form-group">
-                    <label for="exampleInputPassword4">ឃ្លឹមសារជាភាសាអង់គ្លេស</label>
+                    <label for="exampleInputPassword4">ខ្លឹមសារជាភាសាអង់គ្លេស</label>
                     <textarea class="form-control" name="content" id="summernoteEng" ></textarea>
                   </div>
                   

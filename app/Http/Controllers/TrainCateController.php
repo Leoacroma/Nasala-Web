@@ -71,7 +71,7 @@ class TrainCateController extends Controller
         $httpClient = new HttpClientHelper();
         $resultt = $httpClient->postRequest('/training/categories', $body);
 
-        Alert::success('Add Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
         return redirect()->route('admin.train.cate');
     }
 
@@ -144,7 +144,7 @@ class TrainCateController extends Controller
 
         $httpClient = new HttpClientHelper();
         $data = $httpClient->putRequest('/training/categories/'.$requestId, $body);
-        Alert::success('Update Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
         return redirect()->route('admin.train.cate');
     }
 
@@ -158,7 +158,7 @@ class TrainCateController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->deleteRequest('/training/categories/'.$requestId);
         
-        Alert::success('Delete Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->route('admin.train.cate');
     }
 }

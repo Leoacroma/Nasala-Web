@@ -72,17 +72,20 @@ class UserController extends Controller
         ]);
         $body = [
             'firstName' => request('firstName'),
-            'firstNameKh' => request('firstNameKh'),
             'lastName' => request('lastName'),
-            'lastNameKh' => request('lastNameKh'),
+            'firstNameKh' => request('firstNameKh'),
+            'lastNameKh' =>  request('lastNameKh'),
             'username' => request('userName'),
             'password' => request('password'),
-            'role' => request(['role'])
+            'roles' => [
+                [
+                    'id' => request('role')
+                ]
+            ]
         ];
-        // dd($body);
         $httpClient = new HttpClientHelper();
         $data = $httpClient->postRequest('/users', $body);
-        Alert::success('Add Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
         return redirect()->route('admin.user');
     }
 
@@ -120,17 +123,20 @@ class UserController extends Controller
         ]);
         $body = [
             'firstName' => request('firstName'),
-            'firstNameKh' => request('firstNameKh'),
             'lastName' => request('lastName'),
-            'lastNameKh' => request('lastNameKh'),
+            'firstNameKh' => request('firstNameKh'),
+            'lastNameKh' =>  request('lastNameKh'),
             'username' => request('userName'),
             'password' => request('password'),
-            'role' => request(['role'])
+            'roles' => [
+                [
+                    'id' => request('role')
+                ]
+            ]
         ];
         $httpClient = new HttpClientHelper();
         $data = $httpClient->putRequest('/users/'.$requestId, $body);
-        
-        Alert::success('Update Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
         return redirect()->route('admin.user');
     }
 
@@ -144,7 +150,7 @@ class UserController extends Controller
         $httpClient = new HttpClientHelper();
         $result = $httpClient->deleteRequest('/users/'.$requestId);
     
-        Alert::success('Add Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->route('admin.user');
     }
 }

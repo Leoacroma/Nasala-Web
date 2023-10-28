@@ -102,12 +102,12 @@ class TrainingController extends Controller
             'content' => request('content'),
             'contentKh' => request('contentKh'),
         ];
-        dd($body);
+        // dd($body);
         $httpClient = new HttpClientHelper();
         $result = $httpClient->postRequest('/training/posts', $body);
       
         if($result){
-            Alert::success('Add Successfully', 'Success Message');
+            Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
         }
         return redirect()->route('admin.train.post');
     }
@@ -171,7 +171,7 @@ class TrainingController extends Controller
         $httpClient = new HttpClientHelper();
         $result = $httpClient->putRequest('/training/posts/'.$requestId, $body);
         
-        Alert::success('Add Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានផ្លាសប្តូរជោគជ័យ');
         return redirect()->route('admin.train.post');
     }
 
@@ -186,7 +186,7 @@ class TrainingController extends Controller
 
         $result = $httpClient->deleteRequest('/training/posts/'.$requestId);
 
-        Alert::success('Delete Successfully', 'Success Message');
+        Alert::success('ទិន្នន័យបានលុប');
         return redirect()->route('admin.train.post');
     }
 }

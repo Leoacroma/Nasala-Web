@@ -9,10 +9,10 @@
         <div class="row">
             <div class="row">
                 <div class="col-lay-5 d-flex mg-l-m10">
-                  <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Advertising') }}</h2>
+                  <h2 class="nav-font color-blue-355fb6 font-size-30"  data-locale="{{ $locale }}">{{ __('messages.Scholarship') }}</h2>
                 </div>
                 <div class="col-lay-5 ">
-                    <form class="float-end " action="{{ route('search.scholar') }}" method="GET">
+                    <form class="float-end " action="{{ route('search.scholar', ['page' => 0]) }}" method="GET">
                         @csrf
                         <div class="input-group">
                             <div class="form-outline">
@@ -48,30 +48,30 @@
             @endforeach
         </div>
      </div>
+     
      <div class="container ">
-        <div class="row ">
-            <nav class="mt-5" aria-label="...">
-            @php
-                $totalpage= $pagination['totalPage'];
-                $currentPage = $pagination['page'] // Replace with the actual total number of pages
-            @endphp
-            <ul class="pagination font-size-25 ">
-            @if ($currentPage > 0)
-              <li class="page-item">
-                <a class="page-link" href="{{ route('page.scholar', ['page' => $currentPage - 1]) }}">Previous</a>
+      <div class="row ">
+        <nav class="mt-5" aria-label="...">
+          <ul class="pagination">
+          @if ($currentPage > 0)
+            <li class="page-item ">
+              <a class="page-link  font-size-18 Kantumruy" href="{{ route('front.page.scholar', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+            </li>
+          @endif
+            @for ($i = 0; $i <= $totalpage-1; $i++)
+              <li class="page-item {{  request()->is('scholar/page/' . $i) ? ' active' : ''  }}">
+                <a class="page-link  font-size-18 Kantumruy" href="{{ route('front.page.scholar', ['page' => $i]) }}">{{ $i +1 }}</a>
               </li>
-            @endif
-              <li class="page-item"><a class="page-link" href="{{ route('front.scholar') }}">1</a></li>
-              @for ($i = 1; $i <= $totalpage-1; $i++)
-                <li class="page-item {{  request()->is('scholar/page/' . $i) ? ' active' : ''  }}"><a class="page-link" href="{{ route('page.scholar', ['page' => $i]) }}">{{ $i +1 }}</a></li>
-              @endfor
-            @if ($currentPage < $totalpage && $currentPage > $totalpage)
-              <li class="page-item">
-                <a class="page-link" href="{{ route('page.scholar', ['page' => $currentPage + 1]) }}">Next</a>
-              </li>
-            @endif
-                </ul>
-              </nav>
+            @endfor
+          @if ($currentPage+1 < $totalpage )
+            <li class="page-item">
+              <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('front.page.scholar', ['page' => $currentPage + 1]) }}" > <i class="fa-solid fa-forward"></i></a>
+            </li>
+          @endif
+          </ul>
+      </nav>
+      </div>
+    </div>
         </div>
     </div>
     </div>
