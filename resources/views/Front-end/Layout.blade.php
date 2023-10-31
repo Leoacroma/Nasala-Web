@@ -21,9 +21,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css-front/frontStyle.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/css-front/font.css') }}">
+
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css') }}" />
     {{-- <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.css">
     <link rel="stylesheet" href="/node_modules/flag-icons/css/flag-icons.min.css"> --}}
@@ -56,15 +59,6 @@
     display: flex;
     justify-content: center;
 }
-/* .nav-font {
-    font-family: 'Arial';
-    font-size: 25px;
-}
-
-.nav-font[data-locale="kh"] {
-    font-family: 'Dangrek' !important;
-    font-size: 28px;
-} */
 
 </style>
 
@@ -75,32 +69,32 @@
 <body >
     <!-- header -->
     <!-- <include id="header" class="header"></include> -->
+    @include('Front-end.navigation-bar')
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
-    <div class="container">
+    <div class="container container-sm all-fix-position">
         <div class="row">
-            <div class="col-lay-6">
+            <div class="col-xxl-8 col-xl-8 col-md-8 col-sm-12 mt-2">
                 <div class="row">
-                    <div class="col-lay-2 mg-l-3">
-                        <a href="{{ route('front.home') }}"><img src="{{ asset('/images/front/photo_2022-10-19_09-17-50.jpg') }}" alt="" width="180px"></a>
+                    <div class="col-md-2 col-3 text-algin-center p-0">
+                        <a href="{{ route('front.home') }}"><img class="img-fluid nasla-lg-rps" src="{{ asset('/images/front/photo_2022-10-19_09-17-50.jpg') }}" alt=""></a>
                     </div>
-                    <div class="col-lay-6 d-flex align-items-center text-algin-center">
-                        <div class="row">
-                            <div class="col-lay-10">
-                                <h2 class="moul color-blue-355fb6 text-align-center text-shadow font-size-30">សាលាជាតិរដ្ឋបាលមូលដ្ឋាន</h2>
+                    <div class="col-md-7 col-9 d-flex align-items-center p-0">
+                        <div class="row ">
+                            <div class="col-md-12 col-sm-12">
+                                <h2 class="moul color-blue-355fb6 text-shadow rps-text-titleKh ">សាលាជាតិរដ្ឋបាលមូលដ្ឋាន</h2>
                             </div>
-                            <div class="col-lay-10">
-                                <h2 class="PT-Sans-Narrow font-bold color-blue-355fb6 text-shadow font-size-30">National School For Local Administration</h2>
+                            <div class="col-md-12 col-sm-12">
+                                <h2 class="PT-Sans-Narrow font-bold color-blue-355fb6 text-shadow rps-text-titleEn ">National School For Local Administration</h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lay-4">
+            <div class="col-md-4">
                 <div class="row ">
-                    <div class="col-lay-10">
+                    <div class="col-md-12 mt-2">
                         <div class="row">
-                            <div class="col-lay-3"></div>
-                            <div class="col-lay-3 mt-2">
+                            <div class="col-md-5 col-4">
                                 @php
                                 $facebook = 'www.facebook.com/training.interior';
                                 $tele =  't.me/tddocuments';
@@ -111,28 +105,27 @@
                                     $youtube = 'https://' . $youtube;
                                 }
                                 @endphp
-
-                                <a href="{{ $tele }}"><i class="fa-brands fa-telegram font-size-40 color-rgb-10-137-240"></i></a>
-                                <a href="{{ $youtube }}"><i class="fa-brands fa-youtube  font-size-40 color-red"></i></a>
-                                <a href="{{ $facebook }}"><i class="fa-brands fa-square-facebook  font-size-40 color-blue"></i></a>
+                                <a class="icon-link" href="{{ $tele }}"><i class="fa-brands fa-telegram  color-rgb-10-137-240"></i></a>
+                                <a class="icon-link" href="{{ $youtube }}"><i class="fa-brands fa-youtube   color-red"></i></a>
+                                <a class="icon-link" href="{{ $facebook }}"><i class="fa-brands fa-square-facebook   color-blue"></i></a>
                             </div>
-                            <div class="col-lay-3 mt-2">
+                            <div class="col-md-6 col-6 mt-2">
                                 <!-- language -->
-                                @include('Front-end.language-selector.language-selector')
+                                    @include('Front-end.language-selector.language-selector')
                                 <!-- -------------------- -->
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
     </div>
     <!-- navigation -->
     <nav class="navbar navbar-expand-lg bg-color-355fb6 p-0">
-        <div class="container ">
-            <div class="collapse navbar-collapse  " id="navbarSupportedContent">
-                <ul class="navbar-nav m-auto ">
+        <div class="container">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto font-size-28">
                     <li  class="nav-item {{ Route::currentRouteNamed('front.home') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"   href="{{ route('front.home') }}">{{ __('messages.Home') }}</a></li>
                     <li class="nav-item {{ Route::currentRouteNamed('page.news', 'front.subnews') ? 'actived' : '' }}"><a class="nav-link nav-font"   data-locale="{{ $locale }}"  href="{{ route('page.news', ['page' => 0]) }}">{{ __('messages.News') }}</a></li>
                     <li class="nav-item dropdown {{ Route::currentRouteNamed('front.work.dp1' , 'front.work.dp2Content' , 'front.work.dp3')  ? 'actived' : '' }}">
@@ -195,22 +188,33 @@
     <!-----Content-------->
     @yield('content')
     <!-- -------------------------------------- -->
+    <div class="container-sm fixed-bottom alert-download">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading Kantumruy font-size-15"><i class="fa-regular fa-lightbulb fa-bounce"></i> សូមធ្វើការទាញយក APP ដើម្បីមើលព័ត៌មានបន្ថែម!</h4>
+                    <button class="btn btn-success Kantumruy font-size-15 text-white">ចុចទីនេះដើម្បីទាញយក APP <i class="fa-solid fa-circle-down text-white"></i></button>
+                  </div>
+            </div>
+        </div>
+    </div>
     <!-- footer -->
     <footer>
+       
         <div class="container-field bg-color-355fb6">
             <div class="container">
                 <div class="row mt-3 p-2">
-                    <div class="col-lay-1S color-white dp-font font-size-17" data-locale="{{ $locale }}">
+                    <div class="col-md-2 col-12 color-white dp-font text-rps" data-locale="{{ $locale }}">
                         <span>{{ __('messages.About National School of Local Administration') }}</span>
                         <span>
                             <ul >
-                                <li><a class="color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp3') }}">{{ __('messages.About the school') }}</a></li>
-                                <li><a class="color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp7') }}">{{ __('messages.Contact') }}</a></li>
-                                <li><a class="color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp8') }}">{{ __('messages.Structure') }}</a></li>
+                                <li><a class=" color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp3') }}">{{ __('messages.About the school') }}</a></li>
+                                <li><a class=" color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp7') }}">{{ __('messages.Contact') }}</a></li>
+                                <li><a class=" color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp8') }}">{{ __('messages.Structure') }}</a></li>
                             </ul>
                         </span>
                     </div>
-                    <div class="col-lay-3S color-white dp-font font-size-17" data-locale="{{ $locale }}">
+                    <div class="col-md-3 col-12 color-white dp-font text-rps" data-locale="{{ $locale }}">
                         <span>{{ __('messages.Contact') }}</span>
                         <span>
                             <ul class="list-unstyled">
@@ -230,7 +234,7 @@
                             </ul>
                         </span>
                     </div>
-                    <div class="col-lay-1S color-white dp-font font-size-17" data-locale="{{ $locale }}">
+                    <div class="col-md-2 col-12 color-white dp-font text-rps" data-locale="{{ $locale }}">
                         <span>{{ __('messages.Partner') }}</span>
                         <span>
                             <ul >
@@ -239,13 +243,13 @@
                             </ul>
                         </span>
                     </div>
-                    <div class="col-lay-3 ">
+                    <div class="col-md-4">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.20137809131!2d104.92491967558159!3d11.537407244695485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310950da00231129%3A0x3277d5d862ed2f5d!2sMinistry%20of%20Interior!5e0!3m2!1sen!2skh!4v1689567441364!5m2!1sen!2skh" width="100% " height="150px" style=" border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     </div>
                 </div>
             </div>
-            <div  class="col-lay-10 bg-colo-white dp-font text-algin-center Siemreap font-size-20 p-1 color-blue-355fb6" data-locale="{{ $locale }}">
+            <div  class="col-lay-10 bg-colo-white dp-font text-algin-center Siemreap text-rps p-1 color-blue-355fb6" data-locale="{{ $locale }}">
                 <span>{{ __('messages.Copyright') }} <i class="fa-regular fa-copyright"></i>{{ __('messages.2022 Local Administration School, Ministry of Interior') }}</span>
             </div>
         </div>
@@ -256,6 +260,7 @@
 <script src="{{ asset('https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js') }}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="{{ asset('js/Front/Click.js') }}"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js	"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

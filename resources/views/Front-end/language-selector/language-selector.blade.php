@@ -1,6 +1,6 @@
 <form action="{{ route('language.switch') }}" method="POST" id="language-form">
     @csrf
-    <select name="locale" class="form-select mt-2" onchange="clickSubmit(event)">
+    <select name="locale" class="form-select" onchange="clickSubmit(event)">
         <option value="en" {{ app()->getLocale() === 'en' ? 'selected' : '' }}>English</option>
         <option value="kh" {{ app()->getLocale() === 'kh' ? 'selected' : '' }}>Khmer</option>
     </select>

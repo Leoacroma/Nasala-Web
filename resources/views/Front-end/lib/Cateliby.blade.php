@@ -38,7 +38,7 @@
         </div>
     </div>
     <!-- content -->
-    <div class="container p-0">
+    <div class="container rps-sort-blib">
     <div class="row mt-2 ">
         <div class="col-lay-3">
             <ul class="list-group  ">
@@ -112,5 +112,62 @@
         </div>
     </div>
 </div>
+<div class="container rps-sort-lib">
+    <div class="col-12">
+      <div class="form-group">
+          <select class="form-select Kantumruy" id="fileType" name="fileType">
+            <option value="{{ route('page.lib.all',['page' => 0]) }}" selected>{{ __('messages.Show all') }}</option>
+              @foreach ($result2 as $item)
+                <option value="{{ route('page.lib',['page' => 0, 'id' => $item['id']]) }}"{{ request()->is('/lib/page/0/sort/cate/' . $item['id']) ? ' selected' : '' }}>
+                  @if (app()->getLocale() === 'kh')
+                    {{ $item['nameKh'] }}
+                  @else
+                    {{ $item['name'] ?? $item['nameKh'] }}
+                  @endif
+                </option>
+              @endforeach
+          </select>
+      </div>
+    </div>
+    <div class="col-12 mt-2">
+      @foreach ($result as $item)
+        <div class="card">
+          <img src="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}?isPdf=false" class="card-img-top img-fluid" alt="Fissure in Sandstone"/>
+          <div class="card-body">
+            <h5 class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 50, $end = '...') }}</h5>
+            <p class="card-text Siemreap">កាលបរិច្ឆេទ ៖ {{ $item['createdAt'] }}</p>
+            <a href="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}" class="btn btn-success Siemreap" download><i class="fa-solid fa-download mr-2"></i>{{ __('messages.Download') }}</a>
+          </div>
+        </div>
+      @endforeach
+    </div>
+    <div class="col-12">
+      <nav class="mt-2" aria-label="...">
+        <ul class="pagination">
+        @if ($currentPage > 0)
+          <li class="page-item ">
+            <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+          </li>
+        @endif
+          @for ($i = 0; $i <= $totalpage-1; $i++)
+            <li class="page-item {{  request()->is('lib/page/all/' . $i) ? ' active' : ''  }}">
+              <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $i, 'id' => $cate]) }}">{{ $i +1 }}</a>
+            </li>
+          @endfor
+        @if ($currentPage+1 < $totalpage )
+          <li class="page-item">
+            <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
+          </li>
+        @endif
+        </ul>
+    </nav>
+    </div>
+  </div>
+  <script>
+    document.getElementById('fileType').addEventListener('change', function() {
+      var selectedValue = this.value;
+      window.location.href = selectedValue;
+    });
+  </script>
 <!-- -------------------------------------------- -->
 @endsection

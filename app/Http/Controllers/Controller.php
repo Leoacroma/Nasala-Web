@@ -21,6 +21,7 @@ use Dompdf\Dompdf;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Mockery\Expectation;
+use Illuminate\Support\Str;
 
 class Controller extends BaseController
 {
@@ -28,7 +29,7 @@ class Controller extends BaseController
 
     //Front-end
     public function home(){
-        try {
+        // try {
             $httpClient = new HttpUserHelper();
             $dataSort1 = $httpClient->getRequest('/news?page=0&size=1&sortBy=createdAt&sortOrder=desc');
             $dataSort3 = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
@@ -89,10 +90,10 @@ class Controller extends BaseController
                 'video' => $video,
                 'Lastedvideo' => $Lastedvideo
             ]);
-        } catch (\Throwable $th) {
-            return redirect()->route('not-found');
+        // } catch (\Throwable $th) {
+        //     return redirect()->route('not-found');
 
-        }
+        // }
         
     }
     public function news(){
@@ -227,7 +228,7 @@ class Controller extends BaseController
       
         // dd($image);
         $dateTime = KhmerDateTime::parse($data['data']['createdAt']);
-        $formattedCreatedAt = $dateTime->format("LLL");
+        $formattedCreatedAt = $dateTime->format("LL");
 
         $result = [];
         foreach ($sortLastedAtNewswith6['data'] as $item) {
@@ -245,7 +246,7 @@ class Controller extends BaseController
         $result2 = [];
         foreach ($sortLastedAtNews['data'] as $item) {
             $dateTime = KhmerDateTime::parse($item['createdAt']);
-            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $formattedCreatedAt = $dateTime->format("LL");
             $result2[] = [
                 'id' => $item['id'],
                 'titleKh' => $item['titleKh'],
@@ -390,11 +391,20 @@ class Controller extends BaseController
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
+             
+            $result2 = [];
+            foreach ($cate['data'] as $cate) {
+                $result2[] = [
+                    'id' => $cate['id'],
+                    'nameKh' => $cate['nameKh'],
+                    'name' => $cate['name'],
+                ];
+            }
             $totalpage= $pagination['totalPage'];
             $currentPage = $pagination['page'];
             return view('Front-end.lib.pageLiby', [
                 'result' => $result, 
-                'cate' => $cate, 
+                'result2' => $result2, 
                 'subMenu' => $subMenu, 
                 'cateSub'=>$cateSub,
                 'pagination'=>$pagination,
@@ -552,7 +562,7 @@ class Controller extends BaseController
         } else {
             abort(404);
         }
-        return view('Front-end.subScholar',[], [
+        return view('Front-end.scholarship.subScholar',[], [
             'cateSub' => $cateSub, 
             'pdf' => $pdf,
         ]);
@@ -785,6 +795,28 @@ class Controller extends BaseController
                     'courseEndDate' => $formatteddate2,
             ];
         }
+        $result4 = [];
+        foreach ($trainLasted['data']   as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result4[] = [
+                'id' => $item['id'],
+                'titleKh' => $item['titleKh'],
+                'createdAt' => $formattedCreatedAt,
+                
+            ];
+        }
+        $result5 = [];
+        foreach ($trainFile['data']   as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result5[] = [
+                'id' => $item['id'],
+                'title' => Str::limit($item['title'], $limit = 90, $end = '...'),
+                'createdAt' => $formattedCreatedAt,
+                
+            ];
+        }
             // dd(($data));
             $_COOKIE = Cookie::get('user_Id');
             $user = $httpClient->getRequest('/users/'.$_COOKIE);
@@ -798,7 +830,8 @@ class Controller extends BaseController
             $countTrianfile = count($trainFileCount['data']);
           
             // dd($firstName);
-           
+            $dataJson1 = json_encode($result4);
+            $dataJson2 = json_encode($result5);
             return view('Back-end.Pages.homepage', [
                 'count' => $count,
                 'countFilePub' => $countFilePub,
@@ -808,6 +841,8 @@ class Controller extends BaseController
                 'result1' => $result1,
                 'result2' => $result2,
                 'result3' => $result3,
+                'dataJson1' => $dataJson1,
+                'dataJson2' => $dataJson2,
                 'countTrian' => $countTrian,
                 'train' => $train,
                 'register' => $register,
@@ -908,8 +943,32 @@ class Controller extends BaseController
                     
                 ];
             }
+            $result4 = [];
+        foreach ($trainLasted['data']   as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result4[] = [
+                'id' => $item['id'],
+                'titleKh' => $item['titleKh'],
+                'createdAt' => $formattedCreatedAt,
+                
+            ];
+        }
+        $result5 = [];
+        foreach ($trainFile['data']   as $item) {
+            $dateTime = KhmerDateTime::parse($item['createdAt']);
+            $formattedCreatedAt = $dateTime->format("LLLLT");
+            $result5[] = [
+                'id' => $item['id'],
+                'title' => Str::limit($item['title'], $limit = 90, $end = '...'),
+                'createdAt' => $formattedCreatedAt,
+                
+            ];
+        }
             $firstName = $user['data']['firstNameKh'];
             $lastName = $user['data']['lastNameKh'];
+            $dataJson1 = json_encode($result4);
+            $dataJson2 = json_encode($result5);
             return view('Back-end.Pages.SortNews',[
                 'count' => $count,
                 'countFilePub' => $countFilePub,
@@ -920,6 +979,8 @@ class Controller extends BaseController
                 'result2' => $result2,
                 'countTrian' => $countTrian,
                 'train' => $train,
+                'dataJson1' => $dataJson1,
+                'dataJson2' => $dataJson2,
                 'register' => $register,
                 'firstName' => $firstName,
                 'lastName' => $lastName,

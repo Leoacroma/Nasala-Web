@@ -1,6 +1,7 @@
 /* layout */
 
-.col-lay-1 {
+
+/* .col-lay-1 {
     flex: 0 0 10%;
     max-width: 10%;
 }
@@ -73,7 +74,7 @@
 .col-lay-10 {
     flex: 0 0 100%;
     max-width: 100%;
-}
+} */
 
 
 /* margin */
@@ -160,4 +161,158 @@
 
 .pd-r-8 {
     padding-right: 8px;
+}
+
+
+/*Reponsive*/
+
+.navbar-responsive {
+    display: none;
+}
+
+.nasla-lg-rps {
+    width: 150px;
+}
+
+.rps-text-titleKh {
+    text-align: center;
+    font-size: 30px;
+}
+
+.rps-text-titleEn {
+    text-align: center;
+    font-size: 25px;
+}
+
+.icon-link {
+    font-size: 40px;
+    float: right;
+}
+
+.text-rps {
+    font-size: 17px;
+}
+
+.text-ccc {
+    font-size: 17px;
+}
+
+.icon-size-rps {
+    font-size: 30px;
+}
+
+.icon-ccc {
+    font-size: 20px;
+}
+
+.text-size-rps {
+    font-size: 30px;
+}
+
+.search-Arps {
+    display: none;
+}
+
+.search-brps {
+    display: block;
+}
+
+.text-title-rps {
+    font-size: 20px;
+}
+
+.btn-font-rps {
+    font-size: 20px;
+}
+
+.alert-download {
+    display: none;
+}
+
+.rps-sort-lib {
+    display: none;
+}
+
+.rps-sort-blib {
+    display: block;
+}
+
+.title-rps {
+    font-size: 40px;
+}
+
+.test-rps-cc {
+    font-size: 20px;
+}
+
+@media (max-width: 576px) {
+    .main-con {
+        display: none;
+    }
+    .dp-rps {
+        display: block;
+    }
+    .navbar-responsive {
+        display: block;
+    }
+    .nasla-lg-rps {
+        width: 100%;
+    }
+    .rps-text-titleEn {
+        text-align: left;
+        font-size: 15px;
+    }
+    .rps-text-titleKh {
+        text-align: left;
+        font-size: 20px;
+    }
+    .icon-link {
+        float: none;
+        font-size: 30px;
+    }
+    .text-rps {
+        font-size: 12px;
+    }
+    .icon-size-rps {
+        font-size: 25px;
+    }
+    .text-size-rps {
+        font-size: 25px;
+    }
+    .search-brps {
+        display: none;
+    }
+    .search-Arps {
+        display: block;
+    }
+    .text-title-rps {
+        font-size: 15px;
+    }
+    .btn-font-rps {
+        font-size: 10px;
+    }
+    .all-fix-position {
+        margin-top: 50px;
+    }
+    .alert-download {
+        display: block;
+    }
+    .rps-sort-lib {
+        display: block;
+    }
+    .rps-sort-blib {
+        display: none;
+    }
+    .title-rps {
+        font-size: 25px;
+    }
+    .icon-ccc {
+        font-size: 15px;
+    }
+    .text-ccc {
+        font-size: 15px;
+    }
+    .test-rps-cc {
+        font-size: 16px;
+    }
 }

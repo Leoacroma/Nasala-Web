@@ -189,19 +189,14 @@
                             <h4 class="text-success font-weight-bold kantumruy">ចំនួន : <span class="text-dark ms-3">{{ $countTrian }} វគ្គ</span></h4>
                         </div>
                         <p class="kantumruy"  style="font-weight: 400;">តារាងវគ្គបណ្តុះបណ្តាលបញ្ចូលចុងក្រោយ</p>
-                        <table class="table table-hover" style="font-size: 25px;">
+                        <table class="table table-hover" id="newsTable1" style="font-size: 25px;">
                             <thead>
                                 <tr class="table kantumruy">
                                   <th scope="col">ល.រ</th>
                                   <th scope="col">ឈ្មោះ</th>
+                                  <th scope="col">កាលបរិច្ឆេទ</th>
                                 </tr>
                               </thead>
-                              @foreach ($trainLasted['data'] as $item)
-                                <tbody >
-                                    <td>{{ $item['id'] }}</td>
-                                    <td class="kantumruy">{{ $item['titleKh'] }}</td>
-                                </tbody>
-                              @endforeach
                         </table>
                         <div class="row">
                             <div class="col-12">
@@ -219,19 +214,16 @@
                             <h4 class="text-success font-weight-bold kantumruy">ចំនួន : <span class="text-dark ms-3">{{ $countTrianfile }} ឯកសារ</span></h4>
                         </div>
                         <p class="kantumruy"  style="font-weight: 400;">តារាងឯកសារចុងក្រោយ</p>
-                        <table class="table table-hover" style="font-size: 25px;">
+                        <table id="newsTable2" class="table table-hover kantumruy" style="font-size: 25px;">
                             <thead>
                                 <tr class="table kantumruy">
                                   <th scope="col">ល.រ</th>
                                   <th scope="col">ឈ្មោះ</th>
+                                  <th scope="col">កាលបរិច្ឆេទ</th>
                                 </tr>
-                              </thead>
-                              @foreach ($trainFile['data'] as $item)
-                                <tbody >
-                                    <td>{{ $item['id'] }}</td>
-                                    <td class="kantumruy">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 90, $end = '...')}}</td>
-                                </tbody>
-                              @endforeach
+                            </thead>
+                            <tbody class="kantumruy p-5">
+                            </tbody>
                         </table>
                         <div class="row">
                             <div class="col-12">
@@ -290,6 +282,34 @@
             </div>
         </div>
         <script>
+    $(document).ready(function() {
+        var data = {!! $dataJson1 !!};      
+        $('#newsTable1').DataTable({
+            data: data,
+            columns: [
+                { data: 'id' },
+                { data: 'titleKh' },
+                { data: 'createdAt' },
+            ],
+            searching: false,
+            ordering: false,
+            paging: false
+        });
+    });
+    $(document).ready(function() {
+        var data = {!! $dataJson2 !!};      
+        $('#newsTable2').DataTable({
+            data: data,
+            columns: [
+                { data: 'id' },
+                { data: 'title' },
+                { data: 'createdAt'},
+            ],
+            searching: false,
+            ordering: false,
+            paging: false
+        });
+    });
             // Assuming you have the count stored in a variable called 'count'
 var count = {{ $count }}; // Replace with your actual count
 
@@ -300,5 +320,8 @@ var percentage = (count / 100) * 100;
 var progressBar = document.getElementById('progress-bar');
 progressBar.style.width = percentage + '%';
 progressBar.setAttribute('aria-valuenow', percentage);
+
+
+
         </script>
 @endsection

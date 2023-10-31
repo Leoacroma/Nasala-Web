@@ -212,4 +212,91 @@ table.dataTable tbody tr{
   text-decoration: underline;
 }
 
+/*New Table1*/
+#newsTable1 {
+  
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 10px;
+
+}
+
+
+#newsTable1 th,
+#newsTable1 td {
+  padding: 20px;
+}
+
+#newsTable1 thead th {
+  
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+table.dataTable tbody tr{
+
+  border-bottom: solid 1.5px #ededed;
+}
+#newsTable1 tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#newsTable1 tbody tr:hover {
+  background-color: #e6e6e6;
+}
+
+#newsTable1 tbody td a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+#newsTable1 tbody td a:hover {
+  text-decoration: underline;
+}
+
+
+/*New Table2*/
+#newsTable2 {
+  
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 10px;
+
+}
+
+
+#newsTable2 th,
+#newsTable2 td {
+  padding: 20px;
+}
+
+#newsTable2 thead th {
+  
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+table.dataTable tbody tr{
+
+  border-bottom: solid 1.5px #ededed;
+}
+#newsTable2 tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#newsTable2 tbody tr:hover {
+  background-color: #e6e6e6;
+}
+
+#newsTable2 tbody td a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+#newsTable2 tbody td a:hover {
+  text-decoration: underline;
+}
+
   </style>
