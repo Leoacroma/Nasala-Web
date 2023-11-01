@@ -311,22 +311,33 @@ class Controller extends BaseController
     }
 
     public function Nolib(String $id){
-        // try {
-        $request_Id = $id;
-        $httpUser = new HttpUserHelper();
-        $Catelib = $httpUser->getRequest('/library?page=0&size=10&sortBy=createdAt&sortOrder=desc&categoryId='.$request_Id);
-        $cate = $httpUser->getRequest('/library/categories');
-        $cateSub = $httpUser->getRequest('/training/posts');
-
-        
-        return view('Front-end.lib.nodaLib',['cate' => $cate, 'cateSub'=>$cateSub]);
-        // } catch (\Throwable $th) {
-        //     return redirect()->route('not-found');
-        // }
+        try {
+            $request_Id = $id;
+            $httpUser = new HttpUserHelper();
+            $Catelib = $httpUser->getRequest('/library?page=0&size=10&sortBy=createdAt&sortOrder=desc&categoryId='.$request_Id);
+            $cate = $httpUser->getRequest('/library/categories');
+            $cateSub = $httpUser->getRequest('/training/posts');
+            $result2 = [];
+            foreach ($cate['data'] as $cate) {
+                $result2[] = [
+                    'id' => $cate['id'],
+                    'nameKh' => $cate['nameKh'],
+                    'name' => $cate['name'],
+                ];
+            }
+            
+            return view('Front-end.lib.nodaLib',[
+                'cate' => $cate, 
+                'cateSub'=>$cateSub,
+                'result2' => $result2
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
         
     }
     public function cateLib($page, $id ){
-        // try {
+        try {
         $request_Page = $page;
         $request_Id = $id;
         $httpClient = new HttpUserHelper();
@@ -348,6 +359,14 @@ class Controller extends BaseController
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
+            $result2 = [];
+            foreach ($cate['data'] as $cate) {
+                $result2[] = [
+                    'id' => $cate['id'],
+                    'nameKh' => $cate['nameKh'],
+                    'name' => $cate['name'],
+                ];
+            }
         }else{
            return redirect()->route('front.nolib', $id);
         }
@@ -359,11 +378,11 @@ class Controller extends BaseController
             'cateSub'=>$cateSub,
             'totalpage' => $totalpage,
             'currentPage' => $currentPage,
-
+            'result2' => $result2,
         ]);
-        // } catch (\Throwable $th) {
-        //     return redirect()->route('not-found');
-        // }
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
        
     }
     public function pageLib( $page){

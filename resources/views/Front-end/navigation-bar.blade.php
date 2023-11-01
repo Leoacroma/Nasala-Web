@@ -24,7 +24,7 @@
                 </li>
                 <li>
                   <a class="nav-font"  data-locale="{{ $locale }}"  href="#">
-                    {{ __('messages.Training documents') }} <i class=" {{  Route::currentRouteNamed('front.work.dp1') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
+                    {{ __('messages.Training documents') }} <i class=" {{  Route::currentRouteNamed('front.work.dp2Content') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
                   </a>
                   <ul>
                     @foreach ($cateSub['data'] as $dd)

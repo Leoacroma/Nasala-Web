@@ -11,8 +11,8 @@
           <h1 class="Kantumruy" style="font-size: 15px; font-weight: bold">ចាប់ពីថ្ងៃ ៖ <span class="badge badge-warning Kantumruy" style="font-size: 15px; font-weight: bold">{{ $item['courseStartDate'] }} <i class="fa-solid fa-arrow-right fa-bounce"></i> {{ $item['courseEndDate'] }}</span></h1>
             <p>{{ $item['description'] }}</p>
         </div>
-        <div class="col-lay-12 text-algin-center">
-            <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}"  class="card-img-top" style="width: 450px"/>
+        <div class="col-md-12 text-algin-center">
+            <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}"  class="card-img-top img-fluid" style="width: 450px"/>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary Kantumruy" style="font-size: 15px; font-weight: 400" data-mdb-dismiss="modal">ត្រលប់ក្រោយ</button>

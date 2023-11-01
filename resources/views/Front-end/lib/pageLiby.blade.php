@@ -8,7 +8,7 @@
     <div class="container mt-4">
       <div class="row">
           <div class="col-md-9 col-12 d-flex">
-              <i class="icon-size-rps fa-solid fa-clipboard-list  mg-r-10px color-blue-355fb6"></i>
+            <i class="icon-size-rps fa-solid fa-book mg-r-10px color-blue-355fb6"></i>
               <h2 class="text-size-rps nav-font color-blue-355fb6 "  data-locale="{{ $locale }}">{{ __('messages.Library') }}</h2>
           </div>
           <div class="col-md-3 search-brps">
@@ -84,11 +84,11 @@
                       <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
                     </li>
                   @endif
-                    @for ($i = 0; $i <= $totalpage-1; $i++)
-                      <li class="page-item {{  request()->is('lib/page/all/' . $i) ? ' active' : ''  }}">
-                        <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $i, 'id' => $cate]) }}">{{ $i +1 }}</a>
-                      </li>
-                    @endfor
+                  @for ($i = 0; $i <= $totalpage-1; $i++)
+                    <li class="page-item {{  request()->is('lib/page/all/' . $i) ? ' active' : ''  }}">
+                      <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $i, 'id' => $cate]) }}">{{ $i +1 }}</a>
+                    </li>
+                  @endfor
                   @if ($currentPage+1 < $totalpage )
                     <li class="page-item">
                       <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
@@ -108,7 +108,7 @@
         <select class="form-select Kantumruy" id="fileType" name="fileType">
           <option value="{{ route('page.lib.all',['page' => 0]) }}" selected>{{ __('messages.Show all') }}</option>
             @foreach ($result2 as $item)
-              <option value="{{ route('page.lib',['page' => 0, 'id' => $item['id']]) }}"{{ request()->is('/lib/page/0/sort/cate/' . $item['id']) ? ' selected' : '' }}>
+              <option value="{{ route('page.lib',['page' => 0, 'id' => $item['id']]) }}" {{ Route::currentRouteNamed('page.lib',['page' => 0, 'id' => $item['id']] ) ? 'selected' : '' }}>
                 @if (app()->getLocale() === 'kh')
                   {{ $item['nameKh'] }}
                 @else
@@ -132,6 +132,11 @@
     @endforeach
   </div>
   <div class="col-12">
+    <?php
+        foreach($result as $dd){
+            $cate = $dd['category_id'];
+        }
+    ?>
     <nav class="mt-2" aria-label="...">
       <ul class="pagination">
       @if ($currentPage > 0)
@@ -139,11 +144,11 @@
           <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
         </li>
       @endif
-        @for ($i = 0; $i <= $totalpage-1; $i++)
-          <li class="page-item {{  request()->is('lib/page/all/' . $i) ? ' active' : ''  }}">
-            <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $i, 'id' => $cate]) }}">{{ $i +1 }}</a>
-          </li>
-        @endfor
+      @for ($i = 0; $i <= $totalpage-1; $i++)
+        <li class="page-item {{  request()->is('lib/page/all/' . $i) ? ' active' : ''  }}">
+          <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $i, 'id' => $cate]) }}">{{ $i +1 }}</a>
+        </li>
+      @endfor
       @if ($currentPage+1 < $totalpage )
         <li class="page-item">
           <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
