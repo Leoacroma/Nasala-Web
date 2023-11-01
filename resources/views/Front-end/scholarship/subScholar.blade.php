@@ -17,7 +17,10 @@
     </div>
      <!-- content -->
         <div class="container ">
-          <iframe src="data:application/pdf;base64,{{ base64_encode($pdf) }}" width="100%" height="850px" type="application/pdf"> </iframe>
+            <div class="col-12">
+                <iframe src="data:application/pdf;base64,{{ base64_encode($pdf) }}" width="100%" height="850px" type="application/pdf"> </iframe>
+
+            </div>
         </div>
      </div>
     </div>
