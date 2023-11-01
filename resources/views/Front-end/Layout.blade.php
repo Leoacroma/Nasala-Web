@@ -66,12 +66,12 @@
         // Retrieve the locale value from the session
         $locale = app()->getLocale();
 ?> 
-<body style="overflow: hidden">
+<body >
     <!-- header -->
     <!-- <include id="header" class="header"></include> -->
     @include('Front-end.navigation-bar')
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
-    <div class="container container-sm all-fix-position">
+    <div class="container container-sm all-fix-position " style="overflow: hidden">
         <div class="row">
             <div class="col-xxl-8 col-xl-8 col-md-8 col-sm-12 mt-2">
                 <div class="row">
