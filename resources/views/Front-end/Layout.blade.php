@@ -66,7 +66,7 @@
         // Retrieve the locale value from the session
         $locale = app()->getLocale();
 ?> 
-<body >
+<body style="overflow: hidden">
     <!-- header -->
     <!-- <include id="header" class="header"></include> -->
     @include('Front-end.navigation-bar')

@@ -40,13 +40,16 @@
 <body >
     <div class="container first-layer ">
         <div class="row">
-            <div class="col-6">
-                <img src="{{ asset('images/Microsites-amico.png') }}" alt="" width="500px" height="500px">
+            <div class="col-md-6 col-12">
+                <img src="{{ asset('images/Microsites-amico.png') }}" alt="" class="img-fluid">
             </div>
             <div class="col-6 second-layer-box1">
-                <div class="col-10 dd-layer">
+                <div class="col-md-12 dd-layer">
                     <div class="row ss-layer">
-                        <img src="{{ asset('images/front/photo_2022-10-19_09-17-50-removebg-preview.png') }}" alt="" style="width: 200px; height: 180px;">
+                        <div class="col-md-5">
+                            <img src="{{ asset('images/front/photo_2022-10-19_09-17-50-removebg-preview.png') }}" alt="" class="img-fluid">
+
+                        </div>
                     </div>
                     <div class="row">
                         <h3 class="moul color-blue-355fb6">សាលាជាតិរដ្ឋបាលមូលដ្ឋាន</h3>
