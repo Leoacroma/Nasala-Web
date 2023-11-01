@@ -1,6 +1,6 @@
 <div class="container-fuild navbar-responsive fixed-top">
     <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
-        <div class="bg-light p-4">
+        <div class="bg-light " style="padding: 29px">
           <ul>
             <li>
               <a class="nav-font"  data-locale="{{ $locale }}" href="{{ route('front.home') }}">
@@ -116,8 +116,8 @@
           </ul>
         </div>
       </div>
-      <nav class="navbar navbar-light">
-        <div class="container-fluid">
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid bg-light" >
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa-solid fa-bars"></i>
           </button>
