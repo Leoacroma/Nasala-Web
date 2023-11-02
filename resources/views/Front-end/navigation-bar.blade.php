@@ -97,17 +97,22 @@
                   </li>
                   <li>
                     <a class="nav-font"  data-locale="{{ $locale }}"  href="{{ route('front.aboutschool.dp5') }}">
-                      {{ __('messages.Leadership composition') }} <i class=" {{  Route::currentRouteNamed('front.aboutschool.dp5') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
+                      {{ __('messages.Structure of the National School of Local Administration') }} <i class=" {{  Route::currentRouteNamed('front.aboutschool.dp5') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
                     </a>
                   </li>
                   <li>
                     <a class="nav-font"  data-locale="{{ $locale }}"  href="{{ route('front.aboutschool.dp6') }}">
-                      {{ __('messages.Curriculum') }} <i class=" {{  Route::currentRouteNamed('front.aboutschool.dp6') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
+                      {{ __('messages.Leadership composition') }} <i class=" {{  Route::currentRouteNamed('front.aboutschool.dp6') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
                     </a>
                   </li>
                   <li>
                     <a class="nav-font"  data-locale="{{ $locale }}"  href="{{ route('front.aboutschool.dp7') }}">
-                      {{ __('messages.Contact') }} <i class=" {{  Route::currentRouteNamed('front.aboutschool.dp7') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
+                      {{ __('messages.Curriculum') }} <i class=" {{  Route::currentRouteNamed('front.aboutschool.dp7') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-font"  data-locale="{{ $locale }}"  href="{{ route('front.aboutschool.dp8') }}">
+                      {{ __('messages.Contact') }} <i class=" {{  Route::currentRouteNamed('front.aboutschool.dp8') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
                     </a>
                   </li>
                 </ul>
