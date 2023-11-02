@@ -319,4 +319,7 @@
     .test-rps-cc {
         font-size: 16px;
     }
+    .conetent-rps img {
+        width: 100% !important;
+    }
 }
