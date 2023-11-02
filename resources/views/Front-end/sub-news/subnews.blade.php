@@ -50,7 +50,7 @@
                    
                 </div>
                 <div class="row">
-                    <div class="col-md-12 Siemreap ">
+                    <div class="col-md-12 Siemreap conetent-rps">
                         {!! $data['data']['contentKh'] !!}
                     </div>
                 </div>
@@ -89,6 +89,7 @@
                 </div>
                 <div class="row row-cols-1 row-cols-md-2 g-4 p-0">
                     @foreach ($result as $item)
+                       <div class="col-md-12">
                         <a href="{{ route('front.subnews', $item['id']) }}" class="col" style="width: 400px;  color: black">
                             <div class="card">
                                 <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" /> 
@@ -98,6 +99,7 @@
                               </div>
                             </div>
                         </a>
+                       </div>
                     @endforeach              
                   </div>
                </div>

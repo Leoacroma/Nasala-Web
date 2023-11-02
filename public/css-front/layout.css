@@ -245,6 +245,10 @@
     font-size: 20px;
 }
 
+.conetent-rps img {
+    width: 100% !important;
+}
+
 @media (max-width: 576px) {
     .main-con {
         display: none;
