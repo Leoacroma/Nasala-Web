@@ -35,6 +35,7 @@ Route::post('/language/switch', [LanguageController::class, 'switchLanguage'])->
 
 Route::middleware([SetLocaleFromSession::class])->group(function ()  {
     Route::prefix('/beta')->group(function(){
+        dd('hello');
         Route::get('/', [Controller::class, 'home'])->name('front.home');
         /**
          * Front.News
