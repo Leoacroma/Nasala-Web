@@ -84,7 +84,7 @@
                                 <h2 class="moul color-blue-355fb6 text-shadow rps-text-titleKh ">សាលាជាតិរដ្ឋបាលមូលដ្ឋាន</h2>
                             </div>
                             <div class="col-md-12 col-sm-12">
-                                <h2 class="PT-Sans-Narrow font-bold color-blue-355fb6 text-shadow rps-text-titleEn ">National School For Local Administration</h2>
+                                <h2 class="PT-Sans-Narrow font-bold color-blue-355fb6 text-shadow rps-text-titleEn ">National School of Local Administration</h2>
                             </div>
                         </div>
                     </div>
@@ -168,8 +168,8 @@
                         'front.aboutschool.dp6',
                         'front.aboutschool.dp7',
                         'front.aboutschool.dp8',
-                    ] ) ? 'actived' : '' }}">
-                        <a class="nav-link dropdown-toggle nav-font"  data-locale="{{ $locale }}"  href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.About the school') }}</a>
+                    ] ) ? 'actived' : '' }}" >
+                        <a class="nav-link dropdown-toggle nav-font"  data-locale="{{ $locale }}"  href="#" aria-expanded="false" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.About the school') }}</a>
                         <ul class="dropdown-menu" >
                             <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp1') }}">{{ __('messages.Message from the Principal') }}</a></li>
                             <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp2') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp2') }}">{{ __('messages.Strategic Plan on Capacity Development') }}</a></li>

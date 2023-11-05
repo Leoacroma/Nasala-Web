@@ -92,7 +92,7 @@
                        <div class="col-md-12">
                         <a href="{{ route('front.subnews', $item['id']) }}" class="col" style="width: 400px;  color: black">
                             <div class="card">
-                                <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" /> 
+                                <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" /> 
                                 <div class="card-body">
                                 <h5 class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...')}}</h5>
                                 <small class="Siemreap mg-r-10px ">{{ $item['createdAt'] }}</small>

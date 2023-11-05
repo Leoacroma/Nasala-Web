@@ -18,7 +18,7 @@ return [
     'Curriculum' => 'Curriculum',
     'Contact' => 'Contact',
 
-    'About National School of Local Administration' => 'About NSLA',
+    'About National School of Local Administration' => 'About NASLA',
     'Structure' => 'Structure',
     'Government Institutions' => 'Government Institutions',
     'Development Partners' => 'Development Partners',
