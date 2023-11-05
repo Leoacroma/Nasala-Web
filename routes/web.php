@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/language/switch', [LanguageController::class, 'switchLanguage'])->name('language.switch')->middleware(SetLocaleFromSession::class);
 
 Route::middleware([SetLocaleFromSession::class])->group(function ()  {
-    Route::prefix('/')->group(function(){
+    Route::prefix('/beta')->group(function(){
         Route::get('/', [Controller::class, 'home'])->name('front.home');
         /**
          * Front.News
