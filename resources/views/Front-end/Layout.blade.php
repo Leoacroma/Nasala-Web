@@ -105,9 +105,9 @@
                                     $youtube = 'https://' . $youtube;
                                 }
                                 @endphp
-                                <a class="icon-link" href="{{ $tele }}"><i class="fa-brands fa-telegram  color-rgb-10-137-240"></i></a>
-                                <a class="icon-link" href="{{ $youtube }}"><i class="fa-brands fa-youtube   color-red"></i></a>
-                                <a class="icon-link" href="{{ $facebook }}"><i class="fa-brands fa-square-facebook   color-blue"></i></a>
+                                <a class="icon-link" target="_blank" href="{{ $tele }}"><i class="fa-brands fa-telegram  color-rgb-10-137-240"></i></a>
+                                <a class="icon-link" target="_blank" href="{{ $youtube }}"><i class="fa-brands fa-youtube   color-red"></i></a>
+                                <a class="icon-link" target="_blank" href="{{ $facebook }}"><i class="fa-brands fa-square-facebook   color-blue"></i></a>
                             </div>
                             <div class="col-md-6 col-6 mt-2">
                                 <!-- language -->
@@ -227,9 +227,9 @@
                                     }
                                 @endphp  
                                 <li><i class="fa-solid fa-square-phone mg-r-10px" ></i>023 456 789</li>
-                                <li><i class="fa-solid fa-square-envelope mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $email }}">naslacambodia@gmail.com</a></li>
+                                <li><i class="fa-solid fa-square-envelope mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" target="_blank" href="{{ $email }}">naslacambodia@gmail.com</a></li>
                                
-                                <li><i class="fa-brands fa-square-facebook mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $hyperlink }}">naslacambodia</a></li>
+                                <li><i class="fa-brands fa-square-facebook mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" target="_blank" href="{{ $hyperlink }}">naslacambodia</a></li>
                                 <li><i class="fa-solid fa-location-dot mg-r-10px" ></i>{{ __('messages.Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.') }}</li>
                             </ul>
                         </span>

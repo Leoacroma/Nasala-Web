@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-12 divider-line "></div>
         <div class="row bg-color-rgb-201-199-199">
-            <div class="col-md-6 col-xl-6 col-sm-6 main-con">
+            <div class="col-md-6 col-xl-6 col-sm-6 main-con ">
                 @foreach ($result as $item)
                 <a class="text-decoration-none color-black  hover-text hover-underline-animation" href="{{ route('front.subnews', $item['id']) }}">
                     <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-fluid mt-2">
@@ -48,6 +48,8 @@
 
                     <small class="Siemreap">{{ $item['createdAt'] }}</small>
                     {{-- <span class="badge bg-success Siemreap font-size-12">{{ $item['category']['nameKh'] }}</span> --}}
+                    <br/>
+                    <span class="Siemreap" style="font-weight: 500">{{ Str::limit($item['contentKh'], $limit = 150, $end = '...') }}</span>
                 </a>
                 @endforeach
             </div>
@@ -80,6 +82,9 @@
                         <br/>
                             <small>{{ $item['createdAt'] }}</small>  
                             {{-- <span class="badge bg-success Siemreap font-size-12">{{$item['category']['nameKh'] }}</span> --}}
+                            <br/>
+                            <span class="Siemreap" style="font-weight: 500">{{ Str::limit($item['contentKh'], $limit = 100, $end = '...') }}</span>
+
                         </div>
                     </div>
                 </a>

@@ -49,6 +49,7 @@ class Controller extends BaseController
                     'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
+                    'contentKh' => strip_tags($item['contentKh']) ,
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
@@ -62,6 +63,7 @@ class Controller extends BaseController
                     'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
+                    'contentKh' => strip_tags($item['contentKh']) ,
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
@@ -743,8 +745,6 @@ class Controller extends BaseController
            
             // $userID = $user['data']['id'];
         
-           
-            
             $userName = $httpClient->getRequest('/users/');
             $lastAtSortNews = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc');
             $lastAtSortNewsByCate = $httpClient->getRequest('/news?page=0&size=3&sortBy=createdAt&sortOrder=desc&categoryId=35');
@@ -765,7 +765,6 @@ class Controller extends BaseController
                     
                 ];
             }
-    
             $result1 = [];
             foreach ($lastAtSortNewsByCate['data']  as $item) {
                 $dateTime = KhmerDateTime::parse($item['createdAt']);
