@@ -49,6 +49,7 @@ class Controller extends BaseController
                     'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
+                    'contentKh' => strip_tags($item['contentKh']) ,
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
@@ -62,6 +63,7 @@ class Controller extends BaseController
                     'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
+                    'contentKh' => strip_tags($item['contentKh']) ,
                     'createdAt' => $formattedCreatedAt,
                 ];
             }

@@ -48,6 +48,9 @@
 
                     <small class="Siemreap">{{ $item['createdAt'] }}</small>
                     {{-- <span class="badge bg-success Siemreap font-size-12">{{ $item['category']['nameKh'] }}</span> --}}
+                    <br/>
+                    <span class="Siemreap rps-sort-blib" style="font-weight: 500">{{ Str::limit($item['contentKh'], $limit = 160, $end = '...') }}</span>       
+                    
                 </a>
                 @endforeach
             </div>
@@ -80,6 +83,8 @@
                         <br/>
                             <small>{{ $item['createdAt'] }}</small>  
                             {{-- <span class="badge bg-success Siemreap font-size-12">{{$item['category']['nameKh'] }}</span> --}}
+                            <br/>
+                            <span class="Siemreap rps-sort-blib" style="font-weight: 500; margin-bottom: 10px">{{ Str::limit($item['contentKh'], $limit = 120, $end = '...') }}</span>
                         </div>
                     </div>
                 </a>
@@ -120,6 +125,7 @@
                                     <br/>
                                     <br/>
                                     <small>{{ $item['createdAt'] }}</small>
+                                    
                                 </div>
 
                             </div>
