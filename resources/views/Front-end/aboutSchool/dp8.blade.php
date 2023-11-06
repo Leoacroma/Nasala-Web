@@ -35,7 +35,7 @@
                                     $email = 'https://' . $email;
                                 }
                             @endphp
-                                <a class="link text-decoration-underline" href="{{ $email }}">nasla@pac.edu.kh</a>
+                                <a class="link text-decoration-underline" href="{{ $email }}" target="_blank">nasla@pac.edu.kh</a>
                             </div>
                         </div>
                     </li>
