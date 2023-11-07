@@ -12,7 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class HttpClientHelper
 {
     private $apiBaseUrl = 'https://nasla.k5moi.com/v1/api';
-    private $apiOuthUrl = 'https://nasla.k5moi.com/v1/api';
+    private $apiOuthUrl = 'https://nasla.k5moi.com/oauth/';
 
     // private $apiBaseUrl = 'http://157.230.250.96:8080/v1/api';
     // private $apiOuthUrl = 'http://157.230.250.96:8080/oauth/';
@@ -32,6 +32,7 @@ class HttpClientHelper
         //code...
         $client = new Client();
         $grand_type = '?grant_type=password';
+        // dd(base64_encode($this->clientId . ':' . $this->clientSecret));
         $response = $client->requestAsync('POST', $this->apiOuthUrl . $url .$grand_type, [
             'headers' => [
                 'Authorization' => 'Basic '. base64_encode($this->clientId . ':' . $this->clientSecret),

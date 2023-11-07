@@ -25,6 +25,7 @@ class OuthController extends Controller
                 'password' => request('password'),
             ];
             $response = $httpClient->postloginRequest('token', $params);
+            // dd($response);
             $token_value = $response['access_token'];
             Cookie::queue('token', $token_value);
             session(['token' => $token_value]);
@@ -39,7 +40,10 @@ class OuthController extends Controller
                 $token = session('token');
                 $response2 = $httpClient->getUserOnLogin('/users/principal?'.$token);
                 $userID = $response2['data']['id'];
+                // $user_Role = $response2['data']['roles'];
+                // dd($user_Role);
                 Cookie::queue('user_Id', $userID);
+                // Cookie::queue('roles', $user_Role);
                 return redirect()->route('admin.dash');      
             }
         } catch (\Exception $e) {
