@@ -47,7 +47,7 @@
             </form>
         </div>
             @foreach ($result as $item)
-            <div class="col-md-3 mt-3">
+            <div class="col-md-4 mt-3">
                 <a  href="{{ route('front.subnews', $item['id']) }}" class=" text-decoration-none color-black Siemreap  font-size-20">
                     <div class="card" style="height: 450px">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">

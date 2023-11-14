@@ -21,23 +21,23 @@
                  តារាងគណនី
                 </p>
                 <div class="divider-line"> </div>
-                <table class="table kantumruy"  id="newsTable">
-                  <thead >
+                <table class="table kantumruy "  id="newsTable">
+                  <thead class="text-center">
                     <tr>
-                      <th scope="col">គណនីប្រើប្រាស</th>
-                      <th scope="col">គោត្តនាម</th>
-                      <th scope="col">នាម</th>
-                      <th scope="col">ថ្ងៃ</th>
+                      <th scope="col-1">#</th>
+                      <th scope="col-1">គណនីប្រើប្រាស</th>
+                      <th scope="col">គោត្តនាម/នាម</th>
+                      <th scope="col">កាលបរិច្ឆេទ</th>
                       <th scope="col">សកម្មភាព</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody >
                     @foreach ($result as $item)
                     <tr >
-                        <th scope="row"><i class="fa-solid fa-user"></i></th>
-                        <td class="Siemreap">{{ $item['firstNameKh'] }}</td>
-                        <td class="Siemreap">{{ $item['lastNameKh'] }}</td>
-                        <td class="Siemreap">{{ $item['createdAt'] }}</td>
+                        <td class="Siemreap text-center">{{ $item['id'] }}</td>
+                        <th class="text-center" scope="row" style="font-size: 25px"><i class="fa-solid fa-id-card-clip"></i></th>
+                        <td class="Siemreap text-center">{{ $item['firstNameKh'] }} {{ $item['lastNameKh'] }}</td>
+                        <td class="Siemreap text-center">{{ $item['createdAt'] }}</td>
                         <td class="d-flex">                    
                           <a  data-toggle="modal" href=""  data-target="#editmethod{{ $item['id'] }}" ><i class="fa-solid fa-pen-to-square"></i></a>
                           @include('Back-end.user-managment.Crud.edituser')

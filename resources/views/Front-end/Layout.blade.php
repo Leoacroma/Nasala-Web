@@ -9,11 +9,16 @@
     <link href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css') }}" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <link rel="stylesheet" href="//unpkg.com/bootstrap-select-country@4.0.0/dist/css/bootstrap-select-country.min.css" type="text/css" /> --}}
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="{{ asset('/css-front/layout.css') }}">
     <script src="{{ asset('https://unpkg.com/vue@3/dist/vue.global.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+
+  
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css	">
@@ -105,9 +110,9 @@
                                     $youtube = 'https://' . $youtube;
                                 }
                                 @endphp
-                                <a class="icon-link" href="{{ $tele }} " target="_blank"><i class="fa-brands fa-telegram  color-rgb-10-137-240"></i></a>
-                                <a class="icon-link" href="{{ $youtube }}" target="_blank"><i class="fa-brands fa-youtube   color-red"></i></a>
-                                <a class="icon-link" href="{{ $facebook }}" target="_blank"><i class="fa-brands fa-square-facebook   color-blue"></i></a>
+                                <a class="icon-link ml-2" href="{{ $tele }} " target="_blank"><i class="fa-brands fa-telegram  color-rgb-10-137-240"></i></a>
+                                <a class="icon-link ml-2" href="{{ $youtube }}" target="_blank"><i class="fa-brands fa-youtube   color-red"></i></a>
+                                <a class="icon-link ml-2" href="{{ $facebook }}" target="_blank"><i class="fa-brands fa-square-facebook   color-blue"></i></a>
                             </div>
                             <div class="col-md-6 col-6 mt-2">
                                 <!-- language -->
@@ -122,10 +127,10 @@
     </div>
     </div>
     <!-- navigation -->
-    <nav class="navbar navbar-expand-lg bg-color-355fb6 p-0">
+    <nav class="navbar navbar-expand-lg bg-color-355fb6 p-0 rps-nav">
         <div class="container">
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav m-auto font-size-28">
+                <ul class="navbar-nav m-auto font-size">
                     <li  class="nav-item {{ Route::currentRouteNamed('front.home') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"   href="{{ route('front.home') }}">{{ __('messages.Home') }}</a></li>
                     <li class="nav-item {{ Route::currentRouteNamed('page.news', 'front.subnews') ? 'actived' : '' }}"><a class="nav-link nav-font"   data-locale="{{ $locale }}"  href="{{ route('page.news', ['page' => 0]) }}">{{ __('messages.News') }}</a></li>
                     <li class="nav-item dropdown {{ Route::currentRouteNamed('front.work.dp1' , 'front.work.dp2Content' , 'front.work.dp3')  ? 'actived' : '' }}">
@@ -255,6 +260,7 @@
         </div>
     </footer>
 </body>
+
 <script src="{{ asset('https://code.jquery.com/jquery-3.2.1.slim.min.js') }}" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js" integrity="sha512-rXm6RiYDlz+aZC/ht75tGzeAmCg4gVfBA6Be5s5uENSahiXkgwEy10J2Cc+dxUAW4lRRQYbS5pugMOqBrs8ksw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{ asset('https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js') }}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -262,7 +268,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js	"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
     // Get the carousel element
     var carousel = document.querySelector('#carouselExampleControls');

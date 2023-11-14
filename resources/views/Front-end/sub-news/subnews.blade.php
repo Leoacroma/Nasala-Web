@@ -20,7 +20,6 @@
                                 <h2 class="Siemreap title-rps title">{{ $data['data']['titleKh'] }}</h2>
                             @endif
                         @endif
-                        
                     </div>
                 </div>
                 <div class="row">
@@ -47,7 +46,6 @@
                     <div class="container">
                         <div class="col-md-12 divider-line"></div>
                     </div>
-                   
                 </div>
                 <div class="row">
                     <div class="col-md-12 Siemreap conetent-rps">

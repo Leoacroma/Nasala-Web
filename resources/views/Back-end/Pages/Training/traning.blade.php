@@ -71,7 +71,7 @@
                  តារាងឯកសារបណ្តុះបណ្តាល
                 </p>
                 <div class="divider-line"> </div>
-                <table class="table" >
+                <table class="table" id="fileTable">
                   <thead class="kantumruy">
                     <tr>
                       <th scope="col">ល.រ</th>
@@ -140,6 +140,31 @@ $(document).ready(function() {
           ]
       });
   });
+
+  // $(document).ready(function() {
+  //   var data = {!! $dataJsonFile !!};    
+  //     $('#fileTable').DataTable({
+  //         data: data,
+  //         columns: [
+  //             { data: 'id' },
+  //             { data: 'title' },
+  //             { data: 'fileSize'},
+  //             { data: 'createdAt' },
+  //             { 
+  //               data: null,
+  //               render: function(data, type, row) {
+  //                   return '<a href="' + data.editUrl + '"><i class="fa-solid fa-pen-to-square"></i></a>' +
+  //                       '<a href="#" class="ml-2 mr-2" style="color: red;"><i class="fa-solid fa-trash" onclick="confirmDelete(event, document.getElementById(\'delete-form' + data.id + '\'))"></i></a>' +
+  //                       '<form method="POST" id="delete-form' + data.id + '" action="' + data.deleteUrl + '">' +
+  //                       '<input type="hidden" name="_token" value="{{ csrf_token() }}">' +
+  //                       '<input type="hidden" name="_method" value="DELETE">' +
+  //                       '</form>';
+  //             }
+  //           }
+
+  //         ]
+  //     });
+  // });
 
 
 document.getElementById('checkFile').addEventListener('change', function() {

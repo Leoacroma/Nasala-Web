@@ -60,8 +60,8 @@
                 </a>
                 <div class="submenu">
                     <ul>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.postcate') }}">ប្រភេទព័ត៌មាន</a></li>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.post') }}">ការបង្ហោះព័ត៌មាន</a></li>
+                        <li class="nav-item {{ Route::currentRouteNamed('admin.postcate', 'admin.editcate', ) ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.postcate') }}">ប្រភេទព័ត៌មាន</a></li>
+                        <li class="nav-item {{ Route::currentRouteNamed('admin.post', 'admin.create', 'admin.edit' ) ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.post') }}">ការបង្ហោះព័ត៌មាន</a></li>
                     </ul>
                 </div>
             </li>
@@ -73,10 +73,9 @@
                 </a>
                 <div class="submenu">
                     <ul>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.train.cate') }}">ប្រភេទការបណ្តុះបណ្តាល</a></li>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.train.post') }}">វគ្គបណ្តុះបណ្តាល</a></li>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.reg.index') }}">ការចុះឈ្មោះចូលរៀន</a></li>
-
+                        <li class="nav-item {{ Route::currentRouteNamed( 'admin.train.cate', 'admin.trian.cate.edit') ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.train.cate') }}">ប្រភេទការបណ្តុះបណ្តាល</a></li>
+                        <li class="nav-item {{ Route::currentRouteNamed('admin.train.post') ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.train.post') }}">វគ្គបណ្តុះបណ្តាល</a></li>
+                        <li class="nav-item {{ Route::currentRouteNamed( 'admin.reg.index') ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.reg.index') }}">ការចុះឈ្មោះចូលរៀន</a></li>
                     </ul>
                 </div>
             </li>

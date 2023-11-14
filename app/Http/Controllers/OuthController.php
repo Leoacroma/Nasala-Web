@@ -30,7 +30,7 @@ class OuthController extends Controller
             Cookie::queue('token', $token_value);
             session(['token' => $token_value]);
             
-
+            
             if (isset($result['error']) && $result['error'] === 'unauthorized') {
 
                 Alert::error(' Please try again.', 'Username or password is incorrect.');
