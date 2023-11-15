@@ -30,12 +30,12 @@
                             <div class="col-md-5 col-6">
                                 @php
                                 
-                                $email =  'nasala@gmail.com';
+                                $email =  'nasalacambodia@gmail.com';
                                 if (!str_starts_with( $email, 'http://') && !str_starts_with($email, 'https://')) {
                                     $email = 'https://' . $email;
                                 }
                             @endphp
-                                <a class="link text-decoration-underline" href="{{ $email }}" target="_blank">nasla@pac.edu.kh</a>
+                                <a class="link text-decoration-underline" href="{{ $email }}" target="_blank">nasalacambodia@gmail.com</a>
                             </div>
                         </div>
                     </li>
@@ -55,7 +55,7 @@
                                 {{ __('messages.Working hours') }}
                             </div>
                             <div class="col-md-5">
-                                : {{ __('messages.Morning: 7:00 a.m. to 12:00 p.m') }}
+                                : {{ __('messages.Morning: 7:30 a.m. to 11:30 a.m') }}
                             </div>
                         </div>
                     </li>
@@ -63,7 +63,7 @@
                         <div class="row dp-font" data-locale="{{ $locale }}">
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
-                                : {{ __('messages.Morning: 7:00 a.m. to 12:00 p.m') }}
+                                : {{ __('messages.Afternoon: 14:00 p.m. to 17:30 p.m') }}
                             </div>
                         </div>
                     </li>

@@ -46,7 +46,8 @@ return [
     'Email' => 'Email',
     'Phone Number' => 'Phone Number',
     'Working hours' => 'Working hours',
-    'Morning: 7:00 a.m. to 12:00 p.m' => 'Morning: 7:00 a.m. to 12:00 p.m',
-    '089 876 542'=>  '089 876 542'
+    'Morning: 7:30 a.m. to 11:30 a.m' => 'Morning: 7:30 a.m. to 11:30 a.m',
+    'Afternoon: 14:00 p.m. to 17:30 p.m' =>  'Afternoon: 14:00 p.m. to 17:30 p.m',
+    '089 876 542'=>  '089 876 542',
 
 ];
