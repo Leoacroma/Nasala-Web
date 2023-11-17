@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Http;
 use PhpParser\Node\Expr\Cast\String_;
 use RealRashid\SweetAlert\Facades\Alert;
 use Dompdf\Dompdf;
+use Exception;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Mockery\Expectation;
@@ -873,8 +874,11 @@ class Controller extends BaseController
                 'trainLasted' => $trainLasted,
                 'trainFile' => $trainFile
         ]);
-        } catch (Expectation $th) {
-            return redirect()->route('not-found');
+        } catch (Exception $e) {
+            
+            info($e->getMessage());
+            // return redirect()->route('not-found');
+            return abort(500);
         }
            
         

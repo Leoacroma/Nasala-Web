@@ -1,4 +1,7 @@
+<?php
+    $_COOKIE = Cookie::get('user_Role');
 
+?>
     <nav class="navbar top-navbar col-lg-12 col-12 p-0">
         <div class="container-fluid">
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-around">
@@ -100,14 +103,15 @@
                     <i class="menu-arrow"></i>
                 </a>
             </li>
-            <li class="nav-item {{ Route::currentRouteNamed('admin.user') ? 'active' : '' }}">
-                <a href="{{  route('admin.user')}}" class="nav-link">
-                    <i class="fa-solid fa-cloud mb-3 font-size-20"></i>
-                    <span class="menu-title kantumruy" >គ្រប់គ្រងគណនីប្រើប្រាស់</span>
-                    <i class="menu-arrow"></i>
-                </a>
-            </li>
-            
+            @if( $_COOKIE == 'Super-admin' || $_COOKIE == 'Admin' || $_COOKIE == 'Moderator')
+                <li class="nav-item {{ Route::currentRouteNamed('admin.user') ? 'active' : '' }}">
+                    <a href="{{  route('admin.user')}}" class="nav-link">
+                        <i class="fa-solid fa-cloud mb-3 font-size-20"></i>
+                        <span class="menu-title kantumruy" >គ្រប់គ្រងគណនីប្រើប្រាស់</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                </li>
+            @endif
             </ul>
         </div>
     </nav>

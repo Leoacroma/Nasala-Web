@@ -40,10 +40,16 @@ class OuthController extends Controller
                 $token = session('token');
                 $response2 = $httpClient->getUserOnLogin('/users/principal?'.$token);
                 $userID = $response2['data']['id'];
-                // $user_Role = $response2['data']['roles'];
-                // dd($user_Role);
+
+                $result =[];
+                foreach($response2['data']['roles'] as $dd){
+                    $result = [
+                        'name' => $dd['name']
+                    ];
+                }
+    
                 Cookie::queue('user_Id', $userID);
-                // Cookie::queue('roles', $user_Role);
+                Cookie::queue('user_Role', $result['name']);
                 return redirect()->route('admin.dash');      
             }
         } catch (\Exception $e) {
@@ -60,6 +66,7 @@ class OuthController extends Controller
         Cookie::forget('token');
         session()->forget('token');
         Cookie::forget('user_Id');
+        Cookie::forget('user_Role');
         return redirect()->route('admin.login');
     }
 }
