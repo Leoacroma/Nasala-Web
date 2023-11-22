@@ -30,9 +30,20 @@
                         {{-- <span>វិទ្យាស្ថានសេដ្ឋកិច្ចនិងហិរញ្ញវត្ថុ</span> --}}
                     </div>
                     <div class="col-md-5 text-algin-center">
-                        <img src="{{ asset('images/សាលាភូមិន្ទរដ្ឋបាល.gif') }}" alt="" width="120px">
+                        <img src="{{ asset('images/សាលាភូមិន្ទរដ្ឋបាល.gif') }}" alt="" width="150px">
                         <br/>
                         {{-- <span>សាលាភូមិន្ទរដ្ឋបាល</span> --}}
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-5 text-algin-center">
+                        <img src="{{ asset('images/272622791_239378445054070_6777321677976002089_n.jpg') }}" alt="" width="150px">
+                        <br/>
+                        
+                        {{-- <span>សាលាភូមិន្ទរដ្ឋបាល</span> --}}
+                    </div>
+                    <div class="col-md-5 text-algin-center">
+                      
                     </div>
                 </div>
             </div>

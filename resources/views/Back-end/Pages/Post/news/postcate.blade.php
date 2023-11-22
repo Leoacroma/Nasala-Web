@@ -50,11 +50,19 @@
               @endif
               @if( $_COOKIE == 'User' )
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-3"></div>
+                  <div class="col-5">
                     <img src="{{ asset('images/403 Error Forbidden-bro.svg') }}" alt="" width="100%">
                   </div>
-                  <div class="col-5 text-center mt-5 kantumruy" >
-                    <h2 style="line-height: 35px">សូមអធ្យាស្រ័យ <br/>អ្នកគ្មានការអនុញ្ញាតទេរ <i class="fa-solid fa-triangle-exclamation"></i></h2>
+                  <div class="col-3"></div>
+                </div>
+                <div class="row">
+                  <div class="col-12 kantumruy text-center">
+                      {{-- <h2 style="line-height: 20px">សូមអធ្យាស្រ័យ <i class="fa-solid fa-triangle-exclamation"></i></h2> --}}
+                      <span style="font-size: 25px; line-height: 35px">អ្នកមិនមានសិទ្ធិក្នុងការប្រើប្រាស់នោះទេ</span><br>
+                      <small style="opacity: 50%">
+                        អ្នកមិនមានសិទ្ធិក្នុងការប្រើប្រាស់នៅមុខងារនេះបានទេ ឬក៍ពិនិត្យមើលទិន្នន័យមួយចំនួនបាននោះទេ
+                      </small>
                   </div>
                 </div>
               @endif

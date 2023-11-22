@@ -17,6 +17,9 @@
     }
 }
 </style>
+<?php
+$_COOKIE = Cookie::get('user_Role');
+?>
       <!-- partial -->
   <div class="container-fluid page-body-wrapper">
     <div class="main-panel">
@@ -29,9 +32,17 @@
                   <div class="col-10">
                     <h4 class="card-title kantumruy">វគ្គបណ្តុះបណ្តាល</h4>
                   </div>
+                  @if($_COOKIE == 'Super-admin' || $_COOKIE == 'Admin' || $_COOKIE == 'Moderator')
                   <div class="col-2">
                     <a href="{{ route('admin.train.create') }}" class="btn btn-primary float-end kantumruy" style="font-weight: 400">បន្ថែមវគ្គ</a>
                   </div>
+                @endif
+                @if($_COOKIE == 'User' )
+                <div class="col-2 ">
+                  <button type="button"class="btn btn-ligh kantumruy float-end" style="font-weight: 400;" disabled>អ្នកប្រើប្រាសគ្មានសិទ្ធិ</button>
+                </div>
+                @endif
+                  
                 </div>
                 <p class="card-description kantumruy">
                   តារាងវគ្គបណ្តុះបណ្តាល
@@ -62,16 +73,23 @@
                   <div class="col-10">
                     <h4 class="card-title kantumruy">ឯកសារបណ្តុះបណ្តាល</h4>
                   </div>
-                  <div class="col-2">
-                    <a  data-toggle="modal"  data-target="#uploadmethod" class="btn btn-primary float-end kantumruy" style="font-weight: 400">បញ្ចូលឯកសារ</a>
-                    @include('Back-end.Pages.Training.files.upload-file')
+                  @if($_COOKIE == 'Super-admin' || $_COOKIE == 'Admin' || $_COOKIE == 'Moderator')
+                    <div class="col-2">
+                      <a  data-toggle="modal"  data-target="#uploadmethod" class="btn btn-primary float-end kantumruy" style="font-weight: 400">បញ្ចូលឯកសារ</a>
+                      @include('Back-end.Pages.Training.files.upload-file')
+                    </div>
+                  @endif
+                  @if($_COOKIE == 'User' )
+                  <div class="col-2 ">
+                    <button type="button"class="btn btn-ligh kantumruy float-end" style="font-weight: 400;" disabled>អ្នកប្រើប្រាសគ្មានសិទ្ធិ</button>
                   </div>
+                  @endif
                 </div>
                 <p class="card-description kantumruy">
                  តារាងឯកសារបណ្តុះបណ្តាល
                 </p>
                 <div class="divider-line"> </div>
-                <table class="table" id="fileTable">
+                <table class="table kantumruy" id="newsTable">
                   <thead class="kantumruy">
                     <tr>
                       <th scope="col">ល.រ</th>
@@ -88,15 +106,21 @@
                         <td class="Siemreap">{{ $item['title'] }}</td>
                         <td class="Siemreap">{{ $item['fileSize'] }} Kbyes</td>
                         <td class="Siemreap">{{ $item['createdAt'] }}</td>
+                     
                         <td class="d-flex">
-                          <a  href="" data-toggle="modal"  data-target="#Editmethod{{ $item['id'] }}" ><i class="fa-solid fa-pen-to-square"></i></a>
-                          @include('Back-end.Pages.Training.files.Editfile')
-                          <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.trian.file.destroy', $item['id']) }}">
-                            @csrf
-                            @method('DELETE')
-                            <a href="" class="mr-2 ml-2 " style="color: red"><i class="fa-solid fa-trash" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
-                          </form>   
-                          <a href="https://nasla.k5moi.com/v1/api/files/{{ $item['id'] }}" style="color: green"><i class="fa-solid fa-download"></i></a>                    
+                          @if( $_COOKIE == 'Super-admin' || $_COOKIE == 'Admin' || $_COOKIE == 'Moderator')
+                            <a  href="" data-toggle="modal"  data-target="#Editmethod{{ $item['id'] }}" ><i class="fa-solid fa-pen-to-square"></i></a>
+                            @include('Back-end.Pages.Training.files.Editfile')
+                            <form method="POST" id="delete-form{{ $item['id'] }}" action="{{ route('admin.trian.file.destroy', $item['id']) }}">
+                              @csrf
+                              @method('DELETE')
+                              <a href="" class="mr-2 ml-2 " style="color: red"><i class="fa-solid fa-trash" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
+                            </form>   
+                            <a href="https://nasla.k5moi.com/v1/api/files/{{ $item['id'] }}" style="color: green"><i class="fa-solid fa-download"></i></a>                    
+                          @endif
+                          @if( $_COOKIE == 'User' )
+                          <span class="badge badge-danger kantumruy" style = "font-weight: 100;">អ្នកគ្មានការអនុញ្ញាតទេ</span>
+                          @endif
                         </td>
                     </tr>
                 @endforeach
@@ -128,12 +152,18 @@ $(document).ready(function() {
               { 
                 data: null,
                 render: function(data, type, row) {
+                  if(userRole == 'Super-admin' || userRole == 'Admin' || userRole == 'Moderator'){
                     return '<a href="' + data.editUrl + '"><i class="fa-solid fa-pen-to-square"></i></a>' +
                         '<a href="#" class="ml-2 mr-2" style="color: red;"><i class="fa-solid fa-trash" onclick="confirmDelete(event, document.getElementById(\'delete-form' + data.id + '\'))"></i></a>' +
                         '<form method="POST" id="delete-form' + data.id + '" action="' + data.deleteUrl + '">' +
                         '<input type="hidden" name="_token" value="{{ csrf_token() }}">' +
                         '<input type="hidden" name="_method" value="DELETE">' +
                         '</form>';
+                  }
+                  else{
+                    return '<span class="badge badge-danger kantumruy" style = "font-weight: 100;">អ្នកគ្មានការអនុញ្ញាតទេ</span>';
+                  }
+                   
               }
             }
 

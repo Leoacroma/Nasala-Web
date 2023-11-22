@@ -74,7 +74,7 @@
                           </form>
                     </div>
                     <div class="row mt-2">
-                        <small >Copyrigh@Nasala</small> 
+                        <small >Copyrigh@Nasla</small> 
                     </div>
                 </div>
             </div>

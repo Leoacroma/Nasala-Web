@@ -16,13 +16,13 @@
                     <h4 class="card-title kantumruy">តារាងគ្រប់គ្រងព័ត៌មាន</h4>
                   </div>
                   @if($_COOKIE == 'Super-admin' || $_COOKIE == 'Admin' || $_COOKIE == 'Moderator')
-                  <div class="col-1">
-                    <a href="{{ route('admin.create') }}" class="btn btn-primary kantumruy" style="font-weight: 400" >បន្ថែមព័ត៌មាន </a>
+                  <div class="col-2">
+                    <a href="{{ route('admin.create') }}" class="btn btn-primary kantumruy float-end" style="font-weight: 400;" >បន្ថែមព័ត៌មាន </a>
                   </div>
                   @endif
                   @if($_COOKIE == 'User' )
                   <div class="col-2 ">
-                    <button type="button"class="btn btn-ligh kantumruy " style="font-weight: 400; margin-left: 105px" disabled>អ្នកប្រើប្រាសគ្មានសិទ្ធិ</button>
+                    <button type="button"class="btn btn-ligh kantumruy float-end" style="font-weight: 400;" disabled>អ្នកប្រើប្រាសគ្មានសិទ្ធិ</button>
                   </div>
                   @endif
                 </div>
