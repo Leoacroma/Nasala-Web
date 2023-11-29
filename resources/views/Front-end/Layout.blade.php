@@ -176,7 +176,7 @@
                     ] ) ? 'actived' : '' }}" >
                         <a class="nav-link dropdown-toggle nav-font"  data-locale="{{ $locale }}"  href="#" aria-expanded="false" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.About the school') }}</a>
                         <ul class="dropdown-menu" >
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp1') }}">{{ __('messages.Message from the Principal') }}</a></li>
+                            {{-- <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp1') }}">{{ __('messages.Message from the Principal') }}</a></li> --}}
                             <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp2') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp2') }}">{{ __('messages.Strategic Plan on Capacity Development') }}</a></li>
                             <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp3') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp3') }}">{{ __('messages.Partner') }}</a></li>
                             <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp4') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp4') }}">{{ __('messages.Department of National School of Local Administration') }}</a></li>

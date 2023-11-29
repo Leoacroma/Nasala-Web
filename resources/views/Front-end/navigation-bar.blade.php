@@ -75,11 +75,11 @@
                 ]) ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
                 </a>
                 <ul>
-                  <li>
+                  {{-- <li>
                     <a class="nav-font"  data-locale="{{ $locale }}"  href="{{ route('front.aboutschool.dp1') }}">
                       {{ __('messages.Message from the Principal') }} <i class=" {{  Route::currentRouteNamed('front.aboutschool.dp1') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
                     </a>
-                  </li>
+                  </li> --}}
                   <li>
                     <a class="nav-font"  data-locale="{{ $locale }}"  href="{{ route('front.aboutschool.dp2') }}">
                       {{ __('messages.Strategic Plan on Capacity Development') }} <i class=" {{  Route::currentRouteNamed('front.aboutschool.dp2') ? 'fa-solid fa-circle-arrow-left' : '' }}"></i>  
