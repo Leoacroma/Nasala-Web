@@ -569,28 +569,35 @@ class Controller extends BaseController
         try {
             $httpClient = new HttpUserHelper();
         $cateSub = $httpClient->getRequest('/training/posts');
-        $requestId = $id;
-        
-        $response = Http::get('https://nasla.k5moi.com/v1/api/publicize/' . $id);
+        $requestId = $id;    
 
-        if ($response->status() === 200) {
-            $pdfFile = $response->body();
+        // $response = Http::get('https://nasla.k5moi.com/v1/api/publicize/' . $id);
+
+        
+        // if ($response->status() === 200) {
+
+        //     $pdfFile = $response->body();
     
-            // Display the PDF file in the browser
-            $pdf = response($pdfFile, 200, [
-                'Content-Type' => ['application/pdf', 'image/jpeg'],
-                'Content-Disposition' => ['inline; filename="file.pdf"', 'inline; filename="image.jpg"'],
-            ]);
-        } else {
-            abort(404);
-        }
+        //     // Display the PDF file in the browser
+        //     $pdf = response($pdfFile, 200, [
+        //         'Content-Type' => ['application/pdf', 'image/jpeg'],
+        //         'Content-Disposition' => ['inline; filename="file.pdf"', 'inline; filename="image.jpg"'],
+        //     ]);
+
+           
+        // } else {
+        //     abort(404);
+        // }
         return view('Front-end.scholarship.subScholar',[], [
             'cateSub' => $cateSub, 
-            'pdf' => $pdf,
+            'requestId' => $requestId,
+            // 'pdf' => $pdf,
+            
         ]);
         } catch (\Throwable $th) {
             return redirect()->route('not-found');
         }
+
         
     }
 

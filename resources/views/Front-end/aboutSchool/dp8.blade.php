@@ -76,12 +76,12 @@
                         </div>
                     </li>
                     <li>
-                        <div class="row dp-font" data-locale="{{ $locale }}">
+                        {{-- <div class="row dp-font" data-locale="{{ $locale }}">
                             <div class="col-md-3"></div>
                             <div class="col-md-8">
                                 <i class="fa-solid fa-right-long"></i> {{ __('messages.Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.') }}
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-8">
