@@ -8,7 +8,6 @@
         <div class="row ss-layer">
             <div class="col-md-5">
                 <img src="{{ asset('images/front/photo_2022-10-19_09-17-50-removebg-preview.png') }}" alt="" class="img-fluid">
-
             </div>
         </div>
         <div class="row dd-layer">
