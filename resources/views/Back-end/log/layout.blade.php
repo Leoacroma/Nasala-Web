@@ -40,6 +40,7 @@
 <body >
     <div class="container first-layer ">
         <div class="row">
+            @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
             @yield('layout')
         </div>
     </div>

@@ -6,6 +6,7 @@ use App\Helpers\HttpClientHelper;
 use App\Helpers\HttpUserHelper;
 use App\Models\User;
 use GuzzleHttp\Client;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -19,38 +20,47 @@ class OuthController extends Controller
     public function login(Request $request){
         try {
             $httpClient = new HttpClientHelper();
-            // $httpUser = new HttpUserHelper();
-            $params = [
+            
+            $json = [
                 'username' => request('username'),
                 'password' => request('password'),
+                "clientId" => "azUtbmFzbGEtY2xpZW50SWQ=",
+                "clientSecret" => "YXpVdGJtRnpiR0V0WTJ4cFpXNTBVMlZqY21WMA=="
             ];
-            $response = $httpClient->postloginRequest('token', $params);
-            // dd($response);
-            $token_value = $response['access_token'];
-            Cookie::queue('token', $token_value);
-            session(['token' => $token_value]);
             
+            $response = $httpClient->postloginRequest('/login', $json);
+            // dd($response['qrCodeUrl']);
             
+        
             if (isset($result['error']) && $result['error'] === 'unauthorized') {
 
                 Alert::error(' Please try again.', 'Username or password is incorrect.');
 
             } else {
 
-                $token = session('token');
-                $response2 = $httpClient->getUserOnLogin('/users/principal?'.$token);
-                $userID = $response2['data']['id'];
+                $username =  request()->input('username');
+                $password =  request()->input('password');
+                $qrCode =  $response['qrCodeUrl'];
 
-                $result =[];
-                foreach($response2['data']['roles'] as $dd){
-                    $result = [
-                        'name' => $dd['name']
-                    ];
+                Cookie::queue('username', $username);
+                Cookie::queue('password', $password);
+                Cookie::queue('qrCode', $qrCode);
+
+                session('username', $username);
+                session('password', $password);
+
+
+
+                if($response['qrCodeUrl'] == null){
+
+                    return redirect()->route('admin.2FA.otp');
+                
                 }
-    
-                Cookie::queue('user_Id', $userID);
-                Cookie::queue('user_Role', $result['name']);
-                return redirect()->route('admin.dash');      
+                else{
+
+                    return redirect()->route('admin.2FA.qr')->with('qrCode', $qrCode);
+                }
+
             }
         } catch (\Exception $e) {
         //    alert($e->getMessage());
@@ -63,10 +73,15 @@ class OuthController extends Controller
 
     public function logout(Request $request){            
 
+        session()->forget('username');
+        session()->forget('password');
         Cookie::forget('token');
         session()->forget('token');
         Cookie::forget('user_Id');
         Cookie::forget('user_Role');
+        Cookie::forget('username');
+        Cookie::forget('password');
+        
         return redirect()->route('admin.login');
     }
 }
