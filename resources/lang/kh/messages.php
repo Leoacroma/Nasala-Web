@@ -48,8 +48,8 @@ return [
     'Filesize' => 'ទំហំ',
 
     //contact
-    'Basic National School' => 'សាលាជាតិមូលដ្ឋាន',
-    'Email' => 'សារអិឡិចត្រូនិច',
+    'Basic National School' => 'សាលាជាតិរដ្ឋបាលមូលដ្ឋាន',
+    'Email' => 'សារអេឡិចត្រូនិច',
     'Phone Number' => 'លេខទូរស័ព្ទ',
     'Working hours' => 'ម៉ោងធ្វើការ',
     'Morning: 7:30 a.m. to 11:30 a.m' => 'ពេលព្រឹក៖ ម៉ោង ៧ៈ៣០នាទី ដល់ ម៉ោង ១១ៈ៣០នាទី',

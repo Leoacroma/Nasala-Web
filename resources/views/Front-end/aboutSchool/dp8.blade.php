@@ -20,11 +20,19 @@
         <div class="row">
             <div class="col-md-10" >
                 <ul class="dp-font list-unstyled test-rps-cc " data-locale="{{ $locale }}">
-                    <li>{{ __('messages.Basic National School') }}</li>
-                    <li>{{ __('messages.Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.') }}</li>
+                    <li>
+                        <div class="row dp-font" data-locale="{{ $locale }}">
+                            <div class="col-md-3 col-4" >
+                                {{ __('messages.Basic National School') }}
+                            </div>
+                            <div class="col-md-6 col-6">
+                                :  {{ __('messages.Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.') }}
+                            </div>
+                        </div>
+                    </li>
                     <li>
                         <div class="row" >
-                            <div class="col-md-2 col-4 dp-font" data-locale="{{ $locale }}">
+                            <div class="col-md-3 col-4 dp-font" data-locale="{{ $locale }}">
                                 {{ __('messages.Email') }}
                             </div>
                             <div class="col-md-5 col-6">
@@ -35,13 +43,13 @@
                                     $email = 'https://' . $email;
                                 }
                             @endphp
-                                <a class="link text-decoration-underline" href="{{ $email }}" target="_blank">nasalacambodia@gmail.com</a>
+                                : <a class="link text-decoration-underline" href="{{ $email }}" target="_blank">nasalacambodia@gmail.com</a>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="row dp-font" data-locale="{{ $locale }}">
-                            <div class="col-md-2 col-4" >
+                            <div class="col-md-3 col-4" >
                                 {{ __('messages.Phone Number') }}
                             </div>
                             <div class="col-md-5 col-6">
@@ -51,7 +59,7 @@
                     </li>
                     <li>
                         <div class="row dp-font" data-locale="{{ $locale }}">
-                            <div class="col-md-2" >
+                            <div class="col-md-3" >
                                 {{ __('messages.Working hours') }}
                             </div>
                             <div class="col-md-5">
@@ -61,7 +69,7 @@
                     </li>
                     <li>
                         <div class="row dp-font" data-locale="{{ $locale }}">
-                            <div class="col-md-2"></div>
+                            <div class="col-md-3"></div>
                             <div class="col-md-5">
                                 : {{ __('messages.Afternoon: 14:00 p.m. to 17:30 p.m') }}
                             </div>
@@ -69,15 +77,15 @@
                     </li>
                     <li>
                         <div class="row dp-font" data-locale="{{ $locale }}">
-                            <div class="col-md-2"></div>
+                            <div class="col-md-3"></div>
                             <div class="col-md-8">
                                 <i class="fa-solid fa-right-long"></i> {{ __('messages.Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.') }}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2"></div>
+                            <div class="col-md-3"></div>
                             <div class="col-md-8">
-                                <iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.20137809131!2d104.92491967558159!3d11.537407244695485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310950da00231129%3A0x3277d5d862ed2f5d!2sMinistry%20of%20Interior!5e0!3m2!1sen!2skh!4v1689567441364!5m2!1sen!2skh"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe  width="100%"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9584.344342497143!2d104.80215907409342!3d11.615693136526563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31094d0787243909%3A0x9c825ffa6551df59!2z4Z6f4Z624Z6b4Z624Z6H4Z624Z6P4Z634Z6a4Z6K4Z-S4Z6L4Z6U4Z624Z6b4Z6Y4Z684Z6b4Z6K4Z-S4Z6L4Z624Z6TIOGegOGfkuGemuGen-GeveGehOGemOGeoOGetuGeleGfkuGekeGfgw!5e0!3m2!1sen!2skh!4v1700710510603!5m2!1sen!2skh" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </li>

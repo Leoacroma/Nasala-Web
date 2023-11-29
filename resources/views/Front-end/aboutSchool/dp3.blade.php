@@ -25,14 +25,18 @@
                 </div>
                 <div class="row">
                     <div class="col-md-5 text-algin-center">
-                        <img src="{{ asset('images/វិទ្យាស្ថានសេដ្ឋកិច្ចនិងហិរញ្ញវត្ថុ.jpg') }}" alt="" width="150px">
+                        <div class="col-10">
+                            <img src="{{ asset('images/វិទ្យាស្ថានសេដ្ឋកិច្ចនិងហិរញ្ញវត្ថុ.jpg') }}" alt="" width="100%">
+                        </div>
                         <br/>
-                        {{-- <span>វិទ្យាស្ថានសេដ្ឋកិច្ចនិងហិរញ្ញវត្ថុ</span> --}}
+                        <span>វិទ្យាស្ថានសេដ្ឋកិច្ចនិងហិរញ្ញវត្ថុ</span>
                     </div>
                     <div class="col-md-5 text-algin-center">
-                        <img src="{{ asset('images/សាលាភូមិន្ទរដ្ឋបាល.gif') }}" alt="" width="150px">
+                        <div class="col-8">
+                            <img src="{{ asset('images/សាលាភូមិន្ទរដ្ឋបាល.gif') }}" alt="" width="100%">
+                        </div>
                         <br/>
-                        {{-- <span>សាលាភូមិន្ទរដ្ឋបាល</span> --}}
+                        <span>សាលាភូមិន្ទរដ្ឋបាល</span>
                     </div>
                 </div>
                 <div class="row mt-5">
