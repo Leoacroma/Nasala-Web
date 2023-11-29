@@ -27,7 +27,7 @@
             <div class="col-md-6 col-xl-6 col-sm-6 main-con">
                 @foreach ($result as $item)
                 <a class="text-decoration-none color-black  hover-text hover-underline-animation" href="{{ route('front.subnews', $item['id']) }}">
-                    <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-fluid mt-2">
+                    <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-fluid mt-2">
                     @if (app()->getLocale() === 'kh')
                         <span class="font-size-25  hover-title-animate Siemreap">
                             {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 100, $end = '...')}}
@@ -60,9 +60,9 @@
                     <div class="row pt-2">
                         <div class="col-md-5 col-xl-5 col-xxl-5 col-sm-1">
                             <div style=" width: 100%; height: 10em;">
-                                <div class="img-bg" style="background-image: url(https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }})"></div>
+                                <div class="img-bg" style="background-image: url(https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }})"></div>
                             </div>
-                            {{-- <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-fluid img-thumbnail" type="image/jpeg"> --}}
+                            {{-- <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-fluid img-thumbnail" type="image/jpeg"> --}}
                         </div>
                         <div class="col-md-6 col-xl-6 col-xxl-6 col-sm-1">
                          @if (app()->getLocale() === 'kh')
@@ -116,7 +116,7 @@
                         <a class="text-decoration-none Siemreap color-black mt-3  hover-underline-animation" href="{{ route('front.subScholar', $item['id']) }}">
                             <div class="row mt-2">
                                 <div class="col-xl-4 col-l-4 col-xxl-4 col-md-4 col-sm-1 bg-color-rgb-201-199-199 text-algin-center p-2">
-                                    <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-thumbnail" type="image/jpeg">
+                                    <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-thumbnail" type="image/jpeg">
                                 </div>
                                 <div class="col-md-6 col-xl-6 col-xxl-6 col-sm-6">
                                     <span class="font-size-20 hover-title-animate">

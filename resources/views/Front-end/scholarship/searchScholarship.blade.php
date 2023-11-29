@@ -50,7 +50,7 @@
             <div class="col-lay-5">
                 <div class="row">
                     <div class="col-lay-4">
-                        <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" type="image/jpeg" alt="" width="220px" height="300px" style="margin-bottom: 10px;">
+                        <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" type="image/jpeg" alt="" width="220px" height="300px" style="margin-bottom: 10px;">
                     </div>
                     <div class="col-lay-4">
                         <a href="{{ route('front.subScholar', $item['id']) }}" class="text-decoration-none color-black font-size-22 Siemreap">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 100, $end = '...')}}</a>

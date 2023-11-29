@@ -95,7 +95,7 @@
                                                 @foreach ($result as $dd)
                                                     <div class="col">
                                                         <div class="card" >
-                                                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}"  class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                            <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}"  class="card-img-top" alt="Hollywood Sign on The Hill"/>
                                                             <div class="card-body">
                                                                 <span class="card-title kantumruy" style="font-size: 16px; line-height: 25.5px;">{{ \Illuminate\Support\Str::limit($dd['titleKh'], $limit = 90, $end = '...')}}</span>
                                                                 <br/>
@@ -116,7 +116,7 @@
                                                     @foreach ($result1 as $dd) 
                                                     <div class="col">
                                                         <div class="card" >
-                                                            <img src="https://nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}" style="height: 200px;" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                                                            <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $dd['thumbnailImageId'] }}" style="height: 200px;" class="card-img-top" alt="Hollywood Sign on The Hill"/>
                                                         <div class="card-body">
                                                             <span class="card-title kantumruy" style="font-size: 16px; line-height: 25.5px;">{{ \Illuminate\Support\Str::limit($dd['titleKh'], $limit = 90, $end = '...')}}</span>
                                                             <br/>
@@ -155,7 +155,7 @@
                                             <div class="row g-0">
                                                 <div class="col-md-4">
                                                   <img
-                                                    src="https://nasla.k5moi.com/v1/api/files/{{ $tt['thumbnailImageId'] }}"
+                                                    src="https://api-nasla.k5moi.com/v1/api/files/{{ $tt['thumbnailImageId'] }}"
                                                     alt="Trendy Pants and Shoes"
                                                     class="img-fluid rounded-start"
                                                   />
@@ -256,7 +256,7 @@
                                 <div class="col-3">
         
                                       <div class="card" >
-                                        <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-cdd" alt="Fissure in Sandstone"/>
+                                        <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-cdd" alt="Fissure in Sandstone"/>
                                         <span class="badge badge-danger kantumruy" style="font-size: 15px"><i class="fa-solid fa-calendar-days fa-beat-fade"></i> ផុតកំណត់ ៖ {{ $item['registerEndDate'] }} </span> 
                                         <div class="card-body">
                                           <h5 class="card-title kantumruy" style=" font-weight: bold; font-size: 20px">{{\Illuminate\Support\Str::limit($item['courseName'], $limit = 36, $end = '...')}} </h5>

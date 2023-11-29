@@ -56,7 +56,7 @@
                               @method('DELETE')
                               <a href="" class=" ml-2 mr-2" style="color: red" ><i class="fa-solid fa-trash" onclick="confirmDelete(confirmDelete(event, document.getElementById('delete-form{{ $item['id'] }}')))"></i></a>
                             </form> 
-                            <a  href="https://nasla.k5moi.com/v1/api/publicize/{{ $item['id'] }}" style="color: green" download><i class="fa-solid fa-download"></i></a>
+                            <a  href="https://api-nasla.k5moi.com/v1/api/publicize/{{ $item['id'] }}" style="color: green" download><i class="fa-solid fa-download"></i></a>
                           @endif     
                           @if($_COOKIE == 'User' )
                           <span class="badge badge-danger kantumruy" style = "font-weight: 100;">អ្នកគ្មានការអនុញ្ញាតទេ</span>  

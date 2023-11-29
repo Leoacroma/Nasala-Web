@@ -227,7 +227,7 @@ class Controller extends BaseController
 
         // dd($sortLastedAtNews);
         // $image_Id = $data['data']['thumbnailImageId'];
-        // $image = 'https://nasla.k5moi.com/v1/api/files/'. $image_Id;
+        // $image = 'https://api-nasla.k5moi.com/v1/api/files/'. $image_Id;
       
         // dd($image);
         $dateTime = KhmerDateTime::parse($data['data']['createdAt']);
@@ -571,7 +571,7 @@ class Controller extends BaseController
         $cateSub = $httpClient->getRequest('/training/posts');
         $requestId = $id;    
 
-        // $response = Http::get('https://nasla.k5moi.com/v1/api/publicize/' . $id);
+        // $response = Http::get('https://api-nasla.k5moi.com/v1/api/publicize/' . $id);
 
         
         // if ($response->status() === 200) {

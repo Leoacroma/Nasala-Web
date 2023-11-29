@@ -37,7 +37,7 @@
               <a href="{{ route('front.subScholar', $item['id']) }}">
                 <div class="row">
                     <div class="col-lay-2">
-                      <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="220px" height="300px" style="margin-bottom: 10px;" type="image/jpeg">
+                      <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="220px" height="300px" style="margin-bottom: 10px;" type="image/jpeg">
                     </div>
                     <div class="col-lay-6">
                         <span  class="text-decoration-none color-black font-size-22 Siemreap">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 90, $end = '...')}}</span>

@@ -10,7 +10,7 @@
                                 <a href="{{ route('front.subnews', $item['id']) }}" class="card-hover">  
         
                                     <div class="card">
-                                        <img class="img-fluid" alt="100%x280"  src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" >
+                                        <img class="img-fluid" alt="100%x280"  src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" >
                                         <div class="card-body">
                                             <h4 class="card-title font-size-20 Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...')}}</h4>
                                             <small class="Siemreap mg-r-10px ">{{ $item['createdAt'] }}</small> |
