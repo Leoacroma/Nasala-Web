@@ -40,22 +40,47 @@
               </div>
             </div>
           </div>
+          <?php
+            $_COOKIE = Cookie::get('user_Role');
+          ?>
           <div id="output" class="col-6 grid-margin stretch-card">
             <div id="addcate" class="card">
-              @include('Back-end.Pages.Post.news.categories.addcate')
+              @if( $_COOKIE == 'Super-admin' || $_COOKIE == 'Admin' || $_COOKIE == 'Moderator')
+                @include('Back-end.Pages.Post.news.categories.addcate')
+              @endif
+              @if( $_COOKIE == 'User' )
+                <div class="row">
+                  <div class="col-3"></div>
+                  <div class="col-5">
+                    <img src="{{ asset('images/403 Error Forbidden-bro.svg') }}" alt="" width="100%">
+                  </div>
+                  <div class="col-3"></div>
+                </div>
+                <div class="row">
+                  <div class="col-12 kantumruy text-center">
+                      {{-- <h2 style="line-height: 20px">សូមអធ្យាស្រ័យ <i class="fa-solid fa-triangle-exclamation"></i></h2> --}}
+                      <span style="font-size: 25px; line-height: 35px">អ្នកមិនមានសិទ្ធិក្នុងការប្រើប្រាស់នោះទេ</span><br>
+                      <small style="opacity: 50%">
+                        អ្នកមិនមានសិទ្ធិក្នុងការប្រើប្រាស់នៅមុខងារនេះបានទេ ឬក៍ពិនិត្យមើលទិន្នន័យមួយចំនួនបាននោះទេ
+                      </small>
+                  </div>
+                </div>
+              @endif
             </div>
           </div>
         </div>
       </div>
       
     </div>
+
     <!-- main-panel ends -->
   <!-- page-body-wrapper ends -->
 </div>
 <script src="{{ asset('js/alert.js') }}"></script>
 <script>
   $(document).ready(function() {
-      var data = {!! $dataJson !!};      
+      var data = {!! $dataJson !!};   
+      var userRole = "{!! Cookie::get('user_Role') !!}";   
       $('#newsTable').DataTable({
           data: data,
           columns: [
@@ -65,12 +90,19 @@
               { 
                 data: null,
                 render: function(data, type, row) {
+                  if(userRole == 'Super-admin' || userRole == 'Admin' || userRole == 'Moderator'){
                     return '<a href="' + data.editUrl + '"><i class="fa-solid fa-pen-to-square"></i></a>' +
-                        '<a href="#" class="ml-2 mr-2" style="color: red;"><i class="fa-solid fa-trash" onclick="confirmDelete(event, document.getElementById(\'delete-form' + data.id + '\'))"></i></a>' +
-                        '<form method="POST" id="delete-form' + data.id + '" action="' + data.deleteUrl + '">' +
-                        '<input type="hidden" name="_token" value="{{ csrf_token() }}">' +
-                        '<input type="hidden" name="_method" value="DELETE">' +
-                        '</form>';
+                    '<a href="#" class="ml-2 mr-2" style="color: red;"><i class="fa-solid fa-trash" onclick="confirmDelete(event, document.getElementById(\'delete-form' + data.id + '\'))"></i></a>' +
+                    '<form method="POST" id="delete-form' + data.id + '" action="' + data.deleteUrl + '">' +
+                    '<input type="hidden" name="_token" value="{{ csrf_token() }}">' +
+                    '<input type="hidden" name="_method" value="DELETE">' +
+                    '</form>';
+                  }
+                  else{
+                    return '<span class="badge badge-danger kantumruy" style = "font-weight: 100;">អ្នកគ្មានការអនុញ្ញាតទេ</span>';
+                  }
+                  
+              
               }
             }
 

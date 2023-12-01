@@ -27,7 +27,7 @@
             @endphp
                 <div class="col-md-5">
                     <div class="card" >
-                    <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fluid" alt="Fissure in Sandstone"/>
+                    <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fluid" style="aspect-ratio: 3/2; object-fit: contain" alt="Fissure in Sandstone"/>
                     <span class="badge badge-danger Kantumruy" style="font-size: 15px"><i class="fa-solid fa-calendar-days fa-beat-fade"></i> ផុតកំណត់ ៖ {{ $item['registerEndDate'] }} </span> 
                     <div class="card-body">
                         <h5 class="card-title Kantumruy" style=" font-weight: bold">{{\Illuminate\Support\Str::limit($item['courseName'], $limit = 36, $end = '...')}} </h5>

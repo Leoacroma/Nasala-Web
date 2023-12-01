@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Http;
 use PhpParser\Node\Expr\Cast\String_;
 use RealRashid\SweetAlert\Facades\Alert;
 use Dompdf\Dompdf;
+use Exception;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Mockery\Expectation;
@@ -49,6 +50,7 @@ class Controller extends BaseController
                     'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
+                    'contentKh' => strip_tags($item['contentKh']) ,
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
@@ -62,6 +64,7 @@ class Controller extends BaseController
                     'title' => $item['title'],
                     'category' => $item['category'],
                     'thumbnailImageId' => $item['thumbnailImageId'],
+                    'contentKh' => strip_tags($item['contentKh']) ,
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
@@ -224,7 +227,7 @@ class Controller extends BaseController
 
         // dd($sortLastedAtNews);
         // $image_Id = $data['data']['thumbnailImageId'];
-        // $image = 'https://nasla.k5moi.com/v1/api/files/'. $image_Id;
+        // $image = 'https://api-nasla.k5moi.com/v1/api/files/'. $image_Id;
       
         // dd($image);
         $dateTime = KhmerDateTime::parse($data['data']['createdAt']);
@@ -566,28 +569,35 @@ class Controller extends BaseController
         try {
             $httpClient = new HttpUserHelper();
         $cateSub = $httpClient->getRequest('/training/posts');
-        $requestId = $id;
-        
-        $response = Http::get('https://nasla.k5moi.com/v1/api/publicize/' . $id);
+        $requestId = $id;    
 
-        if ($response->status() === 200) {
-            $pdfFile = $response->body();
+        // $response = Http::get('https://api-nasla.k5moi.com/v1/api/publicize/' . $id);
+
+        
+        // if ($response->status() === 200) {
+
+        //     $pdfFile = $response->body();
     
-            // Display the PDF file in the browser
-            $pdf = response($pdfFile, 200, [
-                'Content-Type' => ['application/pdf', 'image/jpeg'],
-                'Content-Disposition' => ['inline; filename="file.pdf"', 'inline; filename="image.jpg"'],
-            ]);
-        } else {
-            abort(404);
-        }
+        //     // Display the PDF file in the browser
+        //     $pdf = response($pdfFile, 200, [
+        //         'Content-Type' => ['application/pdf', 'image/jpeg'],
+        //         'Content-Disposition' => ['inline; filename="file.pdf"', 'inline; filename="image.jpg"'],
+        //     ]);
+
+           
+        // } else {
+        //     abort(404);
+        // }
         return view('Front-end.scholarship.subScholar',[], [
             'cateSub' => $cateSub, 
-            'pdf' => $pdf,
+            'requestId' => $requestId,
+            // 'pdf' => $pdf,
+            
         ]);
         } catch (\Throwable $th) {
             return redirect()->route('not-found');
         }
+
         
     }
 
@@ -871,8 +881,11 @@ class Controller extends BaseController
                 'trainLasted' => $trainLasted,
                 'trainFile' => $trainFile
         ]);
-        } catch (Expectation $th) {
-            return redirect()->route('not-found');
+        } catch (Exception $e) {
+            
+            info($e->getMessage());
+            // return redirect()->route('not-found');
+            return abort(500);
         }
            
         

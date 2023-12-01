@@ -4,40 +4,44 @@
     {{-- <link rel="stylesheet" href="{{ asset('/css-front/styles.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('/css-front/font.css') }}">
     <link rel="stylesheet" href="{{ asset('/css-front/layout.css') }}">
-
 @endsection
 @section('template')
     <!-- content -->
     <div class="container mt-5">
         <div class="row ">
-            <div class="col-lay-6 m-auto p-0">
+            <div class="col-md-8 col-12 m-auto">
                 <div class="row">
-                    <div class="col-lay-10 p-0 ">
-                        <h2 class="kantumruy font-size-40 title">{{ $data['data']['titleKh'] }}</h2>
+                    <div class="col-md-12 col-12">
+                        <h2 class="Siemreap title-rps title">{{ $data['data']['titleKh'] }}</h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lay-10 p-0">
+                    <div class="col-md-12">
                         <div class="row">
-                            <div class="col-lay-10">
-                                <i class="fa-solid fa-calendar-days font-size-20"></i>
-                                <small class="kantumruy mg-r-10px font-size-17">{{ $formattedCreatedAt }}</small> |
-                                    <span class="badge bg-warning text-dark font-size-14 kantumruy">{{ $data['data']['category']['nameKh'] }}</span>
-                                <div class="col-lay-1 "></div>
+                            <div class="col-md-12">
+                                <i class="fa-solid fa-calendar-days icon-ccc"></i>
+                                <small class="Siemreap mg-r-10px text-ccc">{{$formattedCreatedAt }}</small>
+                                <i class="fa-solid fa-eye icon-ccc"></i>
+                                <small class="Siemreap text-ccc">10k</small> |
+                                @php
+                                    $hyperlink = 'www.facebook.com';
+                                    if (!str_starts_with($hyperlink , 'http://') && !str_starts_with($hyperlink , 'https://')) {
+                                        $hyperlink = 'https://' . $hyperlink;
+                                    }
+                                @endphp  
+                                {{-- <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $data['data']['category']['nameKh'] }}</span> --}}
+                                <a class="color-black" href="{{ $hyperlink }}"><i class="fa-solid fa-share-from-square icon-ccc"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-lay-10 divider-line"></div>
-                </div>
                 <div class="row">
-                    <div class="col-lay-10 p-0 mt-3 text-algin-center">
-                        <img src="{{ $image }}" alt="" width="100%">
+                    <div class="container">
+                        <div class="col-md-12 divider-line"></div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lay-10 mt-3 p-0 kantumruy" style="font-size: 15px; font-weight: bold">
+                    <div class="col-md-12 Siemreap conetent-rps">
                         {!! $data['data']['contentKh'] !!}
                     </div>
                 </div>

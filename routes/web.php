@@ -13,6 +13,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TrainCateController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\TrainingFileController;
+use App\Http\Controllers\TwoFAController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\SetLocaleFromSession;
 
@@ -92,6 +93,13 @@ Route::get('/404', function () {
 Route::get('admin/login', [OuthController::class, 'loginForm'])->name('admin.login');
 Route::post('admin/login/store', [OuthController::class, 'login'])->name('admin.login.post');
 Route::get('admin/logout', [OuthController::class, 'logout'])->name('admin.logout');
+
+Route::get('admin/login/qr-code',[TwoFAController::class, 'index'] )->name('admin.2FA.qr');
+
+Route::get('admin/login/otp-check',[TwoFAController::class, 'otp'] )->name('admin.2FA.otp');
+
+Route::post('admin/login/2FA',[TwoFAController::class, 'store'] )->name('admin.2FA.store');
+
 
 //Back-end
 Route::prefix('admin')->middleware('admin')->group(function(){

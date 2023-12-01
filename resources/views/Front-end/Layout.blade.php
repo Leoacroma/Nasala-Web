@@ -9,11 +9,16 @@
     <link href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css') }}" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <link rel="stylesheet" href="//unpkg.com/bootstrap-select-country@4.0.0/dist/css/bootstrap-select-country.min.css" type="text/css" /> --}}
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="{{ asset('/css-front/layout.css') }}">
     <script src="{{ asset('https://unpkg.com/vue@3/dist/vue.global.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+
+  
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css	">
@@ -84,7 +89,7 @@
                                 <h2 class="moul color-blue-355fb6 text-shadow rps-text-titleKh ">សាលាជាតិរដ្ឋបាលមូលដ្ឋាន</h2>
                             </div>
                             <div class="col-md-12 col-sm-12">
-                                <h2 class="PT-Sans-Narrow font-bold color-blue-355fb6 text-shadow rps-text-titleEn ">National School For Local Administration</h2>
+                                <h2 class="PT-Sans-Narrow font-bold color-blue-355fb6 text-shadow rps-text-titleEn ">National School of Local Administration</h2>
                             </div>
                         </div>
                     </div>
@@ -105,9 +110,9 @@
                                     $youtube = 'https://' . $youtube;
                                 }
                                 @endphp
-                                <a class="icon-link" href="{{ $tele }}"><i class="fa-brands fa-telegram  color-rgb-10-137-240"></i></a>
-                                <a class="icon-link" href="{{ $youtube }}"><i class="fa-brands fa-youtube   color-red"></i></a>
-                                <a class="icon-link" href="{{ $facebook }}"><i class="fa-brands fa-square-facebook   color-blue"></i></a>
+                                <a class="icon-link ml-2" href="{{ $tele }} " target="_blank"><i class="fa-brands fa-telegram  color-rgb-10-137-240"></i></a>
+                                <a class="icon-link ml-2" href="{{ $youtube }}" target="_blank"><i class="fa-brands fa-youtube   color-red"></i></a>
+                                <a class="icon-link ml-2" href="{{ $facebook }}" target="_blank"><i class="fa-brands fa-square-facebook   color-blue"></i></a>
                             </div>
                             <div class="col-md-6 col-6 mt-2">
                                 <!-- language -->
@@ -122,10 +127,10 @@
     </div>
     </div>
     <!-- navigation -->
-    <nav class="navbar navbar-expand-lg bg-color-355fb6 p-0">
+    <nav class="navbar navbar-expand-lg bg-color-355fb6 p-0 rps-nav">
         <div class="container">
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav m-auto font-size-28">
+                <ul class="navbar-nav m-auto font-size">
                     <li  class="nav-item {{ Route::currentRouteNamed('front.home') ? 'actived' : '' }}"><a class="nav-link nav-font"  data-locale="{{ $locale }}"   href="{{ route('front.home') }}">{{ __('messages.Home') }}</a></li>
                     <li class="nav-item {{ Route::currentRouteNamed('page.news', 'front.subnews') ? 'actived' : '' }}"><a class="nav-link nav-font"   data-locale="{{ $locale }}"  href="{{ route('page.news', ['page' => 0]) }}">{{ __('messages.News') }}</a></li>
                     <li class="nav-item dropdown {{ Route::currentRouteNamed('front.work.dp1' , 'front.work.dp2Content' , 'front.work.dp3')  ? 'actived' : '' }}">
@@ -168,10 +173,10 @@
                         'front.aboutschool.dp6',
                         'front.aboutschool.dp7',
                         'front.aboutschool.dp8',
-                    ] ) ? 'actived' : '' }}">
-                        <a class="nav-link dropdown-toggle nav-font"  data-locale="{{ $locale }}"  href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.About the school') }}</a>
+                    ] ) ? 'actived' : '' }}" >
+                        <a class="nav-link dropdown-toggle nav-font"  data-locale="{{ $locale }}"  href="#" aria-expanded="false" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.About the school') }}</a>
                         <ul class="dropdown-menu" >
-                            <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp1') }}">{{ __('messages.Message from the Principal') }}</a></li>
+                            {{-- <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp1') }}">{{ __('messages.Message from the Principal') }}</a></li> --}}
                             <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp2') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp2') }}">{{ __('messages.Strategic Plan on Capacity Development') }}</a></li>
                             <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp3') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp3') }}">{{ __('messages.Partner') }}</a></li>
                             <li><a class="dropdown-item dp-font {{ Route::currentRouteNamed('front.aboutschool.dp4') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.aboutschool.dp4') }}">{{ __('messages.Department of National School of Local Administration') }}</a></li>
@@ -227,9 +232,9 @@
                                     }
                                 @endphp  
                                 <li><i class="fa-solid fa-square-phone mg-r-10px" ></i>023 456 789</li>
-                                <li><i class="fa-solid fa-square-envelope mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $email }}">naslacambodia@gmail.com</a></li>
+                                <li><i class="fa-solid fa-square-envelope mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $email }}" target="_blank">naslacambodia@gmail.com</a></li>
                                
-                                <li><i class="fa-brands fa-square-facebook mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $hyperlink }}">naslacambodia</a></li>
+                                <li><i class="fa-brands fa-square-facebook mg-r-10px" ></i><a class="color-white footer-hover-underline-animation" href="{{ $hyperlink }}" target="_blank">naslacambodia</a></li>
                                 <li><i class="fa-solid fa-location-dot mg-r-10px" ></i>{{ __('messages.Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.') }}</li>
                             </ul>
                         </span>
@@ -244,8 +249,7 @@
                         </span>
                     </div>
                     <div class="col-md-4">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.20137809131!2d104.92491967558159!3d11.537407244695485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310950da00231129%3A0x3277d5d862ed2f5d!2sMinistry%20of%20Interior!5e0!3m2!1sen!2skh!4v1689567441364!5m2!1sen!2skh" width="100% " height="150px" style=" border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9584.344342497143!2d104.80215907409342!3d11.615693136526563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31094d0787243909%3A0x9c825ffa6551df59!2z4Z6f4Z624Z6b4Z624Z6H4Z624Z6P4Z634Z6a4Z6K4Z-S4Z6L4Z6U4Z624Z6b4Z6Y4Z684Z6b4Z6K4Z-S4Z6L4Z624Z6TIOGegOGfkuGemuGen-GeveGehOGemOGeoOGetuGeleGfkuGekeGfgw!5e0!3m2!1sen!2skh!4v1700710510603!5m2!1sen!2skh" width="100% " height="150px" style=" border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -255,6 +259,7 @@
         </div>
     </footer>
 </body>
+
 <script src="{{ asset('https://code.jquery.com/jquery-3.2.1.slim.min.js') }}" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js" integrity="sha512-rXm6RiYDlz+aZC/ht75tGzeAmCg4gVfBA6Be5s5uENSahiXkgwEy10J2Cc+dxUAW4lRRQYbS5pugMOqBrs8ksw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{ asset('https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js') }}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -262,7 +267,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js	"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
     // Get the carousel element
     var carousel = document.querySelector('#carouselExampleControls');

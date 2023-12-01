@@ -37,10 +37,12 @@ class TrainingController extends Controller
                 'fileSize' => number_format($dd['fileSize'] / 1024) ,
                 'subMenu'=> $dd['subMenu'],
                 'name' => $dd['name'],
+                'editUrl' => route('admin.train.edit', $dd['id']),
+                'deleteUrl' => route('admin.train.delete', $dd['id']),
                 'createdAt' => $formattedCreatedAt,
             ];
         }
-     
+        $dataJsonFile = json_encode($fileData);
 
         $result = [];
         foreach ($data['data'] as $item) {
@@ -60,6 +62,7 @@ class TrainingController extends Controller
             'dataJson' => $dataJson,
             'fileData' => $fileData,
             'sub' => $sub,
+            'dataJsonFile' => $dataJsonFile,
             'firstName' => $firstName,
             'lastName' => $lastName
         ]);

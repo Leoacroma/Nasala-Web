@@ -20,7 +20,6 @@
                                 <h2 class="Siemreap title-rps title">{{ $data['data']['titleKh'] }}</h2>
                             @endif
                         @endif
-                        
                     </div>
                 </div>
                 <div class="row">
@@ -47,7 +46,6 @@
                     <div class="container">
                         <div class="col-md-12 divider-line"></div>
                     </div>
-                   
                 </div>
                 <div class="row">
                     <div class="col-md-12 Siemreap conetent-rps">
@@ -66,7 +64,7 @@
                     <a class="text-decoration-none color-black hover-underline-animation " href="{{ route('front.subnews', $item['id']) }}">
                         <div class="row mt-2">
                             <div class="col-md-5">
-                                <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="img-fluid" alt="" >
+                                <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="img-fluid" alt="" >
                             </div>
                             <div class="col-md-7 mg-l-m10 hover-title-animate">
                                 <p class="Siemreap font-size-15">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...') }}</p>
@@ -92,7 +90,7 @@
                        <div class="col-md-12">
                         <a href="{{ route('front.subnews', $item['id']) }}" class="col" style="width: 400px;  color: black">
                             <div class="card">
-                                <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" /> 
+                                <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" /> 
                                 <div class="card-body">
                                 <h5 class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...')}}</h5>
                                 <small class="Siemreap mg-r-10px ">{{ $item['createdAt'] }}</small>
@@ -117,7 +115,7 @@
                     @foreach ($result as $item)
                         <a href="{{ route('front.subnews', $item['id']) }}" class="col" style="width: 400px;  color: black">
                             <div class="card">
-                                <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-size" alt="Hollywood Sign on The Hill" /> 
+                                <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-size" alt="Hollywood Sign on The Hill" /> 
                                 <div class="card-body">
                                 <h5 class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...')}}</h5>
                                 <small class="Siemreap mg-r-10px ">{{ $item['createdAt'] }}</small>

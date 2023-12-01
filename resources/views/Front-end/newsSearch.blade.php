@@ -30,7 +30,7 @@
   </div>
 </div>
     <!-- content -->
-    <div class="container">
+    <div class="container rps-sort-blib">
         <div class="row">
           <div class="col-12 search-Arps">
             <form  method="GET" action="{{ route( 'searchNews.news', ['page' => 0]) }}">
@@ -47,11 +47,11 @@
             </form>
         </div>
             @foreach ($result as $item)
-            <div class="col-md-3 mt-3">
+            <div class="col-md-4 mt-3">
                 <a  href="{{ route('front.subnews', $item['id']) }}" class=" text-decoration-none color-black Siemreap  font-size-20">
                     <div class="card" style="height: 450px">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                          <img class="img-fluid" src="https://nasla.k5moi.com/v1/api/files/{{$item['thumbnailImageId'] }}" class="img-fluid"/>
+                          <img class="img-news" src="https://api-nasla.k5moi.com/v1/api/files/{{$item['thumbnailImageId'] }}" class="img-fluid"/>
                           <a href="{{ route('front.subnews', $item['id']) }}">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                           </a>
@@ -75,6 +75,52 @@
             @endforeach
         </div>
     </div> 
+    {{-- Responsive --}}
+    <div class="container rps-sort-lib ">
+      <div class="row">
+        <div class="col-12 search-Arps">
+          <form  method="GET" action="{{ route( 'searchNews.news', ['page' => 0]) }}">
+              @csrf
+              <div class="input-group">
+                  <div class="form-outline">
+                    <input type="search" name="searchNews" id="searchInput" class="form-control" />
+                    <label class="form-label" for="form1">Search</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+          </form>
+      </div>
+          @foreach ($result as $item)
+          <div class="col-md-3 mt-3">
+              <a  href="{{ route('front.subnews', $item['id']) }}" class=" text-decoration-none color-black Siemreap  font-size-20">
+                  <div class="card" style="height: 450px">
+                      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img class="img-fluid" src="https://api-nasla.k5moi.com/v1/api/files/{{$item['thumbnailImageId'] }}" class="img-fluid"/>
+                        <a href="{{ route('front.subnews', $item['id']) }}">
+                          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                      </div>
+                      <div class="card-body">
+                      @if (app()->getLocale() === 'kh')
+                        <h5 class="card-title Siemreap" style="line-height: 30px" >{{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 85, $end = '...')}}</h5>
+                      @else
+                          @if ($item['title'] !== null)
+                              <h5 class="card-title Siemreap">{{\Illuminate\Support\Str::limit($item['title'], $limit = 85, $end = '...')}}</h5>
+                          @else
+                              <h5 class="card-title Siemreap"> {{\Illuminate\Support\Str::limit($item['titleKh'], $limit = 85, $end = '...')}}</h5>
+                          @endif
+                      @endif
+                      <small class="font-size-15 Siemreap">{{ $item['createdAt'] }}</small> 
+                      </div>
+                  </div>
+                  {{-- <span class="badge bg-warning text-dark Siemreap font-size-12">{{ $item['category']['nameKh'] }}</span> --}}
+              </a>
+          </div>
+          @endforeach
+      </div>
+  </div> 
     <div class="container ">
         <div class="row ">
             <nav class="mt-5" aria-label="...">

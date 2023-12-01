@@ -64,7 +64,7 @@
             @foreach ($result as $item)
                 <div class="row p-0 mb-3">
                     <div class="col-md-2">
-                      <img src="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}?isPdf=false" alt="" class="img-fluid">
+                      <img src="https://api-nasla.k5moi.com/v1/api/library/{{ $item['id'] }}?isPdf=false" alt="" class="img-fluid">
                     </div>
                     <div class="col-md-7">
                         <h1 class="Siemreap font-size-25">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 30, $end = '...') }}</h1>
@@ -132,11 +132,11 @@
     <div class="col-12 mt-2">
       @foreach ($result as $item)
         <div class="card">
-          <img src="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}?isPdf=false" class="card-img-top img-fluid" alt="Fissure in Sandstone"/>
+          <img src="https://api-nasla.k5moi.com/v1/api/library/{{ $item['id'] }}?isPdf=false" class="card-img-top img-fluid" alt="Fissure in Sandstone"/>
           <div class="card-body">
             <h5 class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 50, $end = '...') }}</h5>
             <p class="card-text Siemreap">កាលបរិច្ឆេទ ៖ {{ $item['createdAt'] }}</p>
-            <a href="https://nasla.k5moi.com/v1/api/library/{{ $item['id'] }}" class="btn btn-success Siemreap" download><i class="fa-solid fa-download mr-2"></i>{{ __('messages.Download') }}</a>
+            <a href="https://api-nasla.k5moi.com/v1/api/library/{{ $item['id'] }}" class="btn btn-success Siemreap" download><i class="fa-solid fa-download mr-2"></i>{{ __('messages.Download') }}</a>
           </div>
         </div>
       @endforeach

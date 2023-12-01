@@ -27,7 +27,7 @@
                                     <p class="text-title-rps Siemreap ">{{ $item['title'] }}</p>
                                 </div>
                                 <div class="col-md-2 col-5 btn-font-rps">
-                                    <a href="https://nasla.k5moi.com/v1/api/training/{{ $item['id'] }}" class="btn btn-success Siemreap  float-right" download>
+                                    <a href="https://api-nasla.k5moi.com/v1/api/training/{{ $item['id'] }}" class="btn btn-success Siemreap  float-right" download>
                                         <i class="fa-solid fa-download mr-2"></i>{{ __('messages.Download') }}</a>
                                     {{-- <button type="submit" class="btn btn-info Siemreap font-size-17">
                                         <i class="fa-solid fa-eye mr-2"></i>មើល</button> --}}

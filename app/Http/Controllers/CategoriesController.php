@@ -24,6 +24,7 @@ class CategoriesController extends Controller
         $httpClient = new HttpClientHelper();
         $data = $httpClient->getRequest('/categories');
         $_COOKIE = Cookie::get('user_Id');
+        $Roles = Cookie::get('user_Role');
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
         $lastName = $user['data']['lastNameKh'];
@@ -41,7 +42,8 @@ class CategoriesController extends Controller
         return view('Back-end.Pages.Post.news.postcate', [
             'dataJson' => $dataJson,
             'firstName' => $firstName,
-            'lastName' => $lastName
+            'lastName' => $lastName,
+            'Roles' => $Roles
         ]);
     }
 

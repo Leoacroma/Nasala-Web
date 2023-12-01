@@ -10,7 +10,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UploadHelper
 {
-    private $apiBaseUrl = 'https://nasla.k5moi.com/v1/api';
+    private $apiBaseUrl = 'https://api-nasla.k5moi.com/v1/api';
     private $accessToken = '';
     
 

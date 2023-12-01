@@ -1,4 +1,7 @@
+<?php
+    $_COOKIE = Cookie::get('user_Role');
 
+?>
     <nav class="navbar top-navbar col-lg-12 col-12 p-0">
         <div class="container-fluid">
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-around">
@@ -60,8 +63,8 @@
                 </a>
                 <div class="submenu">
                     <ul>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.postcate') }}">ប្រភេទព័ត៌មាន</a></li>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.post') }}">ការបង្ហោះព័ត៌មាន</a></li>
+                        <li class="nav-item {{ Route::currentRouteNamed('admin.postcate', 'admin.editcate', ) ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.postcate') }}">ប្រភេទព័ត៌មាន</a></li>
+                        <li class="nav-item {{ Route::currentRouteNamed('admin.post', 'admin.create', 'admin.edit' ) ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.post') }}">ការបង្ហោះព័ត៌មាន</a></li>
                     </ul>
                 </div>
             </li>
@@ -73,10 +76,9 @@
                 </a>
                 <div class="submenu">
                     <ul>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.train.cate') }}">ប្រភេទការបណ្តុះបណ្តាល</a></li>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.train.post') }}">វគ្គបណ្តុះបណ្តាល</a></li>
-                        <li class="nav-item"><a class="nav-link kantumruy" href="{{ route('admin.reg.index') }}">ការចុះឈ្មោះចូលរៀន</a></li>
-
+                        <li class="nav-item {{ Route::currentRouteNamed( 'admin.train.cate', 'admin.trian.cate.edit') ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.train.cate') }}">ប្រភេទការបណ្តុះបណ្តាល</a></li>
+                        <li class="nav-item {{ Route::currentRouteNamed('admin.train.post') ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.train.post') }}">វគ្គបណ្តុះបណ្តាល</a></li>
+                        <li class="nav-item {{ Route::currentRouteNamed( 'admin.reg.index') ? 'active' : '' }}"><a class="nav-link kantumruy" href="{{ route('admin.reg.index') }}">ការចុះឈ្មោះចូលរៀន</a></li>
                     </ul>
                 </div>
             </li>
@@ -101,14 +103,15 @@
                     <i class="menu-arrow"></i>
                 </a>
             </li>
-            <li class="nav-item {{ Route::currentRouteNamed('admin.user') ? 'active' : '' }}">
-                <a href="{{  route('admin.user')}}" class="nav-link">
-                    <i class="fa-solid fa-cloud mb-3 font-size-20"></i>
-                    <span class="menu-title kantumruy" >គ្រប់គ្រងគណនីប្រើប្រាស់</span>
-                    <i class="menu-arrow"></i>
-                </a>
-            </li>
-            
+            @if( $_COOKIE == 'Super-admin' || $_COOKIE == 'Admin' || $_COOKIE == 'Moderator')
+                <li class="nav-item {{ Route::currentRouteNamed('admin.user') ? 'active' : '' }}">
+                    <a href="{{  route('admin.user')}}" class="nav-link">
+                        <i class="fa-solid fa-cloud mb-3 font-size-20"></i>
+                        <span class="menu-title kantumruy" >គ្រប់គ្រងគណនីប្រើប្រាស់</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                </li>
+            @endif
             </ul>
         </div>
     </nav>

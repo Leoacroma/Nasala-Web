@@ -44,7 +44,7 @@
                 <br/>
                 <span>ឯកឧត្តម សូ​ មុនីរក្សា នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email1 }}">somounyraksa@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email1 }}" target="_blank">somounyraksa@gmail.com</a></span>
             </div>
         </div>
         <div class="row">
@@ -53,21 +53,21 @@
                 <br/>
                 <span >លោកជំទាវ ជី ច័ន្ទរស្មី <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{  $email2 }}">chychanraksmey@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{  $email2 }}" target="_blank">chychanraksmey@gmail.com</a></span>
             </div>
             <div class="col-4 text-algin-center Siemreap font-size-16">
                 <img class="image-front-TT" src="{{ asset('images/E 200.jpg') }}" alt="">
                 <br/>
                 <span >ឯកឧត្តម មុំ រីរៈ <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email3 }}">virakmommoi@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email3 }}" target="_blank">virakmommoi@gmail.com</a></span>
             </div>
             <div class="col-4 text-algin-center Siemreap font-size-16">
                 <img class="image-front-TT" src="{{ asset('images/photo_2023-09-24_10-17-16.jpg') }}" alt="">
                 <br/>
                 <span >ឯកឧត្តម គង់ ចាន់ថន <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email4 }}">chanthankong@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email4 }}" target="_blank">chanthankong@gmail.com</a></span>
             </div>
            
         </div>
@@ -77,28 +77,28 @@
                 <br/>
                 <span >លោកស្រី ម៉ៅ មាលីស <br/> ប្រធាននាយកដ្ឋានកិច្ចការទូទៅ</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email5 }}">malismoa@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email5 }}" target="_blank">malismoa@gmail.com</a></span>
             </div>
             <div class="col-3 text-algin-center Siemreap font-size-16">
                 <img class="image-front-TT" src="{{ asset('images/លោក លឹម ពុទ្ធារី.JPG') }}" alt="">
                 <br/>
                 <span >លោក លឹម ពុទ្ធារី <br/> ប្រធាននាយកបណ្តុះបណ្តាល</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email6 }}">potheary@iuj.ac.jp</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email6 }}" target="_blank">potheary@iuj.ac.jp</a></span>
             </div>
             <div class="col-3 text-algin-center Siemreap font-size-16">
                 <img class="image-front-TT" src="{{ asset('images/លោក ឯមតាន់ សុផានិត.JPG') }}" alt="">
                 <br/>
                 <span >លោក ឯមតាន់ សុផានិត <br/> ប្រធាននាយកដ្ឋានផែនការ និង​កិច្ចសហប្រតិបត្តិការ</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email7 }}">emtannsophanith.nasla<br/> @gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email7 }}" target="_blank">emtannsophanith.nasla<br/> @gmail.com</a></span>
             </div>
             <div class="col-3 text-algin-center Siemreap font-size-16">
                 <img class="image-front-TT" src="{{ asset('images/លោក លី ពៅមណីរត្ន.jpg') }}" alt="">
                 <br/>
                 <span >លោក លី ពៅមណីរត្ន <br/> ប្រធាននាយកដ្ឋានស្រាវជ្រាវ និងផ្សព្វផ្សាយ</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email8 }}">poeumoniroath@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email8 }}" target="_blank">poeumoniroath@gmail.com</a></span>
             </div>
             
         </div>
@@ -114,7 +114,7 @@
             <div class="col-8 Siemreap">
                 <span>ឯកឧត្តម សូ​ មុនីរក្សា នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email1 }}">somounyraksa@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email1 }}" target="_blank">somounyraksa@gmail.com</a></span>
             </div>
         </div>
         <div class="col-12 Siemreap mt-5">
@@ -127,7 +127,7 @@
             <div class="col-8 Siemreap">
                 <span >លោកជំទាវ ជី ច័ន្ទរស្មី <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{  $email2 }}">chychanraksmey@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{  $email2 }}" target="_blank">chychanraksmey@gmail.com</a></span>
                 
             </div>
         </div>
@@ -138,7 +138,7 @@
             <div class="col-8 Siemreap">
                 <span >ឯកឧត្តម មុំ រីរៈ <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email3 }}">virakmommoi@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email3 }}" target="_blank">virakmommoi@gmail.com</a></span>
             </div>
         </div>
         <div class="row">
@@ -148,7 +148,7 @@
             <div class="col-8 Siemreap">
                 <span >ឯកឧត្តម គង់ ចាន់ថន <br/> នាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email4 }}">chanthankong@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email4 }}" target="_blank">chanthankong@gmail.com</a></span>
             </div>
         </div>
         <div class="col-12 Siemreap mt-5">
@@ -161,7 +161,7 @@
             <div class="col-8 Siemreap">
                 <span >លោកស្រី ម៉ៅ មាលីស <br/> ប្រធាននាយកដ្ឋានកិច្ចការទូទៅ</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email5 }}">malismoa@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email5 }}" target="_blank">malismoa@gmail.com</a></span>
             </div>
         </div>
         <div class="row">
@@ -171,7 +171,7 @@
             <div class="col-8 Siemreap">
                 <span >លោក លឹម ពុទ្ធារី <br/> ប្រធាននាយកបណ្តុះបណ្តាល</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email6 }}">potheary@iuj.ac.jp</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email6 }}" target="_blank">potheary@iuj.ac.jp</a></span>
             </div>
         </div>
         <div class="row">
@@ -181,7 +181,7 @@
             <div class="col-8 Siemreap">
                 <span >លោក ឯមតាន់ សុផានិត <br/> ប្រធាននាយកដ្ឋានផែនការ និង​កិច្ចសហប្រតិបត្តិការ</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email7 }}">emtannsophanith.nasla<br/> @gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email7 }}" target="_blank">emtannsophanith.nasla<br/> @gmail.com</a></span>
             </div>
         </div>
         <div class="row mt-3">
@@ -191,7 +191,7 @@
             <div class="col-8 Siemreap">
                 <span >លោក លី ពៅមណីរត្ន <br/> ប្រធាននាយកដ្ឋានស្រាវជ្រាវ និងផ្សព្វផ្សាយ</span>
                 <br/>
-                <span >អ៊ីម៉ែល <a href="{{ $email8 }}">poeumoniroath@gmail.com</a></span>
+                <span >អ៊ីម៉ែល <a href="{{ $email8 }}" target="_blank">poeumoniroath@gmail.com</a></span>
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@
             <p>{{ $item['description'] }}</p>
         </div>
         <div class="col-md-12 text-algin-center">
-            <img src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}"  class="card-img-top img-fluid" style="width: 450px"/>
+            <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}"  class="card-img-top img-fluid" style="width: 450px"/>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary Kantumruy" style="font-size: 15px; font-weight: 400" data-mdb-dismiss="modal">ត្រលប់ក្រោយ</button>

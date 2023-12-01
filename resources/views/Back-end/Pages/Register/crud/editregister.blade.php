@@ -43,7 +43,7 @@
                     <label class="form-label">ជ្រើសរើសរូបភាពវគ្គសិក្សាដើម្បីបញ្ចូល </label>
                     <input type="file" name="image" class="form-control file-upload-info" id="image-upload-input2" accept="image/*">
                     <div  id="uploaded-image-container2" class="m-3"></div>
-                    <img  id="previous2" src="https://nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}?isPdf=false" alt="" >
+                    <img  id="previous2" src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}?isPdf=false" alt="" >
                   </div>
               {{-- <div  id="uploaded-image-container2" class="m-3"></div> --}}
               <div class="alert alert-danger Siemreap" style="display: none" role="alert">
