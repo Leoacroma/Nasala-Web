@@ -31,7 +31,7 @@
             <div class="col-md-12 Kantumruy">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h2 style="font-weight: bold">ដៃគូដែលបានចុះអនុស្សនៈគ្នា</h2>
+                        <h2 style="font-weight: bold">{{ __('messages.Parties who have signed a memorandum') }}</h2>
                     </div>
                 </div>
                 <div class="row mt-5">
@@ -84,7 +84,7 @@
             <div class="col-md-12 Kantumruy">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h2 style="font-weight: bold">ដៃគូអភិវឌ្ឍន៍នានា</h2>
+                        <h2 style="font-weight: bold">{{__('messages.Development Partners') }}</h2>
                     </div>
                 </div>
                 <div class="row">

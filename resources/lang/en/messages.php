@@ -21,6 +21,7 @@ return [
     'About National School of Local Administration' => 'About NASLA',
     'Structure' => 'Structure',
     'Government Institutions' => 'Government Institutions',
+    'Parties who have signed a memorandum' => 'Parties who have signed a memorandum',
     'Development Partners' => 'Development Partners',
     'Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.' => 'Trapeang Veng Village, Sangkat Kork Roka, Khan Prek Pnov, Phnom Penh.',
     'Copyright' => 'Copyright', 
