@@ -17,6 +17,7 @@ class OuthController extends Controller
     public function loginForm(Request $request){
        return view('Back-end.log.loginForm');
     }
+
     public function login(Request $request){
         try {
             $httpClient = new HttpClientHelper();

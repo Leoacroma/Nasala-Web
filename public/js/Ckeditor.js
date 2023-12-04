@@ -42,13 +42,13 @@ $(document).ready(function() {
         ],
         addDefaultFonts: false,
         fontSizes: ['8', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '24', '28', '32', '36'],
-        callbacks: {
-            onImageUpload: function(files) {
-                for (var i = 0; i < files.length; i++) {
-                    encodeImageFileAsURL(files[i], this);
-                }
-            }
-        }
+        // callbacks: {
+        //     onImageUpload: function(files) {
+        //         for (var i = 0; i < files.length; i++) {
+        //             encodeImageFileAsURL(files[i], this);
+        //         }
+        //     }
+        // }
     });
 });
 $(document).ready(function() {
