@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <i class="fa-solid fa-calendar-days icon-ccc"></i>
-                                <small class="Siemreap mg-r-10px text-ccc">{{$formattedCreatedAt }}</small>
+                                <small class="Siemreap mg-r-10px text-ccc">{{ $DateCreatedAt }}</small>
                                 <i class="fa-solid fa-eye icon-ccc"></i>
                                 <small class="Siemreap text-ccc">{{ $data['data']['totalViewers'] }}</small> |
                                 @php

@@ -5,24 +5,16 @@ namespace App\Http\Controllers;
 use App\Helpers\HttpClientHelper;
 use App\Helpers\HttpUserHelper;
 
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Client;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use KhmerDateTime\KhmerDateTime;
 
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Http;
-use PhpParser\Node\Expr\Cast\String_;
-use RealRashid\SweetAlert\Facades\Alert;
-use Dompdf\Dompdf;
 use Exception;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Storage;
-use Mockery\Expectation;
 use Illuminate\Support\Str;
+
+
 
 class Controller extends BaseController
 {
@@ -215,7 +207,7 @@ class Controller extends BaseController
 
     public function subenews(string $id){
 
-        try {
+        // try {
             $request_Id = $id;
         $httpClient = new HttpUserHelper();
         $data = $httpClient->getRequest('/news/'.$request_Id);
@@ -231,8 +223,11 @@ class Controller extends BaseController
       
         // dd($image);
         $dateTime = KhmerDateTime::parse($data['data']['createdAt']);
-        $formattedCreatedAt = $dateTime->format("LL");
-
+        $DateCreatedAt = $dateTime->format("LL");
+        
+        // $formatViewerCount = NumberHumanizer::metricSuffix(10000);
+        // dd($formatViewerCount);
+            
         $result = [];
         foreach ($sortLastedAtNewswith6['data'] as $item) {
             $dateTime = KhmerDateTime::parse($item['createdAt']);
@@ -261,16 +256,16 @@ class Controller extends BaseController
       
         return view('Front-end.sub-news.subnews',[
             'data' => $data, 
-            'formattedCreatedAt' => $formattedCreatedAt,
+            'DateCreatedAt' => $DateCreatedAt,
             'subMenu' => $subMenu,
             'cateSub' => $cateSub,
             'result2' => $result2,
              'result' => $result
             ]
         );
-        } catch (\Throwable $th) {
-            return redirect()->route('not-found');
-        }
+        // } catch (\Throwable $th) {
+        //     return redirect()->route('not-found');
+        // }
         
     }
     public function dp1(){
