@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\HttpClientHelper;
 use App\Helpers\UploadHelper;
+use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -72,34 +73,42 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $validate = $request->validate([
-            'titleKh' => 'required|max:255',
-            'categoryId' => 'required',
-            'contentKh' => 'required',
-        ]);
-
-        $file = $request->file('thumbnailImageId');
-        $httpUpload = new UploadHelper();
-        $upload =  $httpUpload->postRequest('/files/upload', $file);
-        $thumbnailImageId = $upload['id'];
-       
-        $body = [ 
-            'title' => request('title'),
-            'titleKh' => request('titleKh'),
-            'categoryId' => request('categoryId'),
-            'thumbnailImageId' => $thumbnailImageId,
-            'content' => request('content'),
-            'contentKh' => request('contentKh'),
-        ];
-
-        $httpClient = new HttpClientHelper();
-        $result = $httpClient->postRequest('/news', $body);
-        
-        if($upload){
-            Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
+        try {
+            //code...
+            $validate = $request->validate([
+                'titleKh' => 'required|max:255',
+                'categoryId' => 'required',
+                'contentKh' => 'required',
+            ]);
+    
+            $file = $request->file('thumbnailImageId');
+            $httpUpload = new UploadHelper();
+            $upload =  $httpUpload->postRequest('/files/upload', $file);
+            $thumbnailImageId = $upload['id'];
+           
+            $body = [ 
+                'title' => request('title'),
+                'titleKh' => request('titleKh'),
+                'categoryId' => request('categoryId'),
+                'thumbnailImageId' => $thumbnailImageId,
+                'content' => request('content'),
+                'contentKh' => request('contentKh'),
+            ];
+    
+            $httpClient = new HttpClientHelper();
+            $result = $httpClient->postRequest('/news', $body);
+            
+            if($upload){
+                Alert::success('ទិន្នន័យបានបញ្ចូលជោគជ័យ');
+            }
+            return redirect()->route('admin.post');
+        } catch (Exception $e) {
+            // throw $e;
+            Alert::error('ការបញ្ចូលទិន្នន័យមានភាពមិនប្រក្រដី');
+            return redirect()->back();
         }
-        return redirect()->route('admin.post');
+        //
+        
     }
 
     /**

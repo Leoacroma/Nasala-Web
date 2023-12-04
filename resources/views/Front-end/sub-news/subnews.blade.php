@@ -29,7 +29,7 @@
                                 <i class="fa-solid fa-calendar-days icon-ccc"></i>
                                 <small class="Siemreap mg-r-10px text-ccc">{{$formattedCreatedAt }}</small>
                                 <i class="fa-solid fa-eye icon-ccc"></i>
-                                <small class="Siemreap text-ccc">10k</small> |
+                                <small class="Siemreap text-ccc">{{ $data['data']['totalViewers'] }}</small> |
                                 @php
                                     $hyperlink = 'www.facebook.com';
                                     if (!str_starts_with($hyperlink , 'http://') && !str_starts_with($hyperlink , 'https://')) {
