@@ -20,7 +20,7 @@ class AboutSchoolController extends Controller
 
 
         $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/home/video');
+        $data = $httpClient->getRequest('/home/video?page=0&sortOrder=desc&sortBy=createdAt');
         $_COOKIE = Cookie::get('user_Id');
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];

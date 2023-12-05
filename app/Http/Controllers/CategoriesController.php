@@ -22,7 +22,7 @@ class CategoriesController extends Controller
     {
       
         $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/categories');
+        $data = $httpClient->getRequest('/categories?page=0&sortOrder=desc&sortBy=createdAt');
         $_COOKIE = Cookie::get('user_Id');
         $Roles = Cookie::get('user_Role');
         $user = $httpClient->getRequest('/users/'.$_COOKIE);

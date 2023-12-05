@@ -19,9 +19,9 @@ class TrainingController extends Controller
     {
         //
         $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/training/posts');
+        $data = $httpClient->getRequest('/training/posts?page=0&sortOrder=desc&sortBy=createdAt');
         $sub = $httpClient->getRequest('/sub-menus');
-        $file = $httpClient->getRequest('/training');
+        $file = $httpClient->getRequest('/training?page=0&sortOrder=desc&sortBy=createdAt');
         $_COOKIE = Cookie::get('user_Id');
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];

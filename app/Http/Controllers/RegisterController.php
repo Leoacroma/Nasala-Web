@@ -19,7 +19,7 @@ class RegisterController extends Controller
     {
         //
         $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/register');
+        $data = $httpClient->getRequest('/register?page=0&sortOrder=desc&sortBy=createdAt');
         $_COOKIE = Cookie::get('user_Id');
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];

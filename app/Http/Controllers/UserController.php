@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         //
         $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/users');
+        $data = $httpClient->getRequest('/users?page=0&sortOrder=desc&sortBy=createdAt');
         $role = $httpClient->getRequest('/roles');
 
         $_COOKIE = Cookie::get('user_Id');

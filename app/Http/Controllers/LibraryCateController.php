@@ -19,8 +19,8 @@ class LibraryCateController extends Controller
     {
         //
         $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/library/categories');
-        $lib = $httpClient->getRequest('/library');
+        $data = $httpClient->getRequest('/library/categories?page=0&sortOrder=desc&sortBy=createdAt');
+        $lib = $httpClient->getRequest('/library?page=0&sortOrder=desc&sortBy=createdAt');
         $_COOKIE = Cookie::get('user_Id');
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
