@@ -210,7 +210,7 @@ class Controller extends BaseController
 
     public function subenews(string $id){
 
-        // try {
+        try {
             $request_Id = $id;
         $httpClient = new HttpUserHelper();
         $data = $httpClient->getRequest('/news/'.$request_Id);
@@ -227,7 +227,7 @@ class Controller extends BaseController
         // dd($image);
         $dateTime = KhmerDateTime::parse($data['data']['createdAt']);
         $DateCreatedAt = $dateTime->format("LL");
-        
+        $contentShare = Str::limit($data['data']['title'], $limit = 20, $end = '...');
         // $formatViewerCount = NumberHumanizer::metricSuffix(10000);
         // dd($formatViewerCount);
             
@@ -260,15 +260,17 @@ class Controller extends BaseController
         return view('Front-end.sub-news.subnews',[
             'data' => $data, 
             'DateCreatedAt' => $DateCreatedAt,
+            'request_Id' => $request_Id,
             'subMenu' => $subMenu,
             'cateSub' => $cateSub,
+            'contentShare' => $contentShare,
             'result2' => $result2,
              'result' => $result
             ]
         );
-        // } catch (\Throwable $th) {
-        //     return redirect()->route('not-found');
-        // }
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
+        }
         
     }
     public function dp1(){

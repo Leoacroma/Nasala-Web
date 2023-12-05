@@ -1,5 +1,12 @@
 @extends('Front-end.Layout')
 @section('content')
+@section('facebook-share')
+<meta property="og:url"           content="https://nasla.interior.gov.kh/beta/news/subnews/{{ $request_Id }}" />
+<meta property="og:type"          content="News" />
+<meta property="og:title"         content="{{ $data['data']['titleKh'] }}" />
+<meta property="og:description"   content="{{ $contentShare }}" />
+<meta property="og:image"         content="{{ asset('https://nasla.k5moi.com/v1/api/files/'.$data['data']['thumbnailImageId']) }}" />
+@endsection
 
 <?php
         // Retrieve the locale value from the session
@@ -37,10 +44,13 @@
                                     }
                                 @endphp  
                                 {{-- <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $data['data']['category']['nameKh'] }}</span> --}}
-                                <div id="fb-root"></div>
-                                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="XrMjw8L9"></script>
-                                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div>
-{{-- <a class="color-black" href="{{ $hyperlink }}"><i class="fa-solid fa-share-from-square icon-ccc"></i></a> --}}
+                                
+                                {{-- <a class="color-black"  data-href="">share</a> --}}
+                                <div class="fb-share-button" 
+                                data-href="https://nasla.interior.gov.kh/beta/news/subnews/{{ $request_Id }}" 
+                                data-layout="button_count">Share
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
