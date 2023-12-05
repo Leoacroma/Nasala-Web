@@ -118,9 +118,9 @@ fjs.parentNode.insertBefore(js, fjs);
                                     $youtube = 'https://' . $youtube;
                                 }
                                 @endphp
-                                <a class="icon-link ml-2" href="{{ $tele }} " target="_blank"><i class="fa-brands fa-telegram  color-rgb-10-137-240"></i></a>
-                                <a class="icon-link ml-2" href="{{ $youtube }}" target="_blank"><i class="fa-brands fa-youtube   color-red"></i></a>
-                                <a class="icon-link ml-2" href="{{ $facebook }}" target="_blank"><i class="fa-brands fa-square-facebook   color-blue"></i></a>
+                                <a class="icon-link " href="{{ $tele }} " target="_blank"><i class="fa-brands fa-telegram  color-rgb-10-137-240"></i></a>
+                                <a class="icon-link " href="{{ $youtube }}" target="_blank"><i class="fa-brands fa-youtube   color-red"></i></a>
+                                <a class="icon-link " href="{{ $facebook }}" target="_blank"><i class="fa-brands fa-square-facebook   color-blue"></i></a>
                             </div>
                             <div class="col-md-6 col-6 mt-2">
                                 <!-- language -->
@@ -217,7 +217,7 @@ fjs.parentNode.insertBefore(js, fjs);
         <div class="container-field bg-color-355fb6">
             <div class="container">
                 <div class="row mt-3 p-2">
-                    <div class="col-md-2 col-12 color-white dp-font text-rps" data-locale="{{ $locale }}">
+                    {{-- <div class="col-md-2 col-12 color-white dp-font text-rps" data-locale="{{ $locale }}">
                         <span>{{ __('messages.About National School of Local Administration') }}</span>
                         <span>
                             <ul >
@@ -226,7 +226,7 @@ fjs.parentNode.insertBefore(js, fjs);
                                 <li><a class=" color-white footer-hover-underline-animation" href="{{ route('front.aboutschool.dp8') }}">{{ __('messages.Structure') }}</a></li>
                             </ul>
                         </span>
-                    </div>
+                    </div> --}}
                     <div class="col-md-3 col-12 color-white dp-font text-rps" data-locale="{{ $locale }}">
                         <span>{{ __('messages.Contact') }}</span>
                         <span>
@@ -247,7 +247,7 @@ fjs.parentNode.insertBefore(js, fjs);
                             </ul>
                         </span>
                     </div>
-                    <div class="col-md-2 col-12 color-white dp-font text-rps" data-locale="{{ $locale }}">
+                    {{-- <div class="col-md-2 col-12 color-white dp-font text-rps" data-locale="{{ $locale }}">
                         <span>{{ __('messages.Partner') }}</span>
                         <span>
                             <ul >
@@ -255,7 +255,7 @@ fjs.parentNode.insertBefore(js, fjs);
                                 <li>{{ __('messages.Development Partners') }}</li>
                             </ul>
                         </span>
-                    </div>
+                    </div> --}}
                     <div class="col-md-4">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9584.344342497143!2d104.80215907409342!3d11.615693136526563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31094d0787243909%3A0x9c825ffa6551df59!2z4Z6f4Z624Z6b4Z624Z6H4Z624Z6P4Z634Z6a4Z6K4Z-S4Z6L4Z6U4Z624Z6b4Z6Y4Z684Z6b4Z6K4Z-S4Z6L4Z624Z6TIOGegOGfkuGemuGen-GeveGehOGemOGeoOGetuGeleGfkuGekeGfgw!5e0!3m2!1sen!2skh!4v1700710510603!5m2!1sen!2skh" width="100% " height="150px" style=" border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
