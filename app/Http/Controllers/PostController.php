@@ -24,7 +24,7 @@ class PostController extends Controller
     {
         //
         $httpClient = new HttpClientHelper();
-        $data = $httpClient->getRequest('/news?page=0&sortOrder=desc'); 
+        $data = $httpClient->getRequest('/news?page=0&sortOrder=desc&sortBy=createdAt'); 
         $_COOKIE = Cookie::get('user_Id');
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
