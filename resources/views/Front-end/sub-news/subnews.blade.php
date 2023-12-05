@@ -37,7 +37,10 @@
                                     }
                                 @endphp  
                                 {{-- <span class="badge bg-warning text-dark font-size-14 Siemreap">{{ $data['data']['category']['nameKh'] }}</span> --}}
-                                <a class="color-black" href="{{ $hyperlink }}"><i class="fa-solid fa-share-from-square icon-ccc"></i></a>
+                                <div id="fb-root"></div>
+                                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="XrMjw8L9"></script>
+                                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div>
+{{-- <a class="color-black" href="{{ $hyperlink }}"><i class="fa-solid fa-share-from-square icon-ccc"></i></a> --}}
                             </div>
                         </div>
                     </div>

@@ -136,6 +136,7 @@
         foreach($result as $dd){
             $cate = $dd['category_id'];
         }
+        
     ?>
     <nav class="mt-2" aria-label="...">
       <ul class="pagination">

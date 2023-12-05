@@ -190,7 +190,10 @@ class Controller extends BaseController
             }
             $totalpage= $pagination['totalPage'];
             $currentPage = $pagination['page'];
-         
+
+            if($currentPage > $totalpage){
+                return redirect()->route('not-found');
+            }
             // dd($totalpage);
             return view('Front-end.newsPage', [
                 'result' => $result,  
@@ -370,6 +373,10 @@ class Controller extends BaseController
         }
         $totalpage= $pagination['totalPage'];
         $currentPage = $pagination['page'];
+        
+        if($currentPage > $totalpage){
+            return redirect()->route('not-found');
+        }
         return view('Front-end.lib.Cateliby',[
             'result' => $result, 
             'cate' => $cate,  
@@ -383,8 +390,9 @@ class Controller extends BaseController
         }
        
     }
+
     public function pageLib( $page){
-        // try {
+        try {
             $request_Page = $page;
             $httpClient = new HttpUserHelper();
             $lib = $httpClient->getRequest('/library');
@@ -408,7 +416,7 @@ class Controller extends BaseController
                     'createdAt' => $formattedCreatedAt,
                 ];
             }
-             
+            
             $result2 = [];
             foreach ($cate['data'] as $cate) {
                 $result2[] = [
@@ -417,8 +425,13 @@ class Controller extends BaseController
                     'name' => $cate['name'],
                 ];
             }
+            
             $totalpage= $pagination['totalPage'];
             $currentPage = $pagination['page'];
+
+            if($currentPage > $totalpage){
+                return redirect()->route('not-found');
+            }
             return view('Front-end.lib.pageLiby', [
                 'result' => $result, 
                 'result2' => $result2, 
@@ -428,10 +441,10 @@ class Controller extends BaseController
                 'totalpage' => $totalpage,
                 'currentPage' => $currentPage,
             ]);
-        // } catch (\Throwable $th) {
-        //     return redirect()->route('not-found');
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
 
-        // }
+        }
        
     }
 
@@ -504,6 +517,9 @@ class Controller extends BaseController
             }
             $totalpage= $pagination['totalPage'];
             $currentPage = $pagination['page'];
+            if($currentPage > $totalpage){
+                return redirect()->route('not-found');
+            }
             return view('Front-end.scholarship.pageScholarship', [
                 'result' => $result,
                  'subMenu' => $subMenu, 
