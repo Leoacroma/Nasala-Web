@@ -618,7 +618,7 @@ class Controller extends BaseController
         try {
             $httpClient = new HttpUserHelper();
             $cateSub = $httpClient->getRequest('/training/posts');
-            $reg = $httpClient->getRequest('/register');
+            $reg = $httpClient->getRequest('/register?page=0&sortOrder=desc&sortBy=createdAt');
             $result = [];
             foreach ($reg['data'] as $dd) {
                 $courseStartDate = KhmerDateTime::parse($dd['courseStartDate']);
