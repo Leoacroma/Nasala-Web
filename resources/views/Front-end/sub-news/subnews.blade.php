@@ -5,7 +5,12 @@
 <meta property="og:type"          content="News" />
 <meta property="og:title"         content="{{ $data['data']['titleKh'] }}" />
 <meta property="og:description"   content="{{ $contentShare }}" />
-<meta property="og:image"         content="{{ asset('https://nasla.k5moi.com/v1/api/files/'.$data['data']['thumbnailImageId']) }}" />
+<meta property="og:image"         content="https://nasla.k5moi.com/v1/api/files/{{ $data['data']['thumbnailImageId'] }}" />
+<meta property="og:image:secure_url" content="https://nasla.k5moi.com/v1/api/files/{{ $data['data']['thumbnailImageId'] }}" />
+<meta property="og:image:type"    content="image/jpeg" />
+<meta property="og:image:width"   content="400" />
+<meta property="og:image:height"  content="300" />
+<meta property="og:image:alt"     content="A shiny red apple with a bite taken out" />
 @endsection
 
 <?php

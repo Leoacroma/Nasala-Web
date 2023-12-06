@@ -8,6 +8,17 @@
         color: #355fb6;
     }
 </style>
+@section('pagination-style')
+<style>
+.page-item{
+    border: 1px solid rgb(186, 186, 186); 
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+@endsection
 <?php
         // Retrieve the locale value from the session
         $locale = app()->getLocale();
@@ -92,7 +103,7 @@
                     <ul class="pagination">
                     @if ($currentPage > 0)
                       <li class="page-item ">
-                        <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+                        <a class="page-link  " href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-chevron-left"></i></a>
                       </li>
                     @endif
                       @for ($i = 0; $i <= $totalpage-1; $i++)
@@ -102,7 +113,7 @@
                       @endfor
                     @if ($currentPage+1 < $totalpage )
                       <li class="page-item">
-                        <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
+                        <a class="page-link next-link  " href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-chevron-right"></i></a>
                       </li>
                     @endif
                     </ul>
@@ -112,6 +123,7 @@
         </div>
     </div>
 </div>
+{{-- </---------------------Responsive-------------------------------> --}}
 <div class="container rps-sort-lib">
     <div class="col-12">
       <div class="form-group">
@@ -151,7 +163,7 @@
         <ul class="pagination">
         @if ($currentPage > 0)
           <li class="page-item ">
-            <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+            <a class="page-link " href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-chevron-left"></i></a>
           </li>
         @endif
           @for ($i = 0; $i <= $totalpage-1; $i++)
@@ -161,7 +173,7 @@
           @endfor
         @if ($currentPage+1 < $totalpage )
           <li class="page-item">
-            <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
+            <a class="page-link next-link " href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-chevron-right"></i></a>
           </li>
         @endif
         </ul>

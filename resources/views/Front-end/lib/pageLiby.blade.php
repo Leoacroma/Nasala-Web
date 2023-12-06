@@ -4,6 +4,17 @@
         // Retrieve the locale value from the session
         $locale = app()->getLocale();
 ?>
+@section('pagination-style')
+<style>
+.page-item{
+    border: 1px solid rgb(186, 186, 186); 
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+@endsection
     <!-- Content title -->
     <div class="container mt-4">
       <div class="row">
@@ -16,7 +27,7 @@
                 @csrf
                 <div class="input-group">
                     <div class="form-outline">
-                      <input type="search" name="searchNews" id="searchInput" class="form-control" />
+                      <input type="search" name="searchLibs" id="searchInput" class="form-control" />
                       <label class="form-label" for="form1">Search</label>
                     </div>
                     <button type="submit" class="btn btn-primary">
@@ -55,14 +66,14 @@
         <div class="col-md-7">
           @foreach ($result as $item)
           <div class="row p-0 mb-3">
-              <div class="col-md-2">
+              <div class="col-3">
                 <img src="https://api-nasla.k5moi.com/v1/api/library/{{ $item['id'] }}?isPdf=false" alt="" class="img-fluid">
               </div>
-              <div class="col-md-7">
+              <div class="col-md-6">
                   <h1 class="Siemreap font-size-20">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 50, $end = '...') }}</h1>
                   <small class="Siemreap">កាលបរិច្ឆេទ ៖ {{ $item['createdAt'] }}</small>
               </div>
-              <div class="col-md-3"> 
+              <div class="col-3"> 
                   <small class="dp-font" data-locale="{{ $locale }}" >{{ __('messages.Filesize') }} ៖ {{ number_format($item['fileSize'] / 1024) }} Kbytes</small>
                   <a  href="https://api-nasla.k5moi.com/v1/api/library/{{ $item['id'] }}" class="btn btn-success Siemreap" download><i class="fa-solid fa-download mr-2"></i>{{ __('messages.Download') }}</a>
                   
@@ -81,7 +92,7 @@
                   <ul class="pagination">
                   @if ($currentPage > 0)
                     <li class="page-item ">
-                      <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+                      <a class="page-link" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-chevron-left"></i></a>
                     </li>
                   @endif
                   @for ($i = 0; $i <= $totalpage-1; $i++)
@@ -91,7 +102,7 @@
                   @endfor
                   @if ($currentPage+1 < $totalpage )
                     <li class="page-item">
-                      <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
+                      <a class="page-link next-link " href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-chevron-right"></i></a>
                     </li>
                   @endif
                   </ul>
@@ -142,7 +153,7 @@
       <ul class="pagination">
       @if ($currentPage > 0)
         <li class="page-item ">
-          <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+          <a class="page-link  " href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-chevron-left"></i></a>
         </li>
       @endif
       @for ($i = 0; $i <= $totalpage-1; $i++)
@@ -152,7 +163,7 @@
       @endfor
       @if ($currentPage+1 < $totalpage )
         <li class="page-item">
-          <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
+          <a class="page-link next-link  " href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-chevron-right"></i></a>
         </li>
       @endif
       </ul>

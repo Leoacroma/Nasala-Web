@@ -38,6 +38,8 @@
     
     <x-embed-styles />
 </head>
+@yield('pagination-style')
+
 <style>
 
 @font-face {
@@ -145,27 +147,29 @@ fjs.parentNode.insertBefore(js, fjs);
                         <a class="nav-link dropdown-toggle nav-font "  data-locale="{{ $locale }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('messages.Training') }}</a>
                         <ul class="dropdown-menu">
                             <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{  Route::currentRouteNamed('front.work.dp1') ? 'drop-actived' : '' }}" data-locale="{{ $locale }}" href="{{ route('front.work.dp1') }}">{{ __('messages.Annual training plan') }}</a></li>
-                            <li class="dropend mg-l-m10 pd-r-8">
-                                <a class="dropdown-item ml-2 dp-font {{  Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}" data-locale="{{ $locale }}">{{ __('messages.Training documents') }}</a>
-                                <ul class="dropdown-menu">
-                                    @foreach ($cateSub['data'] as $dd)
-                                    <li>
-                                        <a class="dropdown-item dp-font {{ request()->is('work/dp2/'. $dd['id']) ? 'drop-actived' : '' }}"
-                                            href="{{ route('front.work.dp2Content', $dd['id']) }}"  data-locale="{{ $locale }}">
-                                            @if (app()->getLocale() === 'kh')
-                                                {{ $dd['titleKh'] }}
-                                            @else
-                                                @if ($dd['title'] !== null)
-                                                    {{ $dd['title'] }}
-                                                @else
+                            @if($cateSub['data'] == !null)
+                                <li class="dropend mg-l-m10 pd-r-8">
+                                    <a class="dropdown-item ml-2 dp-font {{  Route::currentRouteNamed('front.work.dp2Content') ? 'drop-actived' : '' }}" href="{{ route('front.work.dp1') }}" data-locale="{{ $locale }}">{{ __('messages.Training documents') }}</a>
+                                    <ul class="dropdown-menu">
+                                        @foreach ($cateSub['data'] as $dd)
+                                        <li>
+                                            <a class="dropdown-item dp-font {{ request()->is('work/dp2/'. $dd['id']) ? 'drop-actived' : '' }}"
+                                                href="{{ route('front.work.dp2Content', $dd['id']) }}"  data-locale="{{ $locale }}">
+                                                @if (app()->getLocale() === 'kh')
                                                     {{ $dd['titleKh'] }}
+                                                @else
+                                                    @if ($dd['title'] !== null)
+                                                        {{ $dd['title'] }}
+                                                    @else
+                                                        {{ $dd['titleKh'] }}
+                                                    @endif
                                                 @endif
-                                            @endif
-                                        </a>
-                                    </li>
-                                     @endforeach
-                                </ul> 
-                            </li>
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul> 
+                                </li>
+                            @endif
                             <li class="dropend mg-l-m10 pd-r-8"><a class="dropdown-item dp-font ml-2 {{ Route::currentRouteNamed('front.enrollMent') ? 'drop-actived' : '' }}" href="{{ route('front.enrollMent') }}" data-locale="{{ $locale }}">{{ __('messages.Enroll') }}</a></li>
                         </ul>
                     </li>

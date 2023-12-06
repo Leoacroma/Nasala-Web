@@ -33,13 +33,13 @@
      <div class="container p-0">
         <div class="row " >
             @foreach ($result as $item)
-            <div class="col-lay-5">
+            <div class="col-5">
               <a href="{{ route('front.subScholar', $item['id']) }}">
                 <div class="row">
-                    <div class="col-lay-2">
+                    <div class="col-2">
                       <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" width="220px" height="300px" style="margin-bottom: 10px;" type="image/jpeg">
                     </div>
-                    <div class="col-lay-6">
+                    <div class="col-6">
                         <span  class="text-decoration-none color-black font-size-22 Siemreap">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 90, $end = '...')}}</span>
                         <br>
                         <small class="Siemreap">{{ $item['createdAt'] }}</small>
@@ -56,17 +56,17 @@
           <ul class="pagination">
           @if ($currentPage > 0)
             <li class="page-item ">
-              <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+              <a class="page-link  font-size-18 Kantumruy" href="{{ route('front.page.scholar', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
             </li>
           @endif
             @for ($i = 0; $i <= $totalpage-1; $i++)
-              <li class="page-item {{  request()->is('lib/page/'.$i.'/sort/cate/' . $cate) ? ' active' : ''  }}">
-                <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $i, 'id' => $cate]) }}">{{ $i +1 }}</a>
+              <li class="page-item {{  request()->is('scholar/page/'.$i) ? ' active' : ''  }}">
+                <a class="page-link  font-size-18 Kantumruy" href="{{ route('front.page.scholar', ['page' => $i, 'id' => $cate]) }}">{{ $i +1 }}</a>
               </li>
             @endfor
           @if ($currentPage+1 < $totalpage )
             <li class="page-item">
-              <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.lib', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
+              <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('front.page.scholar', ['page' => $currentPage + 1, 'id' => $cate]) }}" > <i class="fa-solid fa-forward"></i></a>
             </li>
           @endif
           </ul>

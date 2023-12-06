@@ -454,12 +454,15 @@ class Controller extends BaseController
         try {
             $request_Page = $page;
             $request_Keyword = request()->input('searchLibs');
+            // dd($request_Keyword);
             $httpUser = new HttpUserHelper;
             $subMenu = $httpUser->getRequest('/sub-menus');
             $cate = $httpUser->getRequest('/library/categories');
             $cateSub = $httpUser->getRequest('/training/posts');
             $search = $httpUser->getRequest('/library?page='.$request_Page.'&size=20&sortOrder=desc&keyword='.$request_Keyword);
     
+            
+
             if($request_Keyword == null){
                 return redirect()->route('page.lib.all', ['page' => 0]);
             }

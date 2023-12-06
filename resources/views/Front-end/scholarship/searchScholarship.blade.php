@@ -4,6 +4,17 @@
     // Retrieve the locale value from the session
     $locale = app()->getLocale();
 ?>
+ @section('pagination-style')
+ <style>
+ .page-item{
+     border: 1px solid rgb(186, 186, 186); 
+     border-radius: 5px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ </style>
+ @endsection
     <!-- Content title -->
     <div class="container mt-4">
       <div class="row">
@@ -29,46 +40,46 @@
       <div class="col-md-12 divider-line "></div>
     </div>
   </div>
-     <!-- content -->
-     <div class="container p-0">
-        <div class="row " >
-          <div class="col-12 search-Arps">
-            <form  method="GET" action="{{ route( 'searchNews.news', ['page' => 0]) }}">
-                @csrf
-                <div class="input-group">
-                    <div class="form-outline">
-                      <input type="search" name="searchSch" value="{{ $request_Keyword }}" id="searchInput" class="form-control" />
-                      <label class="form-label" for="form1">Search</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-            </form>
-          </div>
-            @foreach ($result as $item)
-            <div class="col-lay-5">
-                <div class="row">
-                    <div class="col-lay-4">
-                        <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" type="image/jpeg" alt="" width="220px" height="300px" style="margin-bottom: 10px;">
-                    </div>
-                    <div class="col-lay-4">
-                        <a href="{{ route('front.subScholar', $item['id']) }}" class="text-decoration-none color-black font-size-22 Siemreap">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 100, $end = '...')}}</a>
-                        <br>
-                        <small class="Siemreap">{{ $item['createdAt'] }}</small>
-                    </div>
+   <!-- content -->
+   <div class="container">
+    <div class="row " >
+      <div class="col-12 search-Arps">
+        <form  method="GET" action="{{ route('search.scholar', ['page' => 0]) }}">
+            @csrf
+            <div class="input-group">
+                <div class="form-outline">
+                  <input type="search" name="searchSch" id="searchInput" class="form-control" />
+                  <label class="form-label" for="form1">Search</label>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+        </form>
+      </div>
+        @foreach ($result as $item)
+        <div class="col-md-6 mt-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <a href="{{ route('front.subScholar', $item['id']) }}" class="text-decoration-none color-black text-title-rps Siemreap">{{ \Illuminate\Support\Str::limit($item['title'], $limit = 100, $end = '...')}}</a>
+                    <br>
+                    <small class="Siemreap">{{ $item['createdAt'] }}</small>
                 </div>
             </div>
-            @endforeach
         </div>
-     </div>
+        @endforeach
+    </div>
+ </div>
      <div class="container ">
         <div class="row ">
           <nav class="mt-5" aria-label="...">
-            <ul class="pagination">
+            <ul class="pagination" >
             @if ($currentPage > 0)
               <li class="page-item ">
-                <a class="page-link  font-size-18 Kantumruy" href="{{ route('search.scholar', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+                <a class="page-link  font-size-18 Kantumruy" href="{{ route('search.scholar', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-chevron-left"></i></a>
               </li>
             @endif
               @for ($i = 0; $i <= $totalpage-1; $i++)
@@ -78,7 +89,7 @@
               @endfor
             @if ($currentPage+1 < $totalpage )
               <li class="page-item">
-                <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('search.scholar', ['page' => $currentPage + 1]) }}" > <i class="fa-solid fa-forward"></i></a>
+                <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('search.scholar', ['page' => $currentPage + 1]) }}" > <i class="fa-solid fa-chevron-right"></i></a>
               </li>
             @endif
             </ul>

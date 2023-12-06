@@ -4,6 +4,18 @@
         // Retrieve the locale value from the session
         $locale = app()->getLocale();
 ?>
+ @yield('facebook-share')
+ @section('pagination-style')
+<style>
+.page-item{
+    border: 1px solid rgb(186, 186, 186); 
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+@endsection
     <!-- Content title -->
     <div class="container mt-4">
       <div class="row">
@@ -66,20 +78,20 @@
      <div class="container ">
       <div class="row ">
         <nav class="mt-5" aria-label="...">
-          <ul class="pagination">
+          <ul class="pagination" >
           @if ($currentPage > 0)
-            <li class="page-item ">
-              <a class="page-link  font-size-18 Kantumruy" href="{{ route('front.page.scholar', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+            <li class="page-item" style="border: 1px solid black;">
+              <a class="page-link" href="{{ route('front.page.scholar', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-chevron-left"></i></a>
             </li>
           @endif
             @for ($i = 0; $i <= $totalpage-1; $i++)
-              <li class="page-item {{  request()->is('scholar/page/' . $i) ? ' active' : ''  }}">
+              <li class="page-item {{  request()->is('scholar/page/' . $i) ? ' active' : ''  }}" style="border: 1px solid black;">
                 <a class="page-link  font-size-18 Kantumruy" href="{{ route('front.page.scholar', ['page' => $i]) }}">{{ $i +1 }}</a>
               </li>
             @endfor
           @if ($currentPage+1 < $totalpage )
-            <li class="page-item">
-              <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('front.page.scholar', ['page' => $currentPage + 1]) }}" > <i class="fa-solid fa-forward"></i></a>
+            <li class="page-item" style="border: 1px solid black;">
+              <a class="page-link next-link" href="{{ route('front.page.scholar', ['page' => $currentPage + 1]) }}" ><i class="fa-solid fa-chevron-right"></i></a>
             </li>
           @endif
           </ul>

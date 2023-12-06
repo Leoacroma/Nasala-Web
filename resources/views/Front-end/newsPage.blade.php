@@ -4,6 +4,17 @@
         // Retrieve the locale value from the session
         $locale = app()->getLocale();
 ?>
+ @section('pagination-style')
+ <style>
+ .page-item{
+     border: 1px solid rgb(186, 186, 186); 
+     border-radius: 5px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ </style>
+@endsection
     <!-- Content title -->
     <div class="container mt-4">
         <div class="row">
@@ -122,22 +133,23 @@
       </div>
   </div>
     <div class="container ">
+      
         <div class="row ">
             <nav class="mt-5" aria-label="...">
                 <ul class="pagination">
                 @if ($currentPage > 0)
-                  <li class="page-item ">
-                    <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.news', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-backward"></i></a>
+                  <li class="page-item" >
+                    <a class="page-link  " href="{{ route('page.news', ['page' => $currentPage - 1]) }}" tabindex="-1"><i class="fa-solid fa-chevron-left"></i></a>
                   </li>
                 @endif
                   @for ($i = 0; $i <= $totalpage-1; $i++)
-                    <li class="page-item {{  request()->is('news/page/' . $i) ? ' active' : ''  }}">
+                    <li class="page-item {{  request()->is('news/page/' . $i) ? ' active' : ''  }}" >
                       <a class="page-link  font-size-18 Kantumruy" href="{{ route('page.news', ['page' => $i]) }}">{{ $i +1 }}</a>
                     </li>
                   @endfor
                 @if ($currentPage+1 < $totalpage )
-                  <li class="page-item">
-                    <a class="page-link next-link  font-size-18 Kantumruy" href="{{ route('page.news', ['page' => $currentPage + 1]) }}" > <i class="fa-solid fa-forward"></i></a>
+                  <li class="page-item" >
+                    <a class="page-link next-link  " href="{{ route('page.news', ['page' => $currentPage + 1]) }}" > <i class="fa-solid fa-chevron-right"></i></a>
                   </li>
                 @endif
                 </ul>
