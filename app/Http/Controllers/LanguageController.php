@@ -13,14 +13,20 @@ class LanguageController extends Controller
     //
     public function switchLanguage(Request $request)
     {
-        $locale = $request->input('locale');
+        try {
+            //code...
+            $locale = $request->input('locale');
 
-        if (in_array($locale, ['en', 'kh'])) {
-
-            app()->setLocale($locale);
-            session()->put('locale', $locale);
+            if (in_array($locale, ['en', 'kh'])) {
+    
+                app()->setLocale($locale);
+                session()->put('locale', $locale);
+            }
+    
+            return Redirect::back();
+        } catch (\Throwable $th) {
+            return redirect()->route('not-found');
         }
-
-        return Redirect::back();
+       
     }
 }
