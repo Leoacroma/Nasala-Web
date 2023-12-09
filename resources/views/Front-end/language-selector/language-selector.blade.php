@@ -17,8 +17,8 @@
   
 </style>
 <form action="{{ route('language.switch') }}" method="POST" id="language-form">
-    
     @csrf
+    {{-- <h2>test</h2> --}}
     <select name="locale" class="form-select select2" onchange="clickSubmit(event)" >
         <option value="en"  data-thumbnail="{{ asset('images/cambodia/icons8-usa-48.png') }}"  {{ app()->getLocale() === 'en' ? 'selected' : '' }}  > 
             English </option>
