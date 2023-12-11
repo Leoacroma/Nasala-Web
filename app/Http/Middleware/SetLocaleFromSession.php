@@ -16,10 +16,11 @@ class SetLocaleFromSession
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = session('locale');
+        $locale = session('locale', 'kh');
         
         if ($locale && in_array($locale, ['en', 'kh'])) {
             App::setLocale($locale);
+             session()->put('locale', $locale);
         }
         
         return $next($request);

@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 */
 //Front-end
     
-Route::post('/language/switch', [LanguageController::class, 'switchLanguage'])->name('language.switch')->middleware(SetLocaleFromSession::class);
+Route::post('/language/switch', [LanguageController::class, 'switchLanguage'])->name('language.switch');
 
 Route::middleware([SetLocaleFromSession::class])->group(function ()  {
     Route::prefix('/')->group(function(){

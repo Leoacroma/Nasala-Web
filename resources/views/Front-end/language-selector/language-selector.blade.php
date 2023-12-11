@@ -26,7 +26,6 @@
           <option value="kh"  data-thumbnail="{{ asset('images/cambodia/icons8-cambodia-circular-48.png') }}" {{ app()->getLocale() === 'kh' ? 'selected' : '' }} >
             Khmer</option>
     </select>
-    
 </form>
 <script>
     $(document).ready(function() {
