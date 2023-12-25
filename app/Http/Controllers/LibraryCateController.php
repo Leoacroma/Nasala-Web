@@ -51,7 +51,6 @@ class LibraryCateController extends Controller
                 'createdAt' => $formattedCreatedAt,
             ];
         }
-        
 
         return view('Back-end.Pages.library.libraryCate',[
             'data' => $data,

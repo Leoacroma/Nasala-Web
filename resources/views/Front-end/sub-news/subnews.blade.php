@@ -1,16 +1,12 @@
 @extends('Front-end.Layout')
 @section('content')
 @section('facebook-share')
-<meta property="og:url"           content="https://nasla.interior.gov.kh/beta/news/subnews/{{ $request_Id }}" />
-<meta property="og:type"          content="News" />
+
+<meta property="og:url"           content="https://nasla.interior.gov.kh/news/subnews/{{ $request_Id }}" />
+<meta property="og:type"          content="website" />
 <meta property="og:title"         content="{{ $data['data']['titleKh'] }}" />
 <meta property="og:description"   content="{{ $contentShare }}" />
 <meta property="og:image"         content="https://nasla.k5moi.com/v1/api/files/{{ $data['data']['thumbnailImageId'] }}" />
-<meta property="og:image:secure_url" content="https://nasla.k5moi.com/v1/api/files/{{ $data['data']['thumbnailImageId'] }}" />
-<meta property="og:image:type"    content="image/jpeg" />
-<meta property="og:image:width"   content="400" />
-<meta property="og:image:height"  content="300" />
-<meta property="og:image:alt"     content="A shiny red apple with a bite taken out" />
 @endsection
 
 <?php
@@ -52,10 +48,9 @@
                                 
                                 {{-- <a class="color-black"  data-href="">share</a> --}}
                                 <div class="fb-share-button" 
-                                data-href="https://nasla.interior.gov.kh/beta/news/subnews/{{ $request_Id }}" 
+                                data-href="https://nasla.interior.gov.kh/news/subnews/{{ $request_Id }}" 
                                 data-layout="button_count">Share
                                 </div>
-                                
                             </div>
                         </div>
                     </div>

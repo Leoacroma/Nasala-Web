@@ -73,7 +73,7 @@
         $locale = app()->getLocale();
 ?> 
 <body >
-    <!-- Load Facebook SDK for JavaScript -->
+<!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
 var js, fjs = d.getElementsByTagName(s)[0];
@@ -82,6 +82,7 @@ js = d.createElement(s); js.id = id;
 js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
 fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
     <!-- header -->
     <!-- <include id="header" class="header"></include> -->
     @include('Front-end.navigation-bar')
@@ -210,7 +211,8 @@ fjs.parentNode.insertBefore(js, fjs);
             <div class="col-12">
                 <div class="alert alert-info" role="alert">
                     <h4 class="alert-heading Kantumruy font-size-15"><i class="fa-regular fa-lightbulb fa-bounce"></i> សូមធ្វើការទាញយក APP ដើម្បីមើលព័ត៌មានបន្ថែម!</h4>
-                    <button class="btn btn-success Kantumruy font-size-15 text-white">ចុចទីនេះដើម្បីទាញយក APP <i class="fa-solid fa-circle-down text-white"></i></button>
+                    <a class="btn btn-success Kantumruy font-size-15 text-white" href="https://onelink.to/t94evc" target="_blank">ចុចទីនេះដើម្បីទាញយក APP <i class="fa-solid fa-circle-down text-white"></i></a>
+                    {{-- <button ></button> --}}
                   </div>
             </div>
         </div>
