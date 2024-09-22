@@ -62,7 +62,7 @@
                 <a  href="{{ route('front.subnews', $item['id']) }}" class=" text-decoration-none color-black Siemreap  font-size-20">
                     <div class="card" style="height: 450px">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                          <img class="img-news" src="https://api-nasla.k5moi.com/v1/api/files/{{$item['thumbnailImageId'] }}" class="img-fluid"/>
+                          <img class="img-news" src="https://api-nasla.interior.gov.kh/v1/api/files/{{$item['thumbnailImageId'] }}" class="img-fluid"/>
                           <a href="{{ route('front.subnews', $item['id']) }}">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                           </a>
@@ -108,7 +108,7 @@
               <a  href="{{ route('front.subnews', $item['id']) }}" class=" text-decoration-none color-black Siemreap  font-size-20">
                   <div class="card" style="height: 450px">
                       <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img class="img-fluid" src="https://api-nasla.k5moi.com/v1/api/files/{{$item['thumbnailImageId'] }}" class="img-fluid"/>
+                        <img class="img-fluid" src="https://api-nasla.interior.gov.kh/v1/api/files/{{$item['thumbnailImageId'] }}" class="img-fluid"/>
                         <a href="{{ route('front.subnews', $item['id']) }}">
                           <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                         </a>

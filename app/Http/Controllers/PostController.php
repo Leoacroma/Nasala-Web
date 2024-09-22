@@ -126,7 +126,7 @@ class PostController extends Controller
         $user = $httpClient->getRequest('/users/'.$_COOKIE);
         $firstName = $user['data']['firstNameKh'];
         $lastName = $user['data']['lastNameKh'];
-        $image = 'https://nasla.k5moi.com/v1/api/files/'. $image_Id;
+        $image = 'https://api-nasla.interior.gov.kh/v1/api/files/'. $image_Id;
       
         // dd($image);
         $dateTime = KhmerDateTime::parse($data['data']['createdAt']);
@@ -158,7 +158,7 @@ class PostController extends Controller
         $lastName = $user['data']['lastNameKh'];
 
         $image_Id = $data['data']['thumbnailImageId'];
-        $image = 'https://nasla.k5moi.com/v1/api/files/'. $image_Id;
+        $image = 'https://api-nasla.interior.gov.kh/v1/api/files/'. $image_Id;
 
         return view('Back-end.Pages.Post.news.post.editPost',[
             'data' => $data,

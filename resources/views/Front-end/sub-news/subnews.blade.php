@@ -6,7 +6,7 @@
 <meta property="og:type"          content="website" />
 <meta property="og:title"         content="{{ $data['data']['titleKh'] }}" />
 <meta property="og:description"   content="{{ $contentShare }}" />
-<meta property="og:image"         content="https://nasla.k5moi.com/v1/api/files/{{ $data['data']['thumbnailImageId'] }}" />
+<meta property="og:image"         content="https://api-nasla.interior.gov.kh/v1/api/files/{{ $data['data']['thumbnailImageId'] }}" />
 @endsection
 
 <?php
@@ -77,7 +77,7 @@
                     <a class="text-decoration-none color-black hover-underline-animation " href="{{ route('front.subnews', $item['id']) }}">
                         <div class="row mt-2">
                             <div class="col-md-5">
-                                <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="img-fluid" alt="" >
+                                <img src="https://api-nasla.interior.gov.kh/v1/api/files/{{ $item['thumbnailImageId'] }}" class="img-fluid" alt="" >
                             </div>
                             <div class="col-md-7 mg-l-m10 hover-title-animate">
                                 <p class="Siemreap font-size-15">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...') }}</p>
@@ -103,7 +103,7 @@
                        <div class="col-md-12">
                         <a href="{{ route('front.subnews', $item['id']) }}" class="col" style="width: 400px;  color: black">
                             <div class="card">
-                                <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" /> 
+                                <img src="https://api-nasla.interior.gov.kh/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-fluid" alt="Hollywood Sign on The Hill" /> 
                                 <div class="card-body">
                                 <h5 class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...')}}</h5>
                                 <small class="Siemreap mg-r-10px ">{{ $item['createdAt'] }}</small>
@@ -128,7 +128,7 @@
                     @foreach ($result as $item)
                         <a href="{{ route('front.subnews', $item['id']) }}" class="col" style="width: 400px;  color: black">
                             <div class="card">
-                                <img src="https://api-nasla.k5moi.com/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-size" alt="Hollywood Sign on The Hill" /> 
+                                <img src="https://api-nasla.interior.gov.kh/v1/api/files/{{ $item['thumbnailImageId'] }}" class="card-img-top img-size" alt="Hollywood Sign on The Hill" /> 
                                 <div class="card-body">
                                 <h5 class="card-title Siemreap">{{ \Illuminate\Support\Str::limit($item['titleKh'], $limit = 50, $end = '...')}}</h5>
                                 <small class="Siemreap mg-r-10px ">{{ $item['createdAt'] }}</small>
